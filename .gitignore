@@ -1,13 +1,5 @@
 node_modules
+
 .idea/
 *.txt
-^C
-
-
-
-:wq
-
-git status
-
-
 
