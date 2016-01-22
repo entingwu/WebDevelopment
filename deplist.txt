@@ -12,5 +12,4 @@
 #  For a list of globally installed modules - see file: npm_global_module_list.
 #
 
-ssh://56985cd90c1e66eaeb00015c@cs5610spring2016-entingwu.rhcloud.com/~/git/cs5610spring2016.git/
 
