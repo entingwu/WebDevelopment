@@ -3,11 +3,23 @@
     <head>
         <meta charset="UTF-8">
         <title>Intro to HTML</title>
+        <style>
+            h1 {
+                color:pink;
+            }
+            h2#introhtml {
+                color:powderblue;
+                background-color:papayawhip;
+            }
+            .blueFg {
+                color:cornflowerblue;
+            }
+        </style>
     </head>
     <body>
-        <head>
-            <h1>Introduction to HTML</h1>
-        </head>
+        <header>
+            <h1 >Introduction to HTML</h1>
+        </header>
         <nav>
             <ul>
                 <li><a href="index.html">HOME</a></li>
@@ -17,8 +29,8 @@
         </nav>
 
         <section>
-        <h2>Intro to HTML Tags</h2>
-        <p>
+        <h2 id="introhtml">Intro to HTML Tags</h2>
+        <p class="blueFg">
             HTML tags have an opening and closing tag.Tags are also referred to as HTML elements.
         </p>
         </section>
@@ -31,7 +43,7 @@
                 <a>unordered</a>
             </header>
 
-        <h3>Ordered Lists</h3>
+        <h3 class="blueFg">Ordered Lists</h3>
         <ol>
             <li>Course1</li>
             <li>Course2</li>
