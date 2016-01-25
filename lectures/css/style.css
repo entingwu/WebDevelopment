@@ -1,0 +1,24 @@
+p {
+    background-color:pink;
+}
+.yellowBG {
+    background-color:mediumvioletred;
+}
+#intro {
+    background-color:orange;
+}
+#secondParagraph {
+    color:turquoise; background-color: crimson;
+}
+h1 {
+    color:lightpink;
+    background-color:coral;
+}
+h1 {
+    color:violet;
+    background-color:blueviolet;
+}
+h1 {
+    color:firebrick;!important;
+    background-color:thistle;!important;
+}
