@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>On Click Event Handling</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <script>
+        function sayHello() {
+            alert("Hello World");
+        }
+        function sayMessage(message) {
+            alert(message);
+        }
+        function sayInput() {
+            var message = document.getElementById("message").value;
+            alert(message);
+        }
+    </script>
+
+    <h1>On Click Event Handling</h1>
+    <div class = "btn">
+        <button onclick="sayHello()">Say Hello</button>
+        <button onclick="sayMessage('This is the message')">Say Message</button>
+
+        <input id = "message" type ="text">
+        <button onclick="sayInput()">Say Input</button>
+    </div>
+
+</body>
+</html>

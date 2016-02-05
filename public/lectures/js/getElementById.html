@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Get Element by Id</title>
+</head>
+<body>
+    <h1 id="hello">Hello</h1>
+    <script>
+        var html = document.getElementById("hello").innerHTML;
+        alert(html);
+        document.getElementById("hello").innerHTML = "GoodBye";
+    </script>
+
+    <input type = "text" id = "name" value = "Bob"/>
+    <input type = "text" id = "age" value = "23"/>
+    <script>
+        var age = document.getElementById("age");
+        var name = document.getElementById("name").value;
+        console.log(age.value);
+        console.log(name);
+        age.value++;
+        age.value = 25;
+    </script>
+</body>
+</html>
