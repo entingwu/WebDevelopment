@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="WhiteBoardApp">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS Introduction</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://code.jquery.com/ui/1.11.4/themes/vader/jquery-ui.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular-route.js"></script>
+    <script src="app.js"></script>
+    <script src="config.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Ng Route</h1>
+
+        <a href="#/home" class="btn btn-primary">Home</a>
+        <a href="#/profile" class="btn btn-success">Profile</a>
+        <a href="#/admin" class="btn btn-danger">Admin</a>
+
+        <hr/>
+
+        <div ng-view></div>
+        <hr/>
+
+    </div>
+
+    <div class="container">
+        <nav ng-controller="NavController">
+            <!--$location.url() == '/home' true,  => btn-primary ><-->
+            <a href="#/home"  class="btn " ng-class="{'btn-primary' : $location.url() == '/home'}">Home</a>
+            <a href="#/profile" class="btn" ng-class="{'btn-primary' : $location.url() == '/profile'}">Profile</a>
+            <a href="#/admin"   class="btn" ng-class="{'btn-primary' : $location.url() == '/admin'}">Admin</a>
+            <br/>
+            {{$location.url()}}
+            <h1>See ng view below</h1>
+            <div ng-view></div>
+        </nav>
+    </div>
+</body>
+</html>

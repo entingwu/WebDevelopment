@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="WhiteBoardApp">
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS Introduction</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://code.jquery.com/ui/1.11.4/themes/vader/jquery-ui.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular-route.js"></script>
+    <script src="app.js"></script>
+
+</head>
+<body>
+    <div class="container">
+
+        <h1>Movie List</h1>
+
+        <a href="#/profile">Profile</a>
+
+        <table class="table" ng-controller="MovieTableController">
+            {{movies}}
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Year</th>
+                    <th>Description</th>
+                    <th>&nbsp</th>
+                    <th>&nbsp</th>
+                </tr>
+                 <tr>
+                     <td><input class="form-control" ng-model="item.id"></td>
+                     <td><input class="form-control" ng-model="item.title"></td>
+                     <td><input class="form-control" ng-model="item.year"></td>
+                     <td><input class="form-control" ng-model="item.description"></td>
+                     <td><button class="btn btn-primary" ng-click="addMovie(item)">Add</button></td>
+                     <td><button class="btn btn-primary" ng-click="updateMovie(item)">update</button></td>
+                 </tr>
+            </thead>
+            <tbody>
+                <tr>{{movies}}</tr>
+                <tr ng-repeat="item in movies">
+                    <!--foreach == ng-repeat><-->
+                    <td>{{item.id}}</td>
+                    <td>{{item.title}}</td>
+                    <td>{{item.year}}</td>
+                    <td>{{item.description}}</td>
+                    <td><button class="btn btn-info" ng-click="delMovie($index)">Delete</button></td>
+                    <td><button class="btn btn-success" ng-click="selMovie(item, $index)">Select</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
