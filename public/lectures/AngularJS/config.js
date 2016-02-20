@@ -7,13 +7,13 @@
         .config(function($routeProvider){//Configure
             $routeProvider
                 .when("/home", {//link
-                    templateUrl: "home.html"//destination
+                    templateUrl: "home.view.html"//destination
                 })
                 .when("/profile", {
                     templateUrl: "profile.html"
                 })
                 .when("/admin", {
-                    templateUrl: "admin.html"
+                    templateUrl: "admin.view.html"
                 })
                 .otherwise({
                     redirectTo: "/"//index

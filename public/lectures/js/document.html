@@ -5,17 +5,20 @@
     <title>Intro to Document Object</title>
 </head>
 <body>
-    <h1>Hello world</h1>>
+    <h1>Hello world</h1>
     <script>
-        //1. dynamicly
+        //1. Javascript : dynamicly generate page
         document.write("Hello World");
         document.write("<ul>");
         for(var i = 0; i < 10; i++) {
-            document.write("<li> Hello" + i + "</li>");
+            document.write("<li>");
+            document.write("Hello " + i);
+            document.write("</li>");
         }
         document.write("</ul>");
     </script>
 
+    <h2>Multiplication Table</h2>
     <table>
         <script>
             for(var row = 1; row<=10; row++) {

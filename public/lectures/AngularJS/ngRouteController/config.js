@@ -1,15 +1,14 @@
 /**
- * Created by entingwu on 2/11/16.
+ * Created by entingwu on 2/18/16.
  */
-
 (function(){
     angular
-        .module("WhiteBoardApp")
-        .config(function($routeProvider){
+        .module("WhiteBoardApp", ["ngRoute"])
+        .config(function($routeProvider){//listening everything after #, provided by framework
             $routeProvider
-                .when("/", {
-                    templateUrl: "home/home.view.html",//directory name/
-                    controller: "HomeController"//controller name, controller just for this html file
+                .when("/", {//user level
+                    templateUrl: "home/home.view.html",//physical
+                    controller: "HomeController"//logical
                 })
                 .when("/profile", {
                     templateUrl: "profile/profile.view.html",
@@ -19,7 +18,7 @@
                     templateUrl: "admin/admin.view.html",
                     controller: "AdminController"
                 })
-                .otherwise({
+                .otherwise({//default
                     redirectTo: "/"
                 });
         });

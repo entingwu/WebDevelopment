@@ -1,0 +1,9 @@
+
+<h1>Users</h1>
+{{users}}
+
+<h2>Ng-Repeat</h2>
+<li ng-repeat="person in users">
+    <!--id, array><-->
+    <a href="#/profile/({$index})">{{person.username}}</a>
+</li>

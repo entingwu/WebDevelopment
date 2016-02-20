@@ -2,16 +2,97 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7086548c-b6a5-4298-ae51-ea38bc8c3e7b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/2.clientSide/views/admin/admin.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/2.clientSide/views/forms/fields.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/2.clientSide/views/forms/forms.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/2.clientSide/views/header/header.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/2.clientSide/views/home/home.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/2.clientSide/views/users/login.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/2.clientSide/views/users/profile.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/2.clientSide/views/users/register.controller.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/assignment/config.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/app-ex.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngDirective/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngDirective/helloworld.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngDirective/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngDirective/jgaTable.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngDirective/jgaTable.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/config.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/courseList/courseList.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/courseList/courseList.view.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/courseOverview/courseOverview.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/courseService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/profile/profile.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRoute/admin.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRoute/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRoute/home.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRoute/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRoute/profile.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/admin/admin.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/admin/admin.view.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/config.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/home/home.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/home/home.view.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/mainController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/profile/profile.controller.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/profile/profile.view.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/textToPhrase.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteLocation/admin.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteLocation/home.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteLocation/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteLocation/profile.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteLocation/textToPhrase.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/userService/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/userService/config.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/userService/index.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/userService/navController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/userService/profile.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/userService/profileController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/userService/user.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/userService/userController.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/userService/userService.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/jQuery/connectedList.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/jQuery/draggable.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/lectures/jQuery/sortable.html" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/clientSide/views/admin/admin.controller.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/clientSide/views/admin/admin.view.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/clientSide/views/css/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/clientSide/views/forms/fields.controller.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/clientSide/views/forms/form-fields.view.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/clientSide/views/forms/forms.controller.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/clientSide/views/forms/forms.view.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/clientSide/views/header/header.controller.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/clientSide/views/header/header.view.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/clientSide/views/home/home.controller.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/clientSide/views/home/home.view.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/clientSide/views/sidebar/sidebar.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/clientSide/views/users/login.controller.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/clientSide/views/users/login.view.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/clientSide/views/users/profile.controller.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/clientSide/views/users/profile.view.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/clientSide/views/users/register.controller.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/clientSide/views/users/register.view.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/experiment/bootstrapexample.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/experiment/dashboard.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/experiment/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/experiment/javascriptExample.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/experiment/profile.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/experiment/test.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/experiment/users.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lectures/AngularJS/index_two.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lectures/AngularJS/profile.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lectures/ng-controller/admin/admin.controller.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lectures/ng-controller/config.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lectures/ng-controller/home/home.controller.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lectures/ng-controller/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/public/lectures/ng-controller/profile/profile.controller.js" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/lectures/ng-controller/admin/admin.view.html" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/courseOverview/courseOverview.view.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/lectures/ng-controller/home/home.view.html" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/profile/profile.view.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/public/lectures/ng-controller/profile/profile.view.html" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/userService/home.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/index.html" afterPath="$PROJECT_DIR$/public/assignment/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/lectures/AngularJS/app.js" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/lectures/AngularJS/config.js" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/lectures/AngularJS/index.html" afterPath="$PROJECT_DIR$/public/lectures/AngularJS/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/lectures/js/document.html" afterPath="$PROJECT_DIR$/public/lectures/js/document.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/lectures/js/src.js" afterPath="$PROJECT_DIR$/public/lectures/js/src.js" />
     </list>
     <ignored path="cs5610spring2016.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,21 +113,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-46.25">
-              <caret line="74" column="7" selection-start-line="0" selection-start-column="0" selection-end-line="74" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/assignment/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33482143">
-              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+            <state vertical-scroll-proportion="0.19">
+              <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -57,8 +128,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -68,56 +139,56 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/lectures/js/src.js" />
-        <option value="$PROJECT_DIR$/lectures/jQuery/indexJs.js" />
-        <option value="$PROJECT_DIR$/lectures/jQuery/index.html" />
-        <option value="$PROJECT_DIR$/lectures/jQuery/main.js" />
-        <option value="$PROJECT_DIR$/public/lectures/css/grid.html" />
-        <option value="$PROJECT_DIR$/public/assignment/home.html" />
-        <option value="$PROJECT_DIR$/public/assignment/register.html" />
-        <option value="$PROJECT_DIR$/public/assignment/login.html" />
-        <option value="$PROJECT_DIR$/public/assignment/profile.html" />
-        <option value="$PROJECT_DIR$/public/assignment/forms.html" />
-        <option value="$PROJECT_DIR$/public/assignment/admin.html" />
-        <option value="$PROJECT_DIR$/public/assignment/form-fields.html" />
-        <option value="$PROJECT_DIR$/public/lectures/AngularJS/example1.html" />
-        <option value="$PROJECT_DIR$/public/lectures/AngularJS/main.js" />
-        <option value="$PROJECT_DIR$/public/lectures/AngularJS/index.html" />
-        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ng-controller/home/home.controller.js" />
-        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ng-controller/home/home.view.html" />
-        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ng-controller/admin/admin.controller.js" />
-        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ng-controller/admin/admin.view.html" />
-        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ng-controller/profile/profile.controller.js" />
-        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ng-controller/profile/profile.view.html" />
-        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ng-controller/index.html" />
-        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ng-controller/config.js" />
-        <option value="$PROJECT_DIR$/public/lectures/AngularJS/app.js" />
-        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ng-route.js" />
-        <option value="$PROJECT_DIR$/public/lectures/AngularJS/index_two.html" />
-        <option value="$PROJECT_DIR$/public/lectures/AngularJS/profile.html" />
+        <option value="$PROJECT_DIR$/public/lectures/ng-controller/admin/admin.view.html" />
+        <option value="$PROJECT_DIR$/public/lectures/ng-controller/index.html" />
+        <option value="$PROJECT_DIR$/public/lectures/ng-controller/config.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRoute/profile.html" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRoute/app.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRoute/index.html" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRoute/admin.html" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteLocation/textToPhrase.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/home/home/home.controller.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/admin/admin.controller.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/profile/profile.controller.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/home/home.controller.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/admin/admin.view.html" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/home/home.view.html" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/profile/profile.view.html" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/textToPhrase.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/config.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/app.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/config.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/courseService.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/index.html" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/courseList/courseList.view.html" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/courseOverview/courseOverview.controller.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/courseOverview/courseOverview.view.html" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/profile/profile.controller.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/profile/profile.html" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/profile/profile.view.html" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/courseList/courseList.controller.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteLocation/index.html" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/userService/profile.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/mainController.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/index.html" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/userService/index.html" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/userService/app.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/userService/userService.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/userService/profileController.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngDirective/helloworld.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngDirective/app.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngDirective/index.html" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngDirective/jgaTable.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/ngDirective/jgaTable.html" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/userService/userController.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/userService/navController.js" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/userService/home.html" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/userService/user.html" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/userService/profile.html" />
+        <option value="$PROJECT_DIR$/public/lectures/AngularJS/userService/config.js" />
         <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/public/project/index.html" />
-        <option value="$PROJECT_DIR$/public/assignment/2.clientSide/header/header.view.html" />
-        <option value="$PROJECT_DIR$/public/assignment/2.clientSide/sidebar/sidebar.html" />
-        <option value="$PROJECT_DIR$/public/assignment/2.clientSide/admin/admin.view.html" />
-        <option value="$PROJECT_DIR$/public/assignment/2.clientSide/form/forms.view.html" />
-        <option value="$PROJECT_DIR$/public/assignment/2.clientSide/form/form-fields.view.html" />
-        <option value="$PROJECT_DIR$/public/assignment/2.clientSide/login/login.view.html" />
-        <option value="$PROJECT_DIR$/public/assignment/2.clientSide/views/admin/admin.view.html" />
-        <option value="$PROJECT_DIR$/public/assignment/2.clientSide/views/forms/form-fields.view.html" />
-        <option value="$PROJECT_DIR$/public/assignment/2.clientSide/views/forms/forms.view.html" />
-        <option value="$PROJECT_DIR$/public/assignment/2.clientSide/views/home/home.view.html" />
-        <option value="$PROJECT_DIR$/public/assignment/2.clientSide/views/users/login.view.html" />
-        <option value="$PROJECT_DIR$/public/assignment/2.clientSide/views/users/profile.view.html" />
-        <option value="$PROJECT_DIR$/public/assignment/2.clientSide/views/users/register.view.html" />
-        <option value="$PROJECT_DIR$/public/assignment/2.clientSide/views/home/home.controller.js" />
-        <option value="$PROJECT_DIR$/public/assignment/2.clientSide/views/users/login.controller.js" />
-        <option value="$PROJECT_DIR$/public/assignment/2.clientSide/views/users/profile.controller.js" />
-        <option value="$PROJECT_DIR$/public/assignment/2.clientSide/views/users/register.controller.js" />
-        <option value="$PROJECT_DIR$/public/assignment/2.clientSide/views/forms/fields.controller.js" />
-        <option value="$PROJECT_DIR$/public/assignment/2.clientSide/views/forms/forms.controller.js" />
-        <option value="$PROJECT_DIR$/public/assignment/2.clientSide/views/header/header.controller.js" />
-        <option value="$PROJECT_DIR$/public/assignment/2.clientSide/views/admin/admin.controller.js" />
+        <option value="$PROJECT_DIR$/public/assignment/app.js" />
+        <option value="$PROJECT_DIR$/public/assignment/views/config.js" />
         <option value="$PROJECT_DIR$/public/assignment/index.html" />
       </list>
     </option>
@@ -128,9 +199,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="313" />
-    <option name="y" value="46" />
-    <option name="width" value="994" />
+    <option name="y" value="23" />
+    <option name="width" value="1225" />
     <option name="height" value="705" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -158,6 +228,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -204,14 +275,101 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="lectures" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cs5610spring2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cs5610spring2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lectures" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jQuery" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cs5610spring2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cs5610spring2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="assignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cs5610spring2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cs5610spring2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="users" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cs5610spring2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cs5610spring2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -223,18 +381,19 @@
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/lectures" />
-      <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/public/experiment" />
-      <recent name="$PROJECT_DIR$/public/assignment" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/lectures/AngularJS/userService" />
       <recent name="$PROJECT_DIR$/public/lectures/AngularJS" />
+      <recent name="$PROJECT_DIR$/public/lectures" />
+      <recent name="$PROJECT_DIR$/public/lectures/AngularJS/ngRoute" />
+      <recent name="$PROJECT_DIR$/public/lectures/ng-controller" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/assignment" />
-      <recent name="$PROJECT_DIR$/public/project" />
-      <recent name="$PROJECT_DIR$/lectures/bootstrap/js" />
-      <recent name="$PROJECT_DIR$/lectures/bootstrap" />
+      <recent name="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/home" />
+      <recent name="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/profile" />
+      <recent name="$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/admin" />
+      <recent name="$PROJECT_DIR$/public/lectures" />
     </key>
   </component>
   <component name="RunManager">
@@ -305,28 +464,28 @@
       <is-autoscroll-to-source value="true" />
     </todo-panel>
     <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
+      <are-modules-shown value="true" />
+      <flatten-packages value="true" />
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="313" y="46" width="994" height="705" extended-state="0" />
+    <frame x="0" y="23" width="1225" height="705" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.045220967" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970452" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25332227" sideWeight="0.86520946" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32917318" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.309375" sideWeight="0.5036563" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32761312" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19032761" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2199688" sideWeight="0.49680364" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13884555" sideWeight="0.49680364" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23303168" sideWeight="0.13479052" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.11388455" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
@@ -357,319 +516,270 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/public/lectures/bootstrap/css/bootstrap-theme.css.map">
-      <provider editor-type-id="sourcemapFileViewerProvider">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.3321976">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/bootstrap/css/bootstrap.min.css.map">
-      <provider editor-type-id="sourcemapFileViewerProvider">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRoute/profile.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.106571935">
+          <caret line="4" column="87" selection-start-line="4" selection-start-column="87" selection-end-line="4" selection-end-column="87" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/bootstrap/css/bootstrap.css.map">
-      <provider editor-type-id="sourcemapFileViewerProvider">
-        <state />
-      </provider>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRoute/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6034483">
+          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/bootstrap/css/bootstrap.css">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRoute/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30120483">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRoute/admin.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="9" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.11494253">
+          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRouteLocation/home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/bootstrap/js/bootstrap.min.js">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRouteLocation/textToPhrase.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="22" column="12" selection-start-line="22" selection-start-column="12" selection-end-line="22" selection-end-column="12" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/bootstrap/js/bootstrap.js">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/profile/profile.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="10" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/bootstrap/js/npm.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42154565">
-          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/js/src.js">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/admin/admin.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="10" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/js/src.html">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/admin/admin.view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+        <state vertical-scroll-proportion="-0.625">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/js/json.html">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/home/home.view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="7" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.025466893">
+          <caret line="1" column="10" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/js/intro.html">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/profile/profile.view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="40" selection-start-line="0" selection-start-column="0" selection-end-line="44" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.15280136">
+          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/js/onclick.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="9" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/js/document.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="39" selection-start-line="21" selection-start-column="39" selection-end-line="21" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/js/getElementById.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/css/link.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/css/box.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/css/grid.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="0" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/jQuery/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="29" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/jQuery/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4704797">
-          <caret line="17" column="54" selection-start-line="17" selection-start-column="54" selection-end-line="17" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-27.5">
-          <caret line="44" column="35" selection-start-line="44" selection-start-column="31" selection-end-line="44" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/ng-controller/home/home.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/ng-controller/home/home.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="3" selection-start-line="2" selection-start-column="3" selection-end-line="2" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/ng-controller/admin/admin.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/ng-controller/admin/admin.controller.js">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/home/home.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/ng-controller/profile/profile.view.html">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.6876061">
+          <caret line="27" column="7" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/courseOverview/courseOverview.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.053003535">
+          <caret line="2" column="9" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/profile/profile.view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26501766">
           <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/ng-controller/profile/profile.controller.js">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/courseList/courseList.view.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="5" selection-start-line="11" selection-start-column="5" selection-end-line="11" selection-end-column="5" />
+        <state vertical-scroll-proportion="1.2985866">
+          <caret line="49" column="8" selection-start-line="49" selection-start-column="8" selection-end-line="49" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="9" selection-start-line="6" selection-start-column="9" selection-end-line="6" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="57" column="11" selection-start-line="57" selection-start-column="11" selection-end-line="57" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/profile.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="16" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/index_two.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7239382">
-          <caret line="35" column="30" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/ng-controller/config.js">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="5" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/lectures/ng-controller/index.html">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRoute/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.033407573">
-          <caret line="21" column="21" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.026501767">
+          <caret line="1" column="34" selection-start-line="1" selection-start-column="34" selection-end-line="1" selection-end-column="34" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/index.html">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRouteLocation/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2946428">
-          <caret line="60" column="10" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
-          <folding />
+        <state vertical-scroll-proportion="0.8416834">
+          <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/2.clientSide/views/forms/form-fields.view.html">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.43293718">
-          <caret line="17" column="51" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
-          <folding />
+        <state vertical-scroll-proportion="0.4509018">
+          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="96" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/2.clientSide/views/forms/forms.view.html">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.2156197">
-          <caret line="17" column="51" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
-          <folding />
+        <state vertical-scroll-proportion="0.028680688">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/2.clientSide/views/home/home.view.html">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/courseService.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3565365">
-          <caret line="21" column="6" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
-          <folding />
+        <state vertical-scroll-proportion="0.8030593">
+          <caret line="30" column="5" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/2.clientSide/views/users/login.view.html">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/profile/profile.controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30560273">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
+        <state vertical-scroll-proportion="0.2294455">
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/2.clientSide/views/users/profile.view.html">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.48387095">
-          <caret line="23" column="21" selection-start-line="23" selection-start-column="21" selection-end-line="23" selection-end-column="21" />
-          <folding />
+        <state vertical-scroll-proportion="0.31548756">
+          <caret line="13" column="55" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/2.clientSide/views/users/register.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.234375">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/2.clientSide/views/home/home.controller.js">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/mainController.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
+          <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/2.clientSide/views/users/login.controller.js">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/textToPhrase.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.14340344">
+          <caret line="5" column="5" selection-start-line="5" selection-start-column="5" selection-end-line="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/courseList/courseList.controller.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <caret line="60" column="58" selection-start-line="60" selection-start-column="58" selection-end-line="60" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRepeat/courseOverview/courseOverview.controller.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.40152964">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngDirective/jgaTable.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngDirective/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.2083335">
+          <caret line="25" column="20" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/userService/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngDirective/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6870229">
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngDirective/helloworld.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngDirective/jgaTable.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="15" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/2.clientSide/views/users/profile.controller.js">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/userService/userService.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="27" column="24" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="24" />
+          <folding>
+            <element signature="e#351#443#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/userService/user.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -677,66 +787,110 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/2.clientSide/views/users/register.controller.js">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/userService/profileController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.28625953">
+          <caret line="12" column="101" selection-start-line="12" selection-start-column="101" selection-end-line="12" selection-end-column="101" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/userService/userController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3721374">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/userService/navController.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3148855">
+          <caret line="13" column="8" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/userService/home.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="8" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/2.clientSide/views/forms/forms.controller.js">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/userService/profile.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="11" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/2.clientSide/views/forms/fields.controller.js">
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/userService/config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03177966">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/2.clientSide/views/header/header.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03177966">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/2.clientSide/views/admin/admin.view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.51116073">
-          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/2.clientSide/views/admin/admin.controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03177966">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.20038168">
+          <caret line="7" column="24" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-46.25">
-          <caret line="74" column="7" selection-start-line="0" selection-start-column="0" selection-end-line="74" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.568">
+          <caret line="54" column="69" selection-start-line="54" selection-start-column="69" selection-end-line="54" selection-end-column="69" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/userService/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.148">
+          <caret line="5" column="4" selection-start-line="5" selection-start-column="4" selection-end-line="6" selection-end-column="103" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lectures/AngularJS/ngRouteController/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21">
+          <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/lectures/jQuery/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.0">
+          <caret line="8" column="4" selection-start-line="8" selection-start-column="4" selection-end-line="9" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assignment/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assignment/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/assignment/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33482143">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        <state vertical-scroll-proportion="0.19">
+          <caret line="35" column="4" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
           <folding />
         </state>
       </provider>

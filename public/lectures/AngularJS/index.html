@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="WhiteBoardApp">
+<!--The HTML in an AngularJS application is considered the view of a Web application. ><-->
+<!-- 1. Declare an AngularJS Application ><-->
+<html lang="en" ng-app="MovieDBApp">
 <head>
     <meta charset="UTF-8">
     <title>AngularJS Introduction</title>
@@ -8,19 +10,36 @@
 
     <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular-route.js"></script>
+
+    <!-- 2. Load the AngularJS Library><-->
+    <!-- CDN LIBIRAY: https://developers.google.com/speed/libraries/><-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+
+    <!-- 3. Implement the AngularJS Application
+    Implement the application is a separate JavaScript file and reference it from the HTML document using the script element. ><-->
     <script src="app.js"></script>
 
+    <style>
+        .nowrap {
+            white-space: nowrap;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-
-        <h1>Movie List</h1>
-
+        <h1>Movie Database</h1>
         <a href="#/profile">Profile</a>
 
-        <table class="table" ng-controller="MovieTableController">
+        <!-- 4. Declare a Controller for an HTML Area :
+        views controlled by controller
+        AngularJS controllers are responsible for providing data and logic that the a view renders dynamically.
+        Controllers can be responsible for an entire page or a subset of a page.
+        They can be bound to a specific HTML element which will the scope of the controller. ><-->
+        <table class="table" ng-controller="MovieListController">
+
+            <!--5.Controller Sends Data to View
+            The view in turn can declare the variable with the same name as the controller as a placeholder
+            where the value of the variable will render as plain text {{...}}><-->
             {{movies}}
             <thead>
                 <tr>
@@ -32,24 +51,32 @@
                     <th>&nbsp</th>
                 </tr>
                  <tr>
-                     <td><input class="form-control" ng-model="item.id"></td>
-                     <td><input class="form-control" ng-model="item.title"></td>
-                     <td><input class="form-control" ng-model="item.year"></td>
-                     <td><input class="form-control" ng-model="item.description"></td>
-                     <td><button class="btn btn-primary" ng-click="addMovie(item)">Add</button></td>
-                     <td><button class="btn btn-primary" ng-click="updateMovie(item)">update</button></td>
+                     <!--ng-model: scope variable. add the following to the scope><-->
+                     <td><input class="form-control" ng-model="movie.id"></td>
+                     <td><input class="form-control" ng-model="movie.title"></td>
+                     <td><input class="form-control" ng-model="movie.year"></td>
+                     <td><input class="form-control" ng-model="movie.description"></td>
+
+                     <!--call the addMovie function on the controller><-->
+                     <td><button class="btn btn-primary" ng-click="addMovie(movie)">Add</button></td>
+                     <td><button class="btn btn-primary" ng-click="updateMovie(movie)">Update</button></td>
                  </tr>
             </thead>
             <tbody>
                 <tr>{{movies}}</tr>
+                <!--foreach == ng-repeat, item is the local variable of for loop><-->
                 <tr ng-repeat="item in movies">
-                    <!--foreach == ng-repeat><-->
                     <td>{{item.id}}</td>
                     <td>{{item.title}}</td>
                     <td>{{item.year}}</td>
                     <td>{{item.description}}</td>
-                    <td><button class="btn btn-info" ng-click="delMovie($index)">Delete</button></td>
-                    <td><button class="btn btn-success" ng-click="selMovie(item, $index)">Select</button></td>
+                    <!--index variable><-->
+                    <td class="nowrap">
+                        <button class="btn btn-danger" ng-click="delMovie($index)">Delete</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-success" ng-click="selMovie(item)">Select</button>
+                    </td>
                 </tr>
             </tbody>
         </table>

@@ -7,11 +7,14 @@
     var a = 2;
     var b = 4;
     var c = Math.pow(a, b);
+    var d = add(a,b);
+
+    function add(a, b){ return a + b; }
 
     //alert(c);
-    var fact = 1;
+    var factorial = 1;
     for (var i = 1; i <= 5; i++) {
-        fact = fact * i;
+        factorial = factorial * i;
     }
     //alert("Factorial of 5 = " + fact);
 

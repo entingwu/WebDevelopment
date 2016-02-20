@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="WhiteBoardApp">
+<head>
+    <meta charset="UTF-8">
+    <title>ng-route</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular-route.js"></script>
+    <script src="textToPhrase.js"></script>
+</head>
+<body>
+<div class="container">
+    <h1>Ng Route Location</h1>
+
+    <!--controller provide the view of the $location scope
+    1. If the $location.url() is '/', I'll apply class of btn-primary to this hyperlink
+    2. NavController's scope is included in nav><-->
+    <nav ng-controller="NavController">
+        <a href="#/home"  class="btn" ng-class="{'btn-primary' : $location.url() == '/'}">Home</a>
+        <a href="#/home"  class="btn" ng-class="{'active' : $location.url().indexOf('home') != -1}">Home</a>
+        <a href="#/profile" class="btn" ng-class="{'btn-primary' : $location.url() == '/profile'}">Profile</a>
+        <a href="#/admin"   class="btn" ng-class="{'btn-primary' : $location.url() == '/admin'}">Admin</a>
+        <br/>
+        {{$location.url()}}
+    </nav>
+        <!--ng-include is static, load file, ng-view is dynamic, routing system><-->
+    <div ng-view></div>
+
+    <hr/>
+</div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!-- index.html -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.0/angular.js"></script>
+
+<!--<link href="/css/jga.css" rel="stylesheet"/>
+<script src="/js/jquery-1.11.3.min.js"></script>
+<script src="/js/angular.min.js"></script>
+<script src="/directives/getServerFile/client/directive/getServerFile.js"></script>
+<script src="/directives/escapehtml/escapeHtml.js"></script>-->
+<script src="app.js"></script>
+
+<div class="container" ng-app="HelloWorldDirective">
+    <h1>Hello World Directive</h1>
+    <p>
+        AngularJS directive allow creating custom HTML elements,
+        extend the functionality of existing HTML elements,
+        and create self contained user interface components. This
+        example illustrates creating the simplest directive. Let's
+        create a <code>&lt;hello-world&gt;</code> directive which just says
+        "Hello World". The "Hello World" message below is created
+        by the <code>&lt;hello-world&gt;</code> element.
+    </p>
+
+    <div class="container" ng-controller = "CustomersController">
+        <!--ng-model><-->
+        <div class="container" ng-model="customer">
+            Name: {{customer.name}}
+            <br />
+            Street: {{customer.street}}
+        </div>
+
+        <hello-world></hello-world>
+
+    </div>
+
+
+    <h2>This App</h2>
+
+    <p>
+        This application declares a module called <code>HelloWorldDirective</code>.
+        It depends on two other modules which happen to be some directives used
+        to document these examples.
+    </p>
+
+</div>
