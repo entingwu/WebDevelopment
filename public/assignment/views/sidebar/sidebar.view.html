@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<div ng-controller="SidebarController">
+    <ul class="nav nav-sidebar">
+        <li ng-class="{'active' : $location.url().indexOf('home') != -1}"><a href="#/home.html">Home</a></li>
+        <li ng-class="{'active' : $location.url().indexOf('profile') != -1}"><a href="#/profile.html">Profile</a></li>
+        <li ng-class="{'active' : $location.url().indexOf('admin') != -1}"><a href="#/admin.html">Admin</a></li>
+        <li ng-class="{'active' : $location.url().indexOf('form') != -1}"><a href=#/forms.html">Forms</a></li>
+    </ul>
+</div>
