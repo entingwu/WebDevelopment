@@ -17,7 +17,7 @@
 
         //updateUser(userId, user, callback)
         function update() {
-            UserService.updateUser($rootScope.user.id, $scope.profileUser, function(user){
+            UserService.updateUser($rootScope.user._id, $scope.profileUser, function(user){
                 $rootScope.user = user;
                 $location.url("/profile");
                 console.log("profile updated");

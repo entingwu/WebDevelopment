@@ -11,7 +11,6 @@
             $routeProvider
                 .when("/home",{
                     templateUrl: "views/home/home.view.html",
-                    controller: "HomeController"
                 })
                 .when("/login",{
                     templateUrl: "views/users/login.view.html",
@@ -25,12 +24,16 @@
                     templateUrl: "views/users/register.view.html",
                     controller: "RegisterController"
                 })
+                .when("/forms",{
+                    templateUrl: "views/forms/forms.view.html",
+                    controller: "FormController"
+                })
                 .when("/admin",{
                     templateUrl: "views/admin/admin.view.html",
                     controller: "AdminController"
                 })
                 .otherwise({
                     redirectTo: "/home"
-                });
+                })
         });
 })();

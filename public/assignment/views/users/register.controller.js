@@ -23,7 +23,7 @@
             });
 
             UserService.findAllUsers(function(users){
-                console.log("All registered users are: ")
+                console.log("All registered users are: ");
                 console.log(users);
             });
         }
