@@ -1,6 +1,8 @@
-/**
- * Created by entingwu on 2/16/16.
- */
+/* Implement an event handler register()
+ * a.	Use the UserService to create the new user
+ * i.	Store the new user object in the $rootScope
+ * ii.	Use the $location service to navigate to the profile view
+ * */
 (function() {
     angular
         .module("FormBuilderApp")
@@ -12,11 +14,6 @@
         /* Event Handlers Declarations */
         $scope.register = register;
 
-        /* Implement an event handler register()
-        * a.	Use the UserService to create the new user
-        * i.	Store the new user object in the $rootScope
-        * ii.	Use the $location service to navigate to the profile view
-        * */
         function register() {
             UserService.createUser($scope.registerUser, function(user) {
                 $rootScope.user = user;
