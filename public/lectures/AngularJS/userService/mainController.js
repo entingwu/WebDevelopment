@@ -5,9 +5,9 @@
 {
     angular
         .module("UserApp")
-        .controller("NavController", navController);
+        .controller("mainController", mainController);
 
-    function navController($scope, $location)
+    function mainController($scope, $location)
     {
         $scope.$location = $location;
 

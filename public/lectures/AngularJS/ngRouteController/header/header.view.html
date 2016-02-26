@@ -1,0 +1,18 @@
+<nav class="nav " >
+    <!--<div class="container-fluid" ng-controller="headerController">-->
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Form Maker</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right  nav-pills">
+            <li ng-class="{'active' : $location.url().indexOf('home') !=-1 }">
+                <a href="#/home">Home </a></li>
+            <li ng-class="{'active' : $location.url().indexOf('admin') !=-1 }">
+                <a href="#/admin">Admin</a></li>
+            <li ng-class="{'active' : $location.url().indexOf('username') !=-1 }">
+                <a href="#">Username</a></li>
+            <li ng-class="{'active' : $location.url().indexOf('logout') !=-1 }">
+                <a href="#">Logout</a></li>
+        </ul>
+    </div>
+</nav>

@@ -21,11 +21,11 @@
         };
         return service;
 
-        function createFormForUser(userId, form, callback) {
+        function createFormForUser(userId, formname, callback) {
             var newForm = {
                 _id : (new Date).getTime(),
                 userId : userId,
-                formName : form.formName
+                title : formname
             }
             forms.push(newForm);//4.	Adds new form to local array of forms
             callback(newForm);

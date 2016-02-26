@@ -7,6 +7,8 @@
         .module("WhiteBoardApp")
         .controller("courseList.controller", courseListController);
 
+    CourseService.getAllCourses();
+
     function courseListController($scope)
     {
         $scope.addCourse = addCourse;

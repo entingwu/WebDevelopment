@@ -8,7 +8,7 @@
 
     function UserService() {
         var users = [
-            {"_id":123, "firstName":"Alice",  "lastName":"Wonderland","username":"alice",  "password":"alice"},
+            {"_id":123, "firstName":"Alice",  "lastName":"Wonderland","username":"alice",  "password":"alice", "roles" : ["admin"]},
             {"_id":234, "firstName":"Bob",    "lastName":"Hope",      "username":"bob",    "password":"bob"},
             {"_id":345, "firstName":"Charlie","lastName":"Brown",     "username":"charlie","password":"charlie"},
             {"_id":456, "firstName":"Dan",    "lastName":"Craig",     "username":"dan",    "password":"dan"},
@@ -25,13 +25,13 @@
         return service;
 
         function findUserByUsernameAndPassword(username, passoword, callback) {
-            var user;
             for(var i = 0; i < users.length; i++) {
                 if(users[i].username == username && users[i].password == passoword) {
-                    user = users[i];
+                    console.log("find user: " + username);
+                    callback(users[i]);
+                    break;
                 }
             }
-            callback(user);
         }
 
         function findAllUsers(callback) {

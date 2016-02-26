@@ -5,7 +5,8 @@
     angular
         .module("WhiteBoardApp")
         .controller("AdminController",AdminController);
+
     function AdminController($scope) {
-        $scope.adminhello = "Hello from AdminController"
+        $scope.adminHello = "Hello from AdminController";
     }
 })();

@@ -12,15 +12,16 @@
         $routeProvider
             .when("/home",
                 {
-                    templateUrl: "home.html"
+                    templateUrl: "home.html",
+                    controller: "homeController"
                 })
             .when("/users",
                 {
-                    templateUrl: "user.html",
+                    templateUrl: "users.html",
                     controller: "userController"
                 })
-            .when("/profile/:id",//call index
-                {//anything after profile/ is bound to id var
+            .when("/profile/:num",//call index
+                {//anything after profile/ is bound to num var
                     templateUrl: "profile.html",
                     controller: "profileController"
                 })

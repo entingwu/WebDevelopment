@@ -17,7 +17,7 @@
             </tr>
             <tr>
                 <th>
-                    <input ng-model="form.formName" id="formname" class="form-control" type="text" name="formname"
+                    <input ng-model="formName" class="form-control" type="text" name="formname"
                            placeholder="name">
                 </th>
                 <th style="white-space: nowrap">
@@ -32,7 +32,7 @@
             </thead>
             <tbody>
             <tr ng-repeat="form in forms" class="ng-scope">
-                <td>{{form.formName}}</td>
+                <td>{{form.title}}</td>
                 <td>
                     <a ng-click="deleteForm($index)" class="btn btn-danger">
                         <scan class="glyphicon glyphicon-remove"></scan>

@@ -3,7 +3,7 @@
  */
 (function(){
     angular
-        .module("WhiteBroadApp")
+        .module("WhiteBoardApp")
         .controller("MainController",function($scope, $location){
             $scope.$location = $location;
         });

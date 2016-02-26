@@ -1,15 +1,15 @@
-/**
- * Created by entingwu on 2/18/16.
- */
 (function()
 {
     angular
         .module("UserApp")
         .controller("profileController", profileController);
 
-    function profileController($scope, $routeParams, UserService)
+    function profileController($scope, $routeParams, $location, UserService)
     {
-        $scope.id = $routeParams.id;
-        $scope.user = UserService.findUserById($routeParams.id);//as a parameter to retrieve one user
+        $scope.id = $routeParams.num;
+        $scope.user = UserService.findUserById($routeParams.id);
+
+        $scope.$location = $location;
+        console.log("profile controller: " + $location.url());
     }
 })();

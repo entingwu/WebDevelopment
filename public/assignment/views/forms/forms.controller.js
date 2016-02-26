@@ -28,8 +28,9 @@
          * b.	Adds the new form to the array of forms*/
         function addForm() {
             //function createFormForUser(userId, form, callback)
-            FormService.createFormForUser(currentUser._id, $scope.form, function(form) {
-                $scope.forms.push(form);
+
+            FormService.createFormForUser(currentUser._id, $scope.formName, function(newform) {
+                $scope.forms.push(newform);
                 console.log("add form");
                 console.log($scope.forms);
             });
@@ -50,11 +51,11 @@
         /* a.	Uses the FormService to remove the form by index */
         function deleteForm(index) {
             var formId = $scope.forms[index]._id;
-            $scope.splice(index,1);
             //function deleteFormById(formId, callback)
             FormService.deleteFormById(formId,function(forms){
                 console.log("delete form");
                 console.log($scope.forms);
+                getForms();
             });
         }
 
@@ -66,6 +67,12 @@
             $scope.isSelected = true;
             console.log("current form is:");
             console.log($scope.currentForm);
+        }
+
+        function getForms(){
+            FormService.findAllFormsForUser(currentUser._id, function(retVal){
+                $scope.forms = retVal;
+            })
         }
     }
 })();
