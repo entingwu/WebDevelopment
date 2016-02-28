@@ -6,6 +6,7 @@
  4.	Use the UserService to update the current user
  */
 (function(){
+    "use strict";
     angular
         .module("FormBuilderApp")
         .controller("ProfileController",ProfileController);

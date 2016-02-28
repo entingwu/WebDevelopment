@@ -5,6 +5,7 @@
  * if the URL contains #/home then the HTML template home.view.html will load into the ng-view
  */
 (function(){
+    "use strict";
     angular
         .module("FormBuilderApp",["ngRoute"])
         .config(function($routeProvider){

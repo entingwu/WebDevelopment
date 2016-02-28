@@ -4,6 +4,7 @@
  * will allow us to configure navigation
  */
 (function(){
+    "use strict";
     angular
         .module("FormBuilderApp",["ngRoute"]);
 })();

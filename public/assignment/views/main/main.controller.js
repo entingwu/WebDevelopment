@@ -5,6 +5,7 @@
  * You will need this in the view to highlight the links based on the URL
  */
 (function(){
+    "use strict";
     angular
         .module("FormBuilderApp")
         .controller("MainController",function($scope, $location){

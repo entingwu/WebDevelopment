@@ -4,6 +4,7 @@
  * ii.	Use the $location service to navigate to the profile view
  * */
 (function() {
+    "use strict";
     angular
         .module("FormBuilderApp")
         .controller("RegisterController", RegisterController);

@@ -2,6 +2,7 @@
  * Header Controller
  */
 (function(){
+    "use strict";
     angular
         .module("FormBuilderApp")
         .controller("HeaderController", HeadController);
