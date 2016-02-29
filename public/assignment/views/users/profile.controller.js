@@ -15,10 +15,10 @@
         $scope.$location = $location;
         $scope.update = update;
 
-        /* updateUser(userId, user, callback) */
+        /* updateUser(userId, users, callback) */
         function update() {
             UserService.updateUser($rootScope.user._id, $scope.profileUser, function(user) {
-                $rootScope.user = user;//update $rootScope.user with the user returned from user.service
+                $rootScope.user = user;//update $rootScope.users with the users returned from users.service
                 $location.url("/profile");
                 console.log("profile updated");
                 console.log(user);

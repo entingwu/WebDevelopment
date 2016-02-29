@@ -6,7 +6,7 @@
         .module("WhiteBoardApp", ["ngRoute"])
         .config(function($routeProvider){//listening everything after #, provided by framework
             $routeProvider
-                .when("/", {//user level
+                .when("/", {//users level
                     templateUrl: "home/home.view.html",//physical
                     controller: "HomeController"//logical
                 })

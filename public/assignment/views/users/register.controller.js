@@ -15,10 +15,10 @@
         $scope.register = register;
 
         function register() {
-            UserService.createUser($scope.registerUser, function(user) {//callback function of createUser return newUser as user
+            UserService.createUser($scope.registerUser, function(user) {//callback function of createUser return newUser as users
                 $rootScope.user = user;
                 $location.url("/profile");
-                console.log("current register user is ");
+                console.log("current register users is ");
                 console.log($rootScope.user);
             });
 

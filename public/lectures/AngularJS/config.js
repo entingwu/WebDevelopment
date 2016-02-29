@@ -10,7 +10,7 @@
                     templateUrl: "home.view.html"//destination
                 })
                 .when("/profile", {
-                    templateUrl: "profile.html"
+                    templateUrl: "profile.view.html"
                 })
                 .when("/admin", {
                     templateUrl: "admin.view.html"

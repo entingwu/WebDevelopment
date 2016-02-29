@@ -6,7 +6,7 @@
 
     function FormController($scope, $location, $rootScope, FormService) {
         $scope.$location = $location;
-        /**Using the FormService, get the current array of forms for the currently logged in user
+        /**Using the FormService, get the current array of forms for the currently logged in users
          * and make them available for the view to render
          */
         var currentUser = $rootScope.user;

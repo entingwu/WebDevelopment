@@ -20,10 +20,10 @@
         function login() {
             /* findUserByCredentials(username, passoword, callback) */
             UserService.findUserByCredentials($scope.loginUser.username, $scope.loginUser.password, function(user){
-                if (user != null) {//callback function return user
+                if (user != null) {//callback function return users
                     $rootScope.user = user;
                     $location.path("/profile");
-                    console.log("current login user is: ");
+                    console.log("current login users is: ");
                     console.log($rootScope.user);
                 }
             });

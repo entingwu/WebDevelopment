@@ -30,7 +30,7 @@
         function findUserByCredentials(username, password, callback) {
             for(var i = 0; i < users.length; i++) {
                 if(users[i].username == username && users[i].password == password) {
-                    console.log("find user: " + username);
+                    console.log("find users: " + username);
                     callback(users[i]);
                     break;
                 }

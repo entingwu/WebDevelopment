@@ -21,7 +21,7 @@ app.get('/getUsers', function(req, res){
 });
 
 app.get('/getUsers/:index', function(req, res){
-    console.log("server side get user by index");
+    console.log("server side get users by index");
     var index = req.params["index"];
     res.send(users[index]);
 });

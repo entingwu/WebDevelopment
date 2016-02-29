@@ -10,7 +10,7 @@
     function UserController($scope, UserService)
     {
         $scope.users = UserService.findAllUsers();
-        console.log("user controller getting users!");
+        console.log("users controller getting users!");
 
         //use UserService to retrieve var
     }
