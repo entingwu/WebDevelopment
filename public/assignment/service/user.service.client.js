@@ -1,5 +1,7 @@
 /**
- * Created by entingwu on 2/19/16.
+ * The user service will provide data access to user data across the application.
+ * Controllers for various views will use the user service to create, lookup, and update user data.
+ * We'll group all our services under a directory called services.
  */
 (function(){
     "use strict";
@@ -17,7 +19,7 @@
         ];
 
         var service = {
-            findUserByUsernameAndPassword : findUserByUsernameAndPassword,
+            findUserByCredentials : findUserByCredentials,
             findAllUsers : findAllUsers,
             createUser : createUser,
             deleteUserById : deleteUserById,
@@ -25,12 +27,12 @@
         };
         return service;
 
-        function findUserByUsernameAndPassword(username, passoword, callback) {
+        function findUserByCredentials(username, password, callback) {
             for(var i = 0; i < users.length; i++) {
-                if(users[i].username == username && users[i].password == passoword) {
+                if(users[i].username == username && users[i].password == password) {
                     console.log("find user: " + username);
                     callback(users[i]);
-                    //break;
+                    break;
                 }
             }
         }
@@ -54,6 +56,8 @@
             for(var i = 0; i < users.length; i++) {
                 if(users[i]._id == userId) {
                     users.splice(i, 1);
+                    //The second parameter of splice is the number of elements to remove.
+                    //Note that splice modifies the array in place and returns a new array containing the elements that have been removed.
                 }
             }
             callback(users);

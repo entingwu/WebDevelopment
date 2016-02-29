@@ -13,18 +13,16 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
+                <!--login.controller : $rootScope.user = user><-->
                 <li ng-hide="user" ng-class="{'active' : $location.url().indexOf('register') != -1}">
                     <a href="#/register">Register</a></li>
                 <li ng-hide="user" ng-class="{'active' : $location.url().indexOf('login') != -1}">
                     <a href="#/login">Login</a></li>
-                <li ng-class="{'active' : $location.url().indexOf('logout') != -1}">
+                <li ng-click="logout()" ng-show="user" ng-class="{'active' : $location.url().indexOf('logout') != -1}">
                     <a href="#/home">Logout</a></li>
-
-                <li ng-class="{'active' : $location.url().indexOf('username') != -1}">
-                    <a href="#/profile">Username</a></li>
-                <li ng-class="{'active' : $location.url().indexOf('profile') != -1}">
-                    <a href="#/profile">Profile</a></li>
-                <li ng-class="{'active' : $location.url().indexOf('admin') != -1}">
+                <li ng-show="user" ng-class="{'active' : $location.url().indexOf('profile') != -1}">
+                    <a href="#/profile">{{user.username}}</a></li>
+                <li ng-show="user && user.roles.indexOf('admin') != -1" ng-class="{'active' : $location.url().indexOf('admin') != -1}">
                     <a href="#/admin">Admin</a></li>
             </ul>
         </div>

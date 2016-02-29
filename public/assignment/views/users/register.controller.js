@@ -11,12 +11,11 @@
 
     function RegisterController($scope, $location, $rootScope, UserService) {
         $scope.$location = $location;
-
         /* Event Handlers Declarations */
         $scope.register = register;
 
         function register() {
-            UserService.createUser($scope.registerUser, function(user) {
+            UserService.createUser($scope.registerUser, function(user) {//callback function of createUser return newUser as user
                 $rootScope.user = user;
                 $location.url("/profile");
                 console.log("current register user is ");

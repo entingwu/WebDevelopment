@@ -18,17 +18,17 @@
         $scope.login = login;
 
         function login() {
-            //findUserByUsernameAndPassword(username, passoword, callback)
-            UserService.findUserByUsernameAndPassword($scope.loginUser.username, $scope.loginUser.password, function(user){
-                if (user != null) {
+            /* findUserByCredentials(username, passoword, callback) */
+            UserService.findUserByCredentials($scope.loginUser.username, $scope.loginUser.password, function(user){
+                if (user != null) {//callback function return user
                     $rootScope.user = user;
-                    $location.url("/profile");
+                    $location.path("/profile");
                     console.log("current login user is: ");
                     console.log($rootScope.user);
                 }
             });
 
-            //findAllUsers(callback)
+            /* findAllUsers(callback) */
             UserService.findAllUsers(function(users){
                 console.log("All registered users are:");
                 console.log(users);

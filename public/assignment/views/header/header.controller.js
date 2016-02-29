@@ -9,15 +9,8 @@
 
     function HeadController($rootScope, $scope, $location){
         $scope.$location = $location;
-        console.log($location.url());
-
-        function ifLoggedIn(){
-            return $rootScope.currenUser;
-        }
-
-        function ifAdmin(){
-            return rootScope.admin;
+        $scope.logout = function() {
+            $rootScope.user = null;
         }
     }
-
 })();

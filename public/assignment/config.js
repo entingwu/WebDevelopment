@@ -10,7 +10,7 @@
         .module("FormBuilderApp",["ngRoute"])
         .config(function($routeProvider){
             $routeProvider
-                .when("/home",{
+                .when("/home",{//URL Pattern
                     templateUrl: "views/home/home.view.html",
                 })
                 .when("/login",{
