@@ -11,14 +11,11 @@
          */
         var currentUser = $rootScope.user;
         $scope.forms = [];
+        $scope.getForms = getForms;
         if ($rootScope.user != null) {
-            //function findAllFormsForUser(userId, callback)
-            FormService.findAllFormsForUser(currentUser._id, function(forms) {
-                $scope.forms = forms;
-            });
+            getForms();
         }
 
-        /* Event Handlers Declarations */
         $scope.addForm = addForm;
         $scope.updateForm = updateForm;
         $scope.deleteForm = deleteForm;
@@ -29,22 +26,20 @@
          * b.	Adds the new form to the array of forms*/
         function addForm() {
             //function createFormForUser(userId, form, callback)
-
-            FormService.createFormForUser(currentUser._id, $scope.formName, function(newform) {
+            FormService.createFormForUser(currentUser._id, $scope.form, function(newform) {
                 $scope.forms.push(newform);
                 console.log("add form");
-                console.log($scope.forms);
+                //console.log($scope.forms);
             });
         }
 
         /* a.	Uses form model and FormService to update the currently selected form */
         function updateForm() {
-            $scope.currentForm.formName = $scope.form.formName;
-            console.log("start updating:");
-            console.log($scope.currentForm.formName);
+            $scope.currentForm.title = $scope.form.title;
+            console.log("start updating:" + $scope.currentForm.title);
             FormService.updateFormById($scope.currentForm._id, $scope.currentForm, function(form) {
                 console.log("update form");
-                console.log($scope.forms);
+                console.log(form);
             });
             $scope.currentForm = null;
         }
@@ -63,16 +58,16 @@
         /* a.	Uses the index to mark the currently selected form
          * b.	Updates the form with the currently selected form */
         function selectForm(index) {
-            document.getElementById('formname').value = $scope.forms[index].formName;
+            document.getElementById('formtitle').value = $scope.forms[index].title;
             $scope.currentForm = $scope.forms[index];
             $scope.isSelected = true;
             console.log("current form is:");
-            console.log($scope.currentForm);
+            //console.log($scope.currentForm);
         }
 
         function getForms(){
-            FormService.findAllFormsForUser(currentUser._id, function(retVal){
-                $scope.forms = retVal;
+            FormService.findAllFormsForUser(currentUser._id, function(updateForms){
+                $scope.forms = updateForms;
             })
         }
     }

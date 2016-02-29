@@ -22,16 +22,16 @@
         };
         return service;
 
-        function createFormForUser(userId, formname, callback) {
+        function createFormForUser(userId, form, callback) {
             var newForm = {
                 _id : (new Date).getTime(),
                 userId : userId,
-                title : formname
-            }
+                title : form.title
+            };
             forms.push(newForm);//4.	Adds new form to local array of forms
             callback(newForm);
-            console.log("create forms");
-            console.log(forms);
+            //console.log("create forms");
+            //console.log(forms);
         }
 
         function findAllFormsForUser(userId, callback) {
@@ -42,33 +42,28 @@
                 }
             }
             callback(formsFound);
-            console.log("find all forms");
-            console.log(forms);
+            //console.log("find all forms");
         }
 
         function deleteFormById(formId, callback) {
             for(var i = 0; i < forms.length; i++) {
                 if(forms[i]._id == formId) {
-                    //3.	If found, removes form from current array of forms
-                    forms.splice(i, 1);
+                    forms.splice(i, 1);//remove forms[i]
                 }
             }
             callback(forms);
-            console.log("delete form");
-            console.log(forms);
+            //console.log("delete form");
         }
 
         function updateFormById(formId, newForm, callback) {
-            var updatedForm;
             for(var i = 0; i < forms.length; i++) {
                 if(forms[i]._id == formId) {
                     forms[i] = newForm;
-                    updatedForm = forms[i];
-                    console.log("found form id");
-                    console.log(newForm);
+                    callback(forms[i]);
+                    console.log("update form " + forms[i].title);
+                    break;
                 }
             }
-            callback(updatedForm);
         }
     }
 })();

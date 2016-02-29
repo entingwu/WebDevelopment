@@ -1,8 +1,8 @@
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" ng-controller="FormController">
+<div ng-controller="FormController">
     <h1 class="page-header">Forms</h1>
     <ul class="nav nav-tabs">
         <li role="presentation" class="active"><a href="#/forms">Forms</a></li>
-        <li role="presentation"><a href="#/forms">Fields</a></li>
+        <li role="presentation"><a href="#/fields">Fields</a></li>
     </ul>
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover table-condensed">
@@ -17,14 +17,14 @@
             </tr>
             <tr>
                 <th>
-                    <input ng-model="formName" class="form-control" type="text" name="formname"
-                           placeholder="name">
+                    <input ng-model="form.title" class="form-control" type="text" id="formtitle" name="formtitle"
+                           placeholder="title">
                 </th>
                 <th style="white-space: nowrap">
-                    <a ng-click="addForm()" class="btn btn-primary">
+                    <a ng-click="addForm()" class="btn btn-primary btn-sm">
                         <scan class="glyphicon glyphicon-plus"></scan>
                     </a>
-                    <a ng-click="updateForm()" class="btn btn-success">
+                    <a ng-click="updateForm()" class="btn btn-success btn-sm">
                         <scan class="glyphicon glyphicon-ok"></scan>
                     </a>
                 </th>
@@ -34,10 +34,10 @@
             <tr ng-repeat="form in forms" class="ng-scope">
                 <td>{{form.title}}</td>
                 <td>
-                    <a ng-click="deleteForm($index)" class="btn btn-danger">
+                    <a ng-click="deleteForm($index)" class="btn btn-danger btn-sm">
                         <scan class="glyphicon glyphicon-remove"></scan>
                     </a>
-                    <a ng-click="selectForm($index)" class="btn btn-warning">
+                    <a ng-click="selectForm($index)" class="btn btn-warning btn-sm">
                         <scan class="glyphicon glyphicon-pencil"></scan>
                     </a>
                 </td>
