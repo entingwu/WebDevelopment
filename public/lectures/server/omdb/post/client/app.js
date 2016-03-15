@@ -5,18 +5,30 @@
 
     function GetMoviesController ($scope, MovieService) {
 
+        $scope.getMovieById = getMovieById;
+        $scope.createMovie  = createMovie;
+
         function init () {
-            //getAllMovies : sequence promises from MovieService in movie.services.client.js
             MovieService
                 .getAllMovies()
                 .then(renderAllMovies, renderError);
         }
         init();
 
-        $scope.getMovieById = getMovieById;
+        function createMovie (movie) {
+            /* sequential serialization */
+            //createMovie: post out, return a promise
+            //getAllMovies: do get immediately, return a promise
+            //renderAllMovies : render promise
+            MovieService
+                .createMovie(movie)
+                .then(function () {
+                    return MovieService.getAllMovies();
+                })
+                .then(renderAllMovies, renderError);
+        }
 
         function getMovieById (id) {
-            //use then to register the function renderMovie(success) and renderError(error) which want to call
             MovieService
                 .getMovieById(id)
                 .then(renderMovie, renderError);

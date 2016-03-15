@@ -32,6 +32,6 @@ app.listen(port, ipaddress);
 require("./public/lectures/server/expressjs/server.js")(app);
 
 require("./public/lectures/server/omdb/get/server/app.js")(app);
-//require("./public/lectures/server/omdb/post/server/app.js")(app);
+require("./public/lectures/server/omdb/post/server/app.js")(app);
 //require("./public/lectures/server/omdb/delete/server/app.js")(app);
 //require("./public/lectures/server/omdb/update/server/app.js")(app);

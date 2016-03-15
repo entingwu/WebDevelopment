@@ -1,0 +1,36 @@
+module.exports = function (app) {
+
+    app.get("/api/lectures/server/omdb/post/movie", getAllMovies);
+    app.get("/api/lectures/server/omdb/post/movie/:id", getMovieById);
+
+    app.post("/api/lectures/server/omdb/post/movie", createMovie);
+
+    var movies = [
+        {_id: "123asd", title: "Star Wars: Episode IV - A New Hope", director: "George Lucas"},
+        {_id: "234dsa", title: "Star Trek Beyond", director: "Justin Lin"}
+    ];
+
+    function createMovie (req, res) {
+        var movie = req.body;
+        var now = new Date().getTime();
+        var id = "id-"+now;
+        movie._id = id;
+        movies.push (movie);
+        res.send (200);//must response
+    }
+
+    function getAllMovies (req, res) {
+        res.json(movies);
+    }
+
+    function getMovieById (req, res) {
+        var id = req.params.id;
+        for (var m in movies) {
+            if (movies[m]._id === id) {
+                res.json(movies[m]);
+                return;
+            }
+        }
+        res.json({message: "Movie not found"});
+    }
+};
