@@ -2,36 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7086548c-b6a5-4298-ae51-ea38bc8c3e7b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/config.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/service/forms.service.client.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/service/user.service.client.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/admin/admin.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/admin/admin.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/css/style.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/forms/fields.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/forms/forms.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/forms/forms.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/header/header.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/header/header.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/home/home.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/main/main.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/sidebar/sidebar.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/sidebar/sidebar.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/users/login.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/users/login.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/users/profile.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/users/profile.view.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/users/register.controller.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/assignment/views/users/register.view.html" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/assignment/Assignment3/client/app.js" afterPath="$PROJECT_DIR$/public/assignment/server/app.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/assignment/Assignment3/client/config.js" afterPath="$PROJECT_DIR$/public/assignment/client/config.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/assignment/Assignment3/client/index.html" afterPath="$PROJECT_DIR$/public/assignment/client/index.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/public/assignment/Assignment3/server/app.js" afterPath="$PROJECT_DIR$/public/assignment/client/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/webapi" afterPath="$PROJECT_DIR$/public/webapi" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/webapi/app.js" afterPath="$PROJECT_DIR$/public/webapi/app.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/webapi/bower_components/angular-route/angular-route.js" afterPath="$PROJECT_DIR$/public/webapi/bower_components/angular-route/angular-route.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/webapi/bower_components/angular/angular.js" afterPath="$PROJECT_DIR$/public/webapi/bower_components/angular/angular.js" />
@@ -68,7 +40,7 @@
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.6857143">
-              <caret line="16" column="54" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
+              <caret line="16" column="66" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
               <folding />
             </state>
           </provider>
@@ -773,10 +745,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.78220856">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6857143">
-          <caret line="16" column="54" selection-start-line="16" selection-start-column="54" selection-end-line="16" selection-end-column="54" />
+          <caret line="16" column="66" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
           <folding />
         </state>
       </provider>

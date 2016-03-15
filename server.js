@@ -14,7 +14,7 @@ app.use(multer());
 app.use(express.static(__dirname + '/public'));
 
  var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
- var port      = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || 3000;
+ var port      = process.env.OPENSHIFT_NODEJS_PORT || 3000 || 8080;
 
 /* 5. mapping the coming http request with url pattern '/hello' to the executable function,
  * pass the url, res.send() generate the correct type to go back to client
