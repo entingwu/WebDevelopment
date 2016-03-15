@@ -9,7 +9,7 @@
         .module("FormBuilderApp")
         .factory("UserService",UserService);
 
-    function UserService() {
+    function UserService($rootScope) {
         var users = [
             {"_id":123, "firstName":"Alice",  "lastName":"Wonderland","username":"alice",  "password":"alice", "roles": ["student"]},
             {"_id":234, "firstName":"Bob",    "lastName":"Hope",      "username":"bob",    "password":"bob", "roles": ["admin"]},
@@ -23,7 +23,9 @@
             findAllUsers : findAllUsers,
             createUser : createUser,
             deleteUserById : deleteUserById,
-            updateUser : updateUser
+            updateUser : updateUser,
+            setUser : setUser,
+            getUser : getUser
         };
         return service;
 
@@ -79,6 +81,13 @@
                 }
             }
             callback(updatedUser);
+        }
+
+        function setUser(user) {
+            $rootScope.user = user;
+        }
+        function getUser() {
+            return $rootScope.user;
         }
     }
 })();

@@ -14,6 +14,10 @@
     function ProfileController($scope, $location, $rootScope, UserService) {
         $scope.$location = $location;
         $scope.update = update;
+        $scope.user = UserService.getUser();
+        if(!$scope.user) {
+            $location.url("/home");
+        }
 
         /* updateUser(userId, users, callback) */
         function update() {

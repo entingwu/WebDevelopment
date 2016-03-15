@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ExpressApp">
+<head>
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+    <meta charset="UTF-8">
+    <title>ExpressApp</title>
+</head>
+<body>
+<div class="container" ng-controller="ExpressController">
+
+    <h1>Deleting Using REST Web APIs</h1>
+
+    <div class="alert alert-info">
+        NOTE: The table below might be empty because other students
+        might have removed all the data. Please
+        <a class="btn btn-success btn-xs" href="post.html" target="_blank">add some data</a>
+        before testing the functionality below.
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Seats</th>
+            <th>Start Date</th>
+            <th>&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="course in courses">
+            <td>{{course.title}}</td>
+            <td>{{course.seats}}</td>
+            <td>{{course.start | date}}</td>
+            <td>
+                <button ng-click="delete(course)" class="btn btn-danger pull-right btn-block">
+                    <span class="glyphicon glyphicon-remove"></span>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h2>DELETE a Single Course</h2>
+
+    <h3>AngularJS HTML Template</h3>
+
+<pre>
+&lt;tr ng-repeat=&quot;course in courses&quot;&gt;
+    &lt;td&gt;<span ng-non-bindable="">{{course.title}}</span>&lt;/td&gt;
+    &lt;td&gt;<span ng-non-bindable="">{{course.seats}}</span>&lt;/td&gt;
+    &lt;td&gt;<span ng-non-bindable="">{{course.start | date}}</span>&lt;/td&gt;
+    &lt;td&gt;
+        &lt;button <b style="color: #f00;">ng-click=&quot;delete(course)&quot;</b> class=&quot;btn btn-danger pull-right&quot;&gt;
+            &lt;span class=&quot;glyphicon glyphicon-remove&quot;&gt;&lt;/span&gt;
+        &lt;/button&gt;
+    &lt;/td&gt;
+&lt;/tr&gt;</pre>
+
+    <h3>AngularJS Controller delete() Event Handler</h3>
+
+        <pre>
+<b style="color: red;">$scope.delete = function(course) {</b>
+    var index = $scope.courses.indexOf(course);
+    <b style="color: blue;">$http.delete("/api/course/"+index)</b>
+        .success(function(response){
+            $scope.courses = response;
+        });
+}</pre>
+
+    <h3>Server</h3>
+
+        <pre>
+var courses = [
+    {title: 'Java 101', seats: 12, start: new Date()},
+    {title: 'C# 101', seats: 12, start: new Date()},
+    {title: 'ASP.NET 101', seats: 12, start: new Date()},
+    {title: 'Node.js 101', seats: 12, start: new Date()},
+    {title: 'AngularJS 101', seats: 12, start: new Date()},
+];
+<b style="color: blue;">app.delete('/api/course/:id'</b>, function (req, res) {
+    var index = req.params.id;
+    courses.splice(index, 1);
+    res.json(courses);
+});</pre>
+
+
+    <h2>Retrieving all the Courses from Server on Page Load</h2>
+
+    <h3>AngularJS Controller Client</h3>
+
+        <pre>
+$scope.courses = {};
+<b style="color: green;">$http.get("/api/course")</b>
+    .success(function(response){
+        $scope.courses = response;
+    });</pre>
+
+    <h3>Node.js Web Service</h3>
+
+        <pre>
+var courses = [
+    {title: 'Java 101', seats: 12, start: new Date()},
+    {title: 'C# 101', seats: 12, start: new Date()},
+    {title: 'ASP.NET 101', seats: 12, start: new Date()},
+    {title: 'Node.js 101', seats: 12, start: new Date()},
+    {title: 'AngularJS 101', seats: 12, start: new Date()},
+];
+<b style="color: green;">app.get('/api/course'</b>, function (req, res) {
+    res.json(courses);
+});</pre>
+
+</div>
+<script>
+    angular
+            .module("ExpressApp", [])
+            .controller("ExpressController", ExpressController);
+
+    function ExpressController($scope, $http) {
+        $scope.courses = {};
+        $http.get("/api/course")
+                .success(function(response){
+                    $scope.courses = response;
+                });
+
+        $scope.delete = function(course) {
+            var index = $scope.courses.indexOf(course);
+            $http.delete("/api/course/"+index)
+                    .success(function(response){
+                        $scope.courses = response;
+                    });
+        }
+    }
+</script>
+</body>
+</html>

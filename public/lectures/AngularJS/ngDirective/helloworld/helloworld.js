@@ -9,11 +9,12 @@
     angular
         .module("HelloWorldDirective")
         .directive("helloWorld", HelloWorld);
+    // helloWorld: one to one mapping to html
 
     // implement the directive in the following function
     function HelloWorld() {
 
-        // configure the template attribute
+        // configure the template attributes
         // to be the static "Hello World" string
         // the hello-world element will contain
         // the static string "Hello World"
