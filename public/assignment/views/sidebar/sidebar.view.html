@@ -1,0 +1,12 @@
+<div ng-controller="SidebarController">
+    <ul class="nav nav-sidebar">
+        <li ng-class="{'active' : $location.url().indexOf('home') != -1}">
+            <a href="#/home">Home</a></li>
+        <li ng-show="user" ng-class="{'active' : $location.url().indexOf('profile') != -1}">
+            <a href="#/profile">Profile</a></li>
+        <li ng-show="user" ng-class="{'active' : $location.url().indexOf('form') != -1}">
+            <a href="#/forms">Forms</a></li>
+        <li ng-show="user && (user.roles.indexOf('admin') != -1)" ng-class="{'active' : $location.url().indexOf('admin') != -1}">
+            <a href="#/admin">Admin</a></li>
+    </ul>
+</div>
