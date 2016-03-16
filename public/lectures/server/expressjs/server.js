@@ -5,10 +5,12 @@
 /* node.js keyword "module", module is an object available throughout the node.js framework
  * function is now available to anyone who requires module by filename
  */
-module.exports = function(app) {
+module.exports = function(app) {//var app = express()
     /* EXPRESS JS */
     /* a. GET TEXT : convention: '/api' dynamic data generated
-     * it is not a file */
+     * it is not a file
+     * create endpoint to listen to incoming url
+     * '/api/hello' can invoke sayHello() */
     app.get('/api/hello', sayHello);
     function sayHello(req, res) {
         console.log('Say Hello');
