@@ -1,3 +1,4 @@
+/* Dependency on other module which sortable is implemented */
 (function(){
     angular
         .module("SortableApp", ["jgaSortable"])
