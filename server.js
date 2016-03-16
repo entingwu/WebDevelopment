@@ -4,10 +4,10 @@ var express = require('express');
 var app = express();
 
 /* 6. JSON : include body-parser, multer library */
-//var bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 //var multer = require('multer');
-//app.use(bodyParser.json());// for parsing application/json
-//app.use(bodyParser.urlencoded({ extended:true }));// for parsing application/x-
+app.use(bodyParser.json());// for parsing application/json
+app.use(bodyParser.urlencoded({ extended:true }));// for parsing application/x-
 //app.use(multer());
 
 /* 4. serve static content for the app from the "public" directory in the application directory */
