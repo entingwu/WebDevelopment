@@ -9,6 +9,13 @@
         var username = $routeParams.username;
         console.log(username);
 
+        /* When it is not login, try to protect the profile */
+        function init() {
+            var currentUser = UserService.getCurrentUser();
+            if(currentUser == null) {
+                $location.url("/home");
+            }
+        }
         function init() {
             UserService
                 .getProfile()

@@ -15,14 +15,14 @@
 
         function register(user) {
             UserService
-                .register(user)
+                .createUser(user)
                 .then(function(response){
                     var currentUser = response.data;
-                    if(currentUser != null) {
+                    if(currentUser != null){
                         UserService.setCurrentUser(currentUser);
                         $location.url("/profile");
                     }
-                });
+            });
         }
     }
 })();

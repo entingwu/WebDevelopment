@@ -1,3 +1,4 @@
+/* load mock data into local variable */
 var mock = require("./user.mock.json");
 
 // load q promise library
@@ -20,6 +21,59 @@ module.exports = function(db, mongoose) {
         userLikesMovie: userLikesMovie
     };
     return api;
+
+    function findUserByCredentials(credentials) {
+
+        var deferred = q.defer();
+
+        // find one retrieves one document
+        UserModel.findOne(
+
+            // first argument is predicate
+            { username: credentials.username,
+                password: credentials.password },
+
+            // doc is unique instance matches predicate
+            function(err, doc) {
+
+                if (err) {
+                    // reject promise if error
+                    deferred.reject(err);
+                } else {
+                    // resolve promise
+                    deferred.resolve(doc);
+                }
+
+            });
+
+        return deferred.promise;
+    }
+
+    function createUser(user) {
+
+        user._id = "ID_" + (new Date()).getTime();
+        mock.push(user);
+        return user;
+
+        // use q to defer the response
+        var deferred = q.defer();
+
+        // insert new user with mongoose user model's create()
+        UserModel.create(user, function (err, doc) {
+
+            if (err) {
+                // reject promise if error
+                deferred.reject(err);
+            } else {
+                // resolve promise
+                deferred.resolve(doc);
+            }
+
+        });
+
+        // return a promise
+        return deferred.promise;
+    }
 
     // add movie to user likes
     function userLikesMovie (userId, movie) {
@@ -84,52 +138,7 @@ module.exports = function(db, mongoose) {
         return deferred.promise;
     }
 
-    function createUser(user) {
 
-        // use q to defer the response
-        var deferred = q.defer();
 
-        // insert new user with mongoose user model's create()
-        UserModel.create(user, function (err, doc) {
 
-            if (err) {
-                // reject promise if error
-                deferred.reject(err);
-            } else {
-                // resolve promise
-                deferred.resolve(doc);
-            }
-
-        });
-
-        // return a promise
-        return deferred.promise;
-    }
-
-    function findUserByCredentials(credentials) {
-
-        var deferred = q.defer();
-
-        // find one retrieves one document
-        UserModel.findOne(
-
-            // first argument is predicate
-            { username: credentials.username,
-                password: credentials.password },
-
-            // doc is unique instance matches predicate
-            function(err, doc) {
-
-                if (err) {
-                    // reject promise if error
-                    deferred.reject(err);
-                } else {
-                    // resolve promise
-                    deferred.resolve(doc);
-                }
-
-            });
-
-        return deferred.promise;
-    }
 }

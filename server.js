@@ -1,14 +1,36 @@
 /* 1. load the express library */
-var express = require('express');
+var express       = require('express');
 /* 2. create instance */
-var app = express();
+var app           = express();
+var cookieParser  = require('cookie-parser');
+var session       = require('express-session');
+// install and require the mongoose library
+/*var mongoose      = require('mongoose');
 
+// create a default connection string
+var connectionString = 'mongodb://127.0.0.1:27017/cs5610spring2016';
+
+// use remote connection string
+// if running in remote server
+if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
+ connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+     process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
+     process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
+     process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
+     process.env.OPENSHIFT_APP_NAME;
+}
+
+// connect to the database
+var db = mongoose.connect(connectionString);
+*/
 /* 6. JSON : include body-parser, multer library */
 var bodyParser = require('body-parser');
 var multer = require('multer');
 app.use(bodyParser.json());// for parsing application/json
 app.use(bodyParser.urlencoded({ extended:true }));// for parsing application/x-
 app.use(multer());
+app.use(session({ secret: process.env.PASSPORT_SECRET }));//private key to identify the person
+app.use(cookieParser());
 
 /* 4. serve static content for the app from the "public" directory in the application directory */
 app.use(express.static(__dirname + '/public'));
@@ -35,3 +57,7 @@ require("./public/lectures/server/omdb/get/server/app.js")(app);
 require("./public/lectures/server/omdb/post/server/app.js")(app);
 //require("./public/lectures/server/omdb/delete/server/app.js")(app);
 //require("./public/lectures/server/omdb/update/server/app.js")(app);
+
+
+// pass db and mongoose reference to server side application module
+//require("./public/lectures/OMDB/server/app.js")(app, db, mongoose);
