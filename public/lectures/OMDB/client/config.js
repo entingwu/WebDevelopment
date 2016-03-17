@@ -43,6 +43,7 @@
                 }
             })
             .when("/details/:imdbID", {
+                //retrieve the imdbID from the url and then retrieve teh details
                 templateUrl: "views/details/details.view.html",
                 controller: "DetailsController",
                 controllerAs: "model",

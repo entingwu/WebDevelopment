@@ -127,6 +127,12 @@ module.exports = function(db, mongoose) {
 
     // use user model find by id
     function findUserById(userId) {
+        /*for(var u in mock) {
+            if(mock[u]._id === userId) {
+                return mock[u];
+            }
+            return null;
+        }*/
         var deferred = q.defer();
         UserModel.findById(userId, function (err, doc) {
             if (err) {

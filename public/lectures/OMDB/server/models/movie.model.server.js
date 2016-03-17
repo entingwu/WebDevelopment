@@ -71,12 +71,16 @@ module.exports = function(db, mongoose) {
     }
 
     function findMoviesByImdbIDs (imdbIDs) {
-
+        /*var movies = [];
+        for(var id in imdbIDs) {
+            var movie = findMovieByImdbID(imdbIDs[id]);
+            if(movie) { movie.push(movie); }
+        }
+        return movies;
+        */
         var deferred = q.defer();
 
-        // find all movies
-        // whose imdb IDs
-        // are in imdbIDs array
+        // find all movies whose imdb IDs are in imdbIDs array
         Movie.find({
             imdbID: {$in: imdbIDs}
         }, function (err, movies) {
@@ -89,15 +93,12 @@ module.exports = function(db, mongoose) {
         return deferred.promise;
     }
 
-    function createMovie(movie) {
-
-        // create instance of movie
+    function createMovie(movie) {//push to the local array movies now
+        // create instance of movie : _id: "ID_" + (new Date()).getTime(),
         var movie = new Movie({
-            imdbID: movie.imdbID,
-            poster: movie.Poster,
-            title: movie.Title,
-            likes: []
+            imdbID: movie.imdbID, poster: movie.Poster, title: movie.Title, likes: []
         });
+        //movies.push(movie);
 
         var deferred = q.defer();
 

@@ -1,15 +1,10 @@
 <h2>Details</h2>
 
 <h3>{{model.data.Title}}</h3>
-
-<img ng-src="{{model.data.Poster}}"
-     height="200px"/>
-
-<br/>
-<br/>
-
-<button class="btn btn-primary"
-        ng-click="model.favorite(model.data)">
+<img ng-src="{{model.data.Poster}}" height="200px"/>
+<br/><br/>
+<!--detail.controller : model.favorite(model.data) ><-->
+<button class="btn btn-primary" ng-click="model.favorite(model.data)">
     <span ng-show="model.movie.likes.indexOf(currentUser._id) > -1"
           class="glyphicon glyphicon-star"></span>
     <span ng-show="!model.movie || !model.movie.likes || model.movie.likes.indexOf(currentUser._id) == -1"

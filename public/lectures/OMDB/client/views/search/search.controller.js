@@ -17,6 +17,7 @@
             OmdbService
                 .searchMovieByTitle(movie.title)
                 .then(function(response){
+                    //pass to rendering
                     vm.data = response.data;
                 });
         }

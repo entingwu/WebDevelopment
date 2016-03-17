@@ -3,27 +3,30 @@
 module.exports = function(app, movieModel, userModel) {
 
     /* 1. create server end points, listening for the url and response */
-    app.post("/api/project/login", findUserByCredentials);
     app.get("/api/project/omdb/loggedin", loggedin);
-
     app.post("/api/project/omdb/login", login);
     app.post("/api/project/omdb/logout", logout);
     app.post("/api/project/omdb/register", register);
     app.get("/api/project/omdb/profile/:userId", profile);
 
-
-    function findUserByCredentials(req, res) {
+    function login(req, res) {
         var credentials = req.body;//retrieve json
-        userModel.findUserByCredentials(credentials);
 
-        var user = userModel.findUserByCredentials(credentials);//null
-
-        /* 1. cookie == session id : server ask browser to identify
-         *    server save cookie. Find out the query comes from. Bind the cookie to identity
-         * 2. request.session is map to unique cookie from the current browser. [expensive]
-         *    find the user and store in a big hashmap. */
-        req.session.currentUser = user;
-        res.json(user);//back to client
+        var user = userModel.findUserByCredentials(credentials)
+            .then(
+                function (doc) {
+                    /* 1. cookie == session id : server ask browser to identify
+                     *    server save cookie. Find out the query comes from. Bind the cookie to identity
+                     * 2. request.session is map to unique cookie from the current browser. [expensive]
+                     *    find the user and store in a big hashmap. */
+                    req.session.currentUser = doc;
+                    res.json(doc);//back to client
+                },
+                // send error if promise rejected
+                function ( err ) {
+                    res.status(400).send(err);
+                }
+            )
     }
 
     /* when  app.get("/api/project/omdb/loggedin", loggedin) ask anybody login, we use hashmap req.session to answer
@@ -57,13 +60,17 @@ module.exports = function(app, movieModel, userModel) {
     }
 
     function profile(req, res) {
-        var userId = req.params.userId;
+        var userId = req.params.userId;//current userId
         var user = null;
+        /*var movieImdbIDs = user.likes;
+        * var movies = movieModel.findMoviesByImdbIDs(movieImdbIDs);
+        * user.likeMovies = movies;//new property object
+        * res.json(user);
+        * */
 
         // use model to find user by id
         userModel.findUserById(userId)
             .then(
-
                 // first retrieve the user by user id
                 function (doc) {
 
@@ -95,21 +102,4 @@ module.exports = function(app, movieModel, userModel) {
                 }
             )
     }
-
-    function login(req, res) {
-        var credentials = req.body;
-        var user = userModel.findUserByCredentials(credentials)
-            .then(
-                function (doc) {
-                    req.session.currentUser = doc;
-                    res.json(doc);
-                },
-                // send error if promise rejected
-                function ( err ) {
-                    res.status(400).send(err);
-                }
-            )
-    }
-
-
 }

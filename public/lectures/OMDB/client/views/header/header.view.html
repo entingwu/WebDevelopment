@@ -22,6 +22,7 @@
             ng-show="currentUser"><a href="#/profile">Profile</a>
         </li>
         <li ng-class="{'active': model.$location.url() == '/search'}"><a href="#/search">Search</a></li>
+        <!--If details is in the url (url not just contains details), it shows><-->
         <li ng-class="{'active': model.$location.url().indexOf('/details')>=0}"
             ng-show="model.$location.url().indexOf('/details')>=0"><a>Details</a>
         </li>

@@ -10,6 +10,7 @@
         };
         return api;
 
+        /* return promise to controller */
         function findMovieByImdbID(imdbID) {
             // use JSONP since API does not support CORS
             return $http.jsonp("http://www.omdbapi.com/?i="+imdbID+"&callback=JSON_CALLBACK");

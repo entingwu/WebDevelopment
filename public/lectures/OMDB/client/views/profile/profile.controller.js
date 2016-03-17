@@ -18,7 +18,7 @@
         }
         function init() {
             UserService
-                .getProfile()
+                .getProfile()//retrieve profile information
                 .then(function (response) {
                     vm.profile = response.data;
                     console.log(vm.profile);

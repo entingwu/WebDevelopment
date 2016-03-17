@@ -11,5 +11,6 @@ module.exports = function(app, db, mongoose) {
     var movieModel   = require("./models/movie.model.server.js")(db, mongoose);
 
     var userService  = require("./services/user.service.server.js") (app, movieModel, userModel);
+    /* manipulate the userModel, telling user what movie they like*/
     var movieService = require("./services/movie.service.server.js")(app, movieModel, userModel);
 }

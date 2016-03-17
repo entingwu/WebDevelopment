@@ -32,16 +32,16 @@
             $rootScope.currentUser = user;
         }
 
+        function register(user) {
+            return $http.post("/api/project/omdb/register", user);
+        }
+
         function logout() {
             return $http.post("/api/project/omdb/logout");
         }
 
-        function getProfile() {
+        function getProfile() {//pass current login user
             return $http.get("/api/project/omdb/profile/"+$rootScope.currentUser._id);
-        }
-
-        function register(user) {
-            return $http.post("/api/project/omdb/register", user);
         }
 
         function login(credentials) {
