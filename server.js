@@ -3,7 +3,7 @@ var express       = require('express');
 /* 2. create instance */
 var app           = express();
 var cookieParser  = require('cookie-parser');
-var session       = require('express-session');
+//var session       = require('express-session');
 // install and require the mongoose library
 /*var mongoose      = require('mongoose');
 
@@ -29,7 +29,7 @@ var multer = require('multer');
 app.use(bodyParser.json());// for parsing application/json
 app.use(bodyParser.urlencoded({ extended:true }));// for parsing application/x-
 app.use(multer());
-app.use(session({ secret: process.env.PASSPORT_SECRET }));//private key to identify the person
+//app.use(session({ secret: process.env.PASSPORT_SECRET }));//private key to identify the person
 app.use(cookieParser());
 
 /* 4. serve static content for the app from the "public" directory in the application directory */
