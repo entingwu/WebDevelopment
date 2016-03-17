@@ -24,10 +24,10 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
 var db = mongoose.connect(connectionString);
 */
 /* 6. JSON : include body-parser, multer library */
-//var bodyParser = require('body-parser');
+var bodyParser = require('body-parser');
 var multer = require('multer');
-//app.use(bodyParser.json());// for parsing application/json
-//app.use(bodyParser.urlencoded({ extended:true }));// for parsing application/x-
+app.use(bodyParser.json());// for parsing application/json
+app.use(bodyParser.urlencoded({ extended:true }));// for parsing application/x-
 app.use(multer());
 app.use(session({ secret: process.env.PASSPORT_SECRET }));//private key to identify the person
 app.use(cookieParser());
