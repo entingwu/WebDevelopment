@@ -19,7 +19,7 @@
 
         function findUserByCredentials(credentials) {
             //send the credentials to server to check whether the person exists, https : security issue
-            return $http.post("/api/project/login", credentials);
+            return $http.post("/api/project/omdb/login", credentials);
         }
 
         /* go to server to find current user, return the promise */

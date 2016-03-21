@@ -10,10 +10,10 @@ module.exports = function(mongoose) {
         // list of users that like this movie
         userLikes: [
             {username: String}
-        ],
+        ]
         // store movie documents in this collection
-    }, {collection: 'project.omdb.movie'});
+    }, {collection: 'lectures.omdb.movie'});//collectionName
 
-    return MovieSchema;
+    return MovieSchema;//return json body
 
 };

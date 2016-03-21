@@ -51,9 +51,9 @@ module.exports = function(db, mongoose) {
 
     function createUser(user) {
 
-        user._id = "ID_" + (new Date()).getTime();
+        /*user._id = "ID_" + (new Date()).getTime();
         mock.push(user);
-        return user;
+        return user;*/
 
         // use q to defer the response
         var deferred = q.defer();
@@ -143,8 +143,5 @@ module.exports = function(db, mongoose) {
         });
         return deferred.promise;
     }
-
-
-
 
 }

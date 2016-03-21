@@ -2,6 +2,8 @@
 var express       = require('express');
 /* 2. create instance */
 var app           = express();
+var bodyParser = require('body-parser');
+var multer = require('multer');
 var cookieParser  = require('cookie-parser');
 //var session       = require('express-session');
 // install and require the mongoose library
@@ -10,8 +12,7 @@ var cookieParser  = require('cookie-parser');
 // create a default connection string
 var connectionString = 'mongodb://127.0.0.1:27017/cs5610spring2016';
 
-// use remote connection string
-// if running in remote server
+// use remote connection string if running in remote server
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
  connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
      process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
@@ -24,8 +25,7 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
 var db = mongoose.connect(connectionString);
 */
 /* 6. JSON : include body-parser, multer library */
-var bodyParser = require('body-parser');
-var multer = require('multer');
+
 app.use(bodyParser.json());// for parsing application/json
 app.use(bodyParser.urlencoded({ extended:true }));// for parsing application/x-
 app.use(multer());
@@ -41,9 +41,7 @@ app.use(express.static(__dirname + '/public'));
 /* 5. mapping the coming http request with url pattern '/hello' to the executable function,
  * pass the url, res.send() generate the correct type to go back to client
  * 3 party API */
-app.get('/hello', function(req, res){
- res.send('hello world');
-});
+app.get('/hello', function(req, res){ res.send('hello world'); });
 
 /* 3. listen to particular port */
 app.listen(port, ipaddress);
@@ -58,6 +56,8 @@ require("./public/lectures/server/omdb/post/server/app.js")(app);
 //require("./public/lectures/server/omdb/delete/server/app.js")(app);
 //require("./public/lectures/server/omdb/update/server/app.js")(app);
 
-
 // pass db and mongoose reference to server side application module
 //require("./public/lectures/OMDB/server/app.js")(app, db, mongoose);
+
+/* ASSIGNMENT3 */
+require("./public/assignment/Assignment3/server/app.js")(app);

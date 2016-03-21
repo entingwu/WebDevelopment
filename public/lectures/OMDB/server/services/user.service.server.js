@@ -9,6 +9,7 @@ module.exports = function(app, movieModel, userModel) {
     app.post("/api/project/omdb/register", register);
     app.get("/api/project/omdb/profile/:userId", profile);
 
+    /* use model method to fetch things */
     function login(req, res) {
         var credentials = req.body;//retrieve json
 

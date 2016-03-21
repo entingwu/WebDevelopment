@@ -2,12 +2,12 @@
 var q = require("q");
 
 // pass db and mongoose reference to model
-module.exports = function(db, mongoose) {
+module.exports = function(db, mongoose) {//database|connection
 
-    // load movie schema from movie model
-    var MovieSchema = require("./movie.schema.server.js")(mongoose);
+    //1. load movie schema from movie model
+    var MovieSchema = require("./movie.schema.server.js")(mongoose);//send mongoose to movie.schema.server.js
 
-    // create movie from schema
+    //2. Model : use mongoose to create model : create movie from schema
     var Movie  = mongoose.model("Movie", MovieSchema);
 
     var movies = [];
@@ -89,7 +89,7 @@ module.exports = function(db, mongoose) {
             } else {
                 deferred.resolve(movies);
             }
-        })
+        });
         return deferred.promise;
     }
 
