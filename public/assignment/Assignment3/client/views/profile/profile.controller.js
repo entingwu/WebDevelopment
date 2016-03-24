@@ -12,7 +12,8 @@
                 .then(function(user) {
                     $rootScope.user = user;
                     $location.url("/profile");
-                    console.log(user);
+                    console.log("current login users is: ");
+                    console.log($rootScope.user);
                 });
         };
 

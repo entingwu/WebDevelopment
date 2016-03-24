@@ -5,18 +5,18 @@
         .config(function($routeProvider){
             $routeProvider
                 .when("/home",{//URL Pattern
-                    templateUrl: "views/home/home.view.html",
+                    templateUrl: "views/home/home.view.html"
                 })
                 .when("/login",{
-                    templateUrl: "views/users/login.view.html",
+                    templateUrl: "views/login/login.view.html",
                     controller: "LoginController"
                 })
                 .when("/profile",{
-                    templateUrl: "views/users/profile.view.html",
+                    templateUrl: "views/profile/profile.view.html",
                     controller: "ProfileController"
                 })
                 .when("/register",{
-                    templateUrl: "views/users/register.view.html",
+                    templateUrl: "views/register/register.view.html",
                     controller: "RegisterController"
                 })
                 .when("/form",{
@@ -25,15 +25,18 @@
                 })
                 .when("/field",{
                     templateUrl: "views/field/field.view.html",
-                    controller: "FieldController"
+                    controller: "FieldController",
+                    controllerAs: "model"
                 })
                 .when("/user",{
                     templateUrl: "views/field/field.view.html",
-                    controller: "FieldController"
+                    controller: "FieldController",
+                    controllerAs : "model"
                 })
                 .when("/user/:userId/form/:formId/fields",{
                     templateUrl: "views/field/field.view.html",
-                    controller: "FieldController"
+                    controller: "FieldController",
+                    controllerAs : "model"
                 })
                 .otherwise({
                     redirectTo: "/home"

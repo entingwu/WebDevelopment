@@ -13,20 +13,18 @@
 
     function ProfileController($scope, $location, $rootScope, UserService) {
         $scope.$location = $location;
-        $scope.update = update;
-        $scope.user = UserService.getUser();
-        if(!$scope.user) {
-            $location.url("/home");
-        }
-
-        /* updateUser(userId, users, callback) */
-        function update() {
+        $scope.update = function() {
             UserService.updateUser($rootScope.user._id, $scope.profileUser, function(user) {
                 $rootScope.user = user;//update $rootScope.users with the users returned from users.services
                 $location.url("/profile");
                 console.log("profile updated");
                 console.log(user);
             });
+        };
+
+        $scope.user = UserService.getUser();
+        if(!$scope.user) {
+            $location.url("/home");
         }
     }
 })();

@@ -11,6 +11,7 @@
         $scope.$location = $location;
         $scope.logout = function() {
             $rootScope.user = null;
+            $location.url("/home");
         }
     }
 })();

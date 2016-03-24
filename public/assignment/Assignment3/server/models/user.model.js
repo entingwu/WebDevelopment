@@ -1,4 +1,5 @@
 var users = require("./user.mock.json");
+var Guid = require('guid');
 module.exports = function(app) {
     "use strict";
     var api = {
@@ -17,7 +18,7 @@ module.exports = function(app) {
     //CRUD
     function createUser(user) {
         var newUser = {
-            _id : (new Date).getTime(),
+            _id : Guid.create(),
             username : user.username,
             password : user.password,
             email : user.email
@@ -31,11 +32,11 @@ module.exports = function(app) {
         for(var i = 0; i < users.length; i++) {
             if(users[i]._id == userId) {
                 users[i] = {
-                    _id : userId,
+                    _id : user._id,
+                    firstName : user.firstName,
+                    lastName : user.lastName,
                     username : user.username,
                     password : user.password,
-                    firstname : user.firstname,
-                    lastname : user.lastname,
                     email : user.email
                 };
                 return users[i];

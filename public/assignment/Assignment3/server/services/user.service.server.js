@@ -8,7 +8,7 @@ module.exports = function(app, userModel) {
 
     //1. createUser
     function register(req, res) {
-        var user = req.body();
+        var user = req.body;
         var newUser = userModel.createUser(user);
         res.json(newUser);
     }
@@ -19,8 +19,7 @@ module.exports = function(app, userModel) {
         var password = req.query.password;
         if(username != null && password != null) {
             var credentials = {
-                username : username,
-                password : password
+                username : username, password : password
             };
             var user = userModel.findUserByCredentials(credentials);
             res.jsonp(user);
@@ -35,22 +34,22 @@ module.exports = function(app, userModel) {
 
     //3. findId
     function find(req, res) {
-        var userId = req.params._id;
+        var userId = req.params.id;
         var user = userModel.findUserById(userId);
         res.json(user);
     }
 
-    //4. update
+    //4. update profile
     function profile(req, res) {
-        var userId = req.params._id;
+        var userId = req.params.id;
         var user = req.body;
-        var users = userModel.updateUserById(userId, user);
-        res.json(users);
+        var userUpdated = userModel.updateUserById(userId, user);
+        res.json(userUpdated);
     }
 
     //5. delete
     function logout(req, res) {
-        var userId = req.params._id;
+        var userId = req.params.id;
         var users = userModel.deleteUserById(userId);
         res.json(users);
 

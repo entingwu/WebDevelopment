@@ -38,7 +38,7 @@
                 });
             return deferred.promise;
         }
-
+        //PROFILE
         function updateUser(userId, user) {
             var deferred = $q.defer();
             $http
@@ -63,7 +63,7 @@
         function findUserById(userId) {
             var deferred = $q.defer();
             $http
-                .get('/api/assignment/user?id=' + userId)
+                .get('/api/assignment/user/' + userId)
                 .success(function(response) {
                     deferred.resolve(response);
                 });

@@ -1,5 +1,6 @@
 [
-	{"_id": 123, "firstName": "Alice",
+	{"_id": 123,
+		"firstName": "Alice",
 	 "lastName": "Wonderland",
 	 "username": "alice",
 	 "password": "alice"
