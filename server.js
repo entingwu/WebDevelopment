@@ -7,12 +7,13 @@ var multer = require('multer');
 var cookieParser  = require('cookie-parser');
 //var session       = require('express-session');
 // install and require the mongoose library
-/*var mongoose      = require('mongoose');
+var mongoose      = require('mongoose');
 
 // create a default connection string
 var connectionString = 'mongodb://127.0.0.1:27017/cs5610spring2016';
 
 // use remote connection string if running in remote server
+// process provided by nodejs
 if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
  connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
      process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
@@ -23,7 +24,7 @@ if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
 
 // connect to the database
 var db = mongoose.connect(connectionString);
-*/
+
 /* 6. JSON : include body-parser, multer library */
 
 app.use(bodyParser.json());// for parsing application/json
@@ -57,7 +58,7 @@ require("./public/lectures/server/omdb/post/server/app.js")(app);
 //require("./public/lectures/server/omdb/update/server/app.js")(app);
 
 // pass db and mongoose reference to server side application module
-//require("./public/lectures/OMDB/server/app.js")(app, db, mongoose);
+require("./public/lectures/OMDB/server/app.js")(app, db, mongoose);
 
 /* ASSIGNMENT3 */
 require("./public/assignment/Assignment3/server/app.js")(app);

@@ -1,8 +1,8 @@
 <div ng-controller="FormController">
     <h1 class="page-header">Forms</h1>
     <ul class="nav nav-tabs">
-        <li role="presentation" class="active"><a href="#/forms">Forms</a></li>
-        <li role="presentation"><a href="#/fields">Fields</a></li>
+        <li role="presentation" class="active"><a href="#/form">Forms</a></li>
+        <li role="presentation"><a href="#/field">Fields</a></li>
     </ul>
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover table-condensed">
@@ -32,7 +32,10 @@
             </thead>
             <tbody>
             <tr ng-repeat="form in forms" class="ng-scope">
-                <td>{{form.title}}</td>
+                <td><a href="#/user/:userId/form/:formId/fields" ng-click="saveFormId(form)">
+                    {{form.title}}
+                    </a>
+                </td>
                 <td>
                     <a ng-click="deleteForm($index)" class="btn btn-danger btn-sm">
                         <scan class="glyphicon glyphicon-remove"></scan>

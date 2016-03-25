@@ -13,8 +13,8 @@
         function init() {
             var currentUser = $rootScope.user;
             model.fields = [];
-            model.userId = $routeParams.userId;
-            model.formId = $routeParams.formId;
+            model.userId = $rootScope.userId;
+            model.formId = $rootScope.formId;
             getFields(model.formId);
         }
         init();
@@ -67,9 +67,10 @@
                 });
         }
 
-        function deleteField(field) {
+        function deleteField(index, fieldId) {
+            model.fields.splice(index, 1);
             FieldService
-                .deleteFieldFromForm(model.formId, field._id)
+                .deleteFieldFromForm(model.formId, fieldId)
                 .then(function(fields) {
                     getFields(model.formId);
                 });
@@ -83,6 +84,41 @@
                 });
             console.log(model.fields);
         }
+
+        /*
+        * //update the sorted fields to server
+         vm.swapFields = function(start, end) {
+         FieldService.swapFields(formId, start, end).then(function(response) {
+         console.log("swap: " + response.data);
+         });
+         };
+
+         //used by dialog
+         vm.edit = function(idx) {
+         fieldId = vm.fields[idx]["_id"];
+
+         var modalInstance = $uibModal.open({
+         animation: true,
+         templateUrl: 'myModalContent.html',
+         controller: 'ModalInstanceCtrl',
+         resolve: {
+         editField : function() {
+         return vm.fields[idx];
+         }
+         }
+         });
+
+         modalInstance.result.then(function () {
+         FieldService.updateField(formId, fieldId, vm.fields[idx]).then(function(response){
+         vm.fields[idx] = response.data;
+         });
+         }, function () {
+         FieldService.getFieldForForm(formId, fieldId).then(function(response) {
+         vm.fields[idx] = response.data;
+         })
+         });
+         }
+        * */
 
     }
 })();
