@@ -16,6 +16,6 @@ module.exports = function(mongoose) {
         likesMovies: [MovieSchema],
         // collection property sets
         // collection name to 'user'
-    }, {collection: 'project.omdb.user'});
+    }, {collection: 'Omdb.user'});
     return UserSchema;
 };

@@ -12,7 +12,7 @@ module.exports = function(mongoose) {
             {username: String}
         ]
         // store movie documents in this collection
-    }, {collection: 'lectures.omdb.movie'});//collectionName
+    }, {collection: 'Omdb.movie'});//collectionName
 
     return MovieSchema;//return json body
 
