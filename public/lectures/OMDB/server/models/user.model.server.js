@@ -12,6 +12,7 @@ module.exports = function(db, mongoose) {
 
     // create user model from schema
     var UserModel = mongoose.model('User', UserSchema);
+    var users = require("./user.mock.json");
 
     var api = {
         findUserByCredentials: findUserByCredentials,

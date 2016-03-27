@@ -11,6 +11,7 @@
                 .updateUser($rootScope.user._id, $scope.profileUser)
                 .then(function(user) {
                     $rootScope.user = user;
+                    $scope.user = user;
                     $location.url("/profile");
                     console.log("current login users is: ");
                     console.log($rootScope.user);

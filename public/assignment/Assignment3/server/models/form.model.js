@@ -145,9 +145,15 @@ module.exports = function(app) {
     }
 
     function deleteFieldById(formId, fieldId) {
+
+        console.log("deleted field from form" + formId + ":" + fieldId);
+
         var form = findFormById(formId);
+
+        console.log("find: " + form);
+
         for(var i = 0; i < form.fields.length; i++) {
-            if(form.fields[i] == fieldId) {
+            if(form.fields[i]._id == fieldId) {
                 form.fields.splice(i, 1);
                 console.log("deleted field from form");
                 console.log(form.fields);

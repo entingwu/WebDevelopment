@@ -8,6 +8,7 @@
         var model = this;
         model.addField = addField;
         model.deleteField = deleteField;
+        model.editField = editField;
         model.getFields = getFields;
 
         function init() {
@@ -72,7 +73,27 @@
             FieldService
                 .deleteFieldFromForm(model.formId, fieldId)
                 .then(function(fields) {
+                    console.log("delete");
+                    console.log(fields);
                     getFields(model.formId);
+                });
+        }
+
+        function editField(field) {
+            $scope.field = field;
+            var fieldOptions = [];
+            for(var option in model.field.options) {
+                var str = model.field.options[option].label + ":" + model.field.options[option].value + "\n";
+                fieldOptions.push(str);
+            }
+            model.field.fieldOptions = fieldOptions;
+        }
+
+        function createField(field) {
+            FieldService
+                .createFieldForForm(formId, field)
+                .then(function(newField) {
+                    model.fields.push(newField);
                 });
         }
 
@@ -84,41 +105,6 @@
                 });
             console.log(model.fields);
         }
-
-        /*
-        * //update the sorted fields to server
-         vm.swapFields = function(start, end) {
-         FieldService.swapFields(formId, start, end).then(function(response) {
-         console.log("swap: " + response.data);
-         });
-         };
-
-         //used by dialog
-         vm.edit = function(idx) {
-         fieldId = vm.fields[idx]["_id"];
-
-         var modalInstance = $uibModal.open({
-         animation: true,
-         templateUrl: 'myModalContent.html',
-         controller: 'ModalInstanceCtrl',
-         resolve: {
-         editField : function() {
-         return vm.fields[idx];
-         }
-         }
-         });
-
-         modalInstance.result.then(function () {
-         FieldService.updateField(formId, fieldId, vm.fields[idx]).then(function(response){
-         vm.fields[idx] = response.data;
-         });
-         }, function () {
-         FieldService.getFieldForForm(formId, fieldId).then(function(response) {
-         vm.fields[idx] = response.data;
-         })
-         });
-         }
-        * */
 
     }
 })();

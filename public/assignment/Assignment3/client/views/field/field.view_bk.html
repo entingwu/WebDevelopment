@@ -1,14 +1,15 @@
 <div ng-controller="FieldController">
     <h1 class="page-header">Forms : Registration Form</h1>
+
     <div class=" container container-fluid tab-box" jga-sortable jga-axis="y">
         <div class="row container-fluid top-bottom-small-pad relative"
-             ng-repeat="field in model.fields" ng-switch="field.type">
+             ng-repeat="field in model.fields" ng-switch="field.type" >
 
             <!-- 1. Single Line Text Field -->
             <div ng-switch-when="TEXT" ><br>
                 <label class="col-xs-6">
                     {{field.label}}
-                    <input ng-model="field" type="text" class="form-control" placeholder={{field.placeholder}}>
+                    <input ng-model="field" type="text" class="form-control" placeholder="{{field.placeholder}}">
                 </label>
                 <br>
             </div>
@@ -17,7 +18,7 @@
             <div ng-switch-when="TEXTAREA"><br>
                 <label class="col-xs-6">
                     {{field.label}}
-                    <input ng-model="field" type="text" class="form-control" placeholder={{field.placeholder}}>
+                    <input ng-model="field" type="text" class="form-control" placeholder="{{field.placeholder}}">
                 </label>
                 <br>
             </div>
@@ -71,9 +72,8 @@
             </div>
 
             <!-- Glyphicons -->
-            <div class="col-sm-4 container-fluid pull-right buttons-bottom">
-                <a ng-click="model.editField(field)" class="btn btn-success btn-sm"
-                   data-toggle="modal" data-target="#modal">
+            <div class="col-xs-3 container-fluid pull-right buttons-bottom">
+                <a ng-click="model.edit($index)" class="btn btn-success btn-sm">
                     <scan class="glyphicon glyphicon-pensil"></scan>
                 </a>
                 <a href="#" class="btn btn-warning btn-sm">
@@ -110,37 +110,6 @@
                 <scan class="glyphicon glyphicon-plus"></scan>
             </a>
         </div>
-
-        <!--modal-->
-        <div class="modal fade" id="modal" role="dialog">
-            <div class="modal-dialog modal-vertical-centered">
-            <div class="modal-content modal-sm">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h3 class="modal-title">{{field.label}}</h3>
-                </div>
-                <div class="modal-body">
-                    <div>
-                        <label for="label">Label:</label>
-                        <input ng-model="field.label" type="{{field.type}}" class="form-control" id="label" placeholder="Label">
-                    </div>
-                    <div ng-show="field.placeholder">
-                        <label for="placeholder">Placeholder:</label>
-                        <input ng-model="field.placeholder" type="{{field.type}}" class="form-control" id="placeholder" placeholder="Placeholder">
-                    </div>
-                    <div ng-show="field.options">
-                        <label for="option"></label>
-                        <textarea ng-model="model.field.fieldOptions" cols="40" rows="5" class="form-control" id="option"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" type="button" data-dismiss="modal">Ok</button>
-                    <button class="btn btn-warning" type="button" data-dismiss="modal">Cancel</button>
-                </div>
-            </div>
-            </div>
-        </div>
-
     </div>
 </div>
 

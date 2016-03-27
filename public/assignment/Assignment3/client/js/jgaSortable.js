@@ -1,6 +1,7 @@
+//http://api.jqueryui.com/sortable/#event-start
 (function(){
     angular
-        .module("FormBuilderApp", [])
+        .module("jgaSortable", [])
         .directive("jgaSortable", jgaSortable);
 
     function jgaSortable() {
@@ -16,10 +17,9 @@
         *     camel case in javascript and lowercase- in html
         *  4. after drag : update the array and notify angular that the model has changed*/
 
-        function link(scope, element, attributes) {
+        function link($scope, element, attributes) {
             var jgaAxis = attributes.jgaAxis;
             $(element).sortable({
-                //http://api.jqueryui.com/sortable/#event-start
                 axis: jgaAxis,
                 start: function(event, ui) {//ui is a high level object represent has been dragged
                     start = ui.item.index();//find current item index, sibling relationship
@@ -27,11 +27,11 @@
                 stop: function(event, ui) {
                     end = ui.item.index();//new index
                     /* swap : modify array */
-                    var temp = scope.fields[start];
-                    scope.fields[start] = scope.fields[end];
-                    scope.fields[end] = temp;
+                    var temp = $scope.fields[start];
+                    $scope.fields[start] = scope.fields[end];
+                    $scope.fields[end] = temp;
                     /* notify angular the model has been changed. Render new array, update dom */
-                    scope.$apply();
+                    $scope.$apply();
                 }
             });
         }

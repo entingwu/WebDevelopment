@@ -22,7 +22,7 @@
         $scope.saveFormId = function (form)
         {
             $rootScope.formId = form._id;
-        }
+        };
 
         /* a.	Uses form model and FormService to create a new form
          * b.	Adds the new form to the array of forms*/
