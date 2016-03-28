@@ -9,6 +9,7 @@
         model.addField = addField;
         model.deleteField = deleteField;
         model.editField = editField;
+        model.createField = createField;
         model.getFields = getFields;
 
         function init() {
@@ -82,16 +83,16 @@
         function editField(field) {
             $scope.field = field;
             var fieldOptions = [];
-            for(var option in model.field.options) {
-                var str = model.field.options[option].label + ":" + model.field.options[option].value + "\n";
+            for(var option in $scope.field.options) {
+                var str = $scope.field.options[option].label + " : " + $scope.field.options[option].value + "\n";
                 fieldOptions.push(str);
             }
-            model.field.fieldOptions = fieldOptions;
+            $scope.field.fieldOptions = fieldOptions;
         }
 
         function createField(field) {
             FieldService
-                .createFieldForForm(formId, field)
+                .createFieldForForm(model.formId, field)
                 .then(function(newField) {
                     model.fields.push(newField);
                 });
