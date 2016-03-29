@@ -4,7 +4,7 @@
         .module("FormBuilderApp")
         .controller("FieldController", FieldController);
 
-    function FieldController($scope, $rootScope, $routeParams, FieldService) {
+    function FieldController($scope, $rootScope, FieldService) {
         var model = this;
         model.addField = addField;
         model.deleteField = deleteField;
