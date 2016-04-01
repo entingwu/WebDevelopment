@@ -23,7 +23,7 @@ app.use(passport.session());
 app.use(bodyParser.json());// for parsing application/json
 app.use(bodyParser.urlencoded({ extended:true }));// for parsing application/x-
 app.use(multer());
-//app.use(session({ secret: process.env.PASSPORT_SECRET }));//private key to identify the person
+app.use(session({ secret: process.env.PASSPORT_SECRET }));//private key to identify the person
 app.use(cookieParser());
 
 
