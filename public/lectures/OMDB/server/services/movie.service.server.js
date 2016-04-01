@@ -12,9 +12,9 @@ module.exports = function(app, movieModel, userModel) {
                 function (doc) {
                     movie = doc;
                     if (doc) {
-                        return userModel.findUsersByIds(movie.likes);
+                        return userModel.findUsersByIds(movie.likes);//return the promise and handle in the second then
                     } else {
-                        res.json ({});
+                        res.json ({});//movie==null
                     }
                 },
                 function (err) {
@@ -37,12 +37,12 @@ module.exports = function(app, movieModel, userModel) {
         var userId = req.params.userId;
         var imdbID = req.params.imdbID;
         var movie;
-
+        //receive a promise
         movieModel
             .userLikesMovie(userId, movieOmdb)
             // add user to movie likes
             .then(
-                function (movie) {
+                function (movie) {//tell movie the user
                     return userModel.userLikesMovie(userId, movie);
                 },
                 function (err) {
@@ -51,7 +51,7 @@ module.exports = function(app, movieModel, userModel) {
             )
             // add movie to user likes
             .then(
-                function (user) {
+                function (user) {//tell user the movie
                     res.json(user);
                 },
                 function (err) {

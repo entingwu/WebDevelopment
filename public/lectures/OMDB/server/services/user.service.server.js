@@ -72,12 +72,12 @@ module.exports = function(app, movieModel, userModel) {
         // use model to find user by id
         userModel.findUserById(userId)
             .then(
-                // first retrieve the user by user id
+                // 1. first retrieve the user by user id
                 function (doc) {
 
                     user = doc;
 
-                    // fetch movies this user likes
+                    // 2. fetch movies this user likes
                     return movieModel.findMoviesByImdbIDs(doc.likes);
                 },
 
@@ -87,14 +87,14 @@ module.exports = function(app, movieModel, userModel) {
                 }
             )
             .then(
-                // fetch movies this user likes
+                // 3. fetch movies this user likes
                 function (movies) {
 
                     // list of movies this user likes
                     // movies are not stored in database
                     // only added for UI rendering
                     user.likesMovies = movies;
-                    res.json(user);
+                    res.json(user);//send back
                 },
 
                 // send error if promise rejected

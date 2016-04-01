@@ -12,8 +12,8 @@ module.exports = function(mongoose) {
         roles: [String],
         // imdb ids of movies this user likes
         likes: [String],
-        // movies this user likes
-        likesMovies: [MovieSchema],
+        // movies this user likes, movie like user
+        likesMovies: [MovieSchema]
         // collection property sets
         // collection name to 'user'
     }, {collection: 'Omdb.user'});

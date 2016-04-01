@@ -19,7 +19,7 @@ module.exports = function(db, mongoose) {
         createUser: createUser,
         findUserById: findUserById,
         findUsersByIds: findUsersByIds,
-        userLikesMovie: userLikesMovie
+        userLikesMovie: userLikesMovie//user
     };
     return api;
 
@@ -82,7 +82,7 @@ module.exports = function(db, mongoose) {
         var deferred = q.defer();
 
         // find the user
-        UserModel.findById(userId, function (err, doc) {
+        UserModel.findById(userId, function (err, user) {
 
             // reject promise if error
             if (err) {
@@ -90,17 +90,17 @@ module.exports = function(db, mongoose) {
             } else {
 
                 // add movie id to user likes
-                doc.likes.push (movie.imdbID);
+                user.likes.push (movie.imdbID);
 
-                // save user
-                doc.save (function (err, doc) {
+                // UPDATE: save user, assume user exist
+                user.save (function (err, user) {
 
                     if (err) {
                         deferred.reject(err);
                     } else {
 
                         // resolve promise with user
-                        deferred.resolve (doc);
+                        deferred.resolve (user);
                     }
                 });
             }

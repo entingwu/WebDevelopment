@@ -9,7 +9,7 @@ module.exports = function(mongoose) {
         likes: [String],
         // list of users that like this movie
         userLikes: [
-            {username: String}
+            {username: String}//embedded object
         ]
         // store movie documents in this collection
     }, {collection: 'Omdb.movie'});//collectionName

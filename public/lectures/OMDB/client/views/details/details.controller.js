@@ -33,6 +33,7 @@
         /* user likes movie relationship */
         function favorite(movie) {
             if(currentUser) {
+                //cache
                 vm.movie.likes = [];
                 vm.movie.likes.push(currentUser._id);
                 MovieService

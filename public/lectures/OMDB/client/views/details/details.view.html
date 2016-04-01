@@ -5,8 +5,10 @@
 <br/><br/>
 <!--detail.controller : model.favorite(model.data) ><-->
 <button class="btn btn-primary" ng-click="model.favorite(model.data)">
+    <!--if the movie contains the current userId-->
     <span ng-show="model.movie.likes.indexOf(currentUser._id) > -1"
           class="glyphicon glyphicon-star"></span>
+    <!-- the movie has been liked but not me : empty star-->
     <span ng-show="!model.movie || !model.movie.likes || model.movie.likes.indexOf(currentUser._id) == -1"
           class="glyphicon glyphicon-star-empty"></span>
 </button>
