@@ -7,7 +7,7 @@
         .config(function($routeProvider){//Configure
             $routeProvider
                 .when("/home", {//link
-                    templateUrl: "home.view.html"//destination
+                    templateUrl: "browse.view.html"//destination
                 })
                 .when("/profile", {
                     templateUrl: "profile.view.html"

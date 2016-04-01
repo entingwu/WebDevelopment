@@ -1,6 +1,6 @@
 (function(){
     "use strict";
-    angular
+    var app = angular
         .module("MusicPlayerApp",["ngRoute"])
         .config(function($routeProvider) {
            $routeProvider
@@ -41,11 +41,23 @@
                    controller: "SearchResultController"
                })
                .when("/genres/:genresid", {
-                   templateUrl: "views/genres/searchresults.view.html",
-                   controller: "SearchResultController"
+                   templateUrl: "views/category/genres.view.html",
+                   controller: "BrowserCategoryController"
                })
                .otherwise({
                    redirectTo: "/home"
                })
         });
+
+    app.controller("AppController", function($scope, $location, Auth, API) {
+        function checkUser(redirectToLogin) {
+
+        }
+
+        //$scope.isLoggedIn = (Auth.getAccessToken() != '');
+        //$scope.showplayer = $scope.isLoggedIn;
+        //$scope.showlogin = !$scope.isLoggedIn;
+
+    });
+
 })();

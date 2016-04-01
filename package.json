@@ -26,6 +26,7 @@
     "express": "^3.21.2",
     "express-session": "^1.11.3",
     "guid": "0.0.12",
+    "http": "0.0.0",
     "mongoose": "^4.4.10",
     "multer": "^1.0.6",
     "ng-dialog": "^0.5.5",
@@ -33,6 +34,8 @@
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "q": "^1.4.1",
+    "querystring": "^0.2.0",
+    "request": "^2.69.0",
     "uuid": "^2.0.1"
   },
   "devDependencies": {},

@@ -14,6 +14,7 @@
                 .then(function(user) {//returns user
                     if(user != null) {
                         $rootScope.user = user;
+                        console.log("found user", user);
                         $location.url('/profile');
                         console.log("current login users is: ");
                         console.log($rootScope.user);
