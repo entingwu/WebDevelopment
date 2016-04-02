@@ -82,11 +82,11 @@ require("./public/assignment/Assignment4/server/app.js")(app, db, mongoose);
 
 /* PROJECT */
 /* Load the HTTP library */
-var http = require("http");
+//var http = require("http");
 
 /* Create an HTTP server to handle responses */
-http.createServer(function(request, response) {
+/*http.createServer(function(request, response) {
     response.writeHead(200, {"Content-Type": "text/plain"});
     response.write("Hello World");
     response.end();
-}).listen(8888);
+}).listen(8888);*/
