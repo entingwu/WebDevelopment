@@ -6,46 +6,62 @@ module.exports = function(app, formModel) {
     app.put('/api/assignment/form/:formId', updateForm);//5. update
     app.delete('/api/assignment/form/:formId', deleteForm);//6. delete
 
-    //1. userId
+    //1. userId: findAllFormsForUser
     function getFormByUserId(req, res) {
         var user_id = req.params.userId;
         var forms = formModel.findAllFormsForUser(user_id);
         res.json(forms);
     }
 
-    //2. formId
+    //2. formId: findFormById
     function getFormByFormId(req, res) {
         var form_id = req.params.formId;
-        var form = formModel.findFormById(form_id);
-        res.json(form);
+        formModel
+            .findFormById(form_id)
+            .then(function(form) {
+                res.json(form);
+            });
     }
 
-    //3. forms
+    //3. forms: findAllForms
     function getForms(req, res) {
-        var forms = formModel.findAllForms();
-        res.json(forms);
+        formModel
+            .findAllForms()
+            .then(function(forms) {
+                res.json(forms);
+            });
     }
 
-    //4. createForm
+    //4. createForm : createFormForUser(userId, form)
     function createForm(req, res) {
         var user_id = req.params.userId;
         var form = req.body;
-        var newForm = formModel.createFormForUser(user_id, form);
-        res.json(newForm);
+        //var newForm = {};
+        formModel
+            .createFormForUser(form)
+            .then(function(newForm) {
+                res.json(newForm);
+            });
     }
 
-    //5. updateForm
+    //5. updateForm : updateFormById(formId, newForm)
     function updateForm(req, res) {
         var form_id = req.params.formId;
         var form = req.body;
-        var formUpdated = formModel.updateFormById(form_id, form);
-        res.json(formUpdated);
+        formModel
+            .updateFormById(form_id, form)
+            .then(function(newForm) {
+                res.json(newForm);
+            });
     }
 
-    //6. deleteForm
+    //6. deleteForm : deleteFormById(formId)
     function deleteForm(req, res) {
         var form_id = req.params.formId;
-        var forms = formModel.deleteFormById(form_id);
-        res.json(forms);
+        formModel
+            .deleteFormById(form_id)
+            .then(function(forms) {
+                res.json(forms);
+            });
     }
 };

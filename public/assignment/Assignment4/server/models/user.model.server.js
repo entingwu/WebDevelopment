@@ -1,5 +1,5 @@
 //User Mongoose API to refactor the CRUD operations so that data is inserted, found, updated and removed from MongoDB
-var users = require("./user.mock.json");
+//var users = require("./user.mock.json");
 var Guid = require('guid');
 var q = require("q");//load a promise library
 
@@ -51,12 +51,7 @@ module.exports = function(db, mongoose) {
         var deferred = q.defer();
         UserModel.update(
             {_id : userId},
-            {$set : {
-                username : user.username,
-                password : user.password,
-                firstName : user.firstName,
-                lastName : user.lastName
-            }},
+            {$set : user},
             function(err, user) {
                 UserModel.findOne({
                     _id : userId

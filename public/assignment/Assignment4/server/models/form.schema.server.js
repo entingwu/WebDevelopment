@@ -4,17 +4,16 @@ module.exports = function(mongoose) {
     var FieldSchema = require('./field.schema.server.js')(mongoose);
     var FormSchema = mongoose.Schema({
         //can be used to retrieve the user instance given a form, or retrieve all forms for a given user
-        userId: String,
+        _id: String,
         title: {
             type: String,
             default: 'New Form'
         },
+        userId: String,
         //embedded representation: part of parent object, embedded schema
         fields: [FieldSchema],
-        created: {type: Date, default: Date.now()
-        },
-        updated: {type: Date, default: Date.now()
-        }
+        created: {type: Date, default: Date.now()},
+        updated: {type: Date, default: Date.now()}
     },{collection: 'form'});
     return FormSchema;
 };

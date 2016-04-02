@@ -108,7 +108,7 @@ module.exports = function(db, mongoose) {//database|connection
         movie.save(function (err, doc) {
             if (err) {
                 // reject promise if error
-                defferred.reject(err)
+                deferred.reject(err)
             } else {
                 // resolve promise
                 deferred.resolve(doc);

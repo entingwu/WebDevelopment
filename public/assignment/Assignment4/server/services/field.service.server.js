@@ -6,43 +6,59 @@ module.exports = function(app, formModel) {
     app.delete('/api/assignment/form/:formId/field/:fieldId', deleteField);
 
     //1. formId : returns an array of fields belonging to a form object
+    // findAllFieldsForForm(formId)
     function getFieldByFormId(req, res) {
         var formId = req.params.formId;
-        var fields = formModel.findAllFieldsForForm(formId);
-        res.json(fields);
+        formModel
+            .findAllFieldsForForm(formId)
+            .then(function(fields) {
+                res.json(fields);
+            });
     }
 
-    //2. formId, fieldId
+    //2. formId, fieldId : findFieldById(formId, fieldId)
     function getFieldByFieldId(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        var field = formModel.findFieldById(formId, fieldId);
-        res.json(field);
+        formModel
+            .findFieldById(formId, fieldId)
+            .then(function(field) {
+                res.json(field);
+            });
     }
 
-    //3. createForm
+    //3. createForm : createFieldForForm(formId, field)
     function createField(req, res) {
         var formId = req.params.formId;
         var field = req.body;
-        var newField = formModel.createFieldForForm(formId, field);
-        res.json(newField);
+        formModel
+            .createFieldForForm(formId, field)
+            .then(function(newField) {
+                res.json(newField);
+            });
     }
 
-    //4. updateForm
+    //4. updateForm : updateFieldById(formId, fieldId, newField)
     function updateField(req, res) {
         var formId = req.params.formId;
-        var fieldId = req.parmars.fieldId;
+        var fieldId = req.params.fieldId;
         var newField = req.body;
-        var updatedField = formModel.updateFieldById(formId, fieldId, newField);
-        res.json(updatedField);
+        formModel
+            .updateFieldById(formId, fieldId, newField)
+            .then(function(newField) {
+                res.json(newField);
+            });
     }
 
-    //5. deleteField
+    //5. deleteField : deleteFieldById(formId, fieldId)
     function deleteField(req, res) {
         var formId = req.params.formId;
         var fieldId = req.params.fieldId;
-        var fields = formModel.deleteFieldById(formId, fieldId);
-        res.json(fields);
+        formModel
+            .deleteFieldById(formId, fieldId)
+            .then(function(fields) {
+                res.json(fields);
+            });
     }
 
 };
