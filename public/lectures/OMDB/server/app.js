@@ -4,7 +4,7 @@
 module.exports = function(app, db, mongoose) {
 
     /*var model = require("./models/user.model.server.js")();
-      var service = require("./services/user.service.server.js")(app, model);*/
+      var services = require("./services/user.services.server.js")(app, model);*/
 
     // pass db and mongoose reference to model
     var userModel    = require("./models/user.model.server.js")(db, mongoose);//return the api from movie.model.server.js

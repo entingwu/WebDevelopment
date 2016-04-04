@@ -11,10 +11,11 @@
         model.editField = editField;
         model.createField = createField;
         model.getFields = getFields;
+        var currentUser = null;
+        model.fields = [];
 
         function init() {
-            var currentUser = $rootScope.user;
-            model.fields = [];
+            currentUser = $rootScope.user;
             model.userId = $rootScope.userId;
             model.formId = $rootScope.formId;
             getFields(model.formId);
@@ -83,8 +84,8 @@
         function editField(field) {
             $scope.field = field;
             var fieldOptions = [];
-            for(var option in $scope.field.options) {
-                var str = $scope.field.options[option].label + " : " + $scope.field.options[option].value + "\n";
+            for(var i in $scope.field.options) {
+                var str = $scope.field.options[i].label + " : " + $scope.field.options[i].value + "\n";
                 fieldOptions.push(str);
             }
             $scope.field.fieldOptions = fieldOptions;
