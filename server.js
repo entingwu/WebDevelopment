@@ -9,13 +9,13 @@ var multer = require('multer');
 var passport      = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var cookieParser  = require('cookie-parser');
-var session       = require('express-session');//valid session
+//var session       = require('express-session');//valid session
 
-app.use(session({
+/*app.use(session({
     secret : 'this is the secret',
     resave : true,
     saveUninitialized: true
-}));
+}));*/
 
 app.use(cookieParser());
 app.use(passport.initialize());
@@ -82,6 +82,7 @@ require("./public/assignment/Assignment4/server/app.js")(app, db, mongoose);
 
 /* PROJECT */
 require("./public/musicApp/server/app.js")(app, db, mongoose);
+require("./public/project/server/app.js")(app, db, mongoose);
 /* Load the HTTP library */
 //var http = require("http");
 
