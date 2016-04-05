@@ -1,0 +1,45 @@
+<ul class="nav nav-tabs">
+<li role="presentation"><a href="#/user">My Favorite</a></li>
+<li role="presentation"><a href="#/user-comment">My Comments</a></li>
+<li role="presentation" class="active"><a href="#/user-follow">My following</a></li>
+</ul>
+<div class="row">
+	<div class="col-sm-4">
+			<h3></h3>
+			<img src="img/user.jpg" class="img-thumbnail" alt="user1" width="200" height="200">
+	</div>            
+	<div class="col-sm-5">
+			<h2>{{model.user.username}}</h2>
+			<ul>
+				<li>First Name: {{model.user.firstName}}</li>
+				<li>Last Name: {{model.user.lastName}}</li>
+				<li>Email: {{model.user.email}}</li>
+				<li>following: {{model.user.following.length}}</li>
+				<li>followers: {{model.user.followers.length}}</li>
+			</ul>
+	</div>
+</div>
+<div class="col-sm-12">
+		<h2>My Following</h2>
+		<div class="col-sm-12">
+				<div class="col-sm-4" ng-repeat="following in model.followings">
+					<a href="#/view-user" ng-click="model.saveCurrentUserId(following.id)"><img src="img/user.jpg" class="img-thumbnail" alt="{{following.username}} image" width="200" height="200"></a>
+					<h4><a href="#/view-user" ng-click="model.saveCurrentUserId(following.id)">{{following.username}}</a></h4>
+					<a ng-click="model.deleteFollowing(following)" class="btn btn-danger">
+						<scan class="glyphicon glyphicon-remove"></scan>
+					</a>
+				</div>
+		</div>
+</div>
+<div class="col-sm-12">
+		<h2>My Followers</h2>
+		<div class="col-sm-12">
+				<div class="col-sm-4" ng-repeat="follower in model.followers">
+					<a href="#/view-user" ng-click="model.saveCurrentUserId(follower.id)"><img src="img/user.jpg" class="img-thumbnail" alt="{{follower.username}} image" width="200" height="200"></a>
+					<h4><a href="#/view-user" ng-click="model.saveCurrentUserId(follower.id)">{{follower.username}}</a></h4>
+					<a ng-click="model.deleteFollower(follower)" class="btn btn-danger">
+						<scan class="glyphicon glyphicon-remove"></scan>
+					</a>
+				</div>
+		</div>
+</div>

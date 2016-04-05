@@ -36,12 +36,6 @@
                 $scope.genresMoods = data.categories.items;
             });
 
-        /* New Release
-           GET https://api.spotify.com/v1/browse/new-releases */
-        SearchService.getNewReleases(Auth.getUserCountry())
-            .then(function(data) {
-                $scope.newReleases = data.albums.items;
-            });
     }
 
 })();

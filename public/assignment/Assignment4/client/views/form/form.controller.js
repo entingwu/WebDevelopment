@@ -5,68 +5,77 @@
         .controller("FormController", FormController);
 
     function FormController($scope, $location, $rootScope, FormService) {
-        $scope.$location = $location;
+        var model = this;
+        model.$location = $location;
         var currentUser = $rootScope.user;
-        $scope.forms = [];
+        model.forms = [];
 
-        $scope.getForms = getForms;
+        model.getForms = getForms;
         if (currentUser != null) {
             getForms(currentUser._id);
         }
 
-        $scope.addForm = addForm;
-        $scope.selectForm = selectForm;
-        $scope.updateForm = updateForm;
-        $scope.deleteForm = deleteForm;
+        model.addForm = addForm;
+        model.selectForm = selectForm;
+        model.updateForm = updateForm;
+        model.deleteForm = deleteForm;
 
-        $scope.saveFormId = function (form)
+        model.saveFormId = function (form)
         {
             $rootScope.formId = form._id;
         };
 
         /* a.	Uses form model and FormService to create a new form
          * b.	Adds the new form to the array of forms*/
-        function addForm() {
-            if($rootScope.user != null && $scope.form != null) {
+        function addForm(form) {
+            if($rootScope.user != null && form != null) {
                 FormService
-                    .createFormForUser(currentUser._id, $scope.form)
+                    .createFormForUser(currentUser._id, form)
                     .then(function(newForm) {
-                        $scope.forms.push(newForm);
-                        console.log("added form");
-                        console.log($scope.forms);
+                        //model.forms.push(newForm);
+                        getForms(currentUser._id);
+                        console.log("form controller : ");
+                        console.log(model.forms);
                     });
             }
         }
 
         /* a.	Uses the index to mark the currently selected form
          * b.	Updates the form with the currently selected form */
-        function selectForm(index) {
-            document.getElementById('formtitle').value = $scope.forms[index].title;
-            $scope.currentForm = $scope.forms[index];
-            $scope.isSelected = true;
-            console.log("selected form");
-            console.log($scope.currentForm);
+        function selectForm(form) {
+            FormService
+                .findFormById(form._id)
+                .then(function(form) {
+                    model.currentForm =form;
+                    console.log("selected form");
+                    console.log(model.currentForm);
+                });
         }
 
         /* a.	Uses form model and FormService to update the currently selected form */
-        function updateForm() {
-            if($scope.currentForm != null) {//selected
-                $scope.currentForm.title = $scope.form.title;
+        function updateForm(form) {
+            if(model.currentForm != null) {//selected
                 console.log("start updating:");
-                console.log($scope.currentForm);
+                console.log(model.currentForm);
                 FormService
-                    .updateFormById($scope.currentForm._id, $scope.currentForm)//userId, form
+                    .updateFormById(model.currentForm._id, model.currentForm)//userId, form
                     .then(function(updatedForm) {
+                        FormService
+                            .findAllFormsForUser(currentUser._id)
+                            .then(function(forms) {
+                                model.forms = forms;
+                            });
+
                         console.log("updated form");
                     });
-                $scope.currentForm = null;
+                model.currentForm = null;
             }
             getForms(currentUser._id);
         }
 
         /* a.	Uses the FormService to remove the form by index */
-        function deleteForm(index) {
-            var formId = $scope.forms[index]._id;
+        function deleteForm(form) {
+            var formId = form._id;
             FormService
                 .deleteFormById(formId)
                 .then(function(forms) {
@@ -79,8 +88,8 @@
             FormService
                 .findAllFormsForUser(userId)
                 .then(function(updateForms) {
-                    $scope.forms = updateForms;
-                    console.log($scope.forms);
+                    model.forms = updateForms;
+                    console.log("get forms :" + updateForms);
                 });
         }
     }

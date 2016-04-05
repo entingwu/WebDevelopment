@@ -20,6 +20,7 @@
             $http
                 .post('/api/assignment/user/' + userId + '/form', form)
                 .success(function(response) {
+                    console.log("create form in client" + response);
                     deferred.resolve(response);
                 });
             return deferred.promise;
@@ -30,6 +31,7 @@
             $http
                 .get('/api/assignment/user/' + userId + '/form')
                 .success(function(response) {
+                    console.log("find forms in client" + response.data);
                     deferred.resolve(response);
                 });
             return deferred.promise;

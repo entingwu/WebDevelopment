@@ -37,8 +37,14 @@ module.exports = function(db, mongoose) {
             if(err) {
                 deferred.reject(err);
             }else {
-                deferred.resolve(result);
-                console.log("create form from model: " + result);
+                result.save(function (err, doc) {
+                    if (err) {
+                        deferred.reject(err)
+                    } else {
+                        console.log("create form from model: " + doc);
+                        deferred.resolve(doc);
+                    }
+                });
             }
         });
         return deferred.promise;
@@ -75,6 +81,7 @@ module.exports = function(db, mongoose) {
             if(err) {
                 deferred.reject(err);
             }else {
+                console.log("find all forms from model: " + forms);
                 deferred.resolve(forms);
             }
         });

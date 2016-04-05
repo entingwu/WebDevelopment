@@ -1,0 +1,63 @@
+<div ng-controller="RegisterController">
+<div class="row">
+	<div class="pull-left">
+			<img src="img/hello panda.jpg" class="img-rounded" alt="logo"  width="200" height="200">
+	</div>
+	<h1>Welcome to Panda Music!</h1>
+</div>
+<h2>Register</h2>
+<form class="form-horizontal">
+	<div class="form-group">
+	<label for="inputUsername" class="col-sm-2 control-label">* Username:</label>
+	<div class="col-sm-10">
+		<input ng-model="registerUser.username" type="username" class="form-control" id="inputUsername" placeholder="Username">
+	</div>
+	</div>
+	<div class="form-group">
+	<label for="inputPassword1" class="col-sm-2 control-label">* Password:</label>
+	<div class="col-sm-10">
+		<input ng-model="registerUser.password" type="password" class="form-control" id="inputPassword1" placeholder="Password">
+	</div>
+	</div>
+	<div class="form-group">
+	<label for="inputPassword2" class="col-sm-2 control-label">* Verify Password:</label>
+	<div class="col-sm-10">
+		<input ng-model="registerUser.password2" type="password" class="form-control" id="inputPassword2" placeholder="Verify Password">
+	</div>
+	</div>
+	<div class="form-group">
+	<label for="inputEmail" class="col-sm-2 control-label">Email:</label>
+	<div class="col-sm-10">
+		<input ng-model="registerUser.email" type="email" class="form-control" id="inputEmail" placeholder="Email">
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="col-sm-offset-2 col-sm-10">
+		<a ng-click="model.register(registerUser)" type="submit" class="btn btn-default btn-block active" Role="button">Register</a>
+	</div>
+	</div>
+	<div class="form-group">
+	<div class="col-sm-offset-2 col-sm-5">
+	<h5>Already have account? Please login here: </h5>
+	</div>
+	<div class="col-sm-5">
+			<a href="#/login" type="submit" class="btn btn-info btn-block active" Role="button">Login</a>
+	</div>
+	</div>
+	<h5>The * fields are required to fill.</h5>
+	<div ng-switch on="model.message">									
+		<div ng-switch-when="passwordError">
+				<h5>Sorry, the two passwords are not the same, please type it again!</h5>
+		</div>
+		<div ng-switch-when="exsitedUsernameError">
+				<h5>Sorry, the username is already existed, please try another username!</h5>
+		</div>
+		<div ng-switch-when="noFieldError">
+				<h5>Sorry, the * fields are required to fill!</h5>
+		</div>
+		<div ng-switch-when="success">
+				<h5>Thanks! you're successfully registered!</h5>
+		</div>
+	</div>
+</form>
+</div>

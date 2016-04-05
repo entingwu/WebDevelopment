@@ -1,37 +1,142 @@
-(function() {
-    "use strict";
+(function()
+{
     angular
         .module("MusicPlayerApp")
         .factory("SearchService", searchService);
 
-    function searchService($http, $q, UserService) {
-        var baseUrl = "https://api.spotify.com/v1";
+    function searchService($http, $q)
+    {
         var service = {
-            getFeaturedPlaylists : getFeaturedPlaylists,
-            getBrowseCategories : getBrowseCategories,
-            getNewReleases : getNewReleases
+            getBrowseCategories: getBrowseCategories,
+            getFeaturedPlaylists: getFeaturedPlaylists,
+            findArtistByName: findArtistByName,
+            findArtistById: findArtistById,
+            findAlbumByArtist: findAlbumByArtist,
+            findAlbumByName: findAlbumByName,
+            findAlbumById: findAlbumById,
+            findSongsByAlbum: findSongsByAlbum,
+            findSongByName: findSongByName,
+            findSongById: findSongById
         };
         return service;
+        var baseUrl = 'https://api.spotify.com/v1';
 
-        /* GET : https://api.spotify.com/v1/browse/featured-playlists */
+        function getBrowseCategories() {
+            var deferred = $q.defer();
+            $http.get(baseUrl + '/browse/categories', {
+                headers: { 'Authorization': 'Bearer ' + Auth.getAccessToken() }
+            }).success(function(r) {
+                console.log('got browse categories', r);
+                deferred.resolve(r);
+            }).error(function(err) {
+                console.log('failed to get browse categories', err);
+                deferred.reject(err);
+            });
+            return deferred.promise;
+        }
+
         function getFeaturedPlaylists(country, timestamp) {
-            var deferred = q.defer();
+            var deferred = $q.defer();
+            $http.get(baseUrl + '/browse/featured-playlists?country=' +
+                encodeURIComponent(country) +
+                '&timestamp=' + encodeURIComponent(timestamp), {
+                headers: {
+                    'Authorization': 'Bearer ' + Auth.getAccessToken()
+                }
+            }).success(function(r) {
+                console.log('got featured playlists results', r);
+                deferred.resolve(r);
+            });
+            return deferred.promise;
+        }
+
+        /* SEARCH */
+        function findArtistByName(name)
+        {
+            var deferred = $q.defer();
             $http
-                .get(baseUrl + '/browse/featured-playlists?country=' + encodeURIComponent(country) +
-                    '&' + 'timestamp' + encodeURIComponent(timestamp), {
-                    headers: {
-                        'Authorization' : 'Bearer' + UserService.getAccessToken()
-                    }
-                })
-                .success(function(data) {
-                    console.log('got featured playlists results', data);
-                    deferred.resolve(data);
+                .get('https://api.spotify.com/v1/search?q='+ name + '&type=artist&limit=' + 9)
+                .success(function(response) {
+                    deferred.resolve(response);
                 });
             return deferred.promise;
         }
 
+        function findArtistById(id)
+        {
+            var deferred = $q.defer();
+            $http
+                .get('https://api.spotify.com/v1/artists/' + id)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
 
+        function findAlbumByArtist(id)
+        {
+            var deferred = $q.defer();
+            $http
+                .get('https://api.spotify.com/v1/artists/' + id + '/albums')
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
 
+        function findAlbumByName(name)
+        {
+            var deferred = $q.defer();
+            $http
+                .get('https://api.spotify.com/v1/search?q='+ name + '&type=album&limit=' + 9)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function findAlbumById(id)
+        {
+            var deferred = $q.defer();
+            $http
+                .get('https://api.spotify.com/v1/albums/' + id)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function findSongsByAlbum(id)
+        {
+            var deferred = $q.defer();
+            $http
+                .get('https://api.spotify.com/v1/albums/'+ id +'/tracks')
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function findSongByName(name)
+        {
+            var deferred = $q.defer();
+            $http
+                .get('https://api.spotify.com/v1/search?q='+ name + '&type=track&limit=' + 10)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function findSongById(id)
+        {
+            var deferred = $q.defer();
+            $http
+                .get('https://api.spotify.com/v1/tracks/'+ id)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
     }
-
 })();

@@ -4,7 +4,6 @@ module.exports = function(mongoose) {
     var FieldSchema = require('./field.schema.server.js')(mongoose);
     var FormSchema = mongoose.Schema({
         //can be used to retrieve the user instance given a form, or retrieve all forms for a given user
-        _id: String,
         title: {
             type: String,
             default: 'New Form'

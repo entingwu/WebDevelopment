@@ -40,6 +40,7 @@ module.exports = function(app, formModel) {
         formModel
             .createFormForUser(form)
             .then(function(newForm) {
+                console.log("create form in service.server : " + newForm);
                 res.json(newForm);
             });
     }

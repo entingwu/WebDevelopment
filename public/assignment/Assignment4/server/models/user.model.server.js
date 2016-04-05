@@ -56,7 +56,7 @@ module.exports = function(db, mongoose) {
                 UserModel.findOne({
                     _id : userId
                 },function(err, user) {
-                    deferred.resolve(result);
+                    deferred.resolve(user);
                 });
             }
         );
@@ -132,6 +132,7 @@ module.exports = function(db, mongoose) {
                     // reject promise if error
                     deferred.reject(err);
                 }else {
+                    console.log("Call from credentials");
                     // resolve promise
                     deferred.resolve(user);
                 }

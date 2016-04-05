@@ -6,39 +6,48 @@
            $routeProvider
                .when("/",{//URL Pattern
                    templateUrl: "views/browse/browse.view.html",
-                   controller: "BrowseController"
+                   controller: "BrowseController",
+                   controllerAs: "model"
                })
                .when("/browsecategory/:categoryid", {
                    templateUrl: "views/browsecategory/browsecategory.view.html",
-                   controller: "BrowserCategoryController"
+                   controller: "BrowserCategoryController",
+                   controllerAs: "model"
                })
                .when("/users/:username", {
                    templateUrl: "views/user/user.view.html",
-                   controller: "UserController"
+                   controller: "UserController",
+                   controllerAs: "model"
                })
                .when("/users/:username/tracks", {
                    templateUrl: "views/usertracks/usertracks.view.html",
-                   controller: "UserTracksController"
+                   controller: "UserTracksController",
+                   controllerAs: "model"
                })
                .when("/users/:username/playlists/:playlist", {
                    templateUrl: "views/playlist/playlist.view.html",
-                   controller: "PlaylistController"
+                   controller: "PlaylistController",
+                   controllerAs: "model"
                })
                .when("/playqueue", {
                    templateUrl: "views/playqueue/playqueue.view.html",
-                   controller: "PlayQueueController"
+                   controller: "PlayQueueController",
+                   controllerAs: "model"
                })
                .when("/albums/:album", {
                    templateUrl: "views/album/album.view.html",
-                   controller: "AlbumController"
+                   controller: "AlbumController",
+                   controllerAs: "model"
                })
                .when("/artists/:artist", {
                    templateUrl: "views/artist/artist.view.html",
-                   controller: "ArtistController"
+                   controller: "ArtistController",
+                   controllerAs: "model"
                })
                .when("/search", {
                    templateUrl: "views/searchresults/searchresults.view.html",
-                   controller: "SearchResultsController"
+                   controller: "SearchResultsController",
+                   controllerAs: "model"
                })
                .otherwise({
                    redirectTo: "/"

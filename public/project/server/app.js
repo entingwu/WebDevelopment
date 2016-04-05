@@ -1,3 +1,4 @@
-/**
- * Created by entingwu on 4/3/16.
- */
+module.exports = function(app, db, mongoose) {
+    var userModel = require("./models/user.model.js")(db, mongoose);
+    require("./services/user.service.server.js")(app, userModel);
+};

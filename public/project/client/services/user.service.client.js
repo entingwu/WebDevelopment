@@ -4,23 +4,279 @@
         .module("MusicPlayerApp")
         .factory("UserService", userService);
 
-    function userService() {
-        var CLIENT_ID = '';
-        var REDIRECT_URL = '';
-        if(location.host == 'localhost:3000') {
-            CLIENT_ID = '409f070cb44945d9a85e9b4ad8fa3bf1';
-            REDIRECT_URL = 'http://localhost:3000/callback.html';
-        }
-
+    function userService($http, $q)
+    {
         var service = {
-            getAccessToken : getAccessToken
+            /* User */
+            findUserByUsernameAndPassword : findUserByUsernameAndPassword,
+            findAllUsers : findAllUsers,
+            createUser : createUser,
+            deleteUserById : deleteUserById,
+            updateUser : updateUser,
+            findUserByUsername : findUserByUsername,
+            findUserById : findUserById,
+
+            /* Song */
+            addSongToUser : addSongToUser,
+            findSongsByUserId : findSongsByUserId,
+            deleteSongFromUser : deleteSongFromUser,
+
+            /* Artist */
+            addArtistToUser : addArtistToUser,
+            findArtistsByUserId : findArtistsByUserId,
+            deleteArtistFromUser : deleteArtistFromUser,
+
+            /* Album */
+            addAlbumToUser : addAlbumToUser,
+            findAlbumsByUserId : findAlbumsByUserId,
+            deleteAlbumFromUser : deleteAlbumFromUser,
+
+            /* Follower */
+            addfollowToUser: addfollowToUser,
+            findFollowingByUserId : findFollowingByUserId,
+            findFollowerByUserId : findFollowerByUserId,
+            deleteFollowingFromUser : deleteFollowingFromUser,
+            deleteFollowerFromUser : deleteFollowerFromUser
         };
+
         return service;
 
-        function getAccessToken() {
-
+        function findUserById(id)
+        {
+            var deferred = $q.defer();
+            $http
+                .get('/api/project/user/' + id)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
         }
 
-    }
+        function findUserByUsername(username)
+        {
+            var deferred = $q.defer();
+            $http
+                .get('/api/project/user?username=' + username)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
 
+        function findUserByUsernameAndPassword(username, password)
+        {
+            console.log("find user by username and password");
+            var deferred = $q.defer();
+            $http
+                .get('/api/project/user?username=' + username + '&' + 'password=' + password)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function findAllUsers()
+        {
+            var deferred = $q.defer();
+            $http
+                .get('/api/project/user')
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function createUser(user)
+        {
+            var deferred = $q.defer();
+            $http
+                .post('/api/project/user', user)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function deleteUserById(id)
+        {
+            var deferred = $q.defer();
+            $http
+                .delete('/api/project/user/' + id)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function updateUser(id, user)
+        {
+            var deferred = $q.defer();
+            $http
+                .put('/api/project/user/' + id, user)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function addSongToUser(userId, song)
+        {
+            var deferred = $q.defer();
+            $http
+                .post('/api/project/user/'+ userId + '/song', song)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function findSongsByUserId(userId)
+        {
+            var deferred = $q.defer();
+            $http
+                .get('/api/project/user/' + userId + '/song')
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function deleteSongFromUser(userId, songId)
+        {
+            var deferred = $q.defer();
+            $http
+                .delete('/api/project/user/' + userId + '/song/' + songId)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function addArtistToUser(userId, artist)
+        {
+            var deferred = $q.defer();
+            $http
+                .post('/api/project/user/'+ userId + '/artist', artist)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function findArtistsByUserId(userId)
+        {
+            var deferred = $q.defer();
+            $http
+                .get('/api/project/user/' + userId + '/artist')
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function deleteArtistFromUser(userId, artistId)
+        {
+            var deferred = $q.defer();
+            $http
+                .delete('/api/project/user/' + userId + '/artist/' + artistId)
+                .success(function(response) {
+                    console.log("deleted artist from user");
+                    console.log(response);
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function addAlbumToUser(userId, album)
+        {
+            var deferred = $q.defer();
+            $http
+                .post('/api/project/user/'+ userId + '/album', album)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function findAlbumsByUserId(userId)
+        {
+            var deferred = $q.defer();
+            $http
+                .get('/api/project/user/' + userId + '/album')
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function deleteAlbumFromUser(userId, albumId)
+        {
+            var deferred = $q.defer();
+            $http
+                .delete('/api/project/user/' + userId + '/album/' + albumId)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function addfollowToUser(userId, follow)
+        {
+            var deferred = $q.defer();
+            $http
+                .post('/api/project/user/'+ userId + '/following', follow)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function findFollowingByUserId(userId)
+        {
+            var deferred = $q.defer();
+            $http
+                .get('/api/project/user/' + userId + '/following')
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function findFollowerByUserId(userId)
+        {
+            var deferred = $q.defer();
+            $http
+                .get('/api/project/user/' + userId + '/follower')
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function deleteFollowingFromUser(userId, followId)
+        {
+            var deferred = $q.defer();
+            $http
+                .delete('/api/project/user/' + userId + '/following/' + followId)
+                .success(function(response) {
+                    console.log("deleted a following from user");
+                    console.log(response);
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function deleteFollowerFromUser(userId, followId)
+        {
+            var deferred = $q.defer();
+            $http
+                .delete('/api/project/user/' + userId + '/follower/' + followId)
+                .success(function(response) {
+                    console.log("deleted a follower from user");
+                    console.log(response);
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+    }
 })();

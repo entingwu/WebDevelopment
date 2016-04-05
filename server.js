@@ -5,17 +5,19 @@ var app           = express();
 var bodyParser = require('body-parser');
 var multer = require('multer');
 
+/* SECURITY */
 var passport      = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var cookieParser  = require('cookie-parser');
-//var session       = require('express-session');//valid session
+var session       = require('express-session');//valid session
 
-/*app.use(session({
+app.use(session({
     secret : 'this is the secret',
     resave : true,
     saveUninitialized: true
-}));*/
+}));
 
+app.use(cookieParser());
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -24,14 +26,14 @@ app.use(bodyParser.json());// for parsing application/json
 app.use(bodyParser.urlencoded({ extended:true }));// for parsing application/x-
 app.use(multer());
 //app.use(session({ secret: process.env.PASSPORT_SECRET }));//private key to identify the person
-app.use(cookieParser());
+
 
 
 // install and require the mongoose library
 var mongoose      = require('mongoose');
 // create a default connection string
 // mongodb://localhost/database
-var connectionString = 'mongodb://127.0.0.1:27017/cs5610spring2016';
+var connectionString = 'mongodb://localhost/cs5610spring2016'|| process.env.OPENSHIFT_MONGODB_DB_URL;
 
 // use remote connection string if running in remote server
 // process provided by nodejs
@@ -66,21 +68,20 @@ app.listen(port, ipaddress);
  * this file requires the module and function, when I have the function, I invoke it and pass app */
 require("./public/lectures/server/expressjs/server.js")(app);
 
-require("./public/lectures/server/omdb/get/server/app.js")(app);
-require("./public/lectures/server/omdb/post/server/app.js")(app);
-//require("./public/lectures/server/omdb/delete/server/app.js")(app);
-//require("./public/lectures/server/omdb/update/server/app.js")(app);
+//require("./public/lectures/server/omdb/get/server/app.js")(app);
+//require("./public/lectures/server/omdb/post/server/app.js")(app);
 
 // pass db and mongoose reference to server side application module, mongoose instance library
-require("./public/lectures/OMDB/server/app.js")(app, db, mongoose);
+//require("./public/lectures/OMDB/server/app.js")(app, db, mongoose);
 
 /* ASSIGNMENT3 : pass app(express instance) to create web service end point */
-require("./public/assignment/Assignment3/server/app.js")(app);
+//require("./public/assignment/Assignment3/server/app.js")(app);
 
 /* ASSIGNMENT4 : mongoose instance library */
 require("./public/assignment/Assignment4/server/app.js")(app, db, mongoose);
 
 /* PROJECT */
+require("./public/musicApp/server/app.js")(app, db, mongoose);
 /* Load the HTTP library */
 //var http = require("http");
 
