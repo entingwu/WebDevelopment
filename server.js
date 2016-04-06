@@ -81,7 +81,7 @@ require("./public/lectures/server/expressjs/server.js")(app);
 require("./public/assignment/Assignment4/server/app.js")(app, db, mongoose);
 
 /* PROJECT */
-require("./public/musicApp/server/app.js")(app, db, mongoose);
+require("./public/application/server/app.js")(app, db, mongoose);
 require("./public/project/server/app.js")(app, db, mongoose);
 /* Load the HTTP library */
 //var http = require("http");

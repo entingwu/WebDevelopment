@@ -1,10 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<h1>{{categoryname}}</h1>
+<div ng-show="playlists.length > 0">
+    <ul class="playlists">
+        <li ng-repeat="t in playlists">
+            <a href="#/users/{{t.owner.id}}/playlists/{{t.id}}">
+                <responsive-cover ng-model="t.images"></responsive-cover>
+            </a>
+            <p>
+                <b><a href="#/users/{{t.owner.id}}/playlists/{{t.id}}">{{t.name}}</a></b>
+            </p>
+        </li>
+    </ul>
+</div>

@@ -33,8 +33,16 @@
     <script src="views/user/user.controller.js"></script>
     <script src="views/usertracks/usertracks.controller.js"></script>
     <!-- services -->
+    <script src="services/auth.service.client.js"></script>
+    <script src="services/playback.service.client.js"></script>
+    <script src="services/playqueue.service.client.js"></script>
     <script src="services/search.service.client.js"></script>
     <script src="services/user.service.client.js"></script>
+    <!--filter-->
+    <script src="filters/displaytime.js"></script>
+    <script src="filters/timeago.js"></script>
+    <!--directive-->
+    <script src="directives/responsivecover.js"></script>
 </head>
 
 <body ng-controller="AppController">
@@ -128,7 +136,7 @@
     <div ng-controller="LoginController">
         <div class="centered">
             <div class="inner">
-                <h1>Thirtify</h1>
+                <h1>Music Mood</h1>
                 <p>
                     Welcome to Music Mood Application. Please sign in with your spotify account.
                 </p>

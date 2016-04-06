@@ -1,10 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+playqueue.html current playqueue
+<hr/>
 
-</body>
-</html>
+position={{position}} current={{current}}
+<hr/>
+
+<ul>
+    <li ng-repeat="t in queue">
+        queued track {{ t }} <span ng-show="(t == current)">**CURRENT**</span>
+    </li>
+</ul>
+<br/>

@@ -1,15 +1,1 @@
-<h1>Music Mood</h1>
-<h2>Overview</h2>
-<div ng-show="genresMoods.length > 0">
-    <h3>Genres Scenario</h3>
-    <ul class="genres">
-        <li ng-repeat="gr in genresMoods">
-            <a href="#/category/{{gr.id}}">
-                <img ng-src="{{gr.icons[0].url}}">
-            </a>
-            <p>
-                <b><a href="#/category/{{gr.id}}">{{t.name}}</a>></b>
-            </p>
-        </li>
-    </ul>
-</div>
+<h1>Welcome <b>{{username}}</b>!</h1>

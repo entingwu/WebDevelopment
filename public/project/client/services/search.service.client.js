@@ -4,11 +4,13 @@
         .module("MusicPlayerApp")
         .factory("SearchService", searchService);
 
-    function searchService($http, $q)
+    function searchService($http, $q, Auth)
     {
         var service = {
             getBrowseCategories: getBrowseCategories,
             getFeaturedPlaylists: getFeaturedPlaylists,
+            getTrack: getTrack,
+
             findArtistByName: findArtistByName,
             findArtistById: findArtistById,
             findAlbumByArtist: findAlbumByArtist,
@@ -19,11 +21,10 @@
             findSongById: findSongById
         };
         return service;
-        var baseUrl = 'https://api.spotify.com/v1';
 
         function getBrowseCategories() {
             var deferred = $q.defer();
-            $http.get(baseUrl + '/browse/categories', {
+            $http.get('https://api.spotify.com/v1' + '/browse/categories', {
                 headers: { 'Authorization': 'Bearer ' + Auth.getAccessToken() }
             }).success(function(r) {
                 console.log('got browse categories', r);
@@ -37,7 +38,7 @@
 
         function getFeaturedPlaylists(country, timestamp) {
             var deferred = $q.defer();
-            $http.get(baseUrl + '/browse/featured-playlists?country=' +
+            $http.get('https://api.spotify.com/v1' + '/browse/featured-playlists?country=' +
                 encodeURIComponent(country) +
                 '&timestamp=' + encodeURIComponent(timestamp), {
                 headers: {
@@ -49,6 +50,21 @@
             });
             return deferred.promise;
         }
+
+        function getTrack(trackid) {
+            var deferred = $q.defer();
+            $http.get('https://api.spotify.com/v1' + '/tracks/' + encodeURIComponent(trackid), {
+                headers: {
+                    'Authorization': 'Bearer ' + Auth.getAccessToken()
+                }
+            }).success(function(r) {
+                console.log('got track', r);
+                deferred.resolve(r);
+            });
+            return deferred.promise;
+        }
+
+
 
         /* SEARCH */
         function findArtistByName(name)

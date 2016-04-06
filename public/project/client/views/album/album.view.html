@@ -1,10 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<header>
+    <div class="cover">
+        <responsive-cover ng-model="model.album.images"></responsive-cover>
+    </div>
 
-</body>
-</html>
+    <h4 ng-show="model.album.album_type == 'single'">Single</h4>
+    <h4 ng-show="model.album.album_type == 'album'">Album</h4>
+    <h4 ng-show="model.album.album_type == 'compilation'">Compilation</h4>
+    <h1>{{model.album.name}}</h1>
+
+    <div class="buttons">
+        <a ng-click="playall()" class="button green">PLAY ALL</a>
+    </div>
+</header>
+
+<hr/>
+<p>
+    By <a href="#/artists/{{model.album.artists[0].id}}">{{model.album.artists[0].name}}</a>
+    &middot;
+    {{release_year}}
+    &middot;
+    {{model.album.tracks.total}} Songs
+    &middot;
+    Total {{total_duration | displaytime}}
+</p>
+<hr/>
+<br/>
+
+<div class="discs">
+    <div ng-repeat="d in discs">
+        <p ng-show="num_discs > 1">
+            CD {{ d.disc_number }}
+        </p>
+        <table class="tracks">
+            <thead>
+            <th>#</th>
+            <th>ACTION</th>
+            <th>TRACK</th>
+            <th>TIME</th>
+            <th>POPULARITY</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="s in songs" ng-class="{ playing: (s.uri == currenttrack) }">
+                <td>{{s.track_number}}</td>
+                <td>
+                    <button ng-click="toggleFromYourMusic($index)"> {{ s.inYourMusic ? '-' : '+' }} </button>
+                </td>
+                <td>
+                    <a ng-click="play(s.uri)">{{s.name}}</a>
+                </td>
+                <td>{{s.duration_ms | displaytime}}</td>
+                <td>
+                    <div class="pop-meter">
+                        <div class="pop-meter-background"></div>
+                        <div class="pop-meter-overlay" style="width: {{ s.popularity }}%;"></div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<br/>
