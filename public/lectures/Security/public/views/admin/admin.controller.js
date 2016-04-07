@@ -47,6 +47,7 @@
         }
 
         function handleSuccess(response) {
+            console.log("retrieve users: " + response.data);
             $scope.users = response.data;
         }
 

@@ -13,6 +13,7 @@
                   templateUrl: 'views/profile/profile.view.html',
                   controller: 'ProfileCtrl',
                   resolve: {
+                      //first call
                       loggedin: checkLoggedin
                   }
               })
@@ -37,30 +38,12 @@
                   redirectTo: '/home'
               });
         });
-    
-    var checkAdmin = function($q, $timeout, $http, $location, $rootScope)
-    {
-        var deferred = $q.defer();
-    
-        $http.get('/api/loggedin').success(function(user)
-        {
-            $rootScope.errorMessage = null;
-            // User is Authenticated
-            if (user !== '0' && user.roles.indexOf('admin') != -1)
-            {
-                $rootScope.currentUser = user;
-                deferred.resolve();
-            }
-        });
-        
-        return deferred.promise;
-    };
-    
-    
+
+    /* $http.get('/api/loggedin') */
     var checkLoggedin = function($q, $timeout, $http, $location, $rootScope)
     {
         var deferred = $q.defer();
-    
+
         $http.get('/api/loggedin').success(function(user)
         {
             $rootScope.errorMessage = null;
@@ -78,10 +61,28 @@
                 $location.url('/login');
             }
         });
+
+        return deferred.promise;
+    };
+
+    var checkAdmin = function($q, $timeout, $http, $location, $rootScope)
+    {
+        var deferred = $q.defer();
+    
+        $http.get('/api/loggedin').success(function(user)
+        {
+            $rootScope.errorMessage = null;
+            // User is Authenticated && admin role
+            if (user !== '0' && user.roles.indexOf('admin') != -1)
+            {
+                $rootScope.currentUser = user;
+                deferred.resolve();
+            }
+        });
         
         return deferred.promise;
     };
-    
+
     var checkCurrentUser = function($q, $timeout, $http, $location, $rootScope)
     {
         var deferred = $q.defer();
@@ -94,7 +95,7 @@
             {
                 $rootScope.currentUser = user;
             }
-            deferred.resolve();
+            deferred.resolve();//go to the home page
         });
         
         return deferred.promise;

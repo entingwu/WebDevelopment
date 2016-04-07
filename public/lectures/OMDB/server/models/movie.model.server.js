@@ -5,7 +5,7 @@ var q = require("q");
 module.exports = function(db, mongoose) {//database|connection
 
     //1. load movie schema from movie model
-    var MovieSchema = require("./movie.schema.server.js")(mongoose);//send mongoose to movie.schema.server.js
+    var MovieSchema = require("./movie.schema.server.js")(mongoose);//send mongoose to movie.schema.server3.js
 
     //2. Model : use mongoose to create model : create movie from schema
     var Movie  = mongoose.model("Movie", MovieSchema);

@@ -3,11 +3,11 @@
 *  ==> load user.model.server.js | user.service.server.js */
 module.exports = function(app, db, mongoose) {
 
-    /*var model = require("./models/user.model.server.js")();
-      var services = require("./services/user.services.server.js")(app, model);*/
+    /*var model = require("./models/user.model.server3.js")();
+      var services = require("./services/user.services.server3.js")(app, model);*/
 
     // pass db and mongoose reference to model
-    var userModel    = require("./models/user.model.server.js")(db, mongoose);//return the api from movie.model.server.js
+    var userModel    = require("./models/user.model.server.js")(db, mongoose);//return the api from movie.model.server3.js
     var movieModel   = require("./models/movie.model.server.js")(db, mongoose);
 
     var userService  = require("./services/user.service.server.js") (app, movieModel, userModel);

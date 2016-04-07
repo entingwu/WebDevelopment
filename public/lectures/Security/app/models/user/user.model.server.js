@@ -10,9 +10,9 @@ module.exports = function() {
             lastName: String,
             email: String,
             roles: [String]
-        }, {collection: "user"});
+        }, {collection: "securityUser"});
 
-    var UserModel = mongoose.model('UserModel', UserSchema);
+    var SecurityUserModel = mongoose.model('SecurityUserModel', UserSchema);
 
     var api = {
         findUserByCredentials: findUserByCredentials,
@@ -27,38 +27,38 @@ module.exports = function() {
     return api;
 
     function updateUser(userId, user) {
-        return UserModel.update({_id: userId}, {$set: user});
+        return SecurityUserModel.update({_id: userId}, {$set: user});//$set: update with the new json object
     }
 
     function removeUser(userId) {
-        return UserModel.remove({_id: userId});
+        return SecurityUserModel.remove({_id: userId});
     }
 
     function findAllUsers() {
-        return UserModel.find();
+        return SecurityUserModel.find();
     }
     function createUser(user) {
-        return UserModel.create(user);
+        return SecurityUserModel.create(user);
     }
 
     function findUserByUsername(username) {
-        return UserModel.findOne({username: username});
+        return SecurityUserModel.findOne({username: username});
     }
 
     function getMongooseModel() {
-        return UserModel;
+        return SecurityUserModel;
     }
 
     function findUserById(userId) {
-        return UserModel.findById(userId);
+        return SecurityUserModel.findById(userId);
     }
 
     function findUserByCredentials(credentials) {
-        return UserModel.findOne(
+        return SecurityUserModel.findOne(
             {
                 username: credentials.username,
                 password: credentials.password
             }
         );
     }
-}
+};

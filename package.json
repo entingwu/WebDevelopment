@@ -32,6 +32,8 @@
     "multer": "^1.0.6",
     "ng-dialog": "^0.5.5",
     "passport": "^0.3.2",
+    "passport-facebook": "^2.1.0",
+    "passport-google-oauth": "^1.0.0",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "proto": "^1.0.19",

@@ -8,13 +8,13 @@
     {
         $scope.login = login;
 
-        function login(user)
+        function login(user)//user from ng-model
         {
             if(user)
             UserService
                 .login(user)
                 .then(
-                    function(response)
+                    function(response)//get from deserialize
                     {
                         $rootScope.currentUser = response.data;
                         $location.url("/profile");

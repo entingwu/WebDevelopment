@@ -61,7 +61,7 @@ app.get('/hello', function(req, res){ res.send('hello world'); });
 /* 3. listen to particular port */
 app.listen(port, ipaddress);
 
-/* physical location : load server.js in other folder, passing app
+/* physical location : load server3.js in other folder, passing app
  * var app = express()
  * this file requires the module and function, when I have the function, I invoke it and pass app */
 require("./public/lectures/server/expressjs/server.js")(app);

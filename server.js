@@ -6,19 +6,18 @@ var bodyParser = require('body-parser');
 var multer = require('multer');
 
 /* SECURITY */
-var passport      = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
 var cookieParser  = require('cookie-parser');
-//var session       = require('express-session');//valid session
+var passport      = require('passport');
+var session       = require('express-session');//valid session
 
-/*app.use(session({
-    secret : 'this is the secret',
+app.use(session({
+    secret : process.env.SESSION_SECRET || '123',
     resave : true,
     saveUninitialized: true
-}));*/
+}));
 
-app.use(cookieParser());
-app.use(passport.initialize());
+app.use(cookieParser());//1
+app.use(passport.initialize());//2
 app.use(passport.session());
 
 /* 6. JSON : include body-parser, multer library */
@@ -26,8 +25,6 @@ app.use(bodyParser.json());// for parsing application/json
 app.use(bodyParser.urlencoded({ extended:true }));// for parsing application/x-
 app.use(multer());
 //app.use(session({ secret: process.env.PASSPORT_SECRET }));//private key to identify the person
-
-
 
 // install and require the mongoose library
 var mongoose      = require('mongoose');
@@ -63,7 +60,7 @@ app.get('/hello', function(req, res){ res.send('hello world'); });
 /* 3. listen to particular port */
 app.listen(port, ipaddress);
 
-/* physical location : load server.js in other folder, passing app
+/* physical location : load server3.js in other folder, passing app
  * var app = express()
  * this file requires the module and function, when I have the function, I invoke it and pass app */
 require("./public/lectures/server/expressjs/server.js")(app);
@@ -92,3 +89,6 @@ require("./public/project/server/app.js")(app, db, mongoose);
     response.write("Hello World");
     response.end();
 }).listen(8888);*/
+
+/* SECURITY */
+require("./public/lectures/Security/app/app.js")(app);
