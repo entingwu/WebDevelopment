@@ -72,7 +72,7 @@ require("./public/lectures/server/expressjs/server.js")(app);
 //require("./public/lectures/OMDB/server/app.js")(app, db, mongoose);
 
 /* ASSIGNMENT3 : pass app(express instance) to create web service end point */
-require("./public/assignment/Assignment3/server/app.js")(app);
+//require("./public/assignment/Assignment3/server/app.js")(app);
 
 /* ASSIGNMENT4 : mongoose instance library */
 require("./public/assignment/Assignment4/server/app.js")(app, db, mongoose);

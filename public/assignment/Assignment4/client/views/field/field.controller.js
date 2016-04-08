@@ -67,8 +67,7 @@
                         ]
                     };
                     break;
-                default :
-                    return;
+                default :return;
             }
             FieldService
                 .createFieldForForm(model.formId, field)
@@ -127,7 +126,7 @@
             if(hasOptions && field.optionString!=null) {
                 var textArray = field.optionString.split("\n");
                 for(var t in textArray) {
-                    var textLine = field.optionString[t];
+                    var textLine = textArray[t];
                     var optionArray = textLine.split(":");
                     var option = { label : optionArray[0], value : optionArray[1]};
                     fieldOptions.push(option);
