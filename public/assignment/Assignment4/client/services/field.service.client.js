@@ -48,7 +48,7 @@
             var deferred = $q.defer();
             $http
                 .put('/api/assignment/form/' + formId + '/field/' + fieldId, field)
-                .success(function(response) {
+                .then(function(response) {
                     deferred.resolve(response);
                 });
             return deferred.promise;

@@ -181,17 +181,24 @@ module.exports = function(db, mongoose) {
 
     function updateFieldById(formId, fieldId, newField) {
         var deferred = q.defer();
+        var ObjectId = mongoose.Types.ObjectId;
         FormModel.findById(formId, function(err, form) {
             if(err) {
                 deferred.reject(err);
             }else {
-                var fields = form.fields;
-                for(var i = 0; i < fields.length; i++) {
-                    if(fields[i]._id == fieldId) {
-                        fields[i] = newField;
-                        deferred.resolve(fields[i]);
+                for(var i = 0; i < form.fields.length; i++) {
+                    if(form.fields[i]._id == fieldId) {
+                        form.fields[i] = newField;
+                        deferred.resolve(form.fields[i]);
                     }
                 }
+                /*form.save(function(err, doc) {
+                    if (err) {
+                        deferred.reject(err)
+                    } else {
+                        deferred.resolve(doc);
+                    }
+                });*/
             }
         });
         return deferred.promise;

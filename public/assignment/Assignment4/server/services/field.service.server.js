@@ -45,9 +45,14 @@ module.exports = function(app, formModel) {
         var newField = req.body;
         formModel
             .updateFieldById(formId, fieldId, newField)
-            .then(function(newField) {
-                res.json(newField);
-            });
+            .then(
+                function(newField) {
+                    res.json(newField);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     //5. deleteField : deleteFieldById(formId, fieldId)

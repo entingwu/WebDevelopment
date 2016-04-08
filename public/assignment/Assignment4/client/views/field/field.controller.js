@@ -89,7 +89,6 @@
 
         /* options array -> optionString */
         function editField(index, field) {
-            console.log(field);
             var hasOptions = false;
             if(!(field.type == "TEXT" || field.type =="TEXTAREA" || field.type == "EMAIL" || field.type == "DATE")) {
                 hasOptions = true;
@@ -102,26 +101,27 @@
                 }
             }
             field.optionString = fieldOptions.join("\n");
-            model.currentField = field;
-            console.log(field.optionString);
+
+            model.currentField = {
+                _id : field._id,
+                label : field.label,//update
+                type : field.type,
+                placeholder : field.placeholder,//update
+                options : field.options,
+                optionString : field.optionString
+            };
+            console.log(model.currentField);
         }
 
+
         /* optionString -> options array*/
+        //how to update in database
         function modalEdit() {
             var field = model.currentField;
             var hasOptions = false;
             if(!(field.type == "TEXT" || field.type =="TEXTAREA" || field.type == "EMAIL" || field.type == "DATE")) {
                 hasOptions = true;
             }
-
-            /*model.currentField = {
-                _id : field.id,
-                label : field.label,
-                type : field.type,
-                placeholder : field.placeholder,
-                options : field.options,
-                optionString : fieldOptions.join("\n")
-            };*/
 
             var fieldOptions = [];
             if(hasOptions && field.optionString!=null) {
@@ -132,8 +132,11 @@
                     var option = { label : optionArray[0], value : optionArray[1]};
                     fieldOptions.push(option);
                 }
-                field.options = fieldOptions;
+                field.options = fieldOptions;//update
             }
+            field.label = model.currentField.label;
+            field.placeholder = model.currentField.placeholder;
+            console.log(field);
 
             FieldService
                 .updateField(model.formId, field._id, field)
