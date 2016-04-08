@@ -6,24 +6,31 @@
 
     function FieldController($scope, $rootScope, FieldService) {
         var model = this;
+        model.fields = [];
+        model.userId = $rootScope.userId;
         model.addField = addField;
         model.deleteField = deleteField;
+        model.cloneField = cloneField;
         model.editField = editField;
-        model.createField = createField;
-        model.getFields = getFields;
+        model.modalEdit = modalEdit;
+        model.currentField = {};//selected
 
         function init() {
             var currentUser = $rootScope.user;
-            model.fields = [];
-            model.userId = $rootScope.userId;
             model.formId = $rootScope.formId;
-            getFields(model.formId);
+
+            FieldService
+                .getFieldsForForm(model.formId)
+                .then(function (fields) {
+                    model.fields = fields;
+                });
         }
+
         init();
 
         function addField(fieldType) {
             var field;
-            switch(fieldType) {
+            switch (fieldType) {
                 case "SINGLELINE" :
                     field = {"_id": null, "label": "New Text Field", "type": "TEXT", "placeholder": "New Field"};
                     break;
@@ -34,78 +41,103 @@
                     field = {"_id": null, "label": "New Date Field", "type": "DATE"};
                     break;
                 case "DROPDOWN" :
-                    field = {"_id": null, "label": "New Dropdown", "type": "OPTIONS", "options": [
-                                {"label": "Option 1", "value": "OPTION_1"},
-                                {"label": "Option 2", "value": "OPTION_2"},
-                                {"label": "Option 3", "value": "OPTION_3"}
-                    ]};
+                    field = {
+                        "_id": null, "label": "New Dropdown", "type": "OPTIONS", "options": [
+                            {"label": "Option 1", "value": "OPTION_1"},
+                            {"label": "Option 2", "value": "OPTION_2"},
+                            {"label": "Option 3", "value": "OPTION_3"}
+                        ]
+                    };
                     break;
                 case "CHECKBOX" :
-                    field = {"_id": null, "label": "New Checkboxes", "type": "CHECKBOXES", "options": [
-                                {"label": "Option A", "value": "OPTION_A"},
-                                {"label": "Option B", "value": "OPTION_B"},
-                                {"label": "Option C", "value": "OPTION_C"}
-                    ]};
+                    field = {
+                        "_id": null, "label": "New Checkboxes", "type": "CHECKBOXES", "options": [
+                            {"label": "Option A", "value": "OPTION_A"},
+                            {"label": "Option B", "value": "OPTION_B"},
+                            {"label": "Option C", "value": "OPTION_C"}
+                        ]
+                    };
                     break;
                 case "RADIO" :
-                    field = {"_id": null, "label": "New Radio Buttons", "type": "RADIOS", "options": [
-                                {"label": "Option X", "value": "OPTION_X"},
-                                {"label": "Option Y", "value": "OPTION_Y"},
-                                {"label": "Option Z", "value": "OPTION_Z"}
-                    ]};
+                    field = {
+                        "_id": null, "label": "New Radio Buttons", "type": "RADIOS", "options": [
+                            {"label": "Option X", "value": "OPTION_X"},
+                            {"label": "Option Y", "value": "OPTION_Y"},
+                            {"label": "Option Z", "value": "OPTION_Z"}
+                        ]
+                    };
                     break;
-                default : return;
+                default :
+                    return;
             }
             FieldService
                 .createFieldForForm(model.formId, field)
-                .then(function(field) {
-                    if(model.fields == []) {
-                        model.fields = [field];
-                    }else {
-                        model.fields.push(field);
-                    }
-                    console.log("added field");
-                    console.log(model.fields);
-                });
+                .then(init);
         }
 
-        function deleteField(index, fieldId) {
-            model.fields.splice(index, 1);
+        function deleteField(field) {
             FieldService
-                .deleteFieldFromForm(model.formId, fieldId)
-                .then(function(fields) {
-                    console.log("delete");
-                    console.log(fields);
-                    getFields(model.formId);
-                });
+                .deleteFieldFromForm(model.formId, field._id)
+                .then(init);
         }
 
-        function editField(field) {
-            $scope.field = field;
+        function cloneField(field) {
+            FieldService
+                .createFieldForForm(model.formId, field)
+                .then(init);
+        }
+
+        /* options array -> optionString */
+        function editField(index, field) {
+            console.log(field);
+            var hasOptions = false;
+            if(!(field.type == "TEXT" || field.type =="TEXTAREA" || field.type == "EMAIL" || field.type == "DATE")) {
+                hasOptions = true;
+            }
             var fieldOptions = [];
-            for(var option in $scope.field.options) {
-                var str = $scope.field.options[option].label + " : " + $scope.field.options[option].value + "\n";
-                fieldOptions.push(str);
+            if(hasOptions) {
+                for (var op in field.options) {
+                    var str = field.options[op].label + " : " + field.options[op].value;
+                    fieldOptions.push(str);
+                }
             }
-            $scope.field.fieldOptions = fieldOptions;
+            field.optionString = fieldOptions.join("\n");
+            model.currentField = field;
+            console.log(field.optionString);
         }
 
-        function createField(field) {
+        /* optionString -> options array*/
+        function modalEdit() {
+            var field = model.currentField;
+            var hasOptions = false;
+            if(!(field.type == "TEXT" || field.type =="TEXTAREA" || field.type == "EMAIL" || field.type == "DATE")) {
+                hasOptions = true;
+            }
+
+            /*model.currentField = {
+                _id : field.id,
+                label : field.label,
+                type : field.type,
+                placeholder : field.placeholder,
+                options : field.options,
+                optionString : fieldOptions.join("\n")
+            };*/
+
+            var fieldOptions = [];
+            if(hasOptions && field.optionString!=null) {
+                var textArray = field.optionString.split("\n");
+                for(var t in textArray) {
+                    var textLine = field.optionString[t];
+                    var optionArray = textLine.split(":");
+                    var option = { label : optionArray[0], value : optionArray[1]};
+                    fieldOptions.push(option);
+                }
+                field.options = fieldOptions;
+            }
+
             FieldService
-                .createFieldForForm(model.formId, field)
-                .then(function(newField) {
-                    model.fields.push(newField);
-                });
+                .updateField(model.formId, field._id, field)
+                .then(init);
         }
-
-        function getFields(formId) {
-            FieldService
-                .getFieldsForForm(formId)
-                .then(function(fields) {
-                    model.fields = fields;
-                });
-            console.log(model.fields);
-        }
-
     }
 })();

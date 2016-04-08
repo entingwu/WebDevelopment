@@ -8,7 +8,7 @@
             <div ng-switch-when="TEXT" ><br>
                 <label class="col-xs-6">
                     {{field.label}}
-                    <input type="text" class="form-control" id="{{field.label}}" placeholder="{{field.placeholder}}">
+                    <input type="text" class="form-control" id="singleLine" placeholder="{{field.placeholder}}">
                 </label>
                 <br>
             </div>
@@ -25,7 +25,7 @@
             <div ng-switch-when="TEXTAREA"><br>
                 <label class="col-xs-6">
                     {{field.label}}
-                    <input type="text" class="form-control" placeholder="{{field.placeholder}}">
+                    <textarea class="form-control" placeholder="{{field.placeholder}}"></textarea>
                 </label>
                 <br>
             </div>
@@ -64,7 +64,7 @@
             </div>
 
             <!-- 6. RadioButtons Field -->
-            <div ng-switch-when="RADIOS" ng-model="field"><br>
+            <div ng-switch-when="RADIOS"><br>
                 <label for="radioGroup" class="col-xs-6 container-fluid">
                     {{field.label}}
                     <div id="radioGroup" class="container-fluid">
@@ -80,17 +80,17 @@
 
             <!-- Glyphicons -->
             <div class="col-xs-3 container-fluid pull-right buttons-bottom">
-                <a ng-click="model.editField(field)" class="btn btn-success btn-sm"
-                   data-toggle="modal" data-target="#modal">
+                <a ng-click="model.editField($index, field)" class="btn btn-success btn-sm"
+                   data-toggle="modal" data-target="#editField">
                     <scan class="glyphicon glyphicon-pencil"></scan>
                 </a>
-                <a href="#" class="btn btn-warning btn-sm">
+                <a ng-click="model.cloneField(field)" class="btn btn-warning btn-sm">
                     <scan class="glyphicon glyphicon-plus"></scan>
                 </a>
-                <a ng-click="model.deleteField($index,field._id)" class="btn btn-danger btn-sm">
+                <a ng-click="model.deleteField(field)" class="btn btn-danger btn-sm">
                     <scan class="glyphicon glyphicon-remove"></scan>
                 </a>
-                <a href="#" class="btn btn-primary btn-sm">
+                <a class="btn btn-primary btn-sm">
                     <scan class="glyphicon glyphicon-menu-hamburger"></scan>
                 </a>
             </div>
@@ -123,36 +123,65 @@
 
 
         <!--modal-->
-        <div class="modal fade" id="modal" role="dialog">
-            <div class="modal-dialog modal-vertical-centered">
+        <div class="modal fade" id="editField" role="dialog">
+            <div class="modal-dialog">
             <div class="modal-content modal-sm">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h3 class="modal-title">{{field.label}}</h3>
+                    <h3 class="modal-title">{{model.currentField.label}}</h3>
                 </div>
                 <div class="modal-body">
                     <div>
                         <label for="label">Label:</label>
-                        <input ng-model="field.label" type="{{field.type}}" class="form-control" id="label" placeholder="Label">
+                        <input ng-model="model.currentField.label" type="{{model.currentField.type}}" class="form-control" id="label" placeholder="Label">
                         <br>
                     </div>
-                    <div ng-show="field.placeholder">
-                        <label for="placeholder">Placeholder:</label>
-                        <input ng-model="field.placeholder" type="{{field.type}}" class="form-control" id="placeholder" placeholder="Placeholder">
-                    </div>
-                    <div ng-show="field.options">
-                        <label for="option">Options:</label>
-                        <textarea ng-model="field.fieldOptions" cols="50" rows="5" class="form-control" id="option"></textarea>
+                    <div ng-switch="model.currentField.type">
+                        <!-- 1. Single Line Text Field -->
+                        <div ng-switch-when="TEXT">
+                            <label>Placeholder:</label>
+                            <input ng-model="model.currentField.placeholder" type="text" class="form-control" placeholder="{{model.currentField.placeholder}}">
+                        </div>
+                        <div ng-switch-when="EMAIL">
+                            <label>Placeholder:</label>
+                            <input ng-model="model.currentField.placeholder" type="email" class="form-control" placeholder="{{model.currentField.placeholder}}">
+                        </div>
+                        <!-- 2. Multi Line Text Field -->
+                        <div ng-switch-when="TEXTAREA">
+                            <label>Placeholder:</label>
+                            <textarea ng-model="model.currentField.placeholder" class="form-control" placeholder="{{model.currentField.placeholder}}"></textarea>
+                        </div>
+                        <!-- 3. Date Field -->
+                        <!-- 4. Dropdown Field -->
+                        <div ng-switch-when="OPTIONS">
+                            <label>Options:</label>
+                            <textarea ng-model="model.currentField.optionString" class="form-control" rows="5" ng-trim="false">
+                                {{model.currentField.optionString}}
+                            </textarea>
+                        </div>
+                        <!-- 5. Checkboxes Field -->
+                        <div ng-switch-when="CHECKBOXES">
+                            <label>Options:</label>
+                            <textarea ng-model="model.currentField.optionString" class="form-control" rows="5" ng-trim="false">
+                                {{model.currentField.optionString}}
+                            </textarea>
+                        </div>
+                        <!-- 6. RadioButtons Field -->
+                        <div ng-switch-when="RADIOS">
+                            <label>Options:</label>
+                            <textarea ng-model="model.currentField.optionString" class="form-control" rows="5" ng-trim="false">
+                                {{model.currentField.optionString}}
+                            </textarea>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button ng-click="model.editField(field)" class="btn btn-primary" type="button" data-dismiss="modal">Ok</button>
+                    <button ng-click="model.modalEdit()" class="btn btn-primary" type="button" data-dismiss="modal">Ok</button>
                     <button class="btn btn-warning" type="button" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
             </div>
         </div>
-
     </div>
 </div>
 

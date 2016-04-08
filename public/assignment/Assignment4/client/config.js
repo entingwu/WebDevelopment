@@ -32,6 +32,11 @@
                     controller: "FieldController",
                     controllerAs: "model"
                 })
+                .when("/admin", {
+                    templateUrl: "views/admin/admin.view.html",
+                    controller: "AdminController",
+                    controllerAs: "model"
+                })
                 .when("/user",{
                     templateUrl: "views/field/field.view.html",
                     controller: "FieldController",

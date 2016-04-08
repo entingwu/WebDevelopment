@@ -83,6 +83,7 @@ module.exports = function(db, mongoose) {
             if(err) {
                 deferred.reject(err);
             }else {
+                console.log("find users from model :" + users);
                 deferred.resolve(users);
             }
         });

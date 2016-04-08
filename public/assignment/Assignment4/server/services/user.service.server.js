@@ -52,6 +52,7 @@ module.exports = function(app, userModel) {
             userModel
                 .findAllUsers()
                 .then(function(users) {
+                    console.log("find users from server :" + users);
                     res.json(users);
                 });
         }

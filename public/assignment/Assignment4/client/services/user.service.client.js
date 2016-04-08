@@ -12,7 +12,7 @@
             findAllUsers : findAllUsers,
             createUser : createUser,
             deleteUserById : deleteUserById,
-            updateUser : updateUser,
+            updateUserById : updateUserById,
             setUser : setUser,
             getUser : getUser
         };
@@ -24,6 +24,7 @@
             $http
                 .post('/api/assignment/user', user)
                 .success(function(response) {
+                    console.log("create user from client:" + response);
                     deferred.resolve(response);
                 });
             return deferred.promise;
@@ -39,7 +40,7 @@
             return deferred.promise;
         }
         //PROFILE
-        function updateUser(userId, user) {
+        function updateUserById(userId, user) {
             var deferred = $q.defer();
             $http
                 .put('/api/assignment/user/' + userId, user)
@@ -85,6 +86,7 @@
             $http
                 .get('/api/assignment/user')
                 .success(function(response) {
+                    console.log("find all users from client :" + response);
                     deferred.resolve(response);
                 });
             return deferred.promise;

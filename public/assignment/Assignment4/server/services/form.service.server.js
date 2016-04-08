@@ -9,8 +9,18 @@ module.exports = function(app, formModel) {
     //1. userId: findAllFormsForUser
     function getFormByUserId(req, res) {
         var user_id = req.params.userId;
-        var forms = formModel.findAllFormsForUser(user_id);
-        res.json(forms);
+        formModel
+            .findAllFormsForUser(user_id)
+            .then(
+                function(forms) {
+                    console.log("find forms for user in service.server : ");
+                    console.log(forms);
+                    res.json(forms);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     //2. formId: findFormById
@@ -36,13 +46,18 @@ module.exports = function(app, formModel) {
     function createForm(req, res) {
         var user_id = req.params.userId;
         var form = req.body;
-        //var newForm = {};
         formModel
-            .createFormForUser(form)
-            .then(function(newForm) {
-                console.log("create form in service.server : " + newForm);
-                res.json(newForm);
-            });
+            .createFormForUser(user_id, form)
+            .then(
+                function(form) {
+                    console.log("create form in service.server : ");
+                    console.log(form);
+                    res.json(form);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     //5. updateForm : updateFormById(formId, newForm)
@@ -51,9 +66,16 @@ module.exports = function(app, formModel) {
         var form = req.body;
         formModel
             .updateFormById(form_id, form)
-            .then(function(newForm) {
-                res.json(newForm);
-            });
+            .then(
+                function(newForm) {
+                    console.log("update form in service.server : ");
+                    console.log(newForm);
+                    res.json(newForm);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
     }
 
     //6. deleteForm : deleteFormById(formId)

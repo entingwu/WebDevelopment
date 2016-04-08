@@ -8,7 +8,7 @@
         $scope.$location = $location;
         $scope.update = function() {
             UserService
-                .updateUser($rootScope.user._id, $scope.profileUser)
+                .updateUserById($rootScope.user._id, $scope.profileUser)
                 .then(function(user) {
                     $rootScope.user = user;
                     $scope.user = user;

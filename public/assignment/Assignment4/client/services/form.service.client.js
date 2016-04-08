@@ -31,7 +31,6 @@
             $http
                 .get('/api/assignment/user/' + userId + '/form')
                 .success(function(response) {
-                    console.log("find forms in client" + response.data);
                     deferred.resolve(response);
                 });
             return deferred.promise;
@@ -40,7 +39,7 @@
         function findFormById(formId) {
             var deferred = $q.defer();
             $http
-                .get('/api/assignment/form' + formId)
+                .get('/api/assignment/form/' + formId)
                 .success(function(response) {
                     deferred.resolve(response);
                 });
@@ -51,7 +50,7 @@
             var deferred = $q.defer();
             $http
                 .put('/api/assignment/form/' + formId, newForm)
-                .success(function(response) {
+                .then(function(response) {
                     deferred.resolve(response);
                 });
             return deferred.promise;

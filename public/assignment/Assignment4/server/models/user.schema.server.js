@@ -6,7 +6,11 @@ module.exports = function(mongoose) {
         firstName: String,
         lastName: String,
         emails: [String],
-        phone: [String]
+        phone: [String],
+        roles: {
+            type: [String],
+            default: ['student']
+        }
     }, {collection: 'user'});//show collections
     return UserSchema;
 };

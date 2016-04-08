@@ -92,3 +92,5 @@ require("./public/project/server/app.js")(app, db, mongoose);
 
 /* SECURITY */
 require("./public/lectures/Security/app/app.js")(app);
+
+app.set('view engine', 'ejs');

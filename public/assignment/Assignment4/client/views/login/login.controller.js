@@ -8,9 +8,12 @@
         $scope.$location = $location;
         $scope.login = login;
 
+
+
         function login() {
             UserService
-                .findUserByCredentials($scope.loginUser.username, $scope.loginUser.password)
+                //.findUserByCredentials($scope.loginUser.username, $scope.loginUser.password)
+                .findUserByCredentials("bob", "bob")
                 .then(function(user) {//returns user
                     if(user != null) {
                         $rootScope.user = user;

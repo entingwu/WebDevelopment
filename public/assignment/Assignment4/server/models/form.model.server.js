@@ -30,21 +30,15 @@ module.exports = function(db, mongoose) {
 
     /* I. FORM */
 
-    function createFormForUser(form) {
+    function createFormForUser(userId, form) {
         var deferred = q.defer();
-        form._id = Guid.create();
         FormModel.create(form, function(err, result) {
             if(err) {
                 deferred.reject(err);
             }else {
-                result.save(function (err, doc) {
-                    if (err) {
-                        deferred.reject(err)
-                    } else {
-                        console.log("create form from model: " + doc);
-                        deferred.resolve(doc);
-                    }
-                });
+                console.log("result form from model is: ");
+                console.log(result);
+                deferred.resolve(result);
             }
         });
         return deferred.promise;
@@ -81,7 +75,8 @@ module.exports = function(db, mongoose) {
             if(err) {
                 deferred.reject(err);
             }else {
-                console.log("find all forms from model: " + forms);
+                console.log("find all forms from model: ");
+                console.log(forms);
                 deferred.resolve(forms);
             }
         });
@@ -109,6 +104,8 @@ module.exports = function(db, mongoose) {
                 if(err) {
                     deferred.reject(err);
                 }else {
+                    console.log("update from model : ");
+                    console.log(form);
                     deferred.resolve(form);
                 }
         });
@@ -167,6 +164,7 @@ module.exports = function(db, mongoose) {
             }else {
                 var fields = form.fields;
                 field._id = Guid.create();
+                //field.label = field.type
                 fields.push(field);
                 form.save(function(err, form) {
                     if(err) {

@@ -5,13 +5,12 @@ module.exports = function(mongoose) {
         type: {
             type: String,
             default: 'TEXT',
-            enum: ['TEXT','EMAIL','PASSWORD','OPTIONS','DATE','RADIOS','CHECKBOXES']
+            enum: ['TEXT','EMAIL','TEXTAREA','OPTIONS','DATE','RADIOS','CHECKBOXES']
         },
         placeholder: String,
-        options: {//object
-            label: String,
-            value: String
-        }
+        options: [{label: String, value: String}],
+        optionString: String
     }, {collection: 'field'});
     return FieldSchema;
 };
+
