@@ -132,11 +132,14 @@
                     var option = { label : optionArray[0], value : optionArray[1]};
                     fieldOptions.push(option);
                 }
-                model.currentField.options = fieldOptions;//update
+                field.options = fieldOptions;//update
             }
+            field.label = model.currentField.label;
+            field.placeholder = model.currentField.placeholder;
             console.log(field);
+
             FieldService
-                .updateField(model.formId, model.currentField._id, model.currentField)
+                .updateField(model.formId, field._id, field)
                 .then(init);
         }
     }

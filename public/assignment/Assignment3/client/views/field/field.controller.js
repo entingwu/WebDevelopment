@@ -6,19 +6,25 @@
 
     function FieldController($scope, $rootScope, FieldService) {
         var model = this;
+        model.userId = $rootScope.userId;
         model.addField = addField;
         model.deleteField = deleteField;
+        model.cloneField = cloneField;
         model.editField = editField;
-        model.createField = createField;
-        model.getFields = getFields;
-        var currentUser = null;
-        model.fields = [];
+        model.modalEdit = modalEdit;
+        model.currentField = {};//json
+        model.fields = [];//array
 
         function init() {
-            currentUser = $rootScope.user;
-            model.userId = $rootScope.userId;
+            var currentUser = $rootScope.user;
             model.formId = $rootScope.formId;
-            getFields(model.formId);
+
+            FieldService
+                .getFieldsForForm(model.formId)
+                .then(function(fields) {
+                    model.fields = fields;
+                    console.log(fields);
+                });
         }
         init();
 
@@ -59,54 +65,60 @@
             }
             FieldService
                 .createFieldForForm(model.formId, field)
-                .then(function(field) {
-                    if(model.fields == []) {
-                        model.fields = [field];
-                    }else {
-                        model.fields.push(field);
-                    }
-                    console.log("added field");
-                    console.log(model.fields);
-                });
+                .then(init);
         }
 
-        function deleteField(index, fieldId) {
-            model.fields.splice(index, 1);
+        function deleteField(field) {
             FieldService
-                .deleteFieldFromForm(model.formId, fieldId)
-                .then(function(fields) {
-                    console.log("delete");
-                    console.log(fields);
-                    getFields(model.formId);
-                });
+                .deleteFieldFromForm(model.formId, field._id)
+                .then(init);
         }
 
-        function editField(field) {
-            $scope.field = field;
-            var fieldOptions = [];
-            for(var i in $scope.field.options) {
-                var str = $scope.field.options[i].label + " : " + $scope.field.options[i].value + "\n";
-                fieldOptions.push(str);
-            }
-            $scope.field.fieldOptions = fieldOptions;
-        }
-
-        function createField(field) {
+        function cloneField(field) {
             FieldService
                 .createFieldForForm(model.formId, field)
-                .then(function(newField) {
-                    model.fields.push(newField);
-                });
+                .then(init);
         }
 
-        function getFields(formId) {
+        /* options array -> optionString */
+        function editField(index, field) {
+            model.currentFieldIndex = index;
+            var fieldOptions = [];
+            if(field.options) {
+                for(var i in field.options) {
+                    var str = field.options[i].label + " : " + field.options[i].value;
+                    fieldOptions.push(str);
+                }
+            }
+            model.currentField = {
+                _id : field._id,
+                label : field.label,
+                type : field.type,
+                placeholder : field.placeholder,
+                options : field.options,
+                optionString : fieldOptions.join("\n")
+            };
+        }
+
+        /* optionString -> options array*/
+        function modalEdit() {
+            var field = model.currentField;
+            var fieldOptions = [];
+            if(field.optionString) {
+                var textArray = field.optionString.split("\n");
+                for(var t in textArray) {
+                    var textLine = textArray[t];
+                    var optionArray = textLine.split(":");
+                    var option = { label : optionArray[0], value : optionArray[1]};
+                    fieldOptions.push(option);
+                }
+                model.currentField.options = fieldOptions;
+            }
+            console.log("modal Edit : ");
+            console.log(model.currentField);
             FieldService
-                .getFieldsForForm(formId)
-                .then(function(fields) {
-                    model.fields = fields;
-                });
-            console.log(model.fields);
+                .updateField(model.formId, model.currentField._id, model.currentField)
+                .then(init);
         }
-
     }
 })();

@@ -137,21 +137,25 @@ module.exports = function(app) {
     }
 
     function updateFieldById(formId, fieldId, newField) {
-        var field = findFieldById(formId, fieldId);
-        field = newField;
-        console.log("updated field");
-        console.log(field);
-        return field;
+        console.log("update field in model", newField);
+        for(var i = 0; i < forms.length; i++) {
+            if(forms[i]._id == formId) {
+                for(var j = 0; j < forms[i].fields.length; j++) {
+                    if(forms[i].fields[j]._id == fieldId) {
+                        forms[i].fields[j].label = newField.label;
+                        forms[i].fields[j].type = newField.type;
+                        forms[i].fields[j].options = newField.options;
+                        return newField;
+                    }
+                }
+            }
+        }
+        return null;
     }
 
     function deleteFieldById(formId, fieldId) {
-
         console.log("deleted field from form" + formId + ":" + fieldId);
-
         var form = findFormById(formId);
-
-        console.log("find: " + form);
-
         for(var i = 0; i < form.fields.length; i++) {
             if(form.fields[i]._id == fieldId) {
                 form.fields.splice(i, 1);
