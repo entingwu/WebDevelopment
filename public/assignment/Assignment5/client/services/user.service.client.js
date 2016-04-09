@@ -22,7 +22,7 @@
         function createUser(user) {
             var deferred = $q.defer();
             $http
-                .post('/api/assignment/user', user)
+                .post('/api/assignment/admin/user', user)
                 .success(function(response) {
                     console.log("create user from client:" + response);
                     deferred.resolve(response);
@@ -33,7 +33,7 @@
         function deleteUserById(userId) {
             var deferred = $q.defer();
             $http
-                .delete('/api/assignment/user/' + userId)
+                .delete('/api/assignment/admin/user/' + userId)
                 .success(function(response) {
                     deferred.resolve(response);
                 });
@@ -43,7 +43,7 @@
         function updateUserById(userId, user) {
             var deferred = $q.defer();
             $http
-                .put('/api/assignment/user/' + userId, user)
+                .put('/api/assignment/admin/user/' + userId, user)
                 .success(function(response) {
                     deferred.resolve(response);
                 });
@@ -74,8 +74,9 @@
         function findUserByCredentials(username, password) {
             var deferred = $q.defer();
             $http
-                .get('/api/assignment/user?username=' + username + '&' +'password=' + password)
-                .success(function(response) {
+                .post('/api/assignment/user?username=' + username + '&' +'password=' + password)
+                .then(function(response) {
+                    console.log("login in client: "+user);
                     deferred.resolve(response);
                 });
             return deferred.promise;

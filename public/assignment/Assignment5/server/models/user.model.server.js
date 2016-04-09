@@ -1,6 +1,3 @@
-//User Mongoose API to refactor the CRUD operations so that data is inserted, found, updated and removed from MongoDB
-//var users = require("./user.mock.json");
-var Guid = require('guid');
 var q = require("q");//load a promise library
 
 // pass db and mongoose reference to model

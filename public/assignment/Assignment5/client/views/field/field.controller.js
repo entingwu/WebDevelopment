@@ -67,8 +67,7 @@
                         ]
                     };
                     break;
-                default :
-                    return;
+                default :return;
             }
             FieldService
                 .createFieldForForm(model.formId, field)
@@ -127,19 +126,16 @@
             if(hasOptions && field.optionString!=null) {
                 var textArray = field.optionString.split("\n");
                 for(var t in textArray) {
-                    var textLine = field.optionString[t];
+                    var textLine = textArray[t];
                     var optionArray = textLine.split(":");
                     var option = { label : optionArray[0], value : optionArray[1]};
                     fieldOptions.push(option);
                 }
-                field.options = fieldOptions;//update
+                model.currentField.options = fieldOptions;//update
             }
-            field.label = model.currentField.label;
-            field.placeholder = model.currentField.placeholder;
             console.log(field);
-
             FieldService
-                .updateField(model.formId, field._id, field)
+                .updateField(model.formId, model.currentField._id, model.currentField)
                 .then(init);
         }
     }
