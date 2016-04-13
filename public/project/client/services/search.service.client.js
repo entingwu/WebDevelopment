@@ -4,11 +4,13 @@
         .module("MusicPlayerApp")
         .factory("SearchService", searchService);
 
-    function searchService($http, $q, Auth)
+    function searchService($http, $q, Auth, $rootScope)
     {
         var service = {
             getBrowseCategories: getBrowseCategories,
-            getFeaturedPlaylists: getFeaturedPlaylists,
+            getBrowseCategory: getBrowseCategory,
+            getBrowseCategoryPlaylists: getBrowseCategoryPlaylists,
+            getSearchResults : getSearchResults,
             getTrack: getTrack,
 
             findArtistByName: findArtistByName,
@@ -23,29 +25,59 @@
         return service;
 
         function getBrowseCategories() {
+            Auth.getAccessToken()
+                .then(function(response) {
+                    $rootScope.token = response;
+                    var deferred = $q.defer();
+                    $http.get('https://api.spotify.com/v1' + '/browse/categories', {
+                        headers: { 'Authorization': 'Bearer ' + $rootScope.token }
+                    }).success(function(r) {
+                        console.log('got browse categories', r);
+                        deferred.resolve(r);
+                    }).error(function(err) {
+                        console.log('failed to get browse categories', err);
+                        deferred.reject(err);
+                    });
+                    return deferred.promise;
+                });
+        }
+
+        function getBrowseCategory(categoryId) {
             var deferred = $q.defer();
-            $http.get('https://api.spotify.com/v1' + '/browse/categories', {
-                headers: { 'Authorization': 'Bearer ' + Auth.getAccessToken() }
+            $http.get('https://api.spotify.com/v1' + '/browse/categories/' + categoryId, {
+                headers: { 'Authorization': 'Bearer ' + $rootScope.token }
             }).success(function(r) {
-                console.log('got browse categories', r);
+                console.log('got browse category', r);
                 deferred.resolve(r);
             }).error(function(err) {
-                console.log('failed to get browse categories', err);
+                console.log('failed to get browse category', err);
                 deferred.reject(err);
             });
             return deferred.promise;
         }
 
-        function getFeaturedPlaylists(country, timestamp) {
+        function getBrowseCategoryPlaylists(categoryId, country) {
             var deferred = $q.defer();
-            $http.get('https://api.spotify.com/v1' + '/browse/featured-playlists?country=' +
-                encodeURIComponent(country) +
-                '&timestamp=' + encodeURIComponent(timestamp), {
+            $http.get('https://api.spotify.com/v1' + '/browse/categories/' + categoryId + '/playlists?country=' + encodeURIComponent(country), {
+                headers: { 'Authorization': 'Bearer ' + $rootScope.token }
+            }).success(function(r) {
+                console.log('got browse category playlists', r);
+                deferred.resolve(r);
+            }).error(function(err) {
+                console.log('failed to get category playlists', err);
+                deferred.reject(err);
+            });
+            return deferred.promise;
+        }
+
+        function getSearchResults(query) {
+            var deferred = $q.defer();
+            $http.get('https://api.spotify.com/v1' + '/search?type=track,playlist&q=' + encodeURIComponent(query) + '&market=from_token', {
                 headers: {
-                    'Authorization': 'Bearer ' + Auth.getAccessToken()
+                    'Authorization': 'Bearer ' + $rootScope.token
                 }
             }).success(function(r) {
-                console.log('got featured playlists results', r);
+                console.log('got search results', r);
                 deferred.resolve(r);
             });
             return deferred.promise;
@@ -55,7 +87,7 @@
             var deferred = $q.defer();
             $http.get('https://api.spotify.com/v1' + '/tracks/' + encodeURIComponent(trackid), {
                 headers: {
-                    'Authorization': 'Bearer ' + Auth.getAccessToken()
+                    'Authorization': 'Bearer ' + $rootScope.token
                 }
             }).success(function(r) {
                 console.log('got track', r);
@@ -63,8 +95,6 @@
             });
             return deferred.promise;
         }
-
-
 
         /* SEARCH */
         function findArtistByName(name)

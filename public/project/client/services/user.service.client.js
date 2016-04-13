@@ -4,10 +4,10 @@
         .module("MusicPlayerApp")
         .factory("UserService", userService);
 
-    function userService($http, $q, Auth)
+    function userService($http, $q, Auth, $rootScope)
     {
         var service = {
-            getMe : getMe,
+            //getMe : getMe,
             changePlaylistDetails : changePlaylistDetails,
             getPlaylists : getPlaylists,
             getPlaylist : getPlaylist,
@@ -51,21 +51,27 @@
 
         return service;
 
-        function getMe() {
-            var deferred = $q.defer();
-            $http.get('https://api.spotify.com/v1' + '/me', {
-                headers: {
-                    'Authorization': 'Bearer ' + Auth.getAccessToken()
-                }
-            }).success(function(r) {
-                console.log('got userinfo', r);
-                deferred.resolve(r);
-            }).error(function(err) {
-                console.log('failed to get userinfo', err);
-                deferred.reject(err);
-            });
-            return deferred.promise;
-        }
+        /*function getMe() {
+            Auth.getAccessToken()
+                .then(function(response) {
+                    var token = response;
+                    var deferred = $q.defer();
+                    console.log("user.service.client: ");
+                    $http.get('https://api.spotify.com/v1' + '/users/jmperezperez', {
+                        headers: {
+                            'Authorization': 'Bearer ' + token
+                        }
+                    }).success(function(r) {
+                        console.log('got userinfo', r);
+                        deferred.resolve(r);
+                    }).error(function(err) {
+                        console.log('failed to get userinfo', err);
+                        deferred.reject(err);
+                    });
+                    return deferred.promise;
+                });
+
+        }*/
 
         function changePlaylistDetails(username, playlist, options) {
             var deferred = $q.defer();

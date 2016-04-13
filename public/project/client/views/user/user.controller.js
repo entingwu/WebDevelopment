@@ -2,45 +2,118 @@
     "use strict";
     angular
         .module("MusicPlayerApp")
-        .controller('UserController', function($scope, $routeParams, API) {
-        $scope.profileUsername = $routeParams.username;
-        $scope.data = null;
-        $scope.playlistError = null;
-        $scope.isFollowing = false;
-        $scope.isFollowHovered = false;
+        .controller('UserController', UserController);
 
-        API.getUser($scope.profileUsername).then(function(user) {
-            console.log('got user', user);
-            $scope.data = user;
-        });
+    function UserController($location, $rootScope, UserService) {
+        var model = this;
+        model.$location = $location;
+        model.deleteSong = deleteSong;
+        model.deleteArtist = deleteArtist;
+        model.deleteAlbum = deleteAlbum;
+        model.millisToMinutesAndSeconds = millisToMinutesAndSeconds;
+        model.saveAlbum = saveAlbum;
+        model.saveArtist = saveArtist;
+        model.saveSong = saveSong;
+        model.saveLocation = saveLocation;
+        model.follow = follow;
 
-        API.getPlaylists($scope.profileUsername).then(function(userplaylists){
-            console.log('got user playlists', userplaylists);
-            $scope.userplaylists = userplaylists;
-        }, function(reason){
-            console.log("got error", reason);
-            $scope.playlistError = true;
-        });
+        if ($rootScope.user != null) {
+            UserService.findUserById($rootScope.user._id).then(function (user) {
+                model.user = user;
+                init();
+            });
+        }
 
-        API.isFollowing($scope.profileUsername, "user").then(function(booleans) {
-            console.log("Got following status for user: " + booleans[0]);
-            $scope.isFollowing = booleans[0];
-        });
+        /*find current user's favorite songs, artists, and albums from database*/
+        function init() {
+            UserService.findSongsByUserId(model.user._id).then(function (songs) {
+                model.user.songs = songs;
+                console.log("found user's favorite songs");
+                console.log(model.user.songs);
+            });
 
-        $scope.follow = function(isFollowing) {
-            if (isFollowing) {
-                API.unfollow($scope.profileUsername, "user").then(function() {
-                    $scope.isFollowing = false;
-                    $scope.data.followers.total--;
-                });
-            } else {
-                API.follow($scope.profileUsername, "user").then(function() {
-                    $scope.isFollowing = true;
-                    $scope.data.followers.total++;
-                });
-            }
-        };
+            UserService.findArtistsByUserId(model.user._id).then(function (artists) {
+                model.user.artists = artists;
+                console.log("found user's favorite artists");
+                console.log(model.user.artists);
+            });
 
-    });
+            UserService.findAlbumsByUserId(model.user._id).then(function (albums) {
+                model.user.albums = albums;
+                console.log("found user's favorite albums");
+                console.log(model.user.albums);
+            });
+        }
+
+        function deleteSong(song)
+        {
+            UserService.deleteSongFromUser(model.user._id, song.id).then(function (songs) {
+                UserService
+                    .findSongsByUserId(model.user._id)
+                    .then(function (result) {
+                        model.user.songs = result;
+                    });
+                console.log("successfully deleted song");
+                console.log(model.user.songs);
+            });
+        }
+
+        function deleteArtist(artist) {
+            console.log("successfully deleted artist");
+            console.log(model.user.artists);
+            UserService.deleteArtistFromUser(model.user._id, artist.id).then(function (artists) {
+                UserService
+                    .findArtistsByUserId(model.user._id)
+                    .then(function (result) {
+                        model.user.artists = result;
+                    });
+                console.log("successfully deleted artist");
+                console.log(model.user.artists);
+            });
+        }
+
+        function deleteAlbum(album) {
+            UserService.deleteAlbumFromUser(model.user._id, album.id).then(function (albums) {
+                UserService
+                    .findAlbumsByUserId(model.user._id)
+                    .then(function (result) {
+                        model.user.albums = result;
+                    });
+                console.log("successfully deleted album");
+                console.log(model.user.albums);
+            });
+        }
+
+        function millisToMinutesAndSeconds(millis) {
+            var minutes = Math.floor(millis / 60000);
+            var seconds = ((millis % 60000) / 1000).toFixed(0);
+            return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+        }
+
+        function saveAlbum(albumId) {
+            $rootScope.album = {id: albumId};
+        }
+
+        function saveArtist(artistId) {
+            $rootScope.artist = {id: artistId};
+        }
+
+        function saveSong(songId) {
+            $rootScope.song = {id: songId};
+        }
+
+        function saveLocation() {
+            $rootScope.location = "/user";
+        }
+
+        function follow() {
+            UserService.addfollowToUser($rootScope.user._id, model.user).then(function(result) {
+                console.log("successfully added a new following to current user");
+                console.log(result);
+            });
+        }
+
+
+    }
 
 })();

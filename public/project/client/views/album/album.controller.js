@@ -87,24 +87,24 @@
                         setLikeStatus();
                     });
                 });
-        }
+        };
         model.millisToMinutesAndSeconds = function (millis) {
             var minutes = Math.floor(millis / 60000);
             var seconds = ((millis % 60000) / 1000).toFixed(0);
             return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-        }
+        };
 
         model.saveSong = function (song) {
             $rootScope.song = song;
-        }
+        };
 
         model.saveArtist = function (artist) {
             $rootScope.artist = artist;
-        }
+        };
 
         model.saveLocation = function () {
             $rootScope.location = "/album";
-        }
+        };
 
         model.addAlbumToUser = function ()
         {

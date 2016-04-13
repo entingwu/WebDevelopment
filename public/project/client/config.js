@@ -14,25 +14,15 @@
                    controller: "BrowserCategoryController",
                    controllerAs: "model"
                })
-               .when("/users/:username", {
+               .when("/user", {
                    templateUrl: "views/user/user.view.html",
                    controller: "UserController",
                    controllerAs: "model"
                })
-               .when("/users/:username/tracks", {
-                   templateUrl: "views/usertracks/usertracks.view.html",
-                   controller: "UserTracksController",
-                   controllerAs: "model"
-               })
-               .when("/users/:username/playlists/:playlist", {
-                   templateUrl: "views/playlist/playlist.view.html",
-                   controller: "PlaylistController",
-                   controllerAs: "model"
-               })
-               .when("/playqueue", {
-                   templateUrl: "views/playqueue/playqueue.view.html",
-                   controller: "PlayQueueController",
-                   controllerAs: "model"
+               .when("/userfollow", {
+                       templateUrl: "views/userfollower/userfollower.view.html",
+                       controller: "UserFollowController",
+                       controllerAs: "model"
                })
                .when("/albums/:album", {
                    templateUrl: "views/album/album.view.html",
@@ -54,13 +44,12 @@
                })
         });
 
-    app.controller('AppController', function($scope, Auth, UserService, $location) {
+    app.controller('AppController', function($rootScope, $scope, Auth, UserService, $location) {
         console.log('in AppController');
-
         console.log(location);
 
         function checkUser(redirectToLogin) {
-            UserService.getMe().then(function(userInfo) {
+            /*UserService.getMe().then(function(userInfo) {
                 Auth.setUsername(userInfo.id);
                 Auth.setUserCountry(userInfo.country);
                 if (redirectToLogin) {
@@ -71,17 +60,17 @@
                 $scope.showplayer = false;
                 $scope.showlogin = true;
                 $location.replace();
-            });
+            });*/
         }
 
-        window.addEventListener("message", function(event) {
+        /*window.addEventListener("message", function(event) {
             console.log('got postmessage', event);
             var hash = JSON.parse(event.data);
             if (hash.type == 'access_token') {
                 Auth.setAccessToken(hash.access_token, hash.expires_in || 60);
                 checkUser(true);
             }
-        }, false);
+        }, false);*/
 
         $scope.isLoggedIn = (Auth.getAccessToken() != '');
         $scope.showplayer = $scope.isLoggedIn;

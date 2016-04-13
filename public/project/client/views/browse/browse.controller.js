@@ -21,18 +21,13 @@
         }
 
         var currentDate = isoTime(new Date());
-
-        /* GET : https://api.spotify.com/v1/browse/featured-playlists */
-        SearchService.getFeaturedPlaylists(Auth.getUserCountry(), currentDate)
-            .then(function(data) {
-                $scope.featuredPlaylists = data.playlists.items;
-                $scope.message = data.message;
-            });
-
         /* Genres & Mood
            GET :  https://api.spotify.com/v1/browse/categories */
+
         SearchService.getBrowseCategories()
             .then(function(data) {
+                console.log("browseCategory: ");
+                console.log(data);
                 $scope.genresMoods = data.categories.items;
             });
 

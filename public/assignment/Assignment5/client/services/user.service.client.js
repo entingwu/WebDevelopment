@@ -76,7 +76,7 @@
             $http
                 .post('/api/assignment/user?username=' + username + '&' +'password=' + password)
                 .then(function(response) {
-                    console.log("login in client: "+user);
+                    console.log("login in client: "+ username + "," + password);
                     deferred.resolve(response);
                 });
             return deferred.promise;
