@@ -2,15 +2,20 @@
     "use strict";
     angular
         .module("MusicPlayerApp")
-        .controller('BrowseCategoryController', function($scope, UserService, $routeParams, Auth) {
+        .controller('BrowseCategoryController', function($scope, SearchService, $routeParams, Auth) {
         $scope.categoryname = '';
 
-            UserService.getBrowseCategory($routeParams.categoryid).then(function(result) {
-            $scope.categoryname = result.name;
-        });
-            UserService.getBrowseCategoryPlaylists($routeParams.categoryid, Auth.getUserCountry()).then(function(results) {
-            $scope.playlists = results.playlists.items;
-        });
+            SearchService
+                .getBrowseCategory($routeParams.categoryid)
+                .then(function(result) {
+                $scope.categoryname = result.name;
+            });
+            SearchService
+                .getBrowseCategoryPlaylists($routeParams.categoryid)
+                .then(function(results) {
+                $scope.playlists = results.playlists.items;
+                console.log($scope.playlists);
+            });
     });
 
 })();

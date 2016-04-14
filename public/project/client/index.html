@@ -14,21 +14,25 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet" type="text/css">
     <link href="views/css/style.css" rel="stylesheet">
+    <link href="views/css/login-register.css" rel="stylesheet">
     <!-- AngularJs Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular-route.min.js"></script>
     <!-- controller -->
     <script src="app.js"></script>
     <script src="config.js"></script>
+    <script src="js/login-register.js"></script>
     <script src="views/album/album.controller.js"></script>
     <script src="views/artist/artist.controller.js"></script>
     <script src="views/browse/browse.controller.js"></script>
     <script src="views/browsecategory/browsecategory.controller.js"></script>
     <script src="views/home/home.controller.js"></script>
     <script src="views/login/login.controller.js"></script>
+    <script src="views/register/register.controller.js"></script>
+    <script src="views/playlist/playlist.controller.js"></script>
     <script src="views/searchresults/searchresults.controller.js"></script>
     <script src="views/user/user.controller.js"></script>
-    <script src="views/userfollower/userfollower.controller.js"></script>
+    <script src="views/userfollow/userfollow.controller.js"></script>
     <!-- services -->
     <script src="services/auth.service.client.js"></script>
     <script src="services/search.service.client.js"></script>
@@ -38,14 +42,15 @@
     <script src="filters/timeago.js"></script>
     <!--directive-->
     <script src="directives/responsivecover.js"></script>
+    <script src="directives/playlistcover.js"></script>
 </head>
 
 <body ng-controller="AppController">
 <div class="fullview playerview" ng-show="showplayer">
-    <!--<div ng-controller="PlayerController">-->
         <div class="topgroup">
             <div class="searchbox">
-                <input type="text" ng-model="query" ng-change="loadsearch()" ng-keyup="loadsearch()" placeholder="Search..." />
+                <input ng-model="query" ng-change="loadsearch()" ng-keyup="loadsearch()" type="text"
+                       class="form-control input-sm" id="query" placeholder="Search...">
             </div>
             <div class="titlebox">
                 <a href="#/">MUSIC MOOD APPLICATION</a>
@@ -53,9 +58,8 @@
             <div class="userbox">
                 Signed in as <b><a href="#/users/{{profileUsername}}">{{profileUsername}}</a></b>
                 <a ng-click="logout()">Log out</a>
-                <li ng-show="!loginMessage" ng-class="{'active' : $location.url() == 'login'}">
-                    <a href="#/login" data-toggle="modal" data-target="#login-modal">Login</a>
-                </li>
+                <a data-toggle="modal" data-target="#loginModal">LOGIN &nbsp</a>
+                <a data-toggle="modal" data-target="#registerModal">REGISTER</a>
             </div>
         </div>
 
@@ -96,20 +100,70 @@
                 <div ng-view></div>
             </div>
         </div>
-    <!--</div>-->
-</div>
 
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog">
-        <div class="loginmodal-container">
-            <h1>Welcome to Music Mood</h1>
-            <form>
-                <input ng-model="loginUser.username" type="text" name="username" placeholder="Username">
-                <input ng-model="loginUser.password" type="password" name="password" placeholder="Password">
-                <input ng-click="model.login()" type="submit" name="login" class="login loginmodal-submit" value="Login">
-            </form>
+    <div ng-controller="LoginController" class="modal fade login" id="loginModal">
+        <div class="modal-dialog login animated">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Login with</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="box content">
+                        <div class="error"></div>
+                        <div ng-switch on="model.loginDisplayMessage">
+                            <div ng-switch-when="error" class="error"><h5>Sorry, please try again</h5></div>
+                            <div ng-switch-when="success"><h5>Successfully logged in</h5></div>
+                            <div class="form loginBox">
+                                <form method="post" accept-charset="UTF-8">
+                                    <input ng-model="loginUser.username" class="form-control" type="text" placeholder="Username">
+                                    <input ng-model="loginUser.password" class="form-control" type="password" placeholder="Password">
+                                    <input ng-click="model.login(loginUser)" class="btn btn-default btn-login" type="button" value="Login">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="forgot login-footer">
+                            <span>Looking to<a href="#/register">create an account</a>?</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+
+    <div ng-controller="RegisterController" class="modal fade login" id="registerModal">
+        <div class="modal-dialog login animated">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">Register with</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="box">
+                        <div class="content registerBox">
+                            <div class="form">
+                                <form method="post" html="{:multipart=>true}" data-remote="true" accept-charset="UTF-8">
+                                    <input ng-model="registerUser.username" class="form-control" type="text" placeholder="Username">
+                                    <input ng-model="registerUser.password" class="form-control" type="password" placeholder="Password">
+                                    <input ng-model="registerUser.password2" class="form-control" type="password" placeholder="Verify Password">
+                                    <input ng-click="model.register(registerUser)" class="btn btn-default btn-register" type="submit" value="Create account">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="forgot register-footer">
+                        <span>Already have an account?</span><a href="#/login">Login</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
+
 </body>-->
 </html>

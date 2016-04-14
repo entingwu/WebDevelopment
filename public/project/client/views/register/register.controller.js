@@ -25,7 +25,7 @@
 							  if (registerUser.username == "admin" && registerUser.password == "admin") {
 								  model.loginAsAdmin = true;
 							  }
-							  $location.url("/profile");
+							  $location.url("/user");
 							  console.log("current register user is ");
 							  console.log($rootScope.user);
 						  });
@@ -41,6 +41,8 @@
 			  console.log("All registered users are: ");
 			  console.log(users);
 		  });
+
+
 	  }
   }
 })();

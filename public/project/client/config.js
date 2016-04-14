@@ -11,7 +11,17 @@
                })
                .when("/browsecategory/:categoryid", {
                    templateUrl: "views/browsecategory/browsecategory.view.html",
-                   controller: "BrowserCategoryController",
+                   controller: "BrowseCategoryController",
+                   controllerAs: "model"
+               })
+               .when("/login", {
+                   templateUrl: "views/login/login.view.html",
+                   controller: "LoginController",
+                   controllerAs: "model"
+               })
+               .when("/register", {
+                   templateUrl: "views/register/register.view.html",
+                   controller: "RegisterController",
                    controllerAs: "model"
                })
                .when("/user", {
@@ -20,10 +30,15 @@
                    controllerAs: "model"
                })
                .when("/userfollow", {
-                       templateUrl: "views/userfollower/userfollower.view.html",
-                       controller: "UserFollowController",
-                       controllerAs: "model"
+                   templateUrl: "views/userfollow/userfollow.view.html",
+                   controller: "UserFollowController",
+                   controllerAs: "model"
                })
+               .when('/users/:username/playlists/:playlist', {
+                   templateUrl: 'views/playlist/playlist.view.html',
+                   controller: 'PlaylistController',
+                   controllerAs: "model"
+                })
                .when("/albums/:album", {
                    templateUrl: "views/album/album.view.html",
                    controller: "AlbumController",
@@ -45,43 +60,23 @@
         });
 
     app.controller('AppController', function($rootScope, $scope, Auth, UserService, $location) {
-        console.log('in AppController');
         console.log(location);
 
-        function checkUser(redirectToLogin) {
-            /*UserService.getMe().then(function(userInfo) {
-                Auth.setUsername(userInfo.id);
-                Auth.setUserCountry(userInfo.country);
-                if (redirectToLogin) {
-                    $scope.$emit('login');
-                    $location.replace();
-                }
-            }, function(err) {
-                $scope.showplayer = false;
-                $scope.showlogin = true;
-                $location.replace();
-            });*/
-        }
-
-        /*window.addEventListener("message", function(event) {
-            console.log('got postmessage', event);
-            var hash = JSON.parse(event.data);
-            if (hash.type == 'access_token') {
-                Auth.setAccessToken(hash.access_token, hash.expires_in || 60);
-                checkUser(true);
-            }
-        }, false);*/
+        $scope.loadsearch = function() {
+            console.log('search for', $scope.query);
+            $location.path('/search').search({ q: $scope.query }).replace();
+        };
 
         $scope.isLoggedIn = (Auth.getAccessToken() != '');
         $scope.showplayer = $scope.isLoggedIn;
         $scope.showlogin = !$scope.isLoggedIn;
+        $scope.focusInput = false;
 
         $scope.$on('login', function() {
             $scope.showplayer = true;
             $scope.showlogin = false;
             $location.path('/').replace().reload();
         });
-
         $scope.$on('logout', function() {
             $scope.showplayer = false;
             $scope.showlogin = true;
@@ -95,56 +90,9 @@
             }
         };
 
-        $scope.focusInput = false;
-        $scope.menuOptions = function(playlist) {
 
-            var visibilityEntry = [playlist.public ? 'Make secret' : 'Make public', function ($itemScope) {
-                API.changePlaylistDetails(playlist.username, playlist.id, {public: !playlist.public})
-                    .then(function() {
-                        playlist.public = !playlist.public;
-                    });
-            }];
 
-            var own = playlist.username === Auth.getUsername();
-            if (own) {
-                return [
-                    visibilityEntry,
-                    null,
-                    ['Rename', function ($itemScope) {
-                        playlist.editing = true;
-                        $scope.focusInput = true;
-                    }]
-                ];
-            } else {
-                return [ visibilityEntry ];
-            }
-        };
 
-        $scope.playlistNameKeyUp = function(event, playlist) {
-            if (event.which === 13) {
-                // enter
-                var newName = event.target.value;
-                API.changePlaylistDetails(playlist.username, playlist.id, {name: newName})
-                    .then(function() {
-                        playlist.name = newName;
-                        playlist.editing = false;
-                        $scope.focusInput = false;
-                    });
-            }
-
-            if (event.which === 27) {
-                // escape
-                playlist.editing = false;
-                $scope.focusInput = false;
-            }
-        };
-
-        $scope.playlistNameBlur = function(playlist) {
-            playlist.editing = false;
-            $scope.focusInput = false;
-        };
-
-        checkUser();
     });
 
 })();

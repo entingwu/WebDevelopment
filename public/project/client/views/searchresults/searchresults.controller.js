@@ -2,21 +2,23 @@
     "use strict";
     angular
         .module("MusicPlayerApp")
-        .controller('SearchResultsController', SearchController);
+        .filter('trustUrl', function ($sce) {
+            return function(url) {
+                return $sce.trustAsResourceUrl("https://embed.spotify.com/?uri=" + url);
+            };
+        })
+        .controller('SearchResultsController', SearchResultsController);
 
-    function SearchController($scope, SearchService, $location) {
+    function SearchResultsController($scope, SearchService, $location) {
         $scope.query = $location.search().q || '';
         $scope.tracks = [];
 
-        SearchService.getSearchResults($scope.query).then(function(results) {
+        SearchService.getSearchResults($scope.query)
+            .then(function(results) {
             console.log('got search results', results);
             $scope.tracks = results.tracks.items;
             $scope.playlists = results.playlists.items;
 
-            // find out if they are in the user's collection
-            var ids = $scope.tracks.map(function(track) {
-                return track.id;
-            });
         });
 
         var model = this;
@@ -27,7 +29,6 @@
         model.saveArtist = saveArtist;
         model.saveAlbum = saveAlbum;
         model.saveSong = saveSong;
-        model.millisToMinutesAndSeconds = millisToMinutesAndSeconds;
 
         function search(name) {
             if (name != null) {
@@ -78,14 +79,6 @@
             console.log(song);
             $rootScope.song= song;
         }
-
-        function millisToMinutesAndSeconds(millis) {
-            var minutes = Math.floor(millis / 60000);
-            var seconds = ((millis % 60000) / 1000).toFixed(0);
-            return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-        }
-
-
     }
 
 })();

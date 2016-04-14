@@ -25,10 +25,10 @@
         return service;
 
         function getBrowseCategories() {
+            var deferred = $q.defer();
             Auth.getAccessToken()
                 .then(function(response) {
                     $rootScope.token = response;
-                    var deferred = $q.defer();
                     $http.get('https://api.spotify.com/v1' + '/browse/categories', {
                         headers: { 'Authorization': 'Bearer ' + $rootScope.token }
                     }).success(function(r) {
@@ -38,48 +38,60 @@
                         console.log('failed to get browse categories', err);
                         deferred.reject(err);
                     });
-                    return deferred.promise;
                 });
+            return deferred.promise;
         }
 
         function getBrowseCategory(categoryId) {
             var deferred = $q.defer();
-            $http.get('https://api.spotify.com/v1' + '/browse/categories/' + categoryId, {
-                headers: { 'Authorization': 'Bearer ' + $rootScope.token }
-            }).success(function(r) {
-                console.log('got browse category', r);
-                deferred.resolve(r);
-            }).error(function(err) {
-                console.log('failed to get browse category', err);
-                deferred.reject(err);
-            });
+            Auth.getAccessToken()
+                .then(function(response) {
+                    $rootScope.token = response;
+                    $http.get('https://api.spotify.com/v1' + '/browse/categories/' + categoryId, {
+                        headers: { 'Authorization': 'Bearer ' + $rootScope.token }
+                    }).success(function(r) {
+                        console.log('got browse category', r);
+                        deferred.resolve(r);
+                    }).error(function(err) {
+                        console.log('failed to get browse category', err);
+                        deferred.reject(err);
+                    });
+                });
             return deferred.promise;
         }
 
-        function getBrowseCategoryPlaylists(categoryId, country) {
+        function getBrowseCategoryPlaylists(categoryId) {
             var deferred = $q.defer();
-            $http.get('https://api.spotify.com/v1' + '/browse/categories/' + categoryId + '/playlists?country=' + encodeURIComponent(country), {
-                headers: { 'Authorization': 'Bearer ' + $rootScope.token }
-            }).success(function(r) {
-                console.log('got browse category playlists', r);
-                deferred.resolve(r);
-            }).error(function(err) {
-                console.log('failed to get category playlists', err);
-                deferred.reject(err);
-            });
+            Auth.getAccessToken()
+                .then(function(response) {
+                    $rootScope.token = response;
+                    $http.get('https://api.spotify.com/v1' + '/browse/categories/' + categoryId + '/playlists', {
+                        headers: { 'Authorization': 'Bearer ' + $rootScope.token }
+                    }).success(function(r) {
+                        console.log('got browse category playlists', r);
+                        deferred.resolve(r);
+                    }).error(function(err) {
+                        console.log('failed to get category playlists', err);
+                        deferred.reject(err);
+                    });
+                });
             return deferred.promise;
         }
 
         function getSearchResults(query) {
             var deferred = $q.defer();
-            $http.get('https://api.spotify.com/v1' + '/search?type=track,playlist&q=' + encodeURIComponent(query) + '&market=from_token', {
-                headers: {
-                    'Authorization': 'Bearer ' + $rootScope.token
-                }
-            }).success(function(r) {
-                console.log('got search results', r);
-                deferred.resolve(r);
-            });
+            Auth.getAccessToken()
+                .then(function(response) {
+                    $rootScope.token = response;
+                    $http.get('https://api.spotify.com/v1' + '/search?type=track,playlist&q=' + encodeURIComponent(query), {
+                        headers: {
+                            'Authorization': 'Bearer ' + $rootScope.token
+                        }
+                    }).success(function(r) {
+                        console.log('got search results', r);
+                        deferred.resolve(r);
+                    });
+                });
             return deferred.promise;
         }
 

@@ -12,10 +12,6 @@
             getPlaylists : getPlaylists,
             getPlaylist : getPlaylist,
             getPlaylistTracks : getPlaylistTracks,
-            isFollowingPlaylist : isFollowingPlaylist,
-
-            getMyTracks : getMyTracks,
-            removeFromMyTracks : removeFromMyTracks,
 
             /* User */
             findUserByUsernameAndPassword : findUserByUsernameAndPassword,
@@ -136,73 +132,35 @@
 
         function getPlaylist(username, playlist) {
             var deferred = $q.defer();
-            $http.get('https://api.spotify.com/v1' + '/users/' + encodeURIComponent(username) + '/playlists/' + encodeURIComponent(playlist), {
-                headers: {
-                    'Authorization': 'Bearer ' + Auth.getAccessToken()
-                }
-            }).success(function(r) {
-                console.log('got playlists', r);
-                deferred.resolve(r);
-            });
+            Auth.getAccessToken()
+                .then(function(response) {
+                    var token = response;
+                    $http.get('https://api.spotify.com/v1' + '/users/' + encodeURIComponent(username) + '/playlists/' + encodeURIComponent(playlist), {
+                        headers: {
+                            'Authorization': 'Bearer ' + token
+                        }
+                    }).success(function(r) {
+                        console.log('got playlists', r);
+                        deferred.resolve(r);
+                    });
+                });
             return deferred.promise;
         }
 
         function getPlaylistTracks(username, playlist) {
             var deferred = $q.defer();
-            $http.get('https://api.spotify.com/v1' + '/users/' + encodeURIComponent(username) + '/playlists/' + encodeURIComponent(playlist) + '/tracks', {
-                headers: {
-                    'Authorization': 'Bearer ' + Auth.getAccessToken()
-                }
-            }).success(function(r) {
-                console.log('got playlist tracks', r);
-                deferred.resolve(r);
-            });
-            return deferred.promise;
-        }
-
-        function isFollowingPlaylist(username, playlist) {
-            var deferred = $q.defer();
-            $http.get('https://api.spotify.com/v1' + '/users/' + encodeURIComponent(username) + '/playlists/' +
-                encodeURIComponent(playlist) + '/followers/contains', {
-                params: {
-                    ids: [Auth.getUsername()]
-                },
-                headers: { 'Authorization': 'Bearer ' + Auth.getAccessToken()
-                }
-            }).success(function(r) {
-                console.log('check if playlist is followed', r);
-                deferred.resolve(r);
-            }).error(function(err) {
-                console.log('failed to check if playlist is followed', err);
-                deferred.reject(err);
-            });
-
-            return deferred.promise;
-        }
-
-        function getMyTracks() {
-            var deferred = $q.defer();
-            $http.get('https://api.spotify.com/v1' + '/me/tracks', {
-                headers: {
-                    'Authorization': 'Bearer ' + Auth.getAccessToken()
-                }
-            }).success(function(r) {
-                console.log('got user tracks', r);
-                deferred.resolve(r);
-            });
-            return deferred.promise;
-        }
-
-        function removeFromMyTracks(ids) {
-            var deferred = $q.defer();
-            $http.delete('https://api.spotify.com/v1' + '/me/tracks?ids=' + encodeURIComponent(ids.join(',')), {
-                headers: {
-                    'Authorization': 'Bearer ' + Auth.getAccessToken()
-                }
-            }).success(function(r) {
-                console.log('got response from removing from my tracks', r);
-                deferred.resolve(r);
-            });
+            Auth.getAccessToken()
+                .then(function(response) {
+                    var token = response;
+                    $http.get('https://api.spotify.com/v1' + '/users/' + encodeURIComponent(username) + '/playlists/' + encodeURIComponent(playlist) + '/tracks', {
+                        headers: {
+                            'Authorization': 'Bearer ' + token
+                        }
+                    }).success(function(r) {
+                        console.log('got playlist tracks', r);
+                        deferred.resolve(r);
+                    });
+                });
             return deferred.promise;
         }
 

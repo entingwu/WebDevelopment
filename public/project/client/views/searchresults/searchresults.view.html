@@ -1,39 +1,54 @@
 <h1>Showing results for {{query}}</h1>
-<h4>TRACKS</h4>
-<table class="tracks">
-    <thead>
-    <th></th>
-    <th>SONG</th>
-    <th>ARTIST</th>
-    <th>ALBUM</th>
-    <th>TIME</th>
-    <th>POPULARITY</th>
-    </thead>
-    <tbody>
-    <tr ng-repeat="t in tracks" ng-class="{ playing: (t.uri == currenttrack) }">
-        <td>
-            <button ng-click="toggleFromYourMusic($index)"> {{ t.inYourMusic ? '-' : '+' }} </button>
-        </td>
-        <td>
-            <a ng-click="play(t.uri)">{{t.name}}</a>
-        </td>
-        <td>
-            <a href="#/artists/{{t.artists[0].id}}">{{t.artists[0].name}}</a>
-        </td>
-        <td>
-            <a href="#/albums/{{t.album.id}}">{{t.album.name}}</a>
-        </td>
-        <td class="nowrap">
-            {{ t.duration_ms | displaytime }}
-        </td>
-        <td>
-            <div class="pop-meter">
-                <div class="pop-meter-background"></div>
-                <div class="pop-meter-overlay" style="width: {{ t.popularity }}%;"></div>
-            </div>
-        </td>
-    </tr>
-    </tbody>
-</table>
+<hr/><br/>
+<ul class="playlists" ng-show="playlists.length > 0">
+    <h4>PLAYLISTS</h4>
+    <li class="searchresult" ng-repeat="p in playlists | limitTo:9">
+        <a href="#/users/{{p.owner.id}}/playlists/{{p.id}}">
+            <responsive-cover ng-model="p.images" class="responsive-cover-playlist"></responsive-cover>
+        </a>
+        <p><a href="#/users/{{p.owner.id}}/playlists/{{p.id}}">{{p.name}}</a></p>
+    </li>
+    <hr/>
+</ul>
 
-<br/>
+<div class="col-sm-12">
+    <h4>TRACKS</h4>
+    <table class="tracks">
+        <thead>
+        <tr>
+            <th>TRACK</th>
+            <th>ARTIST</th>
+            <th>ALBUM</th>
+            <th>TIME</th>
+            <th>POPULARITY</th>
+            <th>PREVIEW</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="t in tracks">
+            <td>
+                <a href="#/song" ng-click="model.saveSong(song)">{{t.name}}</a>
+            </td>
+            <td>
+                <a href="#/artist" ng-click="model.saveArtist(artist)">
+                    {{t.artists[0].name}}</a>
+            </td>
+            <td>
+                <a href="#/album" ng-click="model.saveAlbum(song.album)">{{t.album.name}}
+                </a>
+            </td>
+            <td class="nowrap">{{ t.duration_ms | displaytime }}
+            </td>
+            <td>
+                <div class="pop-meter">
+                    <div class="pop-meter-background"></div>
+                    <div class="pop-meter-overlay" style="width: {{ t.popularity }}%;"></div>
+                </div>
+            </td>
+            <td>
+                <iframe ng-src="{{t.uri | trustUrl}}" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
