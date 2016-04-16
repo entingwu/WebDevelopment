@@ -29,15 +29,14 @@
                    controller: 'PlaylistController',
                    controllerAs: "model"
                 })
-               .when("/albums/:album", {
+               .when("/albums/:album", {//id
                    templateUrl: "views/album/album.view.html",
                    controller: "AlbumController",
                    controllerAs: "model"
                })
-               .when("/artists/:artist", {
+               .when("/artists/:artist", {//id
                    templateUrl: "views/artist/artist.view.html",
                    controller: "ArtistController",
-                   controllerAs: "model"
                })
                .when("/search", {
                    templateUrl: "views/searchresults/searchresults.view.html",
@@ -60,25 +59,14 @@
 
         $scope.logout = function() {
             console.log('do logout...');
+            $rootScope.user = null;
+            $rootScope.loginMessage = false;
+            $rootScope.loginAsAdmin = false;
+
             Auth.setUsername('');
-            Auth.setAccessToken('', 0);
+            $location.url("/");
             $scope.$emit('logout');
         };
-
-        $scope.isLoggedIn = (Auth.getAccessToken() != '');
-        $scope.showplayer = $scope.isLoggedIn;
-        $scope.showlogin = !$scope.isLoggedIn;
-        $scope.focusInput = false;
-
-        $scope.$on('login', function() {
-            $scope.showplayer = true;
-            $scope.showlogin = false;
-            $location.path('/').replace().reload();
-        });
-        $scope.$on('logout', function() {
-            $scope.showplayer = false;
-            $scope.showlogin = true;
-        });
 
         $scope.getClass = function(path) {
             if ($location.path().substr(0, path.length) == path) {

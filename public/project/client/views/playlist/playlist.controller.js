@@ -17,7 +17,6 @@
             $scope.data = null;
             $scope.total_duration = 0;
 
-
             UserService.getPlaylist($scope.username, $scope.playlist).then(function(list) {
                 console.log('got playlist', list);
                 $scope.name = list.name;
@@ -35,6 +34,20 @@
                 console.log('tot', tot);
                 $scope.total_duration = tot;
             });
+
+            $scope.saveArtist = function(artist) {
+                $rootScope.artist = artist;
+                console.log($rootScope.artist);
+            };
+
+            $scope.saveAlbum = function(album) {
+                $rootScope.album = album;
+            };
+
+            $scope.saveTrack = function(track) {
+                console.log(track);
+                $rootScope.track= track;
+            };
 
         });
 })();

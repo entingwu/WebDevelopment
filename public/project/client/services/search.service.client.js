@@ -108,7 +108,7 @@
             return deferred.promise;
         }
 
-        /* SEARCH */
+        /* SEARCH: work without token */
         function findArtistByName(name)
         {
             var deferred = $q.defer();

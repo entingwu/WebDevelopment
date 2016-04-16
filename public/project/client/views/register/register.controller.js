@@ -20,7 +20,7 @@
 						  UserService.createUser(registerUser).then(function (user) {
 							  $rootScope.user = user;
 							  $rootScope.loginMessage = true;
-							  $scope.message = "Register successfully";
+							  $('#loginModal').modal('hide');
 
 							  /*resgisted as admin*/
 							  if (registerUser.username == "admin" && registerUser.password == "admin") {
@@ -37,11 +37,6 @@
 		  }else if (registerUser.password != registerUser.password2) {
 			  $scope.alert = "Password not match";
 		  }
-
-		  UserService.findAllUsers().then(function (users){
-			  console.log("All registered users are: ");
-			  console.log(users);
-		  });
 	  }
   }
 })();

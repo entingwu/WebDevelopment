@@ -46,7 +46,7 @@
 </head>
 
 <body ng-controller="AppController">
-<div class="fullview playerview" ng-show="showplayer">
+<div class="fullview playerview">
         <div class="topgroup">
             <div class="searchbox">
                 <input ng-model="query" ng-change="loadsearch()" ng-keyup="loadsearch()" type="text"
@@ -116,20 +116,18 @@
                     <div ng-controller="LoginController" class="box">
                         <div class="content">
                             <div ng-if="message" class="alert alert-info">{{message}}</div>
-                            <div ng-if="alert" class="alert alert-danger">{{alert}}</div>
                             <div class="form loginBox">
                                 <form method="post" accept-charset="UTF-8">
                                     <input ng-model="loginUser.username" class="form-control" type="text" placeholder="Username">
                                     <input ng-model="loginUser.password" class="form-control" type="password" placeholder="Password">
                                     <input ng-click="login(loginUser)" class="btn btn-default btn-login" type="button"
-                                           value="Login" data-dismiss="modal">
+                                           value="Login">
                                 </form>
                             </div>
                         </div>
                     </div>
                     <div ng-controller="RegisterController" class="box">
                         <div class="content registerBox" style="display:none;">
-                            <div ng-if="message" class="alert alert-info">{{message}}</div>
                             <div ng-if="alert" class="alert alert-danger">{{alert}}</div>
                             <div class="form">
                                 <form method="post" html="{:multipart=>true}" data-remote="true" accept-charset="UTF-8">
@@ -137,7 +135,7 @@
                                     <input ng-model="registerUser.password" class="form-control" type="password" placeholder="Password">
                                     <input ng-model="registerUser.password2" class="form-control" type="password" placeholder="Verify Password">
                                     <input ng-click="register(registerUser)" class="btn btn-default btn-register" type="submit"
-                                           value="Create account" data-dismiss="modal">
+                                           value="Create account">
                                 </form>
                             </div>
                         </div>

@@ -26,14 +26,14 @@
         <tbody>
         <tr ng-repeat="t in tracks">
             <td>
-                <a href="#/song" ng-click="model.saveSong(song)">{{t.track.name}}</a>
+                <a ng-click="saveTrack(t.track)">{{t.track.name}}</a>
             </td>
             <td>
-                <a href="#/artist" ng-click="model.saveArtist(artist)">
-                {{t.track.artists[0].name}}</a>
+                <a href="#/artists/{{t.track.artists[0].id}}" ng-click="saveArtist(t.track.artists[0])">
+                    {{t.track.artists[0].name}}</a>
             </td>
             <td>
-                <a href="#/album" ng-click="model.saveAlbum(song.album)">{{t.track.album.name}}
+                <a href="#/albums/{{t.track.album.id}}" ng-click="saveAlbum(t.track.album)">{{t.track.album.name}}
                 </a>
             </td>
             <td class="nowrap">{{ t.track.duration_ms | displaytime }}
@@ -41,7 +41,7 @@
             <td>
                 <div class="pop-meter">
                     <div class="pop-meter-background"></div>
-                    <div class="pop-meter-overlay" style="width: {{ t.popularity }}%;"></div>
+                    <div class="pop-meter-overlay" style="width: {{t.track.popularity }}%;"></div>
                 </div>
             </td>
             <td>

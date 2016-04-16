@@ -18,6 +18,7 @@
                         $rootScope.user = user;
                         $scope.message = "success";
                         $rootScope.loginMessage = true;
+                        $('#loginModal').modal('hide');
 
                         /*login as Admin*/
                         if (user.username == "admin" && user.password == "admin") {
@@ -34,7 +35,7 @@
                         console.log("current login user is: ");
                         console.log($rootScope.user);
                     }else {
-                        $scope.alert = "error";
+                        $scope.message = "error";
                     }
                 });
         }
