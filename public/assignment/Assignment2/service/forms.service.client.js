@@ -28,7 +28,7 @@
                 userId : userId,
                 title : form.title
             };
-            forms.push(newForm);//4.	Adds new form to local array of forms
+            forms.push(newForm);//4.	Adds new forms to local array of forms
             callback(newForm);
             //console.log("create forms");
             //console.log(forms);
@@ -52,7 +52,7 @@
                 }
             }
             callback(forms);
-            //console.log("delete form");
+            //console.log("delete forms");
         }
 
         function updateFormById(formId, newForm, callback) {
@@ -60,7 +60,7 @@
                 if(forms[i]._id == formId) {
                     forms[i] = newForm;
                     callback(forms[i]);
-                    console.log("update form " + forms[i].title);
+                    console.log("update forms " + forms[i].title);
                     break;
                 }
             }

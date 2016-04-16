@@ -4,17 +4,19 @@
         .module("MusicPlayerApp")
         .controller('LoginController', LoginController);
 
-    function LoginController($rootScope, $location, UserService, $scope, Auth) {
-        var model = this;
+    function LoginController($rootScope, $location, UserService, $scope) {
         $scope.$location = $location;
         $scope.isLoggedIn = false;
-        $scope.login = function() {
+        $scope.login = login;
+
+        function login(loginUser) {
             console.log('do login...');
             UserService
-                .findUserByUsernameAndPassword($scope.loginUser.username, $scope.loginUser.password)
+                .findUserByUsernameAndPassword(loginUser.username, loginUser.password)
                 .then(function(user) {
                     if(user != null) {
-                        model.loginDisplayMessage = "success";
+                        $rootScope.user = user;
+                        $scope.message = "success";
                         $rootScope.loginMessage = true;
 
                         /*login as Admin*/
@@ -23,19 +25,18 @@
                         }
 
                         /*redirect to previous location after login, or redirect to profile page*/
-                        if(model.$location != null) {
-                            $location.url(model.$location);
+                        if($scope.$location != null) {
+                            $location.url($scope.$location);
                         }else {
                             $location.url("/profile");
                         }
+                        $location.url("/profile");
                         console.log("current login user is: ");
                         console.log($rootScope.user);
                     }else {
-                        model.loginDisplayMessage = "error";
+                        $scope.alert = "error";
                     }
                 });
-
-
-        };
+        }
     }
 })();

@@ -4,7 +4,7 @@
         .module("FormBuilderApp")
         .controller("FieldController", FieldController);
 
-    function FieldController($scope, $rootScope, FieldService) {
+    function FieldController($scope, $rootScope, FieldService, UserService) {
         var model = this;
         model.fields = [];
         model.userId = $rootScope.userId;
@@ -16,13 +16,21 @@
         model.currentField = {};//selected
 
         function init() {
-            var currentUser = $rootScope.user;
+            model.currentUser = $rootScope.user;
             model.formId = $rootScope.formId;
-
-            FieldService
-                .getFieldsForForm(model.formId)
-                .then(function (fields) {
-                    model.fields = fields;
+            UserService
+                .getCurrentUser()
+                .then(function(user) {
+                    if(user) {
+                        $rootScope.user = user;
+                        FieldService
+                            .getFieldsForForm(model.formId)
+                            .then(function (fields) {
+                                model.fields = fields;
+                            });
+                    }else {
+                        $location.url("/login");
+                    }
                 });
         }
 

@@ -29,8 +29,8 @@
             $rootScope.formId = form._id;
         };
 
-        /* a.	Uses form model and FormService to create a new form
-         * b.	Adds the new form to the array of forms*/
+        /* a.	Uses forms model and FormService to create a new forms
+         * b.	Adds the new forms to the array of forms*/
         function addForm(form) {
             if($rootScope.user != null && form != null) {
                 form.userId = model.currentUser._id;
@@ -42,31 +42,31 @@
             }
         }
 
-        /* a.	Uses the index to mark the currently selected form
-         * b.	Updates the form with the currently selected form */
+        /* a.	Uses the index to mark the currently selected forms
+         * b.	Updates the forms with the currently selected forms */
         function selectForm(form) {
             FormService
                 .findFormById(form._id)
                 .then(function(form) {
                     document.getElementById('formtitle').value = form.title;
                     model.currentForm = form;
-                    console.log("selected form");
+                    console.log("selected forms");
                 });
 
         }
 
-        /* a.	Uses form model and FormService to update the currently selected form */
+        /* a.	Uses forms model and FormService to update the currently selected forms */
         function updateForm(form) {
             if(model.currentForm != null) {//selected
                 console.log("start updating:");
                 console.log(form);
                 FormService
-                    .updateFormById(model.currentForm._id, form)//userId, form
+                    .updateFormById(model.currentForm._id, form)//userId, forms
                     .then(init);
             }
         }
 
-        /* a.	Uses the FormService to remove the form by index */
+        /* a.	Uses the FormService to remove the forms by index */
         function deleteForm(form) {
             var formId = form._id;
             FormService

@@ -4,9 +4,9 @@ var q = require("q");//load a promise library
 
 module.exports = function(db, mongoose) {
     "use strict";
-    // load form schema from form model
+    // load forms schema from forms model
     var FormSchema = require("./form.schema.server.js")(mongoose);
-    // create form from schema
+    // create forms from schema
     var FormModel = mongoose.model('FormModel', FormSchema);//Data Access Object
 
     var api = {
@@ -36,7 +36,7 @@ module.exports = function(db, mongoose) {
             if(err) {
                 deferred.reject(err);
             }else {
-                console.log("result form from model is: ");
+                console.log("result forms from model is: ");
                 console.log(result);
                 deferred.resolve(result);
             }
@@ -130,7 +130,7 @@ module.exports = function(db, mongoose) {
 
     function findAllFieldsForForm(formId) {
         var deferred = q.defer();
-        FormModel.findById(formId, function(err, form) {//return form
+        FormModel.findById(formId, function(err, form) {//return forms
             if(err) {
                 deferred.reject(err);
             }else {
@@ -171,7 +171,7 @@ module.exports = function(db, mongoose) {
                         deferred.reject(err);
                     }else {
                         deferred.resolve(field);
-                        console.log("create field in form: " + field);
+                        console.log("create field in forms: " + field);
                     }
                 });
             }
@@ -192,7 +192,7 @@ module.exports = function(db, mongoose) {
                         deferred.resolve(form.fields[i]);
                     }
                 }
-                /*form.save(function(err, doc) {
+                /*forms.save(function(err, doc) {
                     if (err) {
                         deferred.reject(err)
                     } else {
@@ -213,7 +213,7 @@ module.exports = function(db, mongoose) {
                 var fields = form.fields;
                 for(var i = 0; i < fields.length; i++) {
                     if(fields[i]._id == fieldId) {
-                        console.log("deleted field from form" + formId + ":" + fields[i]);
+                        console.log("deleted field from forms" + formId + ":" + fields[i]);
                         form.fields.splice(i, 1);
                         form.save(function(err, form) {
                             deferred.resolve(form.fields);

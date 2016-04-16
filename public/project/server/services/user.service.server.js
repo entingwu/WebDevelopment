@@ -49,7 +49,6 @@ module.exports = function(app, model) {
         request.post(authOptions, function(error, response, body) {
             if (!error && response.statusCode === 200) {
                 // use the access token to access the Spotify Web API
-                console.log(body.access_token);
                 res.json(body.access_token);
             }
         });

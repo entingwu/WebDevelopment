@@ -7,7 +7,7 @@ module.exports = function(db, mongoose) {
     var UserSchema = require("./user.schema.server.js")(mongoose);
 
     //2. create user model(data access object, high level api) from schema. To use mongoose raw database operations.
-    var UserModel = mongoose.model('UserModel', UserSchema);//'User' default collection name
+    var UserModel = mongoose.model('AdminUserModel', UserSchema);//'User' default collection name
 
     var api = {
         //CRUD
@@ -50,11 +50,17 @@ module.exports = function(db, mongoose) {
             {_id : userId},
             {$set : user},
             function(err, user) {
-                UserModel.findOne({
-                    _id : userId
-                },function(err, user) {
-                    deferred.resolve(user);
-                });
+                if(err) {
+                    deferred.reject(err);
+                }else {
+                    UserModel.findOne({_id : userId}, function(err, user) {
+                        if(err) {
+                            deferred.reject(err);
+                        }else {
+                            deferred.resolve(user);
+                        }
+                    });
+                }
             }
         );
         return deferred.promise;
@@ -103,9 +109,7 @@ module.exports = function(db, mongoose) {
     /* findUserByUsername(username) - returns a single user | null */
     function findUserByUsername(username) {
         var deferred = q.defer();
-        UserModel.findOne({
-            username : username
-        },function(err, user){
+        UserModel.findOne({username : username},function(err, user){
             if(err) {
                 deferred.reject(err);
             }else {

@@ -111,17 +111,17 @@
 //		{
 //			var deferred = $q.defer();
 //			$http
-//				.get('/api/assignment/user/' + userId + '/form')
+//				.get('/api/assignment/user/' + userId + '/forms')
 //				.success(function(response) {
 //					deferred.resolve(response);	
 //				});						 
 //			return deferred.promise;
 //		}
-//		function createFormForUser(userId, form)
+//		function createFormForUser(userId, forms)
 //		{
 //			var deferred = $q.defer();
 //			$http
-//				.post('/api/assignment/user/' + userId + '/form', form)
+//				.post('/api/assignment/user/' + userId + '/forms', forms)
 //				.success(function(response) {
 //					deferred.resolve(response);
 //				});						 

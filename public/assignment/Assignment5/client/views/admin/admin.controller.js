@@ -4,16 +4,21 @@
         .module("FormBuilderApp")
         .controller("AdminController", AdminController);
 
-    function AdminController($location, $rootScope, UserService) {
+    function AdminController($scope, $location, $rootScope, UserService) {
         var model = this;
         model.$location = $location;
 
         function init() {
             UserService
                 .findAllUsers()
-                .then(function(response) {
-                    model.users = response;
-                });
+                .then(
+                    function(response) {
+                        model.users = response;
+                    },
+                    function(err) {
+                        model.error = err;
+                    }
+                );
         }
         init();
 
@@ -42,6 +47,11 @@
             if(model.currentUser != null) {
                 console.log("start updating:");
                 console.log(user);
+                var roleText = user.roles.toString();
+                if(roleText != "" && roleText != null) {
+                    var roleArray = roleText.split(",");
+                    user.roles = roleArray;
+                }
                 UserService
                     .updateUserById(model.currentUser._id, user)
                     .then(init);
@@ -53,5 +63,15 @@
                 .deleteUserById(user._id)
                 .then(init);
         }
+
+        $scope.order = order;
+
+        function order(predicate) {
+            $scope.predicate = predicate;
+            $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
+            model.users = orderBy(model.users, predicate, $scope.reverse);
+        }
+
+        $scope.order('username', true);
     }
 })();

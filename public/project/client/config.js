@@ -14,18 +14,8 @@
                    controller: "BrowseCategoryController",
                    controllerAs: "model"
                })
-               .when("/login", {
-                   templateUrl: "views/login/login.view.html",
-                   controller: "LoginController",
-                   controllerAs: "model"
-               })
-               .when("/register", {
-                   templateUrl: "views/register/register.view.html",
-                   controller: "RegisterController",
-                   controllerAs: "model"
-               })
-               .when("/user", {
-                   templateUrl: "views/user/user.view.html",
+               .when("/profile", {
+                   templateUrl: "views/profile/profile.view.html",
                    controller: "UserController",
                    controllerAs: "model"
                })
@@ -59,12 +49,20 @@
                })
         });
 
-    app.controller('AppController', function($rootScope, $scope, Auth, UserService, $location) {
-        console.log(location);
+    app.controller('AppController', function($rootScope, $scope, $location, Auth, UserService) {
+        $scope.$location = $location;
+        console.log($scope.$location);
 
         $scope.loadsearch = function() {
             console.log('search for', $scope.query);
             $location.path('/search').search({ q: $scope.query }).replace();
+        };
+
+        $scope.logout = function() {
+            console.log('do logout...');
+            Auth.setUsername('');
+            Auth.setAccessToken('', 0);
+            $scope.$emit('logout');
         };
 
         $scope.isLoggedIn = (Auth.getAccessToken() != '');

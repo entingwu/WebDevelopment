@@ -1,10 +1,10 @@
 module.exports = function(app, formModel) {
-    app.get('/api/assignment/user/:userId/form', getFormByUserId);//1. userId
-    app.get('/api/assignment/form/:formId', getFormByFormId);//2. formId
-    app.get('/api/assignment/form', getForms);//3. forms
-    app.post('/api/assignment/user/:userId/form', createForm);//4. create
-    app.put('/api/assignment/form/:formId', updateForm);//5. update
-    app.delete('/api/assignment/form/:formId', deleteForm);//6. delete
+    app.get('/api/assignment/user/:userId/forms', getFormByUserId);//1. userId
+    app.get('/api/assignment/forms/:formId', getFormByFormId);//2. formId
+    app.get('/api/assignment/forms', getForms);//3. forms
+    app.post('/api/assignment/user/:userId/forms', createForm);//4. create
+    app.put('/api/assignment/forms/:formId', updateForm);//5. update
+    app.delete('/api/assignment/forms/:formId', deleteForm);//6. delete
 
     //1. userId: findAllFormsForUser
     function getFormByUserId(req, res) {
@@ -42,7 +42,7 @@ module.exports = function(app, formModel) {
             });
     }
 
-    //4. createForm : createFormForUser(userId, form)
+    //4. createForm : createFormForUser(userId, forms)
     function createForm(req, res) {
         var user_id = req.params.userId;
         var form = req.body;
@@ -50,7 +50,7 @@ module.exports = function(app, formModel) {
             .createFormForUser(user_id, form)
             .then(
                 function(form) {
-                    console.log("create form in service.server : ");
+                    console.log("create forms in service.server : ");
                     console.log(form);
                     res.json(form);
                 },
@@ -68,7 +68,7 @@ module.exports = function(app, formModel) {
             .updateFormById(form_id, form)
             .then(
                 function(newForm) {
-                    console.log("update form in service.server : ");
+                    console.log("update forms in service.server : ");
                     console.log(newForm);
                     res.json(newForm);
                 },

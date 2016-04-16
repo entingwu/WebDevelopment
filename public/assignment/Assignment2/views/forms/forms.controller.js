@@ -22,46 +22,46 @@
         $scope.selectForm = selectForm;
 
         /* Event Handlers Implementations */
-        /* a.	Uses form model and FormService to create a new form
-         * b.	Adds the new form to the array of forms*/
+        /* a.	Uses forms model and FormService to create a new forms
+         * b.	Adds the new forms to the array of forms*/
         function addForm() {
-            //function createFormForUser(userId, form, callback)
+            //function createFormForUser(userId, forms, callback)
             FormService.createFormForUser(currentUser._id, $scope.form, function(newform) {
                 $scope.forms.push(newform);
-                console.log("add form");
+                console.log("add forms");
                 //console.log($scope.forms);
             });
         }
 
-        /* a.	Uses form model and FormService to update the currently selected form */
+        /* a.	Uses forms model and FormService to update the currently selected forms */
         function updateForm() {
             $scope.currentForm.title = $scope.form.title;
             console.log("start updating:" + $scope.currentForm.title);
             FormService.updateFormById($scope.currentForm._id, $scope.currentForm, function(form) {
-                console.log("update form");
+                console.log("update forms");
                 console.log(form);
             });
             $scope.currentForm = null;
         }
 
-        /* a.	Uses the FormService to remove the form by index */
+        /* a.	Uses the FormService to remove the forms by index */
         function deleteForm(index) {
             var formId = $scope.forms[index]._id;
             //function deleteFormById(formId, callback)
             FormService.deleteFormById(formId,function(forms){
-                console.log("delete form");
+                console.log("delete forms");
                 console.log($scope.forms);
                 getForms();
             });
         }
 
-        /* a.	Uses the index to mark the currently selected form
-         * b.	Updates the form with the currently selected form */
+        /* a.	Uses the index to mark the currently selected forms
+         * b.	Updates the forms with the currently selected forms */
         function selectForm(index) {
             document.getElementById('formtitle').value = $scope.forms[index].title;
             $scope.currentForm = $scope.forms[index];
             $scope.isSelected = true;
-            console.log("current form is:");
+            console.log("current forms is:");
             //console.log($scope.currentForm);
         }
 

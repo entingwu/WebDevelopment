@@ -8,8 +8,6 @@
         $scope.$location = $location;
         $scope.login = login;
 
-
-
         function login() {
             UserService
                 .findUserByCredentials($scope.loginUser.username, $scope.loginUser.password)

@@ -4,21 +4,57 @@
         .module("FormBuilderApp")
         .factory("UserService", userService);
 
-    function userService($http, $q, $rootScope) {//angular q
+    function userService($http, $q) {//angular q
         var service = {
+            loginUser : loginUser,
+            logoutUser : logoutUser,
+            register : register,
+
             findUserByUsername : findUserByUsername,
             findUserById : findUserById,
             findUserByCredentials : findUserByCredentials,
             findAllUsers : findAllUsers,
+
             createUser : createUser,
             deleteUserById : deleteUserById,
             updateUserById : updateUserById,
-            setUser : setUser,
-            getUser : getUser
+            getCurrentUser : getCurrentUser
         };
         return service;
 
-        //CRUD : return the request
+        function loginUser(user) {
+            var deferred = $q.defer();
+            $http
+                .post('/api/assignment/login', user)
+                .then(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function logoutUser() {
+            var deferred = $q.defer();
+            $http
+                .post('/api/assignment/logout')
+                .then(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        //REGISTER : app.post('/api/assignment/register',auth,   register);
+        function register(user) {
+            var deferred = $q.defer();
+            $http
+                .post('/api/assignment/register', user)
+                .then(function(response) {
+                    console.log("register user from client:" + response);
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        //ADMIN : return the request
         function createUser(user) {
             var deferred = $q.defer();
             $http
@@ -39,7 +75,8 @@
                 });
             return deferred.promise;
         }
-        //PROFILE
+
+        //PROFILE: app.put('/api/assignment/admin/user/:userId',   auth,    updateUser);//9
         function updateUserById(userId, user) {
             var deferred = $q.defer();
             $http
@@ -50,27 +87,29 @@
             return deferred.promise;
         }
 
-        //FIND : go to server to find, return the promise
+        //app.get('/api/assignment/admin/user/:username', auth,    getUserByUsername);
         function findUserByUsername(username) {
             var deferred = $q.defer();
             $http
-                .get('/api/assignment/user?username=' + username)
+                .get('/api/assignment/admin/user?username=' + username)
                 .success(function(response) {
                     deferred.resolve(response);
                 });
             return deferred.promise;
         }
 
+        //app.get('/api/assignment/admin/user/:userId',   auth,    getUserById);//7
         function findUserById(userId) {
             var deferred = $q.defer();
             $http
-                .get('/api/assignment/user/' + userId)
+                .get('/api/assignment/admin/user/' + userId)
                 .success(function(response) {
                     deferred.resolve(response);
                 });
             return deferred.promise;
         }
 
+        //app.post('/api/assignment/user', passport.authenticate('local'), login);//1. login
         function findUserByCredentials(username, password) {
             var deferred = $q.defer();
             $http
@@ -82,10 +121,11 @@
             return deferred.promise;
         }
 
+        //app.get('/api/assignment/admin/user',           auth,    getAllUsers);//6
         function findAllUsers() {
             var deferred = $q.defer();
             $http
-                .get('/api/assignment/user')
+                .get('/api/assignment/admin/user')
                 .success(function(response) {
                     console.log("find all users from client :" + response);
                     deferred.resolve(response);
@@ -93,11 +133,15 @@
             return deferred.promise;
         }
 
-        function setUser(user) {
-            $rootScope.user = user;
+        function getCurrentUser() {
+            var deferred = $q.defer();
+            $http
+                .get('/api/assignment/loggedin')
+                .then(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
         }
-        function getUser() {
-            return $rootScope.user;
-        }
+
     }
 })();

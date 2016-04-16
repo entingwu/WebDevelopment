@@ -4,26 +4,47 @@
         <div ng-controller="AdminController">
             <h1 class="page-header">Admin</h1>
             <h3>Users</h3>
-
+            <div ng-if="error" class="alert alert-danger">{{error}}</div>
             <div class="table-responsive">
                 <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span> Username</th>
+                        <th ng-click="order('username')">
+                            <span class="glyphicon glyphicon-triangle-bottom sortorder"
+                                  ng-show="predicate === 'username'" ng-class="{reverse:reverse}" aria-hidden="true"></span> Username
+                        </th>
                         <th>Password</th>
-                        <th><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span> First Name</th>
-                        <th><span class="glyphicon glyphicon-triangle-bottom" aria-hidden="true"></span> Last Name</th>
+                        <th ng-click="order('firstname')">
+                            <span class="glyphicon glyphicon-triangle-bottom sortorder"
+                                  ng-show="predicate === 'firstname'" ng-class="{reverse:reverse}" aria-hidden="true"></span> First Name
+                        </th>
+                        <th ng-click="order('lastname')">
+                            <span class="glyphicon glyphicon-triangle-bottom sortorder"
+                                  ng-show="predicate === 'lastname'" ng-class="{reverse:reverse}" aria-hidden="true"></span> Last Name
+                        </th>
                         <th>Roles</th>
-                        <th>Actions</th>
+                        <th>
+                            Actions
+                        </th>
                     </tr>
                     </thead>
                     <tbody>
                     <tr>
-                        <td><input ng-model="model.user.username" type="text" id="username" class="form-control" placeholder="username"></td>
-                        <td><input ng-model="model.user.password" type="password" id="password" class="form-control" placeholder="password"></td>
-                        <td><input ng-model="model.user.firstName" type="text" id="firstName" class="form-control" placeholder="First Name"></td>
-                        <td><input ng-model="model.user.lastName" type="text" id="lastName" class="form-control" placeholder="Last Name"></td>
-                        <td><input ng-model="model.user.roles" type="text" id="roles" class="form-control" placeholder="role1, role2"></td>
+                        <td>
+                            <input ng-model="model.user.username" type="text" id="username" class="form-control" placeholder="username">
+                        </td>
+                        <td>
+                            <input ng-model="model.user.password" type="password" id="password" class="form-control" placeholder="password">
+                        </td>
+                        <td>
+                            <input ng-model="model.user.firstName" type="text" id="firstName" class="form-control" placeholder="First Name">
+                        </td>
+                        <td>
+                            <input ng-model="model.user.lastName" type="text" id="lastName" class="form-control" placeholder="Last Name">
+                        </td>
+                        <td>
+                            <input ng-model="model.user.roles" type="text" id="roles" class="form-control" placeholder="role1, role2">
+                        </td>
                         <td>
                             <div>
                                 <a ng-click="model.addUser(model.user)" class="btn btn-primary btn-sm">
@@ -35,7 +56,7 @@
                             </div>
                         </td>
                     </tr>
-                    <tr ng-repeat="user in model.users" class="ng-scope">
+                    <tr ng-repeat="user in model.users | orderBy:predicate:reverse" class="ng-scope">
                         <td>{{user.username}}</td>
                         <td>{{user.password}}</td>
                         <td>{{user.firstName}}</td>

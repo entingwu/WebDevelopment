@@ -8,33 +8,37 @@
                     templateUrl: "views/home/home.view.html"
                 })
                 .when("/login",{
-                    templateUrl: "views/login/login.view.html",
+                    templateUrl: "views/users/login.view.html",
                     controller: "LoginController"
                 })
                 .when("/profile",{
-                    templateUrl: "views/profile/profile.view.html",
+                    templateUrl: "views/users/profile.view.html",
                     controller: "ProfileController"
                 })
                 .when("/register",{
-                    templateUrl: "views/register/register.view.html",
+                    templateUrl: "views/users/register.view.html",
                     controller: "RegisterController"
                 })
-                .when("/form",{
-                    templateUrl: "views/form/form.view.html",
+                .when("/admin",{
+                    templateUrl: "views/admin/admin.view.html",
+                    controller: "AdminController"
+                })
+                .when("/forms",{
+                    templateUrl: "views/forms/form.view.html",
                     controller: "FormController"
                 })
                 .when("/field",{
-                    templateUrl: "views/field/field.view.html",
+                    templateUrl: "views/forms/field.view.html",
                     controller: "FieldController",
                     controllerAs: "model"
                 })
                 .when("/user",{
-                    templateUrl: "views/field/field.view.html",
+                    templateUrl: "views/forms/field.view.html",
                     controller: "FieldController",
                     controllerAs : "model"
                 })
                 .when("/user/:userId/form/:formId/fields",{
-                    templateUrl: "views/field/field.view.html",
+                    templateUrl: "views/forms/field.view.html",
                     controller: "FieldController",
                     controllerAs : "model"
                 })

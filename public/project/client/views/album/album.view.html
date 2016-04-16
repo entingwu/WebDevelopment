@@ -1,79 +1,65 @@
-<div ng-controller="AlbumController">
-<div class="col-sm-12">
-    <div class="col-sm-4">
-        <img src="{{model.album.images[0].url}}" class="img-thumbnail" alt="{{album.name}} image" width="200" height="200">
+<header>
+    <div class="cover">
+        <responsive-cover ng-model="data.images"></responsive-cover>
     </div>
-    <div class="col-sm-8">
-        <h2>{{model.album.name}}</h2>
-        <ul>
-            <li>Polularity:
-                <ul class="list-inline">
-                    <li ng-repeat="n in [] | range: model.album.popularity">
-                        <span class="glyphicon glyphicon-heart"></span>
-                    </li>
-                </ul>
-            </li>
-            <li>Artist: </li>
-            <ul ng-repeat="artist in model.album.artists">
-                <li>{{artist.name}}</li>
-            </ul>
-            <li>Release data: {{model.album.release_date}}</li>
-            <li>Total songs: {{model.album.tracks.items.length}}</li>
-        </ul>
-    </div>
-    <div ng-show="loginMessage">
-        <div ng-show="!model.likeStatus">
-            <button class="btn-info btn pull-right" ng-click="model.addAlbumToUser()"><a href="#/user">like</a></button>
-        </div>
-        <div ng-show="model.likeStatus">
-            <button class="btn-info btn pull-right" ng-click="model.deleteAlbumFromUser()"><a href="#/user">unlike</a></button>
-        </div>
-    </div>
-    <div ng-show="!loginMessage">
-        <button class="btn-info btn pull-right" ng-click="model.saveLocation()"><a href="#/login">like</a></button>
-    </div>
-</div>
 
-<div class="col-sm-12">
-    <hr>
-    <h2>Songs</h2>
-    <table class="table table-striped table-bordered table-hover table-condensed">
-        <thead>
-        <tr>
-            <th>
-                Song Name
-            </th>
-            <th>
-                Artist Name
-            </th>
-            <th>
-                Time Duration
-            </th>
-            <th>
-                Preview
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="song in model.songs">
-            <td>
-                <a href="#/song" ng-click="model.saveSong(song)">
-                    {{song.name}}
-                </a>
-            </td>
-            <td>
-                <ul ng-repeat="artist in song.artists">
-                    <li><a href="#/artist" ng-click="model.saveArtist(artist)">{{artist.name}}</a></li>
-                </ul>
-            </td>
-            <td>
-                {{model.millisToMinutesAndSeconds(song.duration_ms)}}
-            </td>
-            <td>
-                <iframe ng-src="{{song.uri | trustUrl}}" frameborder="0" allowtransparency="true"></iframe>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <h4 ng-show="data.album_type == 'single'">Single</h4>
+    <h4 ng-show="data.album_type == 'album'">Album</h4>
+    <h4 ng-show="data.album_type == 'compilation'">Compilation</h4>
+    <h1>{{data.name}}</h1>
+
+    <div class="buttons">
+        <a ng-click="playall()" class="button green">PLAY ALL</a>
+    </div>
+</header>
+
+<hr/>
+<p>
+    By <a href="#/artists/{{data.artists[0].id}}">{{data.artists[0].name}}</a>
+    &middot;
+    {{release_year}}
+    &middot;
+    {{data.tracks.total}} Songs
+    &middot;
+    Total {{total_duration | displaytime}}
+</p>
+<hr/>
+<br/>
+
+<div class="discs">
+    <div ng-repeat="d in discs">
+        <p ng-show="num_discs > 1">
+            CD {{ d.disc_number }}
+        </p>
+        <table class="tracks">
+            <thead>
+            <th>#</th>
+            <th></th>
+            <th>TRACK</th>
+            <th>TIME</th>
+            <th>POPULARITY</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="t in tracks" ng-class="{ playing: (t.uri == currenttrack) }">
+                <td>{{t.track_number}}</td>
+                <td>
+                    <button ng-click="toggleFromYourMusic($index)"> {{ t.inYourMusic ? '-' : '+' }} </button>
+                </td>
+                <td>
+                    <a ng-click="play(t.uri)">{{t.name}}</a>
+                </td>
+                <td>{{t.duration_ms | displaytime}}</td>
+                <td>
+                    <div class="pop-meter">
+                        <div class="pop-meter-background"></div>
+                        <div class="pop-meter-overlay" style="width: {{ t.popularity }}%;"></div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
-</div>
+<br/>
+
+<hr/>
