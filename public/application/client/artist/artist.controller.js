@@ -80,6 +80,17 @@
 				});
 			}
 		}
+
+		model.addArtistToUser = function ()
+		{
+			console.log("add artist to current user: ");
+			console.log($rootScope.user);
+			UserService.addArtistToUser($rootScope.user._id, model.artist)
+				.then(function(user) {
+					console.log("successfully added song to user");
+					console.log(user);
+				})
+		}
 		
 		model.deleteArtistFromUser = function() {
 			UserService.deleteArtistFromUser($rootScope.user._id, model.artist.id)
@@ -101,17 +112,6 @@
 		
 		model.saveLocation = function () {
 			$rootScope.location = "/artist";
-		}
-		
-		model.addArtistToUser = function ()
-		{
-			console.log("add artist to current user: ");
-			console.log($rootScope.user);
-			UserService.addArtistToUser($rootScope.user._id, model.artist)
-				.then(function(user) {
-				console.log("successfully added song to user");
-				console.log(user);
-			})
 		}
 		
 		model.addComment = function (content)

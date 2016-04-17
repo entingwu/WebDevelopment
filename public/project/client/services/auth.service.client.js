@@ -10,7 +10,6 @@
 			getUsername : getUsername,
 			setUsername : setUsername,
 			getUserCountry : getUserCountry,
-			setUserCountry : setUserCountry
 		};
 		return service;
 
@@ -41,12 +40,7 @@
 		}
 
 		function getUserCountry() {
-			var userCountry = localStorage.getItem('mp_usercountry', 'US');
-			return userCountry;
-		}
-
-		function setUserCountry(userCountry) {
-			localStorage.setItem('mp_usercountry', userCountry);
+			return 'US';
 		}
 	}
 

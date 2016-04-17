@@ -1,5 +1,5 @@
+"use strict";
 (function() {
-    "use strict";
     angular
         .module("MusicPlayerApp")
         .controller('UserController', UserController);
@@ -26,7 +26,7 @@
 
         /*find current user's favorite songs, artists, and albums from database*/
         function init() {
-            UserService.findSongsByUserId(model.user._id).then(function (songs) {
+            UserService.findTracksByUserId(model.user._id).then(function (songs) {
                 model.user.songs = songs;
                 console.log("found user's favorite songs");
                 console.log(model.user.songs);
@@ -47,9 +47,9 @@
 
         function deleteSong(song)
         {
-            UserService.deleteSongFromUser(model.user._id, song.id).then(function (songs) {
+            UserService.deleteTrackFromUser(model.user._id, song.id).then(function (songs) {
                 UserService
-                    .findSongsByUserId(model.user._id)
+                    .findTracksByUserId(model.user._id)
                     .then(function (result) {
                         model.user.songs = result;
                     });

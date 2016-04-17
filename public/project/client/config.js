@@ -16,7 +16,7 @@
                })
                .when("/profile", {
                    templateUrl: "views/profile/profile.view.html",
-                   controller: "UserController",
+                   controller: "ProfileController",
                    controllerAs: "model"
                })
                .when("/userfollow", {
@@ -37,6 +37,7 @@
                .when("/artists/:artist", {//id
                    templateUrl: "views/artist/artist.view.html",
                    controller: "ArtistController",
+                   controllerAs: "model"
                })
                .when("/search", {
                    templateUrl: "views/searchresults/searchresults.view.html",
@@ -48,9 +49,10 @@
                })
         });
 
-    app.controller('AppController', function($rootScope, $scope, $location, Auth, UserService) {
+    app.controller('AppController', function($rootScope, $scope, $location, UserService, Auth) {
         $scope.$location = $location;
         console.log($scope.$location);
+        $rootScope.loginMessage = false;
 
         $scope.loadsearch = function() {
             console.log('search for', $scope.query);

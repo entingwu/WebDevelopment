@@ -74,30 +74,16 @@
                     <ul class="menuitems">
                         <li><a href="#/" ng-class="getClass('/')">Browse</a></li>
                     </ul>
-                    <b><a href="#/me">YOUR MUSIC</a></b>
+                    <b><a href="#/">YOUR MUSIC</a></b>
                     <ul class="menuitems">
                         <li><a href="#/users/{{username}}/tracks" ng-class="getClass('/users/{{username}}/tracks')">Songs</a></li>
                     </ul>
                     <b><a href="#/me">PLAYLISTS</a></b>
-                    <ul class="menuitems">
-                        <li ng-repeat="pl in playlists track by pl.id" ng-context-menu="menuOptions(pl)" ng-class="getClass('/users/{{pl.username}}/playlists/{{pl.id}}')">
-                            <a href="#/users/{{pl.username}}/playlists/{{pl.id}}" ng-if="!pl.editing">
-                                {{pl.name}}
-                            </a>
-                            <input focus-me="focusInput" ng-blur="playlistNameBlur(pl)" ng-if="pl.editing" class="edit" type="text" value="{{pl.name}}" name="title" ng-keyup="playlistNameKeyUp($event, pl)">
+                    <ul class="menuitems" ng-show="loginMessage">
+                        <li ng-repeat="t in favoriteTracks">
+                            <a ng-click="saveTrack(t)">{{t.name}}</a>
                         </li>
                     </ul>
-                </div>
-                <div class="preview">
-                    <a href="#/albums/{{trackdata.album.id}}">
-                        <responsive-cover ng-model="trackdata.album.images"></responsive-cover>
-                    </a>
-                    <p>
-                        <b>{{trackdata.name}}</b>
-                        <a href="#/artists/{{trackdata.artists[0].id}}">
-                            {{trackdata.artists[0].name}}
-                        </a>
-                    </p>
                 </div>
             </div>
             <div class="mainview">

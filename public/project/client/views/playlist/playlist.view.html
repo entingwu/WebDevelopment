@@ -1,53 +1,65 @@
-<header>
-    <playlist-cover ng-model="data" width="200"></playlist-cover>
-    <h4 ng-show="data.collaborative">COLLABORATIVE PLAYLIST</h4>
-    <h4 ng-hide="data.collaborative">PLAYLIST</h4>
-    <h1>{{data.name}}</h1>
-    <p ng-bind-html="playlistDescription"></p>
-    <div class="follower-count">{{data.followers.total | number}} followers</div>
-</header>
-<hr/>
-<p>Created by: <a href="#/users/{{data.owner.id}}">{{data.owner.id}}</a> &middot; {{data.tracks.total}} songs &middot; {{ total_duration | displaytime }}</p>
-<hr/><br/>
+<div ng-controller="PlaylistController">
+    <header>
+        <playlist-cover ng-model="data" width="200"></playlist-cover>
+        <h4 ng-show="data.collaborative">COLLABORATIVE PLAYLIST</h4>
+        <h4 ng-hide="data.collaborative">PLAYLIST</h4>
+        <h1>{{data.name}}</h1>
+        <p ng-bind-html="playlistDescription"></p>
+        <div class="follower-count">{{data.followers.total | number}} followers</div>
+    </header>
+    <hr/>
+    <p>Created by:
+        <a href="#/users/{{data.owner.id}}">{{data.owner.id}}</a>
+        &middot; {{data.tracks.total}} songs &middot; Total {{ total_duration | displaytime }}
+    </p>
+    <hr/><br/>
 
-<div class="col-sm-12">
-    <h2>TRACKS</h2>
-    <table class="tracks">
-        <thead>
-        <tr>
-            <th>TRACK</th>
-            <th>ARTIST</th>
-            <th>ALBUM</th>
-            <th>TIME</th>
-            <th>POPULARITY</th>
-            <th>PREVIEW</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="t in tracks">
-            <td>
-                <a ng-click="saveTrack(t.track)">{{t.track.name}}</a>
-            </td>
-            <td>
-                <a href="#/artists/{{t.track.artists[0].id}}" ng-click="saveArtist(t.track.artists[0])">
-                    {{t.track.artists[0].name}}</a>
-            </td>
-            <td>
-                <a href="#/albums/{{t.track.album.id}}" ng-click="saveAlbum(t.track.album)">{{t.track.album.name}}
-                </a>
-            </td>
-            <td class="nowrap">{{ t.track.duration_ms | displaytime }}
-            </td>
-            <td>
-                <div class="pop-meter">
-                    <div class="pop-meter-background"></div>
-                    <div class="pop-meter-overlay" style="width: {{t.track.popularity }}%;"></div>
-                </div>
-            </td>
-            <td>
-                <iframe ng-src="{{t.track.uri | trustUrl}}" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="col-sm-12">
+        <h4>TRACKS</h4>
+        <table class="tracks">
+            <thead>
+            <tr>
+                <th></th>
+                <th>TRACK</th>
+                <th>ARTIST</th>
+                <th>ALBUM</th>
+                <th>TIME</th>
+                <th></th>
+                <th>POPULARITY</th>
+                <th>PREVIEW</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="t in tracks">
+                <td>
+                    <a class="button-xs button-add" ng-show="user" ng-click="toggleFromYourMusic($index)">
+                        {{ t.track.like ? '-' : '+' }}
+                    </a>
+                </td>
+                <td>
+                    <a ng-click="saveTrack(t.track)">{{t.track.name}}</a>
+                </td>
+                <td>
+                    <a href="#/artists/{{t.track.artists[0].id}}" ng-click="saveArtist(t.track.artists[0])">
+                        {{t.track.artists[0].name}}
+                    </a>
+                </td>
+                <td>
+                    <a href="#/albums/{{t.track.album.id}}" ng-click="saveAlbum(t.track.album)">{{t.track.album.name}}</a>
+                </td>
+                <td class="nowrap">{{ t.track.duration_ms | displaytime }}</td>
+                <td></td>
+                <td>
+                    <div class="pop-meter">
+                        <div class="pop-meter-background"></div>
+                        <div class="pop-meter-overlay" style="width: {{t.track.popularity }}%;"></div>
+                    </div>
+                </td>
+                <td>
+                    <iframe ng-src="{{t.track.uri | trustUrl}}" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

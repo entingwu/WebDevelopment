@@ -1,5 +1,5 @@
+"use strict";
 (function() {
-    "use strict";
     angular
         .module("MusicPlayerApp")
         .filter('trustUrl', function ($sce) {
@@ -9,64 +9,56 @@
         })
         .controller('SearchResultsController', SearchResultsController);
 
-    function SearchResultsController($scope, SearchService, $location) {
+    function SearchResultsController($scope, $rootScope, $location, UserService, SearchService) {
+        $scope.$location = $location;
         $scope.query = $location.search().q || '';
         $scope.tracks = [];
+        $scope.saveArtist = saveArtist;
+        $scope.saveAlbum = saveAlbum;
+        $scope.saveTrack = saveTrack;
 
-        SearchService.getSearchResults($scope.query)
+        SearchService
+            .getSearchResults($scope.query)
             .then(function(results) {
-            console.log('got search results', results);
-            $scope.tracks = results.tracks.items;
-            $scope.playlists = results.playlists.items;
-
+                $scope.tracks = results.tracks.items;
+                $scope.playlists = results.playlists.items;
+                console.log('search playlists: ', $scope.playlists);
+                console.log('tracks: ', $scope.tracks);
         });
 
-        var model = this;
-        model.$location = $location;
-        model.artists = [];
-        model.albums = [];
-        model.search = search;
-        model.saveArtist = saveArtist;
-        model.saveAlbum = saveAlbum;
-        model.saveSong = saveSong;
-
-        function search(name) {
-            if (name != null) {
-                SearchService.findArtistByName(name)
-                    .then(function (result) {
-                        console.log("successfully found artist array");
-                        model.artists = result.artists.items;
-                        console.log(model.artists);
-                        if (model.artists != null) {
-                            model.showArtist = true;
-                        }
-                    });
-
-                SearchService.findAlbumByName(name)
-                    .then(function (result) {
-                        console.log("successfully found album array");
-                        model.albums = result.albums.items;
-                        console.log(model.albums);
-                        if (model.albums != null) {
-                            model.showAlbum = true;
-                        }
-                    });
-
-                SearchService.findSongByName(name)
-                    .then(function (result) {
-                        console.log("successfully found song array");
-                        model.songs = result.tracks.items;
-                        console.log(model.songs);
-                        if (model.songs != null) {
-                            model.showSong = true;
-                        }
-                    });
+        $scope.toggleFromYourMusic = function(index) {
+            var likeTrack = $scope.tracks[index];
+            var user = $rootScope.user;
+            console.log(likeTrack);
+            if(user != null) {
+                var tracks = user.favoriteSongs;
+                for (var i in tracks) {
+                    var tr = tracks[i];
+                    if (tr.id === likeTrack.id) {
+                        console.log("found match track");
+                        $scope.tracks[index].like = true;
+                    }
+                }
+                if($scope.tracks[index].like) {//true
+                    UserService
+                        .deleteTrackFromUser(user._id, likeTrack.id)
+                        .then(function(user) {
+                            console.log("Deleted song from user : ", user);
+                            $scope.tracks[index].like = false;
+                        });
+                }else {//false
+                    UserService
+                        .addTrackToUser(user._id, likeTrack)
+                        .then(function(user) {
+                            console.log("Added track to user : ", user);
+                            $scope.tracks[index].like = true;
+                        });
+                }
             }
-        }
+        };
 
         function saveArtist(artist) {
-            console.log("save artist");
-            console.log(artist);
+            console.log("save artist", artist);
             $rootScope.artist= artist;
         }
 
@@ -74,10 +66,9 @@
             $rootScope.album = album;
         }
 
-        function saveSong(song) {
-            console.log("save song");
-            console.log(song);
-            $rootScope.song= song;
+        function saveTrack(track) {
+            console.log("save track", track);
+            $rootScope.track= track;
         }
     }
 

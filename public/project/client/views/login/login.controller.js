@@ -34,6 +34,13 @@
                         $location.url("/profile");
                         console.log("current login user is: ");
                         console.log($rootScope.user);
+
+                        UserService
+                            .findTracksByUserId($rootScope.user._id)
+                            .then(function(tracks) {//user.favoriteSongs
+                                $rootScope.favoriteTracks = tracks;
+                                console.log("favorite tracks : ", $rootScope.favoriteTracks);
+                            });
                     }else {
                         $scope.message = "error";
                     }

@@ -8,9 +8,9 @@ module.exports = function(app, model) {
     app.delete('/api/project/user/:id', deleteUserById);
 
     /* Song */
-    app.post('/api/project/user/:userId/song', addSongToUser);
-    app.get('/api/project/user/:userId/song', findSongsByUserId);
-    app.delete('/api/project/user/:userId/song/:songId', deleteSongFromUser);
+    app.post('/api/project/user/:userId/song', addTrackToUser);
+    app.get('/api/project/user/:userId/song', findTracksByUserId);
+    app.delete('/api/project/user/:userId/song/:songId', deleteTrackFromUser);
 
     /* Artist */
     app.post('/api/project/user/:userId/artist', addArtistToUser);
@@ -121,25 +121,26 @@ module.exports = function(app, model) {
             });
     }
 
-    function addSongToUser(req, res) {
+    function addTrackToUser(req, res) {
+        console.log(req.body);
         model
-            .addSongToUser(req.params.userId, req.body)
+            .addTrackToUser(req.params.userId, req.body)
             .then(function(result) {
                 res.json(result);
             });
     }
 
-    function findSongsByUserId(req, res) {
+    function findTracksByUserId(req, res) {
         model
-            .findSongsByUserId(req.params.userId)
+            .findTracksByUserId(req.params.userId)
             .then(function(result) {
                 res.json(result);
             });
     }
 
-    function deleteSongFromUser(req, res) {
+    function deleteTrackFromUser(req, res) {
         model
-            .deleteSongFromUser(req.params.userId, req.params.songId)
+            .deleteTrackFromUser(req.params.userId, req.params.songId)
             .then(function(result) {
                 res.json(result);
             });

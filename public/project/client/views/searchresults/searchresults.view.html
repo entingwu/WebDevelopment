@@ -1,54 +1,61 @@
-<h1>Showing results for {{query}}</h1>
-<hr/><br/>
-<ul class="playlists" ng-show="playlists.length > 0">
-    <h4>PLAYLISTS</h4>
-    <li class="searchresult" ng-repeat="p in playlists | limitTo:9">
-        <a href="#/users/{{p.owner.id}}/playlists/{{p.id}}">
-            <responsive-cover ng-model="p.images" class="responsive-cover-playlist"></responsive-cover>
-        </a>
-        <p><a href="#/users/{{p.owner.id}}/playlists/{{p.id}}">{{p.name}}</a></p>
-    </li>
-    <hr/>
-</ul>
+<div ng-controller="SearchResultsController">
+    <h1>Showing results for {{query}}</h1>
+    <hr/><br/>
+    <ul class="playlists" ng-show="playlists.length > 0">
+        <h4>PLAYLISTS</h4>
+        <li class="searchresult" ng-repeat="p in playlists | limitTo:9">
+            <a href="#/users/{{p.owner.id}}/playlists/{{p.id}}">
+                <responsive-cover ng-model="p.images" class="responsive-cover-playlist"></responsive-cover>
+            </a>
+            <p><a href="#/users/{{p.owner.id}}/playlists/{{p.id}}">{{p.name}}</a></p>
+        </li>
+        <hr/>
+    </ul>
 
-<div class="col-sm-12">
-    <h4>TRACKS</h4>
-    <table class="tracks">
-        <thead>
-        <tr>
-            <th>TRACK</th>
-            <th>ARTIST</th>
-            <th>ALBUM</th>
-            <th>TIME</th>
-            <th>POPULARITY</th>
-            <th>PREVIEW</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="t in tracks">
-            <td>
-                <a href="#/song" ng-click="model.saveSong(song)">{{t.name}}</a>
-            </td>
-            <td>
-                <a href="#/artist" ng-click="model.saveArtist(artist)">
-                    {{t.artists[0].name}}</a>
-            </td>
-            <td>
-                <a href="#/album" ng-click="model.saveAlbum(song.album)">{{t.album.name}}
-                </a>
-            </td>
-            <td class="nowrap">{{ t.duration_ms | displaytime }}
-            </td>
-            <td>
-                <div class="pop-meter">
-                    <div class="pop-meter-background"></div>
-                    <div class="pop-meter-overlay" style="width: {{ t.popularity }}%;"></div>
-                </div>
-            </td>
-            <td>
-                <iframe ng-src="{{t.uri | trustUrl}}" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="col-sm-12">
+        <h4>TRACKS</h4>
+        <table class="tracks">
+            <thead>
+            <tr>
+                <th></th>
+                <th>TRACK</th>
+                <th>ARTIST</th>
+                <th>ALBUM</th>
+                <th>TIME</th>
+                <th></th>
+                <th>POPULARITY</th>
+                <th>PREVIEW</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="t in tracks">
+                <td>
+                    <a class="button-xs button-add" ng-show="user" ng-click="toggleFromYourMusic($index)">
+                        {{ t.like ? '-' : '+' }}
+                    </a>
+                </td>
+                <td>
+                    <a ng-click="saveTrack(t)">{{t.name}}</a>
+                </td>
+                <td>
+                    <a href="#/artists/{{t.artists[0].id}}" ng-click="saveArtist(t.artists[0])">{{t.artists[0].name}}</a>
+                </td>
+                <td>
+                    <a href="#/albums/{{t.album.id}}" ng-click="saveAlbum(t.album)">{{t.album.name}}</a>
+                </td>
+                <td class="nowrap">{{ t.duration_ms | displaytime }}</td>
+                <td></td>
+                <td>
+                    <div class="pop-meter">
+                        <div class="pop-meter-background"></div>
+                        <div class="pop-meter-overlay" style="width: {{ t.popularity }}%;"></div>
+                    </div>
+                </td>
+                <td>
+                    <iframe ng-src="{{t.uri | trustUrl}}" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

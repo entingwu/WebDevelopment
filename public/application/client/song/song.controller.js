@@ -72,6 +72,17 @@
 				});
 			}
 		}
+
+	  model.addSongToUser = function ()
+	  {
+		  console.log("add song to current user: ");
+		  console.log($rootScope.user);
+		  UserService.addSongToUser($rootScope.user._id, model.song)
+			  .then(function(user) {
+				  console.log("successfully added song to user");
+				  console.log(user);
+			  })
+	  }
 		
 		model.deleteSongFromUser = function() {
 			UserService.deleteSongFromUser($rootScope.user._id, model.song.id)
@@ -110,16 +121,7 @@
 			$rootScope.location = "/song";
 		}
 		
-		model.addSongToUser = function ()
-		{
-			console.log("add song to current user: ");
-			console.log($rootScope.user);
-			UserService.addSongToUser($rootScope.user._id, model.song)
-				.then(function(user) {
-				console.log("successfully added song to user");
-				console.log(user);
-			})
-		}
+
 		
 		model.addComment = function (content)
 		{
