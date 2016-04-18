@@ -9,6 +9,7 @@
             loginUser : loginUser,
             logoutUser : logoutUser,
             register : register,
+            updateUserById : updateUserById,
 
             findUserByUsername : findUserByUsername,
             findUserById : findUserById,
@@ -17,7 +18,7 @@
 
             createUser : createUser,
             deleteUserById : deleteUserById,
-            updateUserById : updateUserById,
+            updateUserByAdmin : updateUserByAdmin,
             getCurrentUser : getCurrentUser
         };
         return service;
@@ -42,13 +43,23 @@
             return deferred.promise;
         }
 
+        function updateUserById(userId, user) {
+            var deferred = $q.defer();
+            $http
+                .put('/api/assignment/user/' + userId, user)
+                .then(function(response){
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
         //REGISTER : app.post('/api/assignment/register',auth,   register);
         function register(user) {
             var deferred = $q.defer();
             $http
                 .post('/api/assignment/register', user)
                 .then(function(response) {
-                    console.log("register user from client:" + response);
+                    console.log("register user from client:",response);
                     deferred.resolve(response);
                 });
             return deferred.promise;
@@ -77,7 +88,7 @@
         }
 
         //PROFILE: app.put('/api/assignment/admin/user/:userId',   auth,    updateUser);//9
-        function updateUserById(userId, user) {
+        function updateUserByAdmin(userId, user) {
             var deferred = $q.defer();
             $http
                 .put('/api/assignment/admin/user/' + userId, user)
@@ -127,7 +138,7 @@
             $http
                 .get('/api/assignment/admin/user')
                 .success(function(response) {
-                    console.log("find all users from client :" + response);
+                    console.log("find all users from client :", response);
                     deferred.resolve(response);
                 });
             return deferred.promise;

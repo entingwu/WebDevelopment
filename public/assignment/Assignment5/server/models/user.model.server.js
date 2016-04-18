@@ -45,24 +45,24 @@ module.exports = function(db, mongoose) {
     //update the found instance with property values in the argument instance object
     //The $set operator replaces the value of a field with the specified value.
     function updateUserById(userId, user) {
+        //return userModel.update({_id: userId}, {$set: newUser});
         var deferred = q.defer();
-        UserModel.update(
-            {_id : userId},
-            {$set : user},
-            function(err, user) {
-                if(err) {
-                    deferred.reject(err);
-                }else {
-                    UserModel.findOne({_id : userId}, function(err, user) {
-                        if(err) {
-                            deferred.reject(err);
-                        }else {
-                            deferred.resolve(user);
-                        }
-                    });
-                }
+        UserModel.update({_id: userId}, {$set: user}, function(err, user) {
+            if(err){
+                deferred.reject(err);
+            }else{
+                console.log("update model : " ,user);
+                UserModel.findOne({_id: userId}, function(err, user){
+                    if(err){
+                        deferred.reject(err);
+                    }
+                    else{
+                        console.log("find model : " ,user);
+                        deferred.resolve(user);
+                    }
+                });
             }
-        );
+        });
         return deferred.promise;
     }
 
@@ -84,9 +84,10 @@ module.exports = function(db, mongoose) {
         var deferred = q.defer();
         UserModel.find(function(err, users) {
             if(err) {
+                console.log("err model :", err);
                 deferred.reject(err);
             }else {
-                console.log("find users from model :" + users);
+                console.log("find users from model :", users);
                 deferred.resolve(users);
             }
         });

@@ -16,7 +16,8 @@
                 .getCurrentUser()
                 .then(function(user) {
                     if(user) {
-                        $rootScope.user = user;
+                        console.log(user.data);
+                        $rootScope.user = user.data;
                         FormService
                             .findAllFormsForUser(model.currentUser._id)
                             .then(function(response) {
@@ -33,7 +34,6 @@
         model.selectForm = selectForm;
         model.updateForm = updateForm;
         model.deleteForm = deleteForm;
-
         model.saveFormId = function (form) {
             $rootScope.formId = form._id;
         };

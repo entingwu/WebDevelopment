@@ -2,9 +2,9 @@
 (function() {
     angular
         .module("MusicPlayerApp")
-        .controller('UserController', UserController);
+        .controller('ProfileController', ProfileController);
 
-    function UserController($location, $rootScope, UserService) {
+    function ProfileController($location, $rootScope, UserService) {
         var model = this;
         model.$location = $location;
         model.deleteSong = deleteSong;

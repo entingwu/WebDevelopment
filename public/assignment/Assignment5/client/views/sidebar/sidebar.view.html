@@ -4,7 +4,7 @@
             <a href="#/home">Home</a></li>
         <li ng-show="user" ng-class="{'active' : $location.url().indexOf('profile') != -1}">
             <a href="#/profile">Profile</a></li>
-        <li ng-show="user" ng-class="{'active' : $location.url().indexOf('form') != -1}">
+        <li ng-show="user" ng-class="{'active' : $location.url().indexOf('forms') != -1}">
             <a href="#/forms">Forms</a></li>
         <li ng-show="user.roles.indexOf('admin') >= 0" ng-class="{'active': $location.url()=='/admin'}">
             <a href="#/admin">Admin</a></li>

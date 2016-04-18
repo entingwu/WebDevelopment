@@ -4,21 +4,21 @@
         .module("FormBuilderApp")
         .controller("AdminController", AdminController);
 
-    function AdminController($scope, $location, $rootScope, UserService) {
+    function AdminController($scope, $rootScope, $location,  UserService) {
         var model = this;
         model.$location = $location;
+        $scope.reverseSort = true;
 
         function init() {
             UserService
                 .findAllUsers()
-                .then(
-                    function(response) {
+                .then(function(response){
+                        console.log(response);
                         model.users = response;
                     },
-                    function(err) {
-                        model.error = err;
-                    }
-                );
+                    function(err){
+                        $scope.error = err;
+                    });
         }
         init();
 
@@ -38,9 +38,11 @@
         function selectUser(user) {
             document.getElementById('username').value = user.username;
             document.getElementById('password').value = user.password;
+            document.getElementById('firstName').value = user.firstName;
+            document.getElementById('lastName').value = user.lastName;
             document.getElementById('roles').value = user.roles;
             model.currentUser = user;
-            console.log("selected user");
+            console.log("selected user", model.currentUser);
         }
 
         function updateUser(user) {
@@ -53,7 +55,7 @@
                     user.roles = roleArray;
                 }
                 UserService
-                    .updateUserById(model.currentUser._id, user)
+                    .updateUserByAdmin(model.currentUser._id, user)
                     .then(init);
             }
         }
@@ -64,14 +66,5 @@
                 .then(init);
         }
 
-        $scope.order = order;
-
-        function order(predicate) {
-            $scope.predicate = predicate;
-            $scope.reverse = ($scope.predicate === predicate) ? !$scope.reverse : false;
-            model.users = orderBy(model.users, predicate, $scope.reverse);
-        }
-
-        $scope.order('username', true);
     }
 })();

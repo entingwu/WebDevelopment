@@ -10,12 +10,15 @@
         model.update = update;
 
         function update(profileUser) {
+            var emails = profileUser.email.toString();
+            profileUser.emails = emails.split(",");
+            console.log(profileUser.emails);
             UserService
                 .updateUserById($rootScope.user._id, profileUser)
                 .then(
                     function(user) {
-                        console.log("update profile user: ", user);
-                        $rootScope.user = user;
+                        $rootScope.user = user.data;
+                        console.log("update profile user: ", $rootScope.user);
                         $location.url("/profile");
                         $scope.alert = "Updated successfully";
                     },

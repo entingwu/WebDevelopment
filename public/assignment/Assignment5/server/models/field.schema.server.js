@@ -10,7 +10,7 @@ module.exports = function(mongoose) {
         placeholder: String,
         options: [{label: String, value: String}],
         optionString: String
-    }, {collection: 'field'});
+    }, {collection: 'assignment5.field'});
     return FieldSchema;
 };
 

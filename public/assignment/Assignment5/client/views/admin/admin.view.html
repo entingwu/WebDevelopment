@@ -9,43 +9,45 @@
                 <table class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th ng-click="order('username')">
-                            <span class="glyphicon glyphicon-triangle-bottom sortorder"
-                                  ng-show="predicate === 'username'" ng-class="{reverse:reverse}" aria-hidden="true"></span> Username
+                        <th class="text-center">
+                            <span ng-show="orderByField == 'username'" ng-switch="reverseSort">
+                                <span ng-switch-when="false" class="glyphicon glyphicon-triangle-top"></span>
+                                <span ng-switch-when="true" class="glyphicon glyphicon-triangle-buttom"></span>
+                            </span>
+                            <a ng-click="orderByField='username'; reverseSort =!reverseSort">Username</a>
+                            <input ng-model="model.user.username" type="text" id="username" class="form-control"
+                                   placeholder="username" value="{{model.user.username}}">
                         </th>
-                        <th>Password</th>
-                        <th ng-click="order('firstname')">
-                            <span class="glyphicon glyphicon-triangle-bottom sortorder"
-                                  ng-show="predicate === 'firstname'" ng-class="{reverse:reverse}" aria-hidden="true"></span> First Name
+                        <th class="text-center">
+                            Password
+                            <input ng-model="model.user.password" type="password" id="password" class="form-control"
+                                   placeholder="password" value="{{model.user.password}}">
                         </th>
-                        <th ng-click="order('lastname')">
-                            <span class="glyphicon glyphicon-triangle-bottom sortorder"
-                                  ng-show="predicate === 'lastname'" ng-class="{reverse:reverse}" aria-hidden="true"></span> Last Name
+                        <th class="text-center">
+                            <span ng-show="orderByField == 'firstName'">
+                                <span ng-show="!reverseSort" class="glyphicon glyphicon-triangle-top"></span>
+                                <span ng-show="reverseSort" class="glyphicon glyphicon-triangle-buttom"></span>
+                            </span>
+                            <a ng-click="orderByField='firstName'; reverseSort =!reverseSort">First Name</a>
+                            <input ng-model="model.user.firstName" type="text" id="firstName" class="form-control"
+                                   placeholder="First Name" value="{{model.user.firstName}}">
                         </th>
-                        <th>Roles</th>
-                        <th>
-                            Actions
+                        <th class="text-center">
+                            <span ng-show="orderByField == 'lastName'">
+                                <span ng-show="!reverseSort" class="glyphicon glyphicon-triangle-top"></span>
+                                <span ng-show="reverseSort" class="glyphicon glyphicon-triangle-buttom"></span>
+                            </span>
+                            <a ng-click="orderByField='lastName'; reverseSort =!reverseSort">Last Name</a>
+                            <input ng-model="model.user.lastName" type="text" id="lastName" class="form-control"
+                                   placeholder="Last Name" value="{{model.user.lastName}}">
                         </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>
-                            <input ng-model="model.user.username" type="text" id="username" class="form-control" placeholder="username">
-                        </td>
-                        <td>
-                            <input ng-model="model.user.password" type="password" id="password" class="form-control" placeholder="password">
-                        </td>
-                        <td>
-                            <input ng-model="model.user.firstName" type="text" id="firstName" class="form-control" placeholder="First Name">
-                        </td>
-                        <td>
-                            <input ng-model="model.user.lastName" type="text" id="lastName" class="form-control" placeholder="Last Name">
-                        </td>
-                        <td>
-                            <input ng-model="model.user.roles" type="text" id="roles" class="form-control" placeholder="role1, role2">
-                        </td>
-                        <td>
+                        <th class="text-center">
+                            Roles
+                            <input ng-model="model.user.roles" type="text" id="roles" class="form-control"
+                                   placeholder="role1, role2" value="{{model.user.roles}}">
+                        </th>
+                        <th class="col-sm-3 text-center">
+                            Actions<br>
                             <div>
                                 <a ng-click="model.addUser(model.user)" class="btn btn-primary btn-sm">
                                     <scan class="glyphicon glyphicon-plus"></scan>
@@ -54,15 +56,17 @@
                                     <scan class="glyphicon glyphicon-ok"></scan>
                                 </a>
                             </div>
-                        </td>
+                        </th>
                     </tr>
-                    <tr ng-repeat="user in model.users | orderBy:predicate:reverse" class="ng-scope">
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="user in model.users | orderBy:orderByField:reverseSort" class="ng-scope">
                         <td>{{user.username}}</td>
-                        <td>{{user.password}}</td>
+                        <td></td>
                         <td>{{user.firstName}}</td>
                         <td>{{user.lastName}}</td>
                         <td>{{user.roles}}</td>
-                        <td>
+                        <td class="col-sm-3 text-center">
                             <div>
                                 <a ng-click="model.deleteUser(user)" class="btn btn-danger btn-sm">
                                     <scan class="glyphicon glyphicon-remove"></scan>

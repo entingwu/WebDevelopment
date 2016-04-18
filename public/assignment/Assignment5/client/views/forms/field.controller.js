@@ -22,7 +22,8 @@
                 .getCurrentUser()
                 .then(function(user) {
                     if(user) {
-                        $rootScope.user = user;
+                        $rootScope.user = user.data;
+                        console.log("#/field", $rootScope.user);
                         FieldService
                             .getFieldsForForm(model.formId)
                             .then(function (fields) {

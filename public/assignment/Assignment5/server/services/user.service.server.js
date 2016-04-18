@@ -1,7 +1,7 @@
+var bcrypt = require("bcrypt-nodejs");
 module.exports = function(app, userModel, passport, LocalStrategy) {
 
-    //var bcrypt = require("bcrypt-nodejs");
-    var auth = authorized;
+    var auth = authenticated;
     var admin = isAdmin;
     /* express object app listen to the api login
      * passport takes a look at the request, successful let it go*/
@@ -10,6 +10,7 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
     app.get('/api/assignment/loggedin',         loggedin);//2.
     app.post('/api/assignment/logout',          logout);//3.no middleware
     app.post('/api/assignment/register',        register);//4. register
+    app.put('/api/assignment/user/:userId',     updateUser);//
 
     /* ADMIN : first check: auth, second check: isAdmin()*/
     app.post('/api/assignment/admin/user',          admin,    createUser);//5
@@ -17,7 +18,7 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
     app.get('/api/assignment/admin/user/:userId',   admin,    getUserById);//7
     app.get('/api/assignment/admin/user/:username', admin,    getUserByUsername);
     app.delete('/api/assignment/admin/user/:userId',admin,    deleteUser);//8
-    app.put('/api/assignment/admin/user/:userId',   admin,    updateUser);//9
+    app.put('/api/assignment/admin/user/:userId',   admin,    updateUserByAdmin);//9
 
     /* new LocalStrategy(function) */
     passport.use(new LocalStrategy(localStrategy));
@@ -30,8 +31,14 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
             .findUserByCredentials({username : username, password : password})
             .then(//inform the passport framework whether a user exists with the credentials
                 function(user) {
-                    if(!user) { return done(null, false); }//invalid
-                    return done(null, user);//send user to passport.js
+                    //if(user && bcrypt.compareSync(password, user.password)) {
+                    if(user) {
+                        //send user to passport.js
+                        console.log("localStrategy: ", user);
+                        return done(null, user);
+                    }else {//invalid
+                        return done(null, false);
+                    }
                 },
                 function(err) {
                     if(err) { return done(err); }
@@ -59,7 +66,7 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
     }
 
     /* auth : first check */
-    function authorized (req, res, next) {
+    function authenticated (req, res, next) {
         if (!req.isAuthenticated()) {
             res.send(401);
         } else {
@@ -103,6 +110,8 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
                     if(user) {
                         res.json(null);//exist
                     }else {//not exist, create in database
+                        //newUser.password = bcrypt.hashSync(newUser.password);
+                        //console.log("hashSync", newUser.password);
                         return userModel.createUser(newUser);
                     }
                 },
@@ -123,6 +132,26 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
                     }
                 },
                 function(err) {//createUser error
+                    res.status(400).send(err);
+                }
+            );
+    }
+
+    function updateUser(req, res) {
+        var userId = req.params.userId;
+        var newUser = req.body;
+        if(typeof newUser.roles == "string") {
+            newUser.roles = newUser.roles.split(",");
+        }
+        //newUser.password = bcrypt.hashSync(newUser.password);
+        userModel
+            .updateUserById(userId, newUser)
+            .then(
+                function(user) {
+                    console.log(user);
+                    res.json(user);
+                },
+                function(err) {
                     res.status(400).send(err);
                 }
             );
@@ -176,10 +205,12 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
 
     /* 6. Admin : getAllUsers */
     function getAllUsers(req, res) {
+        console.log("server");
         userModel
             .findAllUsers()
             .then(
                 function(users) {
+                    console.log("server",users);
                     res.json(users);
                 },
                 function(err) {
@@ -241,14 +272,14 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
             );
     }
 
-    /* 9. updateUser */
-    function updateUser(req, res) {
+    /* 9. updateUserByAdmin */
+    function updateUserByAdmin(req, res) {
         var userId = req.params.userId;
         var newUser = req.body;
         for(var e in newUser.emails) {
             newUser.emails[e] = newUser.emails[e].trim();
         }
-        UserModel
+        userModel
             .updateUserById(userId, newUser)
             .then(
                 function(user) {
@@ -258,6 +289,5 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
                     res.status(400).send(err);
                 }
             );
-
     }
 };

@@ -1,6 +1,3 @@
-/**
- * Header Controller
- */
 (function(){
     "use strict";
     angular
@@ -8,17 +5,23 @@
         .controller("HeaderController", HeadController);
 
     function HeadController($rootScope, $scope, $location, UserService){
-        var model = this;
-        model.$location = $location;
-        model.logout = logout;
+        $scope.$location = $location;
+        $scope.logout = logout;
 
         function logout() {
             UserService
                 .logoutUser()
-                .then(function(response) {
-                    $rootScope.user = null;
-                    $location.url("/home");
-                });
+                .then(
+                    function(response) {
+                        console.log("logout!");
+                        $rootScope.user = null;
+                        $location.url("/home");
+                        console.log($location.url());
+                    },
+                    function(err) {
+                        $scope.error = err;
+                    }
+                );
         }
     }
 })();
