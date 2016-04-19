@@ -10,9 +10,11 @@
         model.update = update;
 
         function update(profileUser) {
-            var emails = profileUser.email.toString();
+            var emails = profileUser.emails.toString();
             profileUser.emails = emails.split(",");
-            console.log(profileUser.emails);
+            var phones = profileUser.phone.toString();
+            profileUser.phone = phones.split(",");
+            console.log(profileUser.phone);
             UserService
                 .updateUserById($rootScope.user._id, profileUser)
                 .then(

@@ -18,7 +18,8 @@ module.exports = function(db, mongoose) {
         deleteUserById : deleteUserById,
         //USER
         findUserByUsername : findUserByUsername,
-        findUserByCredentials : findUserByCredentials
+        findUserByCredentials : findUserByCredentials,
+        findUser : findUser
     };
     return api;
 
@@ -139,6 +140,21 @@ module.exports = function(db, mongoose) {
                     // resolve promise
                     deferred.resolve(user);
                 }
+        });
+        return deferred.promise;
+    }
+
+    function findUser(credentials) {
+        var deferred = q.defer();
+        UserModel.findOne({
+            username : credentials.username
+        }, function(err, user) {
+            if(err) {
+                deferred.reject(err);
+            }else {
+                console.log("find user:", user);
+                deferred.resolve(user);
+            }
         });
         return deferred.promise;
     }

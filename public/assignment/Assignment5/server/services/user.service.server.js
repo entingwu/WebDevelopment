@@ -28,11 +28,12 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
     /* localStrategy : If is username && password, done */
     function localStrategy(username, password, done) {//call done from passport
         userModel
-            .findUserByCredentials({username : username, password : password})
+            .findUser({username : username, password : password})
             .then(//inform the passport framework whether a user exists with the credentials
                 function(user) {
-                    //if(user && bcrypt.compareSync(password, user.password)) {
-                    if(user) {
+                    if(user == null) {
+                        return done(null, false);
+                    }else if(bcrypt.compareSync(password, user.password)) {
                         //send user to passport.js
                         console.log("localStrategy: ", user);
                         return done(null, user);
@@ -90,7 +91,7 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
 
     /* 2. logged in */
     function loggedin(req, res) {//whethter the user is currently logged in
-        console.log(req.user);
+        console.log("loggedin: ",req.user);
         res.send(req.isAuthenticated() ? req.user : '0');
     }
 
@@ -110,8 +111,8 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
                     if(user) {
                         res.json(null);//exist
                     }else {//not exist, create in database
-                        //newUser.password = bcrypt.hashSync(newUser.password);
-                        //console.log("hashSync", newUser.password);
+                        newUser.password = bcrypt.hashSync(newUser.password);
+                        console.log("register hashSync", newUser.password);
                         return userModel.createUser(newUser);
                     }
                 },
@@ -140,21 +141,30 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
     function updateUser(req, res) {
         var userId = req.params.userId;
         var newUser = req.body;
+        console.log("update in server : ", newUser);
         if(typeof newUser.roles == "string") {
             newUser.roles = newUser.roles.split(",");
         }
-        //newUser.password = bcrypt.hashSync(newUser.password);
+        //If user has not updated password, user.password will be the same as db
+        //Or it will perform hash on the new password
         userModel
-            .updateUserById(userId, newUser)
-            .then(
-                function(user) {
-                    console.log(user);
-                    res.json(user);
-                },
-                function(err) {
-                    res.status(400).send(err);
+            .findUserById(userId)
+            .then(function(user) {
+                if(user.password != newUser.password) {
+                    newUser.password = bcrypt.hashSync(newUser.password);
                 }
-            );
+                userModel
+                    .updateUserById(userId, newUser)
+                    .then(
+                        function(user) {
+                            console.log(user);
+                            res.json(user);
+                        },
+                        function(err) {
+                            res.status(400).send(err);
+                        }
+                    );
+            });
     }
 
     /* ADMIN : 5. createUser : send back all users */
@@ -175,6 +185,8 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
                     //a. if the user does not already exist
                     if(user == null) {
                         //create a new user
+                        newUser.password = bcrypt.hashSync(newUser.password);
+                        console.log("createUser hashSync", newUser.password);
                         return userModel.createUser(newUser)
                             .then(
                                 function() {//successfully, fetch all user
@@ -278,6 +290,9 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
         var newUser = req.body;
         for(var e in newUser.emails) {
             newUser.emails[e] = newUser.emails[e].trim();
+        }
+        for(var p in newUser.phone) {
+            newUser.phone[p] = newUser.phone[p].trim();
         }
         userModel
             .updateUserById(userId, newUser)
