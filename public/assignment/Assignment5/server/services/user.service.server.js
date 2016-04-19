@@ -157,7 +157,7 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
                     .updateUserById(userId, newUser)
                     .then(
                         function(user) {
-                            console.log(user);
+                            console.log("update newUser : ",user);
                             res.json(user);
                         },
                         function(err) {
