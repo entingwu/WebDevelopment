@@ -1,8 +1,48 @@
-<ul class="nav nav-tabs">
-    <li role="presentation"><a href="#/user">My Favorite</a></li>
-    <li role="presentation"><a href="#/user-comment">My Comments</a></li>
-    <li role="presentation" class="active"><a href="#/user-follow">My following</a></li>
-</ul>
+<div ng-controller="UserFollowController">
+    <header>
+        <div class="cover">
+            <img src="images/user6.jpg" class="cover" alt="user1" width="200" height="200">
+        </div>
+        <h4>USER</h4>
+        <h1>{{model.user.username}}</h1>
+        <div class="follower-count">{{model.user.followers.length | number}} followers</div>
+        <div class="buttons">
+            <div ng-show="loginMessage">
+                <div ng-show="!model.followStatus">
+                    <a class="button green" ng-click="model.follow()">FOLLOW</a>
+                </div>
+                <div ng-show="model.followStatus">
+                    <a class="button green" ng-click="model.unfollow()">UNFOLLOW</a>
+                </div>
+            </div>
+            <div ng-show="!loginMessage">
+                <a class="button button-add" href="/">FOLLOW</a>
+            </div>
+        </div>
+    </header>
+    <div class="nav">
+        <ul>
+            <li><a href="#/user">FAVOURITE</a></li>
+            <li><a href="#/profile">PROFILE</a></li>
+            <li class="active"><a href="#/userfollow">FOLLOWING</a></li>
+        </ul>
+    </div>
+    <div class="col-sm-12">
+        <h2>My Following</h2>
+        <div class="col-sm-12">
+            <div class="col-sm-4" ng-repeat="following in model.followings">
+                <a href="#/view-user" ng-click="model.saveCurrentUserId(following.id)"><img src="img/user.jpg" class="img-thumbnail" alt="{{following.username}} image" width="200" height="200"></a>
+                <h4><a href="#/view-user" ng-click="model.saveCurrentUserId(following.id)">{{following.username}}</a></h4>
+                <a ng-click="model.deleteFollowing(following)" class="btn btn-danger">
+                    <scan class="glyphicon glyphicon-remove"></scan>
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
 <div class="row">
     <div class="col-sm-4">
         <h3></h3>

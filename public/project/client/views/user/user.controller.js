@@ -7,17 +7,18 @@
     function UserController($location, $rootScope, UserService) {
         var model = this;
         model.$location = $location;
-        model.deleteTrack = deleteTrack;
-        model.deleteArtist = deleteArtist;
-        model.deleteAlbum = deleteAlbum;
         model.saveAlbum = saveAlbum;
         model.saveArtist = saveArtist;
         model.saveTrack = saveTrack;
-        model.saveLocation = saveLocation;
+        model.deleteTrack = deleteTrack;
+        model.deleteArtist = deleteArtist;
+        model.deleteAlbum = deleteAlbum;
         model.follow = follow;
 
         if ($rootScope.user != null) {
-            UserService.findUserById($rootScope.user._id).then(function (user) {
+            UserService
+                .findUserById($rootScope.user._id)
+                .then(function (user) {
                 model.user = user;
                 init();
             });
@@ -95,12 +96,10 @@
             $rootScope.track = {id: trackId};
         }
 
-        function saveLocation() {
-            $rootScope.location = "/user";
-        }
-
         function follow() {
-            UserService.addfollowToUser($rootScope.user._id, model.user).then(function(result) {
+            UserService
+                .addfollowToUser($rootScope.user._id, model.user)
+                .then(function(result) {
                 console.log("successfully added a new following to current user");
                 console.log(result);
             });

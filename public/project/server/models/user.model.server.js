@@ -83,7 +83,6 @@ module.exports = function(db, mongoose) {
 
     function updateUserById(id, user) {
         var deferred = q.defer();
-
         UserModel.update(
             {_id: id},
             {$set: {
@@ -91,15 +90,14 @@ module.exports = function(db, mongoose) {
                 lastName : user.lastName,
                 username : user.username,
                 password : user.password,
-                email : user.email
-            }
-            },
+                email : user.email,
+                genres : user.genres
+            }},
             function(err, result) {
                 UserModel.findOne({_id : id}, function(err, result) {
                     deferred.resolve(result);
                 });
             });
-
         return deferred.promise;
     }
 

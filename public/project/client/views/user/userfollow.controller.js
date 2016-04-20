@@ -4,8 +4,7 @@
         .module("MusicPlayerApp")
         .controller('UserFollowController', UserFollowController);
 
-    function UserFollowController($scope, $location, $rootScope, UserService)
-    {
+    function UserFollowController($scope, $location, $rootScope, UserService) {
         var model = this;
         model.$location = $location;
         model.saveCurrentUserId = saveCurrentUserId;

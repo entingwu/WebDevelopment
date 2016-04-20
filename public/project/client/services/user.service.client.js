@@ -146,8 +146,7 @@
             return deferred.promise;
         }
 
-        function updateUser(id, user)
-        {
+        function updateUser(id, user) {
             var deferred = $q.defer();
             $http
                 .put('/api/project/user/' + id, user)

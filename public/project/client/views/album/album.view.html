@@ -10,10 +10,10 @@
         <div class="buttons">
             <div ng-show="loginMessage" ng-switch="likeAlbumStatus">
                 <div ng-switch-when="false">
-                    <a class="button green" ng-click="addAlbumToUser()" href="#/profile">LIKE</a>
+                    <a class="button green" ng-click="addAlbumToUser()" href="#/user">LIKE</a>
                 </div>
                 <div ng-switch-when="true">
-                    <a class="button green" ng-click="deleteAlbumFromUser()" href="#/profile">UNLIKE</a>
+                    <a class="button green" ng-click="deleteAlbumFromUser()" href="#/user">UNLIKE</a>
                 </div>
             </div>
             <div ng-show="!loginMessage">

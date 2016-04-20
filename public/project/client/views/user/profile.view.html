@@ -30,79 +30,33 @@
     </div>
     <hr>
     <br>
-    <div class="row col-xs-12">
-        <div class="col-xs-6">
-            <ul class="playlists" ng-show="model.user.artists.length > 0">
-                <h4>ARTIST</h4>
-                <li class="searchresult" ng-repeat="artist in model.user.artists | limitTo:8">
-                    <a ng-click="model.saveArtist(artist.id)" href="#/artists/{{artist.id}}" >
-                        <img src="{{artist.imageUrl}}" class="img-rounded" alt="{{artist.name}} image" width="160" height="160">
-                    </a>
-                    <p><a ng-click="model.saveArtist(artist.id)" href="#/artists/{{artist.id}}">{{artist.name}}</a><br>
-                    <a ng-click="model.deleteArtist(artist)" class="button-xs button-add pull-right">-
-                    </a></p>
-                </li>
-            </ul>
-        </div>
-        <div class="col-xs-6">
-            <ul class="playlists" ng-show="model.user.albums.length > 0">
-                <h4>ALBUM</h4>
-                <li class="searchresult" ng-repeat="album in model.user.albums | limitTo:8">
-                    <a ng-click="model.saveAlbum(album.id)" href="#/albums/{{album.id}}" >
-                        <img src="{{album.imageUrl}}" class="img-rounded" alt="{{album.name}} image" width="160" height="160">
-                    </a>
-                    <p><a ng-click="model.saveAlbum(album.id)" href="#/albums/{{album.id}}">{{album.name}}</a><br>
-                        <a ng-click="model.deleteAlbum(album)" class="button-xs button-add pull-right">-
-                        </a></p>
-                </li>
-            </ul>
-        </div>
+    <div class="col-xs-12 form-style-5">
+        <form>
+            <fieldset>
+                <legend><span class="number">1</span>USER INFORMATION</legend>
+                <input ng-model="profileUser.username" type="text" class="form-control" id="inputUsername"
+                       value="{{user.username}}" placeholder="Username : {{user.username}}">
+                <input ng-model="profileUser.password" type="password" class="form-control" id="inputPassword1"
+                       value="{{user.password}}" placeholder="Password">
+                <input ng-model="profileUser.firstName" type="text" class="form-control" id="inputFirstName"
+                       placeholder="First Name" value="{{user.firstName}}">
+                <input ng-model="profileUser.lastName" type="text" class="form-control" id="inputLastName"
+                       placeholder="Last Name" value="{{user.lastName}}">
+                <input ng-model="profileUser.email" type="email" class="form-control" id="inputEmail"
+                       placeholder="Email *" value="{{user.email}}">
+            </fieldset>
+            <fieldset>
+                <legend><span class="number">2</span> SELECT GENRES</legend>
+                <select id="job" name="field4" ng-model="profileUser.genres">
+                    <optgroup ng-repeat="gm in genresMoods">
+                        <option ng-if="user.genres==null" value="{{gm.id}}">{{gm.name}}</option>
+                        <option ng-if="user.genres!=null" value="{{profileUser.genres}}">{{gm.name}}</option>
+                    </optgroup>
+                </select>
+            </fieldset>
+            <input ng-click="model.update(profileUser)" type="submit" value="UPDATE">
+        </form>
     </div>
-    <hr>
-    <br>
-    <div class="col-xs-12" ng-show="model.user.tracks.length > 0">
-        <h4>TRACK</h4>
-        <table class="tracks">
-            <thead>
-            <tr>
-                <th></th>
-                <th>TRACK</th>
-                <th>ARTIST</th>
-                <th>ALBUM</th>
-                <th>TIME</th>
-                <th></th>
-                <th>POPULARITY</th>
-                <th>PREVIEW</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="t in model.user.tracks">
-                <td>
-                    <a ng-show="user" ng-click="model.deleteTrack(t)" class="button-xs button-add">-
-                    </a>
-                </td>
-                <td>
-                    <a ng-click="saveTrack(t.id)">{{t.name}}</a>
-                </td>
-                <td>
-                    <a href="#/artists/{{t.artistId}}" ng-click="saveArtist(t.artistId)">{{t.artistName}}</a>
-                </td>
-                <td>
-                    <a href="#/albums/{{t.albumId}}" ng-click="saveAlbum(t.albumId)">{{t.albumName}}</a>
-                </td>
-                <td class="nowrap">{{ t.duration_ms | displaytime }}</td>
-                <td></td>
-                <td>
-                    <div class="pop-meter">
-                        <div class="pop-meter-background"></div>
-                        <div class="pop-meter-overlay" style="width: {{ t.popularity }}%;"></div>
-                    </div>
-                </td>
-                <td>
-                    <iframe ng-src="{{t.uri | trustUrl}}" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+
+
 </div>
