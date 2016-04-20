@@ -31,8 +31,9 @@
     <script src="views/register/register.controller.js"></script>
     <script src="views/playlist/playlist.controller.js"></script>
     <script src="views/searchresults/searchresults.controller.js"></script>
-    <script src="views/profile/profile.controller.js"></script>
-    <script src="views/userfollow/userfollow.controller.js"></script>
+    <script src="views/user/user.controller.js"></script>
+    <script src="views/user/profile.controller.js"></script>
+    <script src="views/user/userfollow.controller.js"></script>
     <!-- services -->
     <script src="services/auth.service.client.js"></script>
     <script src="services/search.service.client.js"></script>
@@ -53,7 +54,7 @@
                        class="form-control input-sm" id="query" placeholder="Search...">
             </div>
             <div class="titlebox">
-                <a href="#/">MUSIC MOOD APPLICATION</a>
+                <a href="#/">MUSIC MOOD  &middot  LISTEN TO YOUR HEART</a>
             </div>
             <div class="userbox">
                 Signed in as <b><a href="#/users/{{profileUsername}}">{{profileUsername}}</a></b>
@@ -70,9 +71,9 @@
         <div class="midgroup">
             <div class="menuview">
                 <div class="list scrollable">
-                    <b><a href="#/">MAIN</a></b>
+                    <b><a href="#/">HOME</a></b>
                     <ul class="menuitems">
-                        <li><a href="#/" ng-class="getClass('/')">Browse</a></li>
+                        <li><a href="#/" ng-class="getClass('/')">Genres</a></li>
                     </ul>
                     <b><a href="#/">YOUR MUSIC</a></b>
                     <ul class="menuitems">

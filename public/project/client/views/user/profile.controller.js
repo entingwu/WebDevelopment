@@ -7,13 +7,12 @@
     function ProfileController($location, $rootScope, UserService) {
         var model = this;
         model.$location = $location;
-        model.deleteSong = deleteSong;
+        model.deleteTrack = deleteTrack;
         model.deleteArtist = deleteArtist;
         model.deleteAlbum = deleteAlbum;
-        model.millisToMinutesAndSeconds = millisToMinutesAndSeconds;
         model.saveAlbum = saveAlbum;
         model.saveArtist = saveArtist;
-        model.saveSong = saveSong;
+        model.saveTrack = saveTrack;
         model.saveLocation = saveLocation;
         model.follow = follow;
 
@@ -24,12 +23,12 @@
             });
         }
 
-        /*find current user's favorite songs, artists, and albums from database*/
+        /*find current user's favorite tracks, artists, and albums from database*/
         function init() {
-            UserService.findTracksByUserId(model.user._id).then(function (songs) {
-                model.user.songs = songs;
-                console.log("found user's favorite songs");
-                console.log(model.user.songs);
+            UserService.findTracksByUserId(model.user._id).then(function (tracks) {
+                model.user.tracks = tracks;
+                console.log("found user's favorite tracks");
+                console.log(model.user.tracks);
             });
 
             UserService.findArtistsByUserId(model.user._id).then(function (artists) {
@@ -45,16 +44,16 @@
             });
         }
 
-        function deleteSong(song)
-        {
-            UserService.deleteTrackFromUser(model.user._id, song.id).then(function (songs) {
+        function deleteTrack(track) {
+            UserService.deleteTrackFromUser(model.user._id, track.id)
+                .then(function (tracks) {
                 UserService
                     .findTracksByUserId(model.user._id)
                     .then(function (result) {
-                        model.user.songs = result;
+                        model.user.tracks = result;
                     });
-                console.log("successfully deleted song");
-                console.log(model.user.songs);
+                console.log("successfully deleted track");
+                console.log(model.user.tracks);
             });
         }
 
@@ -84,12 +83,6 @@
             });
         }
 
-        function millisToMinutesAndSeconds(millis) {
-            var minutes = Math.floor(millis / 60000);
-            var seconds = ((millis % 60000) / 1000).toFixed(0);
-            return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-        }
-
         function saveAlbum(albumId) {
             $rootScope.album = {id: albumId};
         }
@@ -98,8 +91,8 @@
             $rootScope.artist = {id: artistId};
         }
 
-        function saveSong(songId) {
-            $rootScope.song = {id: songId};
+        function saveTrack(trackId) {
+            $rootScope.track = {id: trackId};
         }
 
         function saveLocation() {
@@ -112,8 +105,6 @@
                 console.log(result);
             });
         }
-
-
     }
 
 })();

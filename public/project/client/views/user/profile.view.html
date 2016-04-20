@@ -1,0 +1,108 @@
+<div ng-controller="ProfileController">
+    <header>
+        <div class="cover">
+            <img src="images/user6.jpg" class="cover" alt="user1" width="200" height="200">
+        </div>
+        <h4>USER</h4>
+        <h1>{{model.user.username}}</h1>
+        <div class="follower-count">{{model.user.followers.length | number}} followers</div>
+        <div class="buttons">
+            <div ng-show="loginMessage">
+                <div ng-show="!model.followStatus">
+                    <a class="button green" ng-click="model.follow()">FOLLOW</a>
+                </div>
+                <div ng-show="model.followStatus">
+                    <a class="button green" ng-click="model.unfollow()">UNFOLLOW</a>
+                </div>
+            </div>
+            <div ng-show="!loginMessage">
+                <a class="button button-add" href="/">FOLLOW</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="nav">
+        <ul>
+            <li><a href="#/user">FAVOURITE</a></li>
+            <li class="active"><a href="#/profile">PROFILE</a></li>
+            <li><a href="#/userfollow">FOLLOWING</a></li>
+        </ul>
+    </div>
+    <hr>
+    <br>
+    <div class="row col-xs-12">
+        <div class="col-xs-6">
+            <ul class="playlists" ng-show="model.user.artists.length > 0">
+                <h4>ARTIST</h4>
+                <li class="searchresult" ng-repeat="artist in model.user.artists | limitTo:8">
+                    <a ng-click="model.saveArtist(artist.id)" href="#/artists/{{artist.id}}" >
+                        <img src="{{artist.imageUrl}}" class="img-rounded" alt="{{artist.name}} image" width="160" height="160">
+                    </a>
+                    <p><a ng-click="model.saveArtist(artist.id)" href="#/artists/{{artist.id}}">{{artist.name}}</a><br>
+                    <a ng-click="model.deleteArtist(artist)" class="button-xs button-add pull-right">-
+                    </a></p>
+                </li>
+            </ul>
+        </div>
+        <div class="col-xs-6">
+            <ul class="playlists" ng-show="model.user.albums.length > 0">
+                <h4>ALBUM</h4>
+                <li class="searchresult" ng-repeat="album in model.user.albums | limitTo:8">
+                    <a ng-click="model.saveAlbum(album.id)" href="#/albums/{{album.id}}" >
+                        <img src="{{album.imageUrl}}" class="img-rounded" alt="{{album.name}} image" width="160" height="160">
+                    </a>
+                    <p><a ng-click="model.saveAlbum(album.id)" href="#/albums/{{album.id}}">{{album.name}}</a><br>
+                        <a ng-click="model.deleteAlbum(album)" class="button-xs button-add pull-right">-
+                        </a></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <br>
+    <div class="col-xs-12" ng-show="model.user.tracks.length > 0">
+        <h4>TRACK</h4>
+        <table class="tracks">
+            <thead>
+            <tr>
+                <th></th>
+                <th>TRACK</th>
+                <th>ARTIST</th>
+                <th>ALBUM</th>
+                <th>TIME</th>
+                <th></th>
+                <th>POPULARITY</th>
+                <th>PREVIEW</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="t in model.user.tracks">
+                <td>
+                    <a ng-show="user" ng-click="model.deleteTrack(t)" class="button-xs button-add">-
+                    </a>
+                </td>
+                <td>
+                    <a ng-click="saveTrack(t.id)">{{t.name}}</a>
+                </td>
+                <td>
+                    <a href="#/artists/{{t.artistId}}" ng-click="saveArtist(t.artistId)">{{t.artistName}}</a>
+                </td>
+                <td>
+                    <a href="#/albums/{{t.albumId}}" ng-click="saveAlbum(t.albumId)">{{t.albumName}}</a>
+                </td>
+                <td class="nowrap">{{ t.duration_ms | displaytime }}</td>
+                <td></td>
+                <td>
+                    <div class="pop-meter">
+                        <div class="pop-meter-background"></div>
+                        <div class="pop-meter-overlay" style="width: {{ t.popularity }}%;"></div>
+                    </div>
+                </td>
+                <td>
+                    <iframe ng-src="{{t.uri | trustUrl}}" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

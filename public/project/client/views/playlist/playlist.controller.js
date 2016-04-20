@@ -44,7 +44,11 @@
         $scope.toggleFromYourMusic = function(index) {
             var likeTrack = $scope.tracks[index].track;
             var user = $rootScope.user;
-            console.log(likeTrack);
+            likeTrack.albumName = likeTrack.album.name;
+            likeTrack.albumId = likeTrack.album.id;
+            likeTrack.artistName = likeTrack.artists[0].name;
+            likeTrack.artistId = likeTrack.artists[0].id;
+            console.log("likeTrack:", likeTrack);
             if(user != null) {
                 var trks = user.favoriteSongs;
                 for (var i in trks) {

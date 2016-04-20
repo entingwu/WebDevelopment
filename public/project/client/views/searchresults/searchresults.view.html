@@ -3,7 +3,7 @@
     <hr/><br/>
     <ul class="playlists" ng-show="playlists.length > 0">
         <h4>PLAYLISTS</h4>
-        <li class="searchresult" ng-repeat="p in playlists | limitTo:9">
+        <li class="searchresult" ng-repeat="p in playlists | limitTo:8">
             <a href="#/users/{{p.owner.id}}/playlists/{{p.id}}">
                 <responsive-cover ng-model="p.images" class="responsive-cover-playlist"></responsive-cover>
             </a>

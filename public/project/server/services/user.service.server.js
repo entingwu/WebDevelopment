@@ -235,4 +235,4 @@ module.exports = function(app, model) {
                 res.json(result);
             });
     }
-}
+};

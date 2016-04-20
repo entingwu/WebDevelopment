@@ -322,14 +322,13 @@ module.exports = function(db, mongoose) {
         return deferred.promise;
     }
 
-    function addFollowToUser(userId, follow)
-    {
+    function addFollowToUser(userId, follow) {
         var deferred = q.defer();
         console.log("add follow to user:");
         console.log(follow._id);
         var newFollowing = {
             id: follow._id,
-            username: follow.username,
+            username: follow.username
         };
         UserModel.findById(userId, function(err, user){
             user.following.push(newFollowing);
@@ -342,7 +341,7 @@ module.exports = function(db, mongoose) {
                 var newFollower = {
                     id: userId,
                     username: user.username
-                }
+                };
                 UserModel.findById(follow._id, function(err, user){
                     user.followers.push(newFollower);
                     console.log(user.followers);
@@ -357,8 +356,7 @@ module.exports = function(db, mongoose) {
         return deferred.promise;
     }
 
-    function findFollowingByUserId(userId)
-    {
+    function findFollowingByUserId(userId) {
         var deferred = q.defer();
 
         UserModel.findById(userId, function(err, user){

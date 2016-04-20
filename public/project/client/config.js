@@ -14,13 +14,18 @@
                    controller: "BrowseCategoryController",
                    controllerAs: "model"
                })
+               .when("/user", {
+                   templateUrl: "views/user/user.view.html",
+                   controller: "UserController",
+                   controllerAs: "model"
+               })
                .when("/profile", {
-                   templateUrl: "views/profile/profile.view.html",
+                   templateUrl: "views/user/profile.view.html",
                    controller: "ProfileController",
                    controllerAs: "model"
                })
                .when("/userfollow", {
-                   templateUrl: "views/userfollow/userfollow.view.html",
+                   templateUrl: "views/user/userfollow.view.html",
                    controller: "UserFollowController",
                    controllerAs: "model"
                })
