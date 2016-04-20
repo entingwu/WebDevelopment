@@ -1,4 +1,3 @@
-var Guid = require('guid');
 var q = require("q");
 
 module.exports = function(db, mongoose) {
@@ -301,8 +300,7 @@ module.exports = function(db, mongoose) {
         return deferred.promise;
     }
 
-    function deleteAlbumFromUser(userId, albumId)
-    {
+    function deleteAlbumFromUser(userId, albumId) {
         var deferred = q.defer();
 
         UserModel.findById(userId, function(err, user){
@@ -320,34 +318,22 @@ module.exports = function(db, mongoose) {
         return deferred.promise;
     }
 
+    /* FOLLOW */
     function addFollowToUser(userId, follow) {
         var deferred = q.defer();
-        console.log("add follow to user:");
-        console.log(follow._id);
-        var newFollowing = {
-            id: follow._id,
-            username: follow.username
-        };
-        UserModel.findById(userId, function(err, user){
-            user.following.push(newFollowing);
-            console.log(user.following);
-            user.save(function(err, user){
+        //1. add follow to user.following
+        UserModel.findById(userId, function(err, user) {
+            user.following.push(follow);
+            user.save(function(err, user) {
+                console.log("add following: ", user);
                 deferred.resolve(user);
-                console.log("updatedUser, add new following");
-                console.log(user);
-
-                var newFollower = {
-                    id: userId,
-                    username: user.username
-                };
-                UserModel.findById(follow._id, function(err, user){
-                    user.followers.push(newFollower);
-                    console.log(user.followers);
-                    user.save(function(err, user){
-                        deferred.resolve(user);
-                        console.log("updatedUser, add new follower");
-                        console.log(user);
-                    });
+            });
+            //2. add user to follow.followers
+            UserModel.findById(follow.id, function(err, idol) {
+                idol.followers.push(user);
+                idol.save(function(err, idol) {
+                    console.log("add follower: ", idol);
+                    deferred.resolve(idol);
                 });
             });
         });
@@ -356,16 +342,12 @@ module.exports = function(db, mongoose) {
 
     function findFollowingByUserId(userId) {
         var deferred = q.defer();
-
         UserModel.findById(userId, function(err, user){
             if(err) {
-                console.log(err);
                 deferred.reject(err);
             } else {
+                console.log("user's followings : ", user.following);
                 deferred.resolve(user.following);
-                console.log("user's following are: ");
-                console.log(user);
-                console.log(user.following);
             }
         });
         return deferred.promise;
@@ -375,13 +357,10 @@ module.exports = function(db, mongoose) {
         var deferred = q.defer();
         UserModel.findById(userId, function(err, user){
             if(err) {
-                console.log(err);
                 deferred.reject(err);
             } else {
                 deferred.resolve(user.followers);
-                console.log("user's followers are: ");
-                console.log(user);
-                console.log(user.followers);
+                console.log("user's followers: ", user.followers);
             }
         });
         return deferred.promise;

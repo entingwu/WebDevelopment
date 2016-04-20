@@ -6,26 +6,14 @@
         <h4>USER</h4>
         <h1>{{model.user.username}}</h1>
         <div class="follower-count">{{model.user.followers.length | number}} followers</div>
-        <div class="buttons">
-            <div ng-show="loginMessage">
-                <div ng-show="!model.followStatus">
-                    <a class="button green" ng-click="model.follow()">FOLLOW</a>
-                </div>
-                <div ng-show="model.followStatus">
-                    <a class="button green" ng-click="model.unfollow()">UNFOLLOW</a>
-                </div>
-            </div>
-            <div ng-show="!loginMessage">
-                <a class="button button-add" href="/">FOLLOW</a>
-            </div>
-        </div>
+        <div class="follower-count">{{model.user.following.length | number}} followings</div>
     </header>
 
     <div class="nav">
         <ul>
             <li class="active"><a href="#/user">FAVOURITE</a></li>
             <li><a href="#/profile">PROFILE</a></li>
-            <li><a href="#/userfollow">FOLLOWING</a></li>
+            <li><a href="#/userfollow">FIND USER</a></li>
         </ul>
     </div>
     <hr>
@@ -60,9 +48,9 @@
     </div>
     <hr>
     <br>
-    <div class="col-xs-12">
+    <div class="col-xs-12" >
         <h4>TRACK</h4>
-        <table class="tracks">
+        <table class="tracks" ng-show="model.user.tracks.length > 0">
             <thead>
             <tr>
                 <th></th>
@@ -76,7 +64,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="t in model.user.tracks" ng-show="model.user.tracks.length > 0">
+            <tr ng-repeat="t in model.user.tracks">
                 <td>
                     <a ng-show="user" ng-click="model.deleteTrack(t)" class="button-xs button-add">-
                     </a>

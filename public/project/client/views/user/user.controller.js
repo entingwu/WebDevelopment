@@ -13,7 +13,6 @@
         model.deleteTrack = deleteTrack;
         model.deleteArtist = deleteArtist;
         model.deleteAlbum = deleteAlbum;
-        model.follow = follow;
 
         if ($rootScope.user != null) {
             UserService
@@ -96,14 +95,6 @@
             $rootScope.track = {id: trackId};
         }
 
-        function follow() {
-            UserService
-                .addfollowToUser($rootScope.user._id, model.user)
-                .then(function(result) {
-                console.log("successfully added a new following to current user");
-                console.log(result);
-            });
-        }
     }
 
 })();

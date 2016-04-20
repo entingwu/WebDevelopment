@@ -37,14 +37,6 @@
                     $location.url("/browsecategory/"+gm_id);
             });
         }
-
-        function follow() {
-            UserService
-                .addfollowToUser($rootScope.user._id, model.user)
-                .then(function(result) {
-                console.log("successfully added a new following to current user", result);
-            });
-        }
     }
 
 })();

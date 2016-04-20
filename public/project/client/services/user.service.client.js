@@ -35,7 +35,7 @@
             deleteAlbumFromUser : deleteAlbumFromUser,
 
             /* Follower */
-            addfollowToUser: addfollowToUser,
+            addFollowToUser: addFollowToUser,
             findFollowingByUserId : findFollowingByUserId,
             findFollowerByUserId : findFollowerByUserId,
             deleteFollowingFromUser : deleteFollowingFromUser,
@@ -113,8 +113,7 @@
             return deferred.promise;
         }
 
-        function findAllUsers()
-        {
+        function findAllUsers() {
             var deferred = $q.defer();
             $http
                 .get('/api/project/user')
@@ -232,8 +231,7 @@
             return deferred.promise;
         }
 
-        function findAlbumsByUserId(userId)
-        {
+        function findAlbumsByUserId(userId) {
             var deferred = $q.defer();
             $http
                 .get('/api/project/user/' + userId + '/album')
@@ -243,8 +241,7 @@
             return deferred.promise;
         }
 
-        function deleteAlbumFromUser(userId, albumId)
-        {
+        function deleteAlbumFromUser(userId, albumId) {
             var deferred = $q.defer();
             $http
                 .delete('/api/project/user/' + userId + '/album/' + albumId)
@@ -254,8 +251,7 @@
             return deferred.promise;
         }
 
-        function addfollowToUser(userId, follow)
-        {
+        function addFollowToUser(userId, follow) {
             var deferred = $q.defer();
             $http
                 .post('/api/project/user/'+ userId + '/following', follow)

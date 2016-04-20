@@ -5,8 +5,8 @@
         .config(function($routeProvider) {
            $routeProvider
                .when("/",{//URL Pattern
-                   templateUrl: "views/browse/browse.view.html",
-                   controller: "BrowseController",
+                   templateUrl: "views/home/home.view.html",
+                   controller: "HomeController",
                    controllerAs: "model"
                })
                .when("/browsecategory/:categoryid", {

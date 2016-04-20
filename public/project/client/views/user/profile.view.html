@@ -6,7 +6,8 @@
         <h4>USER</h4>
         <h1>{{model.user.username}}</h1>
         <div class="follower-count">{{model.user.followers.length | number}} followers</div>
-        <div class="buttons">
+        <div class="follower-count">{{model.user.following.length | number}} followings</div>
+       <!-- <div class="buttons">
             <div ng-show="loginMessage">
                 <div ng-show="!model.followStatus">
                     <a class="button green" ng-click="model.follow()">FOLLOW</a>
@@ -18,18 +19,16 @@
             <div ng-show="!loginMessage">
                 <a class="button button-add" href="/">FOLLOW</a>
             </div>
-        </div>
+        </div>-->
     </header>
 
     <div class="nav">
         <ul>
             <li><a href="#/user">FAVOURITE</a></li>
             <li class="active"><a href="#/profile">PROFILE</a></li>
-            <li><a href="#/userfollow">FOLLOWING</a></li>
+            <li><a href="#/userfollow">FIND USER</a></li>
         </ul>
     </div>
-    <hr>
-    <br>
     <div class="col-xs-12 form-style-5">
         <form>
             <fieldset>
@@ -45,7 +44,7 @@
                     <label for="inputPassword" class="col-xs-2 control-label">Password:</label>
                     <div class="col-xs-10">
                         <input ng-model="profileUser.password" type="password" class="form-control" id="inputPassword"
-                               placeholder="password">
+                               placeholder="******">
                     </div>
                 </div>
                 <div class="form-group">
@@ -82,6 +81,4 @@
             <input ng-click="model.update(profileUser)" type="submit" value="UPDATE">
         </form>
     </div>
-
-
 </div>

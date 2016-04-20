@@ -6,86 +6,59 @@
         <h4>USER</h4>
         <h1>{{model.user.username}}</h1>
         <div class="follower-count">{{model.user.followers.length | number}} followers</div>
-        <div class="follower-count">{{model.user.following.length | number}} followers</div>
-        <div class="buttons">
-            <div ng-show="loginMessage">
-                <div ng-show="!model.followStatus">
-                    <a class="button green" ng-click="model.follow()">FOLLOW</a>
-                </div>
-                <div ng-show="model.followStatus">
-                    <a class="button green" ng-click="model.unfollow()">UNFOLLOW</a>
-                </div>
-            </div>
-            <div ng-show="!loginMessage">
-                <a class="button button-add" href="/">FOLLOW</a>
-            </div>
-        </div>
+        <div class="follower-count">{{model.user.following.length | number}} followings</div>
     </header>
     <div class="nav">
         <ul>
             <li><a href="#/user">FAVOURITE</a></li>
             <li><a href="#/profile">PROFILE</a></li>
-            <li class="active"><a href="#/userfollow">FOLLOWING</a></li>
+            <li class="active"><a href="#/userfollow">FIND USER</a></li>
         </ul>
     </div>
-    <div class="col-sm-12">
-        <h2>My Following</h2>
-        <div class="col-sm-12">
-            <div class="col-sm-4" ng-repeat="following in model.followings">
-                <a href="#/view-user" ng-click="model.saveCurrentUserId(following.id)"><img src="img/user.jpg" class="img-thumbnail" alt="{{following.username}} image" width="200" height="200"></a>
-                <h4><a href="#/view-user" ng-click="model.saveCurrentUserId(following.id)">{{following.username}}</a></h4>
-                <a ng-click="model.deleteFollowing(following)" class="btn btn-danger">
-                    <scan class="glyphicon glyphicon-remove"></scan>
-                </a>
-            </div>
+    <hr>
+    <br>
+    <div class="row col-xs-12">
+        <div class="col-xs-6">
+            <ul class="playlists" ng-show="model.users.length > 0">
+                <h4>PEOPLE YOU MAY INTEREST IN</h4>
+                <li class="searchresult" ng-repeat="user in model.users">
+                    <a ng-click="model.saveViewUserId(user.id)">
+                        <img src="images/user3.jpg" class="img-rounded" alt="{{user.username}} image" width="160" height="160">
+                    </a>
+                    <p>
+                        <a ng-click="model.saveViewUserId(user.id)">{{user.username}}</a><br>
+                        <a ng-click="model.follow(user)" class="button green pull-right">FOLLOW</a>
+                    </p>
+                </li>
+            </ul>
         </div>
-    </div>
-
-
-
-</div>
-
-
-
-
-
-<div class="row">
-    <div class="col-sm-4">
-        <h3></h3>
-        <img src="img/user.jpg" class="img-thumbnail" alt="user1" width="200" height="200">
-    </div>
-    <div class="col-sm-5">
-        <h2>{{model.user.username}}</h2>
-        <ul>
-            <li>First Name: {{model.user.firstName}}</li>
-            <li>Last Name: {{model.user.lastName}}</li>
-            <li>Email: {{model.user.email}}</li>
-            <li>following: {{model.user.following.length}}</li>
-            <li>followers: {{model.user.followers.length}}</li>
-        </ul>
-    </div>
-</div>
-<div class="col-sm-12">
-    <h2>My Following</h2>
-    <div class="col-sm-12">
-        <div class="col-sm-4" ng-repeat="following in model.followings">
-            <a href="#/view-user" ng-click="model.saveCurrentUserId(following.id)"><img src="img/user.jpg" class="img-thumbnail" alt="{{following.username}} image" width="200" height="200"></a>
-            <h4><a href="#/view-user" ng-click="model.saveCurrentUserId(following.id)">{{following.username}}</a></h4>
-            <a ng-click="model.deleteFollowing(following)" class="btn btn-danger">
-                <scan class="glyphicon glyphicon-remove"></scan>
-            </a>
+        <hr>
+        <br>
+        <div class="col-xs-6">
+            <ul class="playlists" ng-show="model.followings.length > 0">
+                <h4>FOLLOWING</h4>
+                <li class="searchresult" ng-repeat="foi in model.followings">
+                    <a ng-click="model.saveViewUserId(foi.id)">
+                        <img src="images/user3.jpg" class="img-rounded" alt="{{foi.username}} image" width="160" height="160">
+                    </a>
+                    <p><a ng-click="model.saveViewUserId(foi.id)">{{foi.username}}</a><br>
+                        <a ng-click="model.deleteFollowing(foi)" class="button button-add pull-right">UNFOLLOW</a>
+                    </p>
+                </li>
+            </ul>
         </div>
-    </div>
-</div>
-<div class="col-sm-12">
-    <h2>My Followers</h2>
-    <div class="col-sm-12">
-        <div class="col-sm-4" ng-repeat="follower in model.followers">
-            <a href="#/view-user" ng-click="model.saveCurrentUserId(follower.id)"><img src="img/user.jpg" class="img-thumbnail" alt="{{follower.username}} image" width="200" height="200"></a>
-            <h4><a href="#/view-user" ng-click="model.saveCurrentUserId(follower.id)">{{follower.username}}</a></h4>
-            <a ng-click="model.deleteFollower(follower)" class="btn btn-danger">
-                <scan class="glyphicon glyphicon-remove"></scan>
-            </a>
+        <div class="col-xs-6">
+            <ul class="playlists" ng-show="model.followers.length > 0">
+                <h4>FOLLOWER</h4>
+                <li class="searchresult" ng-repeat="foe in model.followers">
+                    <a ng-click="model.saveViewUserId(foe.id)">
+                        <img src="images/user3.jpg" class="img-rounded" alt="{{foe.username}} image" width="160" height="160">
+                    </a>
+                    <p><a ng-click="model.saveViewUserId(foe.id)">{{foe.username}}</a><br>
+                        <a ng-click="model.deleteFollower(foe)" class="button button-add pull-right">UNFOLLOW</a>
+                    </p>
+                </li>
+            </ul>
         </div>
     </div>
 </div>
