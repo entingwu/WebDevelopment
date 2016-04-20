@@ -76,7 +76,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="t in model.user.tracks">
+            <tr ng-repeat="t in model.user.tracks" ng-show="model.user.tracks.length > 0">
                 <td>
                     <a ng-show="user" ng-click="model.deleteTrack(t)" class="button-xs button-add">-
                     </a>

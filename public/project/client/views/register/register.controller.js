@@ -27,8 +27,7 @@
 								  $scope.loginAsAdmin = true;
 							  }
 							  $location.url("/profile");
-							  console.log("current register user is ");
-							  console.log($rootScope.user);
+							  console.log("current register user is ", $rootScope.user);
 						  });
 					  }
 				  });

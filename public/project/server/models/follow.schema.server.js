@@ -3,6 +3,5 @@ module.exports = function(mongoose) {
         id: String,
         username: String
     });
-
     return FollowSchema;
 };

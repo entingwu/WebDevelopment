@@ -1,5 +1,5 @@
 module.exports = function(mongoose) {
-    var SongSchema = mongoose.Schema({
+    var TrackSchema = mongoose.Schema({
         id: String,
         name: String,
         albumName: String,
@@ -11,5 +11,5 @@ module.exports = function(mongoose) {
         popularity: String
     });
 
-    return SongSchema;
+    return TrackSchema;
 };

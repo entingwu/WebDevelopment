@@ -6,6 +6,7 @@
         <h4>USER</h4>
         <h1>{{model.user.username}}</h1>
         <div class="follower-count">{{model.user.followers.length | number}} followers</div>
+        <div class="follower-count">{{model.user.following.length | number}} followers</div>
         <div class="buttons">
             <div ng-show="loginMessage">
                 <div ng-show="!model.followStatus">
@@ -43,6 +44,11 @@
 
 
 </div>
+
+
+
+
+
 <div class="row">
     <div class="col-sm-4">
         <h3></h3>

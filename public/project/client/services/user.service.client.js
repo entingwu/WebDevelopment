@@ -276,8 +276,7 @@
             return deferred.promise;
         }
 
-        function findFollowerByUserId(userId)
-        {
+        function findFollowerByUserId(userId) {
             var deferred = $q.defer();
             $http
                 .get('/api/project/user/' + userId + '/follower')
@@ -287,27 +286,23 @@
             return deferred.promise;
         }
 
-        function deleteFollowingFromUser(userId, followId)
-        {
+        function deleteFollowingFromUser(userId, followId) {
             var deferred = $q.defer();
             $http
                 .delete('/api/project/user/' + userId + '/following/' + followId)
                 .success(function(response) {
-                    console.log("deleted a following from user");
-                    console.log(response);
+                    console.log("deleted a following from user", response);
                     deferred.resolve(response);
                 });
             return deferred.promise;
         }
 
-        function deleteFollowerFromUser(userId, followId)
-        {
+        function deleteFollowerFromUser(userId, followId) {
             var deferred = $q.defer();
             $http
                 .delete('/api/project/user/' + userId + '/follower/' + followId)
                 .success(function(response) {
-                    console.log("deleted a follower from user");
-                    console.log(response);
+                    console.log("deleted a follower from user", response);
                     deferred.resolve(response);
                 });
             return deferred.promise;

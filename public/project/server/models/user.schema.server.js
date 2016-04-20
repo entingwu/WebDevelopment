@@ -1,5 +1,5 @@
 module.exports = function(mongoose) {
-    var SongSchema = require("./song.schema.server.js")(mongoose);
+    var TrackSchema = require("./track.schema.server.js")(mongoose);
     var ArtistSchema = require("./artist.schema.server.js")(mongoose);
     var AlbumSchema = require("./album.schema.server.js")(mongoose);
     var FollowSchema = require("./follow.schema.server.js")(mongoose);
@@ -10,7 +10,8 @@ module.exports = function(mongoose) {
         password: String,
         email: String,
         genres: String,
-        favoriteSongs:[SongSchema],
+        roles: {  type: [String], default: ['admin','user'] },
+        favoriteSongs:[TrackSchema],
         favoriteArtists:[ArtistSchema],
         favoriteAlbums:[AlbumSchema],
         following: [FollowSchema],/* an array of users I am following*/

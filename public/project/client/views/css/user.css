@@ -262,6 +262,8 @@
     display: block;
     margin-bottom: 8px;
     font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 12pt;
 }
 .form-style-5 input[type="text"],
 .form-style-5 input[type="password"],

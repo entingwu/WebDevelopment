@@ -34,20 +34,45 @@
         <form>
             <fieldset>
                 <legend><span class="number">1</span>USER INFORMATION</legend>
-                <input ng-model="profileUser.username" type="text" class="form-control" id="inputUsername"
-                       value="{{user.username}}" placeholder="Username : {{user.username}}">
-                <input ng-model="profileUser.password" type="password" class="form-control" id="inputPassword1"
-                       value="{{user.password}}" placeholder="Password">
-                <input ng-model="profileUser.firstName" type="text" class="form-control" id="inputFirstName"
-                       placeholder="First Name" value="{{user.firstName}}">
-                <input ng-model="profileUser.lastName" type="text" class="form-control" id="inputLastName"
-                       placeholder="Last Name" value="{{user.lastName}}">
-                <input ng-model="profileUser.email" type="email" class="form-control" id="inputEmail"
-                       placeholder="Email *" value="{{user.email}}">
+                <div class="form-group">
+                    <label for="inputUsername" class="col-xs-2 control-label">Username:</label>
+                    <div class="col-xs-10">
+                        <input ng-model="profileUser.username" type="text" class="form-control" id="inputUsername"
+                               placeholder="{{user.username}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-xs-2 control-label">Password:</label>
+                    <div class="col-xs-10">
+                        <input ng-model="profileUser.password" type="password" class="form-control" id="inputPassword"
+                               placeholder="password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputFirstName" class="col-xs-2 control-label">FirstName:</label>
+                    <div class="col-xs-10">
+                        <input ng-model="profileUser.firstName" type="text" class="form-control" id="inputFirstName"
+                               placeholder="{{user.firstName}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputLastName" class="col-xs-2 control-label">LastName:</label>
+                    <div class="col-xs-10">
+                        <input ng-model="profileUser.lastName" type="text" class="form-control" id="inputLastName"
+                               placeholder="{{user.lastName}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-xs-2 control-label">Email:</label>
+                    <div class="col-xs-10">
+                        <input ng-model="profileUser.email" type="email" class="form-control" id="inputEmail"
+                               placeholder="{{user.email}}">
+                    </div>
+                </div>
             </fieldset>
             <fieldset>
                 <legend><span class="number">2</span> SELECT GENRES</legend>
-                <select id="job" name="field4" ng-model="profileUser.genres">
+                <select class="col-xs-10" id="genres" name="field4" ng-model="profileUser.genres">
                     <optgroup ng-repeat="gm in genresMoods">
                         <option ng-if="user.genres==null" value="{{gm.id}}">{{gm.name}}</option>
                         <option ng-if="user.genres!=null" value="{{profileUser.genres}}">{{gm.name}}</option>

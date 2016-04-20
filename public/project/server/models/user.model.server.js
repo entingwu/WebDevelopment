@@ -371,10 +371,8 @@ module.exports = function(db, mongoose) {
         return deferred.promise;
     }
 
-    function findFollowerByUserId(userId)
-    {
+    function findFollowerByUserId(userId) {
         var deferred = q.defer();
-
         UserModel.findById(userId, function(err, user){
             if(err) {
                 console.log(err);
@@ -389,45 +387,47 @@ module.exports = function(db, mongoose) {
         return deferred.promise;
     }
 
-    function deleteFollowingFromUser(userId, followId)
-    {
+    function deleteFollowingFromUser(userId, followId) {
         var deferred = q.defer();
-
-        UserModel.findById(userId, function(err, user){
-            if (user != null) {
-                var follows = user.following;
-                for (var i = 0; i < follows.length; i++) {
-                    if (follows[i].id == followId) {
-                        user.following.splice(i, 1);
-                        user.save(function(err, user){
-                            deferred.resolve(user);
-                        });
+        UserModel.findById(userId, function(err, user) {
+            if(err) {
+                deferred.reject(err);
+            }else {
+                if(user != null) {
+                    var followings = user.following;
+                    for(var i = 0; i < followings.length; i++) {
+                        if(followings[i].id == followId) {//find followId in following of user
+                            user.following.splice(i, 1);//at pos=i removes 1 item
+                            user.save(function(err, user) {
+                                deferred.resolve(user);
+                            });
+                        }
                     }
                 }
             }
         });
-
         return deferred.promise;
     }
 
-    function deleteFollowerFromUser(userId, followId)
-    {
+    function deleteFollowerFromUser(userId, followId) {
         var deferred = q.defer();
-
-        UserModel.findById(userId, function(err, user){
-            if (user != null){
-                var follows = user.followers;
-                for (var i = 0; i < follows.length; i++) {
-                    if (follows[i].id == followId) {
-                        user.followers.splice(i, 1);
-                        user.save(function(err, user){
-                            deferred.resolve(user);
-                        });
+        UserModel.findById(userId, function(err, user) {
+            if(err) {
+                deferred.reject(err);
+            }else {
+                if(user != null) {
+                    var followers = user.followers;
+                    for(var i = 0; i < followers.length; i++) {
+                        if(followers[i].id == followId) {
+                            user.followers.splice(i, 1);
+                            user.save(function(err, user) {
+                                deferred.resolve(user);
+                            });
+                        }
                     }
                 }
             }
         });
-
         return deferred.promise;
     }
 };
