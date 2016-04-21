@@ -4,7 +4,7 @@
         .module("MusicPlayerApp")
         .controller('LoginController', LoginController);
 
-    function LoginController($rootScope, $location, UserService, $scope) {
+    function LoginController($scope, $rootScope, $location, UserService) {
         $scope.$location = $location;
         $scope.isLoggedIn = false;
         $scope.login = login;
@@ -17,12 +17,11 @@
                     if(user != null) {
                         $rootScope.user = user;
                         $scope.message = "success";
-                        $rootScope.loginMessage = true;
                         $('#loginModal').modal('hide');
 
                         /*login as Admin*/
-                        if (user.username == "admin" && user.password == "admin") {
-                            $rootScope.loginAsAdmin = true;
+                        if(user.roles.indexOf('admin') >= 0) {
+                            $location.url("/admin");
                         }
 
                         /*redirect to previous location after login, or redirect to profile page*/
@@ -34,13 +33,6 @@
                         $location.url("/profile");
                         console.log("current login user is: ");
                         console.log($rootScope.user);
-
-                        UserService
-                            .findTracksByUserId($rootScope.user._id)
-                            .then(function(tracks) {//user.favoriteSongs
-                                $rootScope.favoriteTracks = tracks;
-                                console.log("favorite tracks : ", $rootScope.favoriteTracks);
-                            });
                     }else {
                         $scope.message = "error";
                     }

@@ -49,6 +49,11 @@
                    controller: "SearchResultsController",
                    controllerAs: "model"
                })
+               .when("/admin", {
+                   templateUrl: "views/admin/admin.view.html",
+                   controller: "AdminController",
+                   controllerAs: "model"
+               })
                .otherwise({
                    redirectTo: "/"
                })
@@ -57,7 +62,6 @@
     app.controller('AppController', function($rootScope, $scope, $location, UserService, Auth) {
         $scope.$location = $location;
         console.log($scope.$location);
-        $rootScope.loginMessage = false;
 
         $scope.loadsearch = function() {
             console.log('search for', $scope.query);
@@ -67,8 +71,6 @@
         $scope.logout = function() {
             console.log('do logout...');
             $rootScope.user = null;
-            $rootScope.loginMessage = false;
-            $rootScope.loginAsAdmin = false;
 
             Auth.setUsername('');
             $location.url("/");
@@ -83,8 +85,18 @@
             }
         };
 
+        $scope.saveArtist = function(artist) {
+            $rootScope.artist= artist;
+        };
 
+        $scope.saveAlbum = function(album) {
+            $rootScope.album = album;
+        };
 
+        $scope.saveTrack = function(track) {
+            console.log("save track", track);
+            $rootScope.track= track;
+        }
 
     });
 

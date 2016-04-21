@@ -7,13 +7,18 @@
     function userService($http, $q, Auth, $rootScope) {
         var service = {
             /* User */
+            register : register,
+            updateUserById : updateUserById,
+
             findUserByUsernameAndPassword : findUserByUsernameAndPassword,
+            findUserByUsername : findUserByUsername,
             findAllUsers : findAllUsers,
+            findUserById : findUserById,
+
+            /* Admin */
             createUser : createUser,
             deleteUserById : deleteUserById,
-            updateUser : updateUser,
-            findUserByUsername : findUserByUsername,
-            findUserById : findUserById,
+            updateUserByAdmin : updateUserByAdmin,
 
             /* Playlist */
             getPlaylist : getPlaylist,
@@ -79,6 +84,26 @@
         }
 
         /* USER */
+        function register(user) {
+            var deferred = $q.defer();
+            $http
+                .post('/api/project/register', user)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function updateUserById(userId, user) {
+            var deferred = $q.defer();
+            $http
+                .put('/api/project/user/' + userId, user)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
         function findUserById(id)
         {
             var deferred = $q.defer();
@@ -123,8 +148,7 @@
             return deferred.promise;
         }
 
-        function createUser(user)
-        {
+        function createUser(user) {
             var deferred = $q.defer();
             $http
                 .post('/api/project/user', user)
@@ -145,15 +169,18 @@
             return deferred.promise;
         }
 
-        function updateUser(id, user) {
+        function updateUserByAdmin(userId, user) {//admin
             var deferred = $q.defer();
+            console.log("client", user);
             $http
-                .put('/api/project/user/' + id, user)
+                .put('/api/project/admin/user/' + userId, user)
                 .success(function(response) {
                     deferred.resolve(response);
                 });
             return deferred.promise;
         }
+
+        /* TRACK */
 
         function addTrackToUser(userId, track) {
             var deferred = $q.defer();

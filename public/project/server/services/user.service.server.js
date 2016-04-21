@@ -1,11 +1,14 @@
-module.exports = function(app, model) {
+module.exports = function(app, userModel) {
     /* User */
     app.get('/api/project/token', getToken);
     app.post('/api/project/user', createUser);
     app.get('/api/project/user', findUser);
     app.get('/api/project/user/:id', findUserById);
-    app.put('/api/project/user/:id', updateUserById);
+    app.put('/api/project/user/:userId', updateUserById);
     app.delete('/api/project/user/:id', deleteUserById);
+
+    /* ADMIN : first check: auth, second check: isAdmin()*/
+    app.put('/api/project/admin/user/:userId',         updateUserByAdmin);
 
     /* Song */
     app.post('/api/project/user/:userId/song', addTrackToUser);
@@ -55,7 +58,7 @@ module.exports = function(app, model) {
     }
 
     function createUser(req, res) {
-        model
+        userModel
             .createUser(req.body)
             .then(function(user) {
                 res.json(user);
@@ -73,7 +76,7 @@ module.exports = function(app, model) {
             };
             console.log("credential is: ");
             console.log(credentials);
-            model
+            userModel
                 .findUserByCredentials(credentials)
                 .then(function(user) {
                     res.json(user);
@@ -81,14 +84,14 @@ module.exports = function(app, model) {
                     console.log(user);
                 });
         } else if (username != null) {
-            model
+            userModel
                 .findUserByUsername(username)
                 .then(function(user) {
                     res.json(user);
                 });
             console.log("found user by username");
         } else {
-            model
+            userModel
                 .findAllUsers()
                 .then(function(users) {
                     res.json(users);
@@ -98,7 +101,7 @@ module.exports = function(app, model) {
     }
 
     function findUserById(req, res) {
-        model
+        userModel
             .findUserById(req.params.id)
             .then(function(user) {
                 res.json(user);
@@ -106,24 +109,42 @@ module.exports = function(app, model) {
     }
 
     function updateUserById(req, res) {
-        model
-            .updateUserById(req.params.id, req.body)
+        userModel
+            .updateUserById(req.params.userId, req.body)
             .then(function(users) {
                 res.json(users);
             });
     }
 
     function deleteUserById(req, res) {
-        model
+        userModel
             .deleteUserById(req.params.id)
             .then(function(users) {
                 res.json(users);
             });
     }
 
+    /* ADMIN */
+    function updateUserByAdmin(req, res) {
+        var userId = req.params.userId;
+        var newUser = req.body;
+        console.log("server", newUser);
+        userModel
+            .updateUserById(userId, newUser)
+            .then(
+                function(user) {
+                    res.json(user);
+                },
+                function(err) {
+                    res.status(400).send(err);
+                }
+            );
+    }
+
+
     function addTrackToUser(req, res) {
         console.log(req.body);
-        model
+        userModel
             .addTrackToUser(req.params.userId, req.body)
             .then(function(result) {
                 res.json(result);
@@ -131,7 +152,7 @@ module.exports = function(app, model) {
     }
 
     function findTracksByUserId(req, res) {
-        model
+        userModel
             .findTracksByUserId(req.params.userId)
             .then(function(result) {
                 res.json(result);
@@ -139,7 +160,7 @@ module.exports = function(app, model) {
     }
 
     function deleteTrackFromUser(req, res) {
-        model
+        userModel
             .deleteTrackFromUser(req.params.userId, req.params.songId)
             .then(function(result) {
                 res.json(result);
@@ -147,7 +168,7 @@ module.exports = function(app, model) {
     }
 
     function addArtistToUser(req, res) {
-        model
+        userModel
             .addArtistToUser(req.params.userId, req.body)
             .then(function(result) {
                 res.json(result);
@@ -155,7 +176,7 @@ module.exports = function(app, model) {
     }
 
     function findArtistsByUserId(req, res) {
-        model
+        userModel
             .findArtistsByUserId(req.params.userId)
             .then(function(result) {
                 res.json(result);
@@ -163,7 +184,7 @@ module.exports = function(app, model) {
     }
 
     function deleteArtistFromUser(req, res) {
-        model
+        userModel
             .deleteArtistFromUser(req.params.userId, req.params.artistId)
             .then(function(result) {
                 console.log("in server service, deleted artist from user");
@@ -173,7 +194,7 @@ module.exports = function(app, model) {
     }
 
     function addAlbumToUser(req, res) {
-        model
+        userModel
             .addAlbumToUser(req.params.userId, req.body)
             .then(function(result) {
                 res.json(result);
@@ -181,7 +202,7 @@ module.exports = function(app, model) {
     }
 
     function findAlbumsByUserId(req, res) {
-        model
+        userModel
             .findAlbumsByUserId(req.params.userId)
             .then(function(result) {
                 res.json(result);
@@ -189,7 +210,7 @@ module.exports = function(app, model) {
     }
 
     function deleteAlbumFromUser(req, res) {
-        model
+        userModel
             .deleteAlbumFromUser(req.params.userId, req.params.albumId)
             .then(function(result) {
                 res.json(result);
@@ -197,7 +218,7 @@ module.exports = function(app, model) {
     }
 
     function addFollowToUser(req, res) {
-        model
+        userModel
             .addFollowToUser(req.params.userId, req.body)
             .then(function(result) {
                 res.json(result);
@@ -205,7 +226,7 @@ module.exports = function(app, model) {
     }
 
     function findFollowingByUserId(req, res) {
-        model
+        userModel
             .findFollowingByUserId(req.params.userId)
             .then(function(result) {
                 res.json(result);
@@ -213,7 +234,7 @@ module.exports = function(app, model) {
     }
 
     function findFollowerByUserId(req, res) {
-        model
+        userModel
             .findFollowerByUserId(req.params.userId)
             .then(function(result) {
                 res.json(result);
@@ -221,7 +242,7 @@ module.exports = function(app, model) {
     }
 
     function deleteFollowingFromUser(req, res) {
-        model
+        userModel
             .deleteFollowingFromUser(req.params.userId, req.params.followId)
             .then(function(result) {
                 res.json(result);
@@ -229,7 +250,7 @@ module.exports = function(app, model) {
     }
 
     function deleteFollowerFromUser(req, res) {
-        model
+        userModel
             .deleteFollowerFromUser(req.params.userId, req.params.followId)
             .then(function(result) {
                 res.json(result);

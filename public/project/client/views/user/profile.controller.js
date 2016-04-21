@@ -8,7 +8,6 @@
         var model = this;
         model.$location = $location;
         model.update = update;
-        model.follow = follow;
 
         if ($rootScope.user != null) {
             UserService

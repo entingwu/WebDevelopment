@@ -66,45 +66,37 @@ module.exports = function(db, mongoose) {
         return deferred.promise;
     }
 
-    function findUserById(id) {
+    function findUserById(userId) {
         var deferred = q.defer();
-
-        UserModel.findById(id, function(err, user){
+        UserModel.findById(userId, function(err, user){
             if(err) {
                 deferred.reject(err);
             } else {
                 deferred.resolve(user);
             }
         });
-
         return deferred.promise;
     }
 
-    function updateUserById(id, user) {
+    function updateUserById(userId, user) {
         var deferred = q.defer();
+        console.log("model", user);
         UserModel.update(
-            {_id: id},
-            {$set: {
-                firstName : user.firstName,
-                lastName : user.lastName,
-                username : user.username,
-                password : user.password,
-                email : user.email,
-                genres : user.genres
-            }},
+            {_id: userId},
+            {$set: user},
             function(err, result) {
-                UserModel.findOne({_id : id}, function(err, result) {
+                UserModel.findOne({_id : userId}, function(err, result) {
                     deferred.resolve(result);
                 });
             });
         return deferred.promise;
     }
 
-    function deleteUserById(id)
+    function deleteUserById(userId)
     {
         var deferred = q.defer();
 
-        UserModel.remove({_id: id}, function(err, status) {
+        UserModel.remove({_id: userId}, function(err, status) {
             if(err) {
                 deferred.reject(err);
             } else {
@@ -329,7 +321,7 @@ module.exports = function(db, mongoose) {
                 deferred.resolve(user);
             });
             //2. add user to follow.followers
-            UserModel.findById(follow.id, function(err, idol) {
+            UserModel.findById(follow._id, function(err, idol) {
                 idol.followers.push(user);
                 idol.save(function(err, idol) {
                     console.log("add follower: ", idol);
@@ -375,7 +367,7 @@ module.exports = function(db, mongoose) {
                 if(user != null) {
                     var followings = user.following;
                     for(var i = 0; i < followings.length; i++) {
-                        if(followings[i].id == followId) {//find followId in following of user
+                        if(followings[i]._id == followId) {//find followId in following of user
                             user.following.splice(i, 1);//at pos=i removes 1 item
                             user.save(function(err, user) {
                                 deferred.resolve(user);
@@ -397,7 +389,7 @@ module.exports = function(db, mongoose) {
                 if(user != null) {
                     var followers = user.followers;
                     for(var i = 0; i < followers.length; i++) {
-                        if(followers[i].id == followId) {
+                        if(followers[i]._id == followId) {
                             user.followers.splice(i, 1);
                             user.save(function(err, user) {
                                 deferred.resolve(user);

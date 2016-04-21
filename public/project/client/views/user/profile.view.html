@@ -7,19 +7,6 @@
         <h1>{{model.user.username}}</h1>
         <div class="follower-count">{{model.user.followers.length | number}} followers</div>
         <div class="follower-count">{{model.user.following.length | number}} followings</div>
-       <!-- <div class="buttons">
-            <div ng-show="loginMessage">
-                <div ng-show="!model.followStatus">
-                    <a class="button green" ng-click="model.follow()">FOLLOW</a>
-                </div>
-                <div ng-show="model.followStatus">
-                    <a class="button green" ng-click="model.unfollow()">UNFOLLOW</a>
-                </div>
-            </div>
-            <div ng-show="!loginMessage">
-                <a class="button button-add" href="/">FOLLOW</a>
-            </div>
-        </div>-->
     </header>
 
     <div class="nav">
@@ -27,6 +14,7 @@
             <li><a href="#/user">FAVOURITE</a></li>
             <li class="active"><a href="#/profile">PROFILE</a></li>
             <li><a href="#/userfollow">FIND USER</a></li>
+            <li><div ng-show="user.roles.indexOf('admin') >= 0"><a href="#/admin">ADMIN</a></div></li>
         </ul>
     </div>
     <div class="col-xs-12 form-style-5">

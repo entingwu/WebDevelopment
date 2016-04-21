@@ -10,7 +10,6 @@
         model.follow = follow;
         model.deleteFollowing = deleteFollowing;
         model.deleteFollower = deleteFollower;
-        model.saveViewUserId = saveViewUserId;
 
         init();
         function init() {
@@ -20,6 +19,7 @@
                     .findUserById($rootScope.user._id)
                     .then(function (user) {
                         model.user = user;
+                        console.log(model.user);
                         model.followings = user.following;
                         model.followers = user.followers;
                     });
@@ -43,15 +43,12 @@
                 .then(init);
         }
 
-        function saveViewUserId(userId) {
-            $rootScope.viewUserId = userId;
-        }
-
         /* user1.following - user2;
            user2.follower - user1 */
         function deleteFollowing(following) {
+            console.log(following._id);
             UserService
-                .deleteFollowingFromUser(model.user._id, following.id)
+                .deleteFollowingFromUser(model.user._id, following._id)
                 .then(function (response) {
                 UserService
                     .findFollowingByUserId(model.user._id)
@@ -59,7 +56,7 @@
             });
 
             UserService
-                .deleteFollowerFromUser(following.id, model.user._id)
+                .deleteFollowerFromUser(following._id, model.user._id)
                 .then(init);
         }
 
@@ -67,7 +64,7 @@
            user2.following - user1 */
         function deleteFollower(follower) {
             UserService
-                .deleteFollowerFromUser(model.user._id, follower.id)
+                .deleteFollowerFromUser(model.user._id, follower._id)
                 .then(function (response) {
                 UserService
                     .findFollowerByUserId(model.user._id)
@@ -75,7 +72,7 @@
             });
 
             UserService
-                .deleteFollowingFromUser(follower.id, model.user._id)
+                .deleteFollowingFromUser(follower._id, model.user._id)
                 .then(init);
         }
     }

@@ -14,6 +14,7 @@
             <li class="active"><a href="#/user">FAVOURITE</a></li>
             <li><a href="#/profile">PROFILE</a></li>
             <li><a href="#/userfollow">FIND USER</a></li>
+            <li><div ng-show="model.user.roles.indexOf('admin') >= 0"><a href="#/admin">ADMIN</a></div></li>
         </ul>
     </div>
     <hr>

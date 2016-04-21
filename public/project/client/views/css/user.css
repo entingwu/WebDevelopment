@@ -242,7 +242,7 @@
 /*form*/
 
 .form-style-5{
-    max-width: 700px;
+    max-width: 900px;
     padding: 10px 20px;
     background: #121314;
     margin: 10px auto;
@@ -261,10 +261,12 @@
 .form-style-5 label {
     display: block;
     margin-bottom: 8px;
+    color: #626f78;
     font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
-    font-size: 12pt;
+    font-weight: 400;
+    font-size: 11pt;
 }
+
 .form-style-5 input[type="text"],
 .form-style-5 input[type="password"],
 .form-style-5 input[type="date"],
@@ -292,7 +294,7 @@
     color: #626f78;
     -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
     box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 
 }
 .form-style-5 input[type="text"]:focus,

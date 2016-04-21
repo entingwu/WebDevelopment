@@ -4,7 +4,7 @@
         .module("MusicPlayerApp")
         .controller('UserController', UserController);
 
-    function UserController($location, $rootScope, UserService) {
+    function UserController($scope, $location, $rootScope, UserService) {
         var model = this;
         model.$location = $location;
         model.saveAlbum = saveAlbum;
@@ -25,50 +25,58 @@
 
         /*find current user's favorite tracks, artists, and albums from database*/
         function init() {
-            UserService.findTracksByUserId(model.user._id).then(function (tracks) {
-                model.user.tracks = tracks;
-                console.log("found user's favorite tracks");
-                console.log(model.user.tracks);
+            UserService
+                .findTracksByUserId(model.user._id)
+                .then(function (tracks) {
+                    model.user.tracks = tracks;
+                    console.log("favorite tracks", model.user.tracks);
             });
 
-            UserService.findArtistsByUserId(model.user._id).then(function (artists) {
-                model.user.artists = artists;
-                console.log("found user's favorite artists");
-                console.log(model.user.artists);
+            UserService
+                .findArtistsByUserId(model.user._id)
+                .then(function (artists) {
+                    model.user.artists = artists;
+                    console.log("favorite artists", model.user.artists);
             });
 
-            UserService.findAlbumsByUserId(model.user._id).then(function (albums) {
-                model.user.albums = albums;
-                console.log("found user's favorite albums");
-                console.log(model.user.albums);
+            UserService
+                .findAlbumsByUserId(model.user._id)
+                .then(function (albums) {
+                    model.user.albums = albums;
+                    console.log("found user's favorite albums", model.user.albums);
             });
         }
 
         function deleteTrack(track) {
-            UserService.deleteTrackFromUser(model.user._id, track.id)
+            UserService
+                .deleteTrackFromUser(model.user._id, track.id)
                 .then(function (tracks) {
                 UserService
                     .findTracksByUserId(model.user._id)
                     .then(function (result) {
                         model.user.tracks = result;
                     });
-                console.log("successfully deleted track");
-                console.log(model.user.tracks);
+                console.log("Deleted track", model.user.tracks);
             });
         }
 
+        function saveTrack(trackId) {
+            $rootScope.track = {id: trackId};
+        }
+
         function deleteArtist(artist) {
-            console.log("successfully deleted artist");
-            console.log(model.user.artists);
             UserService.deleteArtistFromUser(model.user._id, artist.id).then(function (artists) {
                 UserService
                     .findArtistsByUserId(model.user._id)
                     .then(function (result) {
                         model.user.artists = result;
                     });
-                console.log("successfully deleted artist");
-                console.log(model.user.artists);
+                console.log("Deleted artist", model.user.artists);
             });
+        }
+
+        function saveArtist(artistId) {
+            $rootScope.artist = {id: artistId};
         }
 
         function deleteAlbum(album) {
@@ -78,21 +86,12 @@
                     .then(function (result) {
                         model.user.albums = result;
                     });
-                console.log("successfully deleted album");
-                console.log(model.user.albums);
+                console.log("Deleted album", model.user.albums);
             });
         }
 
         function saveAlbum(albumId) {
             $rootScope.album = {id: albumId};
-        }
-
-        function saveArtist(artistId) {
-            $rootScope.artist = {id: artistId};
-        }
-
-        function saveTrack(trackId) {
-            $rootScope.track = {id: trackId};
         }
 
     }

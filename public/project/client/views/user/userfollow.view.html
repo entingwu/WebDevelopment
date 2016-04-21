@@ -13,6 +13,7 @@
             <li><a href="#/user">FAVOURITE</a></li>
             <li><a href="#/profile">PROFILE</a></li>
             <li class="active"><a href="#/userfollow">FIND USER</a></li>
+            <li><div ng-show="user.roles.indexOf('admin') >= 0"><a href="#/admin">ADMIN</a></div></li>
         </ul>
     </div>
     <hr>
@@ -22,11 +23,11 @@
             <ul class="playlists" ng-show="model.users.length > 0">
                 <h4>PEOPLE YOU MAY INTEREST IN</h4>
                 <li class="searchresult" ng-repeat="user in model.users">
-                    <a ng-click="model.saveViewUserId(user.id)">
+                    <a>
                         <img src="images/user3.jpg" class="img-rounded" alt="{{user.username}} image" width="160" height="160">
                     </a>
                     <p>
-                        <a ng-click="model.saveViewUserId(user.id)">{{user.username}}</a><br>
+                        <a>{{user.username}}</a><br>
                         <a ng-click="model.follow(user)" class="button green pull-right">FOLLOW</a>
                     </p>
                 </li>
@@ -38,10 +39,11 @@
             <ul class="playlists" ng-show="model.followings.length > 0">
                 <h4>FOLLOWING</h4>
                 <li class="searchresult" ng-repeat="foi in model.followings">
-                    <a ng-click="model.saveViewUserId(foi.id)">
+                    <a>
                         <img src="images/user3.jpg" class="img-rounded" alt="{{foi.username}} image" width="160" height="160">
                     </a>
-                    <p><a ng-click="model.saveViewUserId(foi.id)">{{foi.username}}</a><br>
+                    <p>
+                        <a>{{foi.username}}</a><br>
                         <a ng-click="model.deleteFollowing(foi)" class="button button-add pull-right">UNFOLLOW</a>
                     </p>
                 </li>
@@ -51,10 +53,11 @@
             <ul class="playlists" ng-show="model.followers.length > 0">
                 <h4>FOLLOWER</h4>
                 <li class="searchresult" ng-repeat="foe in model.followers">
-                    <a ng-click="model.saveViewUserId(foe.id)">
+                    <a>
                         <img src="images/user3.jpg" class="img-rounded" alt="{{foe.username}} image" width="160" height="160">
                     </a>
-                    <p><a ng-click="model.saveViewUserId(foe.id)">{{foe.username}}</a><br>
+                    <p>
+                        <a>{{foe.username}}</a><br>
                         <a ng-click="model.deleteFollower(foe)" class="button button-add pull-right">UNFOLLOW</a>
                     </p>
                 </li>
