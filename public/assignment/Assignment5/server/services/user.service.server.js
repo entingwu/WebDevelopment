@@ -172,7 +172,9 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
         var newUser = req.body;
         //string -> array
         if(newUser.roles && newUser.roles.length > 1) {
-            newUser.roles = newUser.roles.split(",");
+            var role_str = newUser.roles.toString();
+            var roles = role_str.split(",");
+            newUser.roles = roles;
         }else {
             newUser.roles = ["student"];
         }

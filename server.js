@@ -60,10 +60,10 @@ app.listen(port, ipaddress);
 //require("./public/assignment/Assignment3/server/app.js")(app);
 
 /* ASSIGNMENT4 : mongoose instance library */
-require("./public/assignment/Assignment4/server/app.js")(app, db, mongoose);
+//require("./public/assignment/Assignment4/server/app.js")(app, db, mongoose);
 
 /* ASSIGNMENT5 : security */
-//require("./public/assignment/Assignment5/server/app.js")(app, db, mongoose, passport, LocalStrategy);
+require("./public/assignment/Assignment5/server/app.js")(app, db, mongoose, passport, LocalStrategy);
 
 /* PROJECT */
 require("./public/project/server/app.js")(app, db, mongoose, passport, LocalStrategy);

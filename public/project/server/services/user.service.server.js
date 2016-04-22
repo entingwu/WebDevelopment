@@ -243,13 +243,9 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
     function createUser(req, res) {
         var newUser = req.body;
         if(newUser.roles && newUser.roles.length > 1) {
-            //var roles = newUser.roles.split(",");
             var role_str = newUser.roles.toString();
             var roles = role_str.split(",");
-
             newUser.roles = roles;
-        }else {
-            newUser.roles = ["user"];
         }
 
         //first check if a user already exists with the username
