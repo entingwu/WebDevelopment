@@ -60,13 +60,13 @@ app.listen(port, ipaddress);
 require("./public/assignment/Assignment3/server/app.js")(app);
 
 /* ASSIGNMENT4 : mongoose instance library */
-require("./public/assignment/Assignment4/server/app.js")(app, db, mongoose);
+//require("./public/assignment/Assignment4/server/app.js")(app, db, mongoose);
 
 /* ASSIGNMENT5 : security */
-require("./public/assignment/Assignment5/server/app.js")(app, db, mongoose, passport, LocalStrategy);
+//require("./public/assignment/Assignment5/server/app.js")(app, db, mongoose, passport, LocalStrategy);
 
 /* PROJECT */
-require("./public/project/server/app.js")(app, db, mongoose);
+require("./public/project/server/app.js")(app, db, mongoose, passport, LocalStrategy);
 
 require("./public/application/server/app.js")(app, db, mongoose);
 
@@ -74,6 +74,6 @@ require("./public/application/server/app.js")(app, db, mongoose);
 /* physical location : load server3.js in other folder, passing app
  * var app = express()
  * this file requires the module and function, when I have the function, I invoke it and pass app */
-require("./public/lectures/server/expressjs/server.js")(app);
+//require("./public/lectures/server/expressjs/server.js")(app);
 //require("./public/lectures/Security/app/app.js")(app);
-app.set('view engine', 'ejs');
+//app.set('view engine', 'ejs');

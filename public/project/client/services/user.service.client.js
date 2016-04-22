@@ -7,18 +7,21 @@
     function userService($http, $q, Auth, $rootScope) {
         var service = {
             /* User */
+            loginUser : loginUser,
+            logoutUser : logoutUser,
+            getCurrentUser : getCurrentUser,
             register : register,
             updateUserById : updateUserById,
 
+            /* Admin */
+            findAllUsers : findAllUsers,
+            createUser : createUser,
+            updateUserByAdmin : updateUserByAdmin,
+            deleteUserById : deleteUserById,
+
             findUserByUsernameAndPassword : findUserByUsernameAndPassword,
             findUserByUsername : findUserByUsername,
-            findAllUsers : findAllUsers,
             findUserById : findUserById,
-
-            /* Admin */
-            createUser : createUser,
-            deleteUserById : deleteUserById,
-            updateUserByAdmin : updateUserByAdmin,
 
             /* Playlist */
             getPlaylist : getPlaylist,
@@ -46,44 +49,39 @@
             deleteFollowingFromUser : deleteFollowingFromUser,
             deleteFollowerFromUser : deleteFollowerFromUser
         };
-
         return service;
 
-        function getPlaylist(username, playlist) {
-            var deferred = $q.defer();
-            Auth.getAccessToken()
-                .then(function(response) {
-                    var token = response;
-                    $http.get('https://api.spotify.com/v1' + '/users/' + encodeURIComponent(username) + '/playlists/' + encodeURIComponent(playlist), {
-                        headers: {
-                            'Authorization': 'Bearer ' + token
-                        }
-                    }).success(function(r) {
-                        console.log('got playlists', r);
-                        deferred.resolve(r);
-                    });
-                });
-            return deferred.promise;
-        }
-
-        function getPlaylistTracks(username, playlist) {
-            var deferred = $q.defer();
-            Auth.getAccessToken()
-                .then(function(response) {
-                    var token = response;
-                    $http.get('https://api.spotify.com/v1' + '/users/' + encodeURIComponent(username) + '/playlists/' + encodeURIComponent(playlist) + '/tracks', {
-                        headers: {
-                            'Authorization': 'Bearer ' + token
-                        }
-                    }).success(function(r) {
-                        console.log('got playlist tracks', r);
-                        deferred.resolve(r);
-                    });
-                });
-            return deferred.promise;
-        }
-
         /* USER */
+        function loginUser(user) {
+            var deferred = $q.defer();
+            $http
+                .post('/api/project/login', user)
+                .then(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function getCurrentUser() {
+            var deferred = $q.defer();
+            $http
+                .get('/api/project/loggedin')
+                .then(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function logoutUser() {
+            var deferred = $q.defer();
+            $http
+                .post('/api/project/logout')
+                .then(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
         function register(user) {
             var deferred = $q.defer();
             $http
@@ -104,19 +102,17 @@
             return deferred.promise;
         }
 
-        function findUserById(id)
-        {
+        function findUserById(userId) {
             var deferred = $q.defer();
             $http
-                .get('/api/project/user/' + id)
+                .get('/api/project/user/' + userId)
                 .success(function(response) {
                     deferred.resolve(response);
                 });
             return deferred.promise;
         }
 
-        function findUserByUsername(username)
-        {
+        function findUserByUsername(username) {
             var deferred = $q.defer();
             $http
                 .get('/api/project/user?username=' + username)
@@ -126,9 +122,7 @@
             return deferred.promise;
         }
 
-        function findUserByUsernameAndPassword(username, password)
-        {
-            console.log("find user by username and password");
+        function findUserByUsernameAndPassword(username, password) {
             var deferred = $q.defer();
             $http
                 .get('/api/project/user?username=' + username + '&' + 'password=' + password)
@@ -138,11 +132,14 @@
             return deferred.promise;
         }
 
+        /* Admin */
         function findAllUsers() {
             var deferred = $q.defer();
+            console.log("client");
             $http
-                .get('/api/project/user')
+                .get('/api/project/admin/user')
                 .success(function(response) {
+                    console.log("find all users from client :", response);
                     deferred.resolve(response);
                 });
             return deferred.promise;
@@ -151,19 +148,9 @@
         function createUser(user) {
             var deferred = $q.defer();
             $http
-                .post('/api/project/user', user)
+                .post('/api/project/admin/user', user)
                 .success(function(response) {
-                    deferred.resolve(response);
-                });
-            return deferred.promise;
-        }
-
-        function deleteUserById(id)
-        {
-            var deferred = $q.defer();
-            $http
-                .delete('/api/project/user/' + id)
-                .success(function(response) {
+                    console.log("create user from client:" + response);
                     deferred.resolve(response);
                 });
             return deferred.promise;
@@ -171,7 +158,6 @@
 
         function updateUserByAdmin(userId, user) {//admin
             var deferred = $q.defer();
-            console.log("client", user);
             $http
                 .put('/api/project/admin/user/' + userId, user)
                 .success(function(response) {
@@ -180,8 +166,17 @@
             return deferred.promise;
         }
 
-        /* TRACK */
+        function deleteUserById(userId) {
+            var deferred = $q.defer();
+            $http
+                .delete('/api/project/admin/user/' + userId)
+                .success(function(response) {
+                    deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
 
+        /* TRACK */
         function addTrackToUser(userId, track) {
             var deferred = $q.defer();
             $http
@@ -327,6 +322,40 @@
                 .success(function(response) {
                     console.log("deleted a follower from user", response);
                     deferred.resolve(response);
+                });
+            return deferred.promise;
+        }
+
+        function getPlaylist(username, playlist) {
+            var deferred = $q.defer();
+            Auth.getAccessToken()
+                .then(function(response) {
+                    var token = response;
+                    $http.get('https://api.spotify.com/v1' + '/users/' + encodeURIComponent(username) + '/playlists/' + encodeURIComponent(playlist), {
+                        headers: {
+                            'Authorization': 'Bearer ' + token
+                        }
+                    }).success(function(r) {
+                        console.log('got playlists', r);
+                        deferred.resolve(r);
+                    });
+                });
+            return deferred.promise;
+        }
+
+        function getPlaylistTracks(username, playlist) {
+            var deferred = $q.defer();
+            Auth.getAccessToken()
+                .then(function(response) {
+                    var token = response;
+                    $http.get('https://api.spotify.com/v1' + '/users/' + encodeURIComponent(username) + '/playlists/' + encodeURIComponent(playlist) + '/tracks', {
+                        headers: {
+                            'Authorization': 'Bearer ' + token
+                        }
+                    }).success(function(r) {
+                        console.log('got playlist tracks', r);
+                        deferred.resolve(r);
+                    });
                 });
             return deferred.promise;
         }

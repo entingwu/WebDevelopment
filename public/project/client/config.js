@@ -70,11 +70,19 @@
 
         $scope.logout = function() {
             console.log('do logout...');
-            $rootScope.user = null;
-
-            Auth.setUsername('');
-            $location.url("/");
-            $scope.$emit('logout');
+            UserService
+                .logoutUser()
+                .then(
+                    function(response) {
+                        $rootScope.user = null;
+                        $location.url("/");
+                        $scope.$emit('logout');
+                        Auth.setUsername('');
+                    },
+                    function(err) {
+                        $scope.error = err;
+                    }
+                );
         };
 
         $scope.getClass = function(path) {

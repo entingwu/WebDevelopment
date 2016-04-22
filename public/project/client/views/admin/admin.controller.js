@@ -18,7 +18,7 @@
                 UserService
                     .findUserById($rootScope.user._id)
                     .then(function (user) {
-                        model.user = user;
+                        model.currentUser = user;
                 });
             }
             UserService
@@ -38,6 +38,7 @@
         function addUser(newUser) {
             var roleText = model.user.roles.toString();
             newUser.roles = roleText.split(",");
+            console.log(newUser);
             UserService
                 .createUser(newUser)
                 .then(init);

@@ -4,7 +4,7 @@
             <img src="images/user6.jpg" class="cover" alt="user1" width="200" height="200">
         </div>
         <h4>USER</h4>
-        <h1>{{model.user.username}}</h1>
+        <h1>{{model.currentUser.username}}</h1>
         <div class="follower-count">{{model.user.followers.length | number}} followers</div>
         <div class="follower-count">{{model.user.following.length | number}} followings</div>
     </header>
@@ -13,7 +13,7 @@
             <li class="active"><a href="#/user">FAVOURITE</a></li>
             <li><a href="#/profile">PROFILE</a></li>
             <li><a href="#/userfollow">FIND USER</a></li>
-            <li><div ng-show="model.user.roles.indexOf('admin') >= 0"><a href="#/admin">ADMIN</a></div></li>
+            <li><div ng-show="model.currentUser.roles.indexOf('admin') >= 0"><a href="#/admin">ADMIN</a></div></li>
         </ul>
     </div>
     <hr>

@@ -12,31 +12,28 @@
         function login(loginUser) {
             console.log('do login...');
             UserService
-                .findUserByUsernameAndPassword(loginUser.username, loginUser.password)
-                .then(function(user) {
-                    if(user != null) {
-                        $rootScope.user = user;
-                        $scope.message = "success";
-                        $('#loginModal').modal('hide');
+                .loginUser(loginUser)
+                .then(
+                    function(result) {
+                        if(result != null) {
+                            $rootScope.user = result.data;
+                            $scope.isLoggedIn = true;
+                            $scope.message = "success";
+                            $('#loginModal').modal('hide');
 
-                        /*login as Admin*/
-                        if(user.roles.indexOf('admin') >= 0) {
-                            $location.url("/admin");
-                        }
-
-                        /*redirect to previous location after login, or redirect to profile page*/
-                        if($scope.$location != null) {
-                            $location.url($scope.$location);
-                        }else {
+                            if($rootScope.user.roles.indexOf('admin') >= 0) {
+                                $location.url("/admin");
+                            }
                             $location.url("/profile");
+                        }else {
+                            $scope.message = "error";
                         }
-                        $location.url("/profile");
-                        console.log("current login user is: ");
-                        console.log($rootScope.user);
-                    }else {
-                        $scope.message = "error";
+                    },
+                    function(err) {
+                        $scope.error = err;
                     }
-                });
+                );
+
         }
     }
 })();

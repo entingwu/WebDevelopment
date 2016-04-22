@@ -11,6 +11,6 @@ module.exports = function(mongoose) {
             type: [String],
             default: ['student']
         }
-    }, {collection: 'user'});//show collections
+    }, {collection: 'assignment4.user'});//show collections
     return UserSchema;
 };

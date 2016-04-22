@@ -12,20 +12,10 @@
         /* findAllFormsForUser(userId) */
         function init() {
             model.currentUser = $rootScope.user;
-            UserService
-                .getCurrentUser()
-                .then(function(user) {
-                    if(user) {
-                        console.log(user.data);
-                        $rootScope.user = user.data;
-                        FormService
-                            .findAllFormsForUser(model.currentUser._id)
-                            .then(function(response) {
-                                model.forms = response;
-                            });
-                    }else {
-                        $location.url("/login");
-                    }
+            FormService
+                .findAllFormsForUser($rootScope.user._id)
+                .then(function(response) {
+                    model.forms = response;
                 });
         }
         init();

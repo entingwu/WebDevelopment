@@ -7,7 +7,7 @@
         <h1>{{data.name}}</h1>
         <div class="follower-count">{{data.followers.total | number}} followers</div>
         <div class="buttons">
-            <div ng-show="loginMessage" ng-switch="likeArtistStatus">
+            <div ng-show="user" ng-switch="likeArtistStatus">
                 <div ng-switch-when="false">
                     <a class="button green" ng-click="addArtistToUser()" href="#/user">FOLLOW</a>
                 </div>
@@ -15,7 +15,7 @@
                     <a class="button green" ng-click="deleteArtistFromUser()" href="#/user">UNFOLLOW</a>
                 </div>
             </div>
-            <div ng-show="!loginMessage">
+            <div ng-show="!user">
                 <a class="button button-add" href="#/">FOLLOW</a>
             </div>
         </div>

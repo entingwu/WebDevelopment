@@ -46,12 +46,13 @@ module.exports = function(app, formModel) {
     function createForm(req, res) {
         var user_id = req.params.userId;
         var form = req.body;
+        console.log("server",form);
+        console.log("server",user_id);
         formModel
             .createFormForUser(user_id, form)
             .then(
                 function(form) {
-                    console.log("create forms in service.server : ");
-                    console.log(form);
+                    console.log("create forms in service.server : ", form);
                     res.json(form);
                 },
                 function(err) {

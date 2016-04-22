@@ -17,10 +17,11 @@
 
         function createFormForUser(userId, form) {
             var deferred = $q.defer();
+            console.log("client",userId);
             $http
                 .post('/api/assignment/user/' + userId + '/forms', form)
                 .success(function(response) {
-                    console.log("create forms in client" + response);
+                    console.log("create forms in client",response);
                     deferred.resolve(response);
                 });
             return deferred.promise;

@@ -47,12 +47,12 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
             );
     }
 
-    /* serializeUser : serialize the user object into the session */
+    /*serializeUser : serialize the user object into the session */
     function serializeUser(user, done) {
         done(null, user);//user id in cookie
     }
 
-    /* deserializeUser : retrieve the user object from the session */
+    /*deserializeUser : retrieve the user object from the session*/
     function deserializeUser(user, done) {
         userModel
             .findUserById(user._id)//find user
@@ -60,7 +60,7 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
                 function(user) {
                     done(null, user);
                 },
-                function() {
+                function(err) {
                     done(err, null);
                 }
             );
@@ -76,7 +76,7 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
     }
 
     function isAdmin(req, res, next) {
-        if (req.isAuthenticated()  && req.user.roles.indexOf("admin") > 0) {
+        if (req.isAuthenticated()  && req.user.roles.indexOf("admin") >= 0) {
             next();
         } else {
             res.status(403);

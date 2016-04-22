@@ -27,14 +27,20 @@
         function update(profileUser) {
             var gm_id = profileUser.genres;
             UserService
-                .updateUser($rootScope.user._id, profileUser)
-                .then(function (user) {
-                    $rootScope.user = user;
-                    $location.url("/profile");
-                    console.log("updated profile", user);
-                    console.log("url", "/browsecategory/"+gm_id);
-                    $location.url("/browsecategory/"+gm_id);
-            });
+                .updateUserById($rootScope.user._id, profileUser)
+                .then(
+                    function (user) {
+                        $rootScope.user = user;
+                        model.user = $rootScope.user;
+                        console.log("updated profile:", $rootScope.user);
+                        $location.url("/profile");
+                        console.log("url", "/browsecategory/"+gm_id);
+                        $location.url("/browsecategory/"+gm_id);
+                    },
+                    function(err) {
+                        $scope.error = err;
+                    }
+                );
         }
     }
 

@@ -2,18 +2,20 @@ var q = require("q");
 
 module.exports = function(db, mongoose) {
     var UserSchema = require("./user.schema.server.js")(mongoose);
-    var UserModel  = mongoose.model("MusicUserModel", UserSchema);
+    var UserModel  = mongoose.model("MusicMoodUserModel", UserSchema);
     var api = {
         /* User */
         createUser: createUser,
-        findAllUsers: findAllUsers,
-        findUserById: findUserById,
         updateUserById: updateUserById,
         deleteUserById: deleteUserById,
+
+        findAllUsers: findAllUsers,
+        findUserById: findUserById,
         findUserByUsername: findUserByUsername,
         findUserByCredentials: findUserByCredentials,
+        findOne : findOne,
 
-        /* Song */
+        /* Track */
         addTrackToUser: addTrackToUser,
         findTracksByUserId: findTracksByUserId,
         deleteTrackFromUser: deleteTrackFromUser,
@@ -37,38 +39,10 @@ module.exports = function(db, mongoose) {
     };
     return api;
 
-    //CRUD
+    /* USER */
     function createUser(user) {
         var deferred = q.defer();
-
         UserModel.create(user, function(err, user) {
-            if(err) {
-                deferred.reject(err);
-            } else {
-                deferred.resolve(user);
-            }
-        });
-
-        return deferred.promise;
-    }
-
-    function findAllUsers() {
-        var deferred = q.defer();
-
-        UserModel.find(function(err, users){
-            if(err) {
-                deferred.reject(err);
-            } else {
-                deferred.resolve(users);
-            }
-        });
-
-        return deferred.promise;
-    }
-
-    function findUserById(userId) {
-        var deferred = q.defer();
-        UserModel.findById(userId, function(err, user){
             if(err) {
                 deferred.reject(err);
             } else {
@@ -80,46 +54,41 @@ module.exports = function(db, mongoose) {
 
     function updateUserById(userId, user) {
         var deferred = q.defer();
-        console.log("model", user);
-        UserModel.update(
-            {_id: userId},
-            {$set: user},
-            function(err, result) {
-                UserModel.findOne({_id : userId}, function(err, result) {
-                    deferred.resolve(result);
-                });
+        UserModel.update({_id: userId}, {$set: user},
+            function(err, user) {
+                if(err) {
+                    deferred.reject(err);
+                }else {
+                    console.log("update model", user);
+                    UserModel.findOne({_id : userId}, function(err, result) {
+                        deferred.resolve(result);
+                    });
+                }
             });
         return deferred.promise;
     }
 
-    function deleteUserById(userId)
-    {
+    function deleteUserById(userId) {
         var deferred = q.defer();
-
-        UserModel.remove({_id: userId}, function(err, status) {
+        UserModel.remove({_id: userId}, function(err, result) {
             if(err) {
                 deferred.reject(err);
             } else {
-                deferred.resolve(status);
+                deferred.resolve(result);
             }
         });
-
         return deferred.promise;
     }
 
-    function findUserByUsername(username)
-    {
+    function findUserByUsername(username) {
         var deferred = q.defer();
-
         UserModel.findOne({username: username}, function(err, user){
             if(err) {
                 deferred.reject(err);
             } else {
                 deferred.resolve(user);
-                console.log(user);
             }
         });
-
         return deferred.promise;
     }
 
@@ -141,6 +110,46 @@ module.exports = function(db, mongoose) {
         return deferred.promise;
     }
 
+    function findAllUsers() {
+        var deferred = q.defer();
+        UserModel.find(function(err, users) {
+            if(err) {
+                console.log("err model :", err);
+                deferred.reject(err);
+            }else {
+                console.log("find users from model :", users);
+                deferred.resolve(users);
+            }
+        });
+        return deferred.promise;
+    }
+
+    function findUserById(userId) {
+        var deferred = q.defer();
+        UserModel.findById(userId, function(err, user){
+            if(err) {
+                deferred.reject(err);
+            } else {
+                deferred.resolve(user);
+            }
+        });
+        return deferred.promise;
+    }
+
+    function findOne(credentials) {
+        var deferred = q.defer();
+        UserModel.findOne({username : credentials.username}, function(err, user) {
+            if(err) {
+                deferred.reject(err);
+            }else {
+                console.log("find one", user);
+                deferred.resolve(user);
+            }
+        });
+        return deferred.promise;
+    }
+
+    /* Track */
     function addTrackToUser(userId, song) {
         var deferred = q.defer();
         var newSong = song;
@@ -216,10 +225,8 @@ module.exports = function(db, mongoose) {
         return deferred.promise;
     }
 
-    function findArtistsByUserId(userId)
-    {
+    function findArtistsByUserId(userId) {
         var deferred = q.defer();
-
         UserModel.findById(userId, function(err, user){
             if(err) {
                 console.log(err);
@@ -253,8 +260,7 @@ module.exports = function(db, mongoose) {
         return deferred.promise;
     }
 
-    function addAlbumToUser(userId, album)
-    {
+    function addAlbumToUser(userId, album) {
         var deferred = q.defer();
         var newAlbum = {
             id: album.id,

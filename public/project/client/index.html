@@ -76,19 +76,19 @@
                     <ul class="menuitems">
                         <li><a href="#/">Genres</a></li>
                     </ul>
-                    <b><a href="#/user">PLAYLISTS</a></b>
+                    <b>PLAYLISTS</a></b>
                     <ul class="menuitems" ng-show="user">
                         <li ng-if="user" ng-repeat="t in user.favoriteSongs">
                             <a ng-click="saveTrack(t)">{{t.name}}</a>
                         </li>
                     </ul>
-                    <b><a href="#/user">ARTISTS</a></b>
+                    <b>ARTISTS</a></b>
                     <ul class="menuitems" ng-show="user">
                         <li ng-if="user" ng-repeat="artist in user.favoriteArtists">
                             <a href="#/artists/{{artist.id}}" ng-click="saveArtist(artist)">{{artist.name}}</a>
                         </li>
                     </ul>
-                    <b><a href="#/user">ALBUMS</a></b>
+                    <b>ALBUMS</a></b>
                     <ul class="menuitems" ng-show="user">
                         <li ng-if="user" ng-repeat="album in user.favoriteAlbums">
                             <a href="#/albums/{{album.id}}" ng-click="saveAlbum(album)">{{album.name}}</a>

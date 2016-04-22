@@ -9,7 +9,7 @@ module.exports = function(mongoose) {
         phone: [String],
         roles: {
             type: [String],
-            default: ['student']
+            default: ['student','admin']
         }
     }, {collection: 'assignment5.user'});//show collections
     return UserSchema;
