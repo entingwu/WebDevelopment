@@ -63,28 +63,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/WebAPI/services/playback.js" afterPath="$PROJECT_DIR$/public/WebAPI/services/playback.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/WebAPI/services/playqueue.js" afterPath="$PROJECT_DIR$/public/WebAPI/services/playqueue.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/WebAPI/style.css" afterPath="$PROJECT_DIR$/public/WebAPI/style.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/Assignment3/client/views/admin/admin.controller.js" afterPath="$PROJECT_DIR$/public/assignment/Assignment3/client/views/admin/admin.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/Assignment3/client/views/sidebar/sidebar.view.html" afterPath="$PROJECT_DIR$/public/assignment/Assignment3/client/views/sidebar/sidebar.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/Assignment4/server/models/form.schema.server.js" afterPath="$PROJECT_DIR$/public/assignment/Assignment4/server/models/form.schema.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/Assignment4/server/models/user.schema.server.js" afterPath="$PROJECT_DIR$/public/assignment/Assignment4/server/models/user.schema.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/Assignment5/client/services/form.service.client.js" afterPath="$PROJECT_DIR$/public/assignment/Assignment5/client/services/form.service.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/Assignment5/client/views/forms/form.controller.js" afterPath="$PROJECT_DIR$/public/assignment/Assignment5/client/views/forms/form.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/Assignment5/server/models/user.schema.server.js" afterPath="$PROJECT_DIR$/public/assignment/Assignment5/server/models/user.schema.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/Assignment5/server/services/form.service.server.js" afterPath="$PROJECT_DIR$/public/assignment/Assignment5/server/services/form.service.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/assignment/Assignment5/server/services/user.service.server.js" afterPath="$PROJECT_DIR$/public/assignment/Assignment5/server/services/user.service.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/config.js" afterPath="$PROJECT_DIR$/public/project/client/config.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/index.html" afterPath="$PROJECT_DIR$/public/project/client/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/services/user.service.client.js" afterPath="$PROJECT_DIR$/public/project/client/services/user.service.client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/admin/admin.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/admin/admin.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/admin/admin.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/admin/admin.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/album/album.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/album/album.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/artist/artist.view.html" afterPath="$PROJECT_DIR$/public/project/client/views/artist/artist.view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/login/login.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/login/login.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/register/register.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/register/register.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/user/profile.controller.js" afterPath="$PROJECT_DIR$/public/project/client/views/user/profile.controller.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/server/app.js" afterPath="$PROJECT_DIR$/public/project/server/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/server/models/user.model.server.js" afterPath="$PROJECT_DIR$/public/project/server/models/user.model.server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/server/services/user.service.server.js" afterPath="$PROJECT_DIR$/public/project/server/services/user.service.server.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
     </list>
     <ignored path="cs5610spring2016.iws" />
@@ -119,8 +97,8 @@
       <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.21641791">
-              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.3283582">
+              <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -948,8 +926,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21641791">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.3283582">
+          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding />
         </state>
       </provider>
