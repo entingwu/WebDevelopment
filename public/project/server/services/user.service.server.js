@@ -46,8 +46,8 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
 
     /* new LocalStrategy(function) */
     passport.use('local-project', new LocalStrategy(localStrategyProject));
-    /*passport.serializeUser(serializeUser);//to client
-    passport.deserializeUser(deserializeUser);//back from client*/
+    passport.serializeUser(serializeUser);//to client
+    passport.deserializeUser(deserializeUser);//back from client
 
     /* localStrategy : If is username && password, done */
     function localStrategyProject(username, password, done) {
@@ -70,12 +70,12 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
             );
     }
 
-    /*/!* serializeUser : serialize the user object into the session*!/
+    /* serializeUser : serialize the user object into the session*/
     function serializeUser(user, done) {
         done(null, user);
     }
 
-    /!* deserializeUser : retrieve the user object from the session *!/
+    /* deserializeUser : retrieve the user object from the session */
     function deserializeUser(user, done) {
         userModel
             .findUserById(user._id)
@@ -87,7 +87,7 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
                     done(err, null);
                 }
             );
-    }*/
+    }
 
     function authorized (req, res, next) {
         if (!req.isAuthenticated()) {

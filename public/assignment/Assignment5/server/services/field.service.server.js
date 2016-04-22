@@ -1,9 +1,9 @@
 module.exports = function(app, formModel) {
-    app.get('/api/assignment/forms/:formId/field', getFieldByFormId);
-    app.get('/api/assignment/forms/:formId/field/:fieldId', getFieldByFieldId);
-    app.post('/api/assignment/forms/:formId/field', createField);
-    app.put('/api/assignment/forms/:formId/field/:fieldId', updateField);
-    app.delete('/api/assignment/forms/:formId/field/:fieldId', deleteField);
+    app.get('/api/assignment5/forms/:formId/field', getFieldByFormId);
+    app.get('/api/assignment5/forms/:formId/field/:fieldId', getFieldByFieldId);
+    app.post('/api/assignment5/forms/:formId/field', createField);
+    app.put('/api/assignment5/forms/:formId/field/:fieldId', updateField);
+    app.delete('/api/assignment5/forms/:formId/field/:fieldId', deleteField);
 
     //1. formId : returns an array of fields belonging to a forms object
     // findAllFieldsForForm(formId)

@@ -6,19 +6,19 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
     /* express object app listen to the api login
      * passport takes a look at the request, successful let it go*/
     /* WEB SERVICES */
-    app.post('/api/assignment/login', passport.authenticate('local'), login);//1. login
-    app.get('/api/assignment/loggedin',         loggedin);//2.
-    app.post('/api/assignment/logout',          logout);//3.no middleware
-    app.post('/api/assignment/register',        register);//4. register
-    app.put('/api/assignment/user/:userId',     updateUser);//
+    app.post('/api/assignment5/login', passport.authenticate('local'), login);//1. login
+    app.get('/api/assignment5/loggedin',         loggedin);//2.
+    app.post('/api/assignment5/logout',          logout);//3.no middleware
+    app.post('/api/assignment5/register',        register);//4. register
+    app.put('/api/assignment5/user/:userId',     updateUser);//
 
     /* ADMIN : first check: auth, second check: isAdmin()*/
-    app.post('/api/assignment/admin/user',          admin,    createUser);//5
-    app.get('/api/assignment/admin/user',           admin,    getAllUsers);//6
-    app.get('/api/assignment/admin/user/:userId',   admin,    getUserById);//7
-    app.get('/api/assignment/admin/user/:username', admin,    getUserByUsername);
-    app.delete('/api/assignment/admin/user/:userId',admin,    deleteUser);//8
-    app.put('/api/assignment/admin/user/:userId',   admin,    updateUserByAdmin);//9
+    app.post('/api/assignment5/admin/user',          admin,    createUser);//5
+    app.get('/api/assignment5/admin/user',           admin,    getAllUsers);//6
+    app.get('/api/assignment5/admin/user/:userId',   admin,    getUserById);//7
+    app.get('/api/assignment5/admin/user/:username', admin,    getUserByUsername);
+    app.delete('/api/assignment5/admin/user/:userId',admin,    deleteUser);//8
+    app.put('/api/assignment5/admin/user/:userId',   admin,    updateUserByAdmin);//9
 
     /* new LocalStrategy(function) */
     passport.use(new LocalStrategy(localStrategy));

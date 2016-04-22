@@ -19,7 +19,7 @@
             var deferred = $q.defer();
             console.log("client",userId);
             $http
-                .post('/api/assignment/user/' + userId + '/forms', form)
+                .post('/api/assignment5/user/' + userId + '/forms', form)
                 .success(function(response) {
                     console.log("create forms in client",response);
                     deferred.resolve(response);
@@ -30,7 +30,7 @@
         function findAllFormsForUser(userId) {
             var deferred = $q.defer();
             $http
-                .get('/api/assignment/user/' + userId + '/forms')
+                .get('/api/assignment5/user/' + userId + '/forms')
                 .success(function(response) {
                     deferred.resolve(response);
                 });
@@ -40,7 +40,7 @@
         function findFormById(formId) {
             var deferred = $q.defer();
             $http
-                .get('/api/assignment/forms/' + formId)
+                .get('/api/assignment5/forms/' + formId)
                 .success(function(response) {
                     deferred.resolve(response);
                 });
@@ -50,7 +50,7 @@
         function updateFormById(formId, newForm) {
             var deferred = $q.defer();
             $http
-                .put('/api/assignment/forms/' + formId, newForm)
+                .put('/api/assignment5/forms/' + formId, newForm)
                 .then(function(response) {
                     deferred.resolve(response);
                 });
@@ -60,7 +60,7 @@
         function deleteFormById(formId) {
             var deferred = $q.defer();
             $http
-                .delete('/api/assignment/forms/' + formId)
+                .delete('/api/assignment5/forms/' + formId)
                 .success(function(response) {
                     deferred.resolve(response);
                 });

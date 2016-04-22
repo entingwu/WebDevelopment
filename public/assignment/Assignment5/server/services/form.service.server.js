@@ -1,10 +1,10 @@
 module.exports = function(app, formModel) {
-    app.get('/api/assignment/user/:userId/forms', getFormByUserId);//1. userId
-    app.get('/api/assignment/forms/:formId', getFormByFormId);//2. formId
-    app.get('/api/assignment/forms', getForms);//3. forms
-    app.post('/api/assignment/user/:userId/forms', createForm);//4. create
-    app.put('/api/assignment/forms/:formId', updateForm);//5. update
-    app.delete('/api/assignment/forms/:formId', deleteForm);//6. delete
+    app.get('/api/assignment5/user/:userId/forms', getFormByUserId);//1. userId
+    app.get('/api/assignment5/forms/:formId', getFormByFormId);//2. formId
+    app.get('/api/assignment5/forms', getForms);//3. forms
+    app.post('/api/assignment5/user/:userId/forms', createForm);//4. create
+    app.put('/api/assignment5/forms/:formId', updateForm);//5. update
+    app.delete('/api/assignment5/forms/:formId', deleteForm);//6. delete
 
     //1. userId: findAllFormsForUser
     function getFormByUserId(req, res) {

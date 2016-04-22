@@ -66,7 +66,7 @@
 
     var checkLoggedin = function($rootScope, $http, $q, $location) {
         var deferred = $q.defer();
-        $http.get('/api/assignment/loggedin')
+        $http.get('/api/assignment5/loggedin')
             .success(function(user) {
                 if(user !== '0') {
                     $rootScope.user = user;
@@ -82,7 +82,7 @@
 
     var checkAdmin = function($rootScope, $http, $q, $location) {
         var deferred = $q.defer();
-        $http.get('/api/assignment/loggedin')
+        $http.get('/api/assignment5/loggedin')
             .success(function(user) {
                 if(user !== '0' && user.roles.indexOf('admin') >= 0) {
                     $rootScope.user = user;
@@ -97,7 +97,7 @@
 
     var checkCurrentUser = function($rootScope, $http, $q) {
         var deferred = $q.defer();
-        $http.get('/api/assignment/loggedin')
+        $http.get('/api/assignment5/loggedin')
             .success(function(user) {
                 if(user !== '0') {
                     $rootScope.user = user;

@@ -26,7 +26,7 @@
         function loginUser(user) {
             var deferred = $q.defer();
             $http
-                .post('/api/assignment/login', user)
+                .post('/api/assignment5/login', user)
                 .then(function(response) {
                     deferred.resolve(response);
                 });
@@ -36,7 +36,7 @@
         function logoutUser() {
             var deferred = $q.defer();
             $http
-                .post('/api/assignment/logout')
+                .post('/api/assignment5/logout')
                 .then(function(response) {
                     deferred.resolve(response);
                 });
@@ -47,7 +47,7 @@
             console.log("update in client:", user);
             var deferred = $q.defer();
             $http
-                .put('/api/assignment/user/' + userId, user)
+                .put('/api/assignment5/user/' + userId, user)
                 .then(function(response){
                     deferred.resolve(response);
                 });
@@ -58,7 +58,7 @@
         function register(user) {
             var deferred = $q.defer();
             $http
-                .post('/api/assignment/register', user)
+                .post('/api/assignment5/register', user)
                 .then(function(response) {
                     console.log("register user from client:",response);
                     deferred.resolve(response);
@@ -70,7 +70,7 @@
         function createUser(user) {
             var deferred = $q.defer();
             $http
-                .post('/api/assignment/admin/user', user)
+                .post('/api/assignment5/admin/user', user)
                 .success(function(response) {
                     console.log("create user from client:" + response);
                     deferred.resolve(response);
@@ -81,7 +81,7 @@
         function deleteUserById(userId) {
             var deferred = $q.defer();
             $http
-                .delete('/api/assignment/admin/user/' + userId)
+                .delete('/api/assignment5/admin/user/' + userId)
                 .success(function(response) {
                     deferred.resolve(response);
                 });
@@ -92,7 +92,7 @@
         function updateUserByAdmin(userId, user) {
             var deferred = $q.defer();
             $http
-                .put('/api/assignment/admin/user/' + userId, user)
+                .put('/api/assignment5/admin/user/' + userId, user)
                 .success(function(response) {
                     deferred.resolve(response);
                 });
@@ -103,7 +103,7 @@
         function findUserByUsername(username) {
             var deferred = $q.defer();
             $http
-                .get('/api/assignment/admin/user?username=' + username)
+                .get('/api/assignment5/admin/user?username=' + username)
                 .success(function(response) {
                     deferred.resolve(response);
                 });
@@ -114,7 +114,7 @@
         function findUserById(userId) {
             var deferred = $q.defer();
             $http
-                .get('/api/assignment/admin/user/' + userId)
+                .get('/api/assignment5/admin/user/' + userId)
                 .success(function(response) {
                     deferred.resolve(response);
                 });
@@ -125,7 +125,7 @@
         function findUserByCredentials(username, password) {
             var deferred = $q.defer();
             $http
-                .post('/api/assignment/user?username=' + username + '&' +'password=' + password)
+                .post('/api/assignment5/user?username=' + username + '&' +'password=' + password)
                 .then(function(response) {
                     console.log("login in client: "+ username + "," + password);
                     deferred.resolve(response);
@@ -137,7 +137,7 @@
         function findAllUsers() {
             var deferred = $q.defer();
             $http
-                .get('/api/assignment/admin/user')
+                .get('/api/assignment5/admin/user')
                 .success(function(response) {
                     console.log("find all users from client :", response);
                     deferred.resolve(response);
@@ -148,7 +148,7 @@
         function getCurrentUser() {
             var deferred = $q.defer();
             $http
-                .get('/api/assignment/loggedin')
+                .get('/api/assignment5/loggedin')
                 .then(function(response) {
                     deferred.resolve(response);
                 });

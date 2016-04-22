@@ -43,8 +43,6 @@ app.use(passport.session());
 /* 4. serve static content for the app from the "public" directory in the application directory */
 app.use(express.static(__dirname + '/public'));
 
-
-
 var ipaddress = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
 var port      = process.env.OPENSHIFT_NODEJS_PORT || 3000;
 
@@ -57,10 +55,10 @@ app.get('/hello', function(req, res){ res.send('hello world'); });
 app.listen(port, ipaddress);
 
 /* ASSIGNMENT3 : pass app(express instance) to create web service end point */
-//require("./public/assignment/Assignment3/server/app.js")(app);
+require("./public/assignment/Assignment3/server/app.js")(app);
 
 /* ASSIGNMENT4 : mongoose instance library */
-//require("./public/assignment/Assignment4/server/app.js")(app, db, mongoose);
+require("./public/assignment/Assignment4/server/app.js")(app, db, mongoose);
 
 /* ASSIGNMENT5 : security */
 require("./public/assignment/Assignment5/server/app.js")(app, db, mongoose, passport, LocalStrategy);
