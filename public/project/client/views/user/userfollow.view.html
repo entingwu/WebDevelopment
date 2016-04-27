@@ -16,25 +16,49 @@
             <li><div ng-show="user.roles.indexOf('admin') >= 0"><a href="#/admin">ADMIN</a></div></li>
         </ul>
     </div>
-    <hr>
-    <br>
-    <div class="row col-xs-12">
-        <div class="col-xs-6">
-            <ul class="playlists" ng-show="model.users.length > 0">
-                <h4>PEOPLE YOU MAY INTEREST IN</h4>
-                <li class="searchresult" ng-repeat="user in model.users">
-                    <a>
-                        <img src="images/user3.jpg" class="img-rounded" alt="{{user.username}} image" width="160" height="160">
-                    </a>
-                    <p>
-                        <a>{{user.username}}</a><br>
-                        <a ng-click="model.follow(user)" class="button green pull-right">FOLLOW</a>
-                    </p>
-                </li>
-            </ul>
-        </div>
-        <hr>
-        <br>
+
+    <div class="form-style-5 pull-left">
+        <legend><span class="number">1</span>PEOPLE YOU MAY INTEREST IN</legend>
+        <table class="tracks" ng-show="model.users.length > 0">
+            <thead>
+            <tr>
+                <th class="text-center"><label>USER</label></th>
+                <th class="text-center"></th>
+                <th class="text-center"><label>GENRES</label></th>
+                <th class="text-center"><label>ARTISTS</label></th>
+                <th class="text-center"><label>ALBUMS</label></th>
+                <th class="text-center"><label>FAVORITE TRACKS</label></th>
+                <th class="text-center col-sm-3"><label>ACTION</label></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="user in model.users">
+                <td>
+                    <img src="images/user3.jpg" class="img-rounded" alt="{{user.username}} image" width="80" height="80">
+                </td>
+                <td><label>{{user.username}}</label></td>
+                <td><label>{{user.genres}}</label></td>
+                <td>
+                    <div ng-show="user.favoriteArtists[0]">
+                        <img src="{{user.favoriteArtists[0].imageUrl}}" class="img-rounded" alt="{{artist.name}} image" width="80" height="80">
+                    </div>
+                </td>
+                <td>
+                    <div ng-show="user.favoriteAlbums[0]">
+                        <img src="{{user.favoriteAlbums[0].imageUrl}}" class="img-rounded" alt="{{album.name}} image" width="80" height="80">
+                    </div>
+                </td>
+                <td>
+                    <iframe ng-src="{{user.favoriteSongs[0].uri | trustUrl}}" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+                </td>
+                <td class="col-sm-3 text-center">
+                    <a ng-click="model.follow(user)" class="button green">FOLLOW</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br><br>
+        <legend><span class="number">2</span>FOLLOWINGS && FOLLOWERS</legend>
         <div class="col-xs-6">
             <ul class="playlists" ng-show="model.followings.length > 0">
                 <h4>FOLLOWING</h4>

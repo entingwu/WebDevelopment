@@ -10,6 +10,8 @@
             getBrowseCategory: getBrowseCategory,
             getBrowseCategoryPlaylists: getBrowseCategoryPlaylists,
             getSearchResults : getSearchResults,
+            getPlaylist : getPlaylist,
+            getPlaylistTracks : getPlaylistTracks,
             getTracks: getTracks,//get serval tracks
             getTrack: getTrack,
 
@@ -88,6 +90,40 @@
                         }
                     }).success(function(r) {
                         console.log('got search results', r);
+                        deferred.resolve(r);
+                    });
+                });
+            return deferred.promise;
+        }
+
+        function getPlaylist(username, playlist) {
+            var deferred = $q.defer();
+            Auth.getAccessToken()
+                .then(function(response) {
+                    var token = response;
+                    $http.get('https://api.spotify.com/v1' + '/users/' + encodeURIComponent(username) + '/playlists/' + encodeURIComponent(playlist), {
+                        headers: {
+                            'Authorization': 'Bearer ' + token
+                        }
+                    }).success(function(r) {
+                        console.log('got playlists', r);
+                        deferred.resolve(r);
+                    });
+                });
+            return deferred.promise;
+        }
+
+        function getPlaylistTracks(username, playlist) {
+            var deferred = $q.defer();
+            Auth.getAccessToken()
+                .then(function(response) {
+                    var token = response;
+                    $http.get('https://api.spotify.com/v1' + '/users/' + encodeURIComponent(username) + '/playlists/' + encodeURIComponent(playlist) + '/tracks', {
+                        headers: {
+                            'Authorization': 'Bearer ' + token
+                        }
+                    }).success(function(r) {
+                        console.log('got playlist tracks', r);
                         deferred.resolve(r);
                     });
                 });

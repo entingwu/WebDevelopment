@@ -21,7 +21,6 @@
     <!-- controller -->
     <script src="app.js"></script>
     <script src="config.js"></script>
-    <script src="js/login-register.js"></script>
     <script src="views/admin/admin.controller.js"></script>
     <script src="views/album/album.controller.js"></script>
     <script src="views/artist/artist.controller.js"></script>
@@ -38,12 +37,11 @@
     <script src="services/auth.service.client.js"></script>
     <script src="services/search.service.client.js"></script>
     <script src="services/user.service.client.js"></script>
-    <!--filter-->
-    <script src="filters/displaytime.js"></script>
-    <script src="filters/timeago.js"></script>
-    <!--directive-->
-    <script src="directives/responsivecover.js"></script>
-    <script src="directives/playlistcover.js"></script>
+    <!-- javascript -->
+    <script src="js/login-register.js"></script>
+    <script src="js/displaytime.js"></script>
+    <script src="js/responsivecover.js"></script>
+    <script src="js/playlistcover.js"></script>
 </head>
 
 <body ng-controller="AppController">
@@ -53,12 +51,10 @@
                 <input ng-model="query" ng-change="loadsearch()" ng-keyup="loadsearch()" type="text"
                        class="form-control input-sm" id="query" placeholder="Search...">
             </div>
-            <div class="titlebox">
-                <a href="#/">MUSIC MOOD  &middot  LISTEN TO YOUR HEART</a>
-            </div>
             <div class="userbox">
-                Signed in as <b>
-                <a ng-show="user" ng-class="{'active' : $location.url()==='/user'}" href="#/user">{{user.username}}</a></b>
+                <a ng-show="user" ng-class="{'active' : $location.url()==='/user'}" href="#/user">
+                    Signed in as <b>{{user.username}}</b>
+                </a>
                 <a ng-hide="user" data-toggle="modal" data-target="#loginModal" onclick="openLoginModal()">Login &nbsp
                 </a>
                 <a ng-hide="user" data-toggle="modal" data-target="#loginModal" onclick="openRegisterModal()">Register &nbsp
@@ -74,7 +70,9 @@
                 <div class="list scrollable">
                     <b><a href="#/">HOME</a></b>
                     <ul class="menuitems">
-                        <li><a href="#/">Genres</a></li>
+                        <li> <a href="https://docs.google.com/document/d/106ZROdm3HVMX6ubgTGM-8lo-1cwBng-b_Jtw_UJvh_Q/edit#heading=h.j87cjruyox8">
+                            Project Description</a>
+                        </li>
                     </ul>
                     <b>PLAYLISTS</a></b>
                     <ul class="menuitems" ng-show="user">

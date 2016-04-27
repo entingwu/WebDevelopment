@@ -26,6 +26,10 @@
 
         function update(profileUser) {
             var gm_id = profileUser.genres;
+            if(profileUser.password != profileUser.password2) {
+                $scope.alert = "Password not match";
+                return;
+            }
             UserService
                 .updateUserById($rootScope.user._id, profileUser)
                 .then(
@@ -38,7 +42,7 @@
                         $location.url("/browsecategory/"+gm_id);
                     },
                     function(err) {
-                        $scope.error = err;
+                        $scope.alert = err;
                     }
                 );
         }

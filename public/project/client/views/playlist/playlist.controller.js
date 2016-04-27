@@ -9,7 +9,7 @@
         })
         .controller('PlaylistController', PlaylistController);
 
-    function PlaylistController($scope, $rootScope, $routeParams, $sce, UserService) {
+    function PlaylistController($scope, $rootScope, $routeParams, $sce, UserService, SearchService) {
         $scope.playlist = $routeParams.playlist;
         $scope.username = $routeParams.username;
         console.log("playlist:", $scope.playlist);
@@ -19,7 +19,7 @@
         $scope.data = null;
         $scope.total_duration = 0;
 
-        UserService
+        SearchService
             .getPlaylist($scope.username, $scope.playlist)
             .then(function(list) {
                 console.log('got playlist', list);
@@ -28,7 +28,7 @@
                 $scope.playlistDescription = $sce.trustAsHtml(list.description);
             });
 
-        UserService
+        SearchService
             .getPlaylistTracks($scope.username, $scope.playlist)
             .then(function(list) {
                 console.log('got playlist tracks', list);

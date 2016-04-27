@@ -3,7 +3,7 @@ module.exports = function(mongoose) {
     var ArtistSchema = require("./artist.schema.server.js")(mongoose);
     var AlbumSchema = require("./album.schema.server.js")(mongoose);
     var FollowSchema = require("./follow.schema.server.js")(mongoose);
-    var UserSchema = mongoose.Schema({
+    var ProjectUserSchema = mongoose.Schema({
         firstName: String,
         lastName: String,
         username: String,
@@ -18,5 +18,5 @@ module.exports = function(mongoose) {
         followers:[FollowSchema]/* an array of users who are following me*/
     }, {collection: "project.musicMood.user"});
 
-    return UserSchema;
+    return ProjectUserSchema;
 };

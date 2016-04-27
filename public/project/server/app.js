@@ -4,4 +4,6 @@ module.exports = function(app, db, mongoose, passport, LocalStrategy) {
 
     /* SERVICE*/
     var userService = require("./services/user.service.server.js")(app, projectUserModel, passport, LocalStrategy);
+    var musicService = require("./services/music.service.server.js")(app, projectUserModel);
+
 };

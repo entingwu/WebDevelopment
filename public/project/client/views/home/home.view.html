@@ -1,17 +1,49 @@
-<h1>Music Mood</h1>
-<div ng-show="user">
-    <h2>Welcome {{user.username}}!</h2>
-</div>
-<div ng-show="genresMoods.length > 0">
-    <h3>Genres && Scenario</h3>
-    <ul class="genres">
-        <li ng-repeat="gm in genresMoods">
-            <a href="#/browsecategory/{{gm.id}}">
-                <img ng-src="{{gm.icons[0].url}}">
-            </a>
-            <p>
-                <b><a href="#/browsecategory/{{gm.id}}">{{gm.name}}</a></b>
-            </p>
-        </li>
-    </ul>
+<div ng-controller="HomeController">
+    <script>
+        $(function () { $(".carousel").carousel({ interval: 4000}); });
+    </script>
+    <div class="carousel slide"  data-ride="carousel" data-interval="false">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-slide" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-slide" data-slide-to="1"></li>
+            <li data-target="#carousel-slide" data-slide-to="2"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="images/slide1.jpg" alt="cover1" width="1400" height="300">
+                <div class="carousel-caption">
+                    <div ng-show="user"><h2>Welcome {{user.username}}!</h2></div>
+                    <div ng-show="!user"><h2>Welcome to Music Mood!</h2></div>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/slide2.jpg" alt="cover2" width="1400" height="300">
+                <div class="carousel-caption">
+                    <h2>Relax and Listen to your heart</h2>
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/slide3.jpg" alt="cover3" width="1400" height="300">
+                <div class="carousel-caption">
+                    <h2>Add songs to your playlist</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div ng-show="genresMoods.length > 0">
+        <h3>Genres && Scenario</h3>
+        <ul class="genres">
+            <li ng-repeat="gm in genresMoods">
+                <a href="#/browsecategory/{{gm.id}}">
+                    <img ng-src="{{gm.icons[0].url}}">
+                </a>
+                <p>
+                    <b><a href="#/browsecategory/{{gm.id}}">{{gm.name}}</a></b>
+                </p>
+            </li>
+        </ul>
+    </div>
 </div>
