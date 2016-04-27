@@ -9,14 +9,14 @@
         <div class="buttons">
             <div ng-show="user" ng-switch="likeArtistStatus">
                 <div ng-switch-when="false">
-                    <a class="button green" ng-click="addArtistToUser()" href="#/user">FOLLOW</a>
+                    <a class="button green" ng-click="addArtistToUser()" href="#/user">LIKE</a>
                 </div>
                 <div ng-switch-when="true">
-                    <a class="button green" ng-click="deleteArtistFromUser()" href="#/user">UNFOLLOW</a>
+                    <a class="button green" ng-click="deleteArtistFromUser()" href="#/user">UNLIKE</a>
                 </div>
             </div>
             <div ng-show="!user">
-                <a class="button button-add" href="#/">FOLLOW</a>
+                <a class="button button-add" href="#/">LIKE</a>
             </div>
         </div>
     </header>

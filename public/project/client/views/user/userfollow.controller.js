@@ -22,10 +22,15 @@
                         console.log(model.user);
                         model.followings = user.following;
                         model.followers = user.followers;
+                        model.followingIds = [];
+                        for(var i = 0; i<model.followings.length; i++) {
+                            model.followingIds.push(model.followings[i]._id);
+                        }
+                        console.log(model.followingIds);
                     });
 
                 UserService
-                    .findAllUsers()
+                     .findAllUsers()
                     .then(function(users) {
                         model.users = users;
                         for(var i = 0; i<model.users.length; i++) {

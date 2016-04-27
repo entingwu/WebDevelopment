@@ -34,25 +34,26 @@
             <tbody>
             <tr ng-repeat="user in model.users">
                 <td>
-                    <img src="images/user3.jpg" class="img-rounded" alt="{{user.username}} image" width="80" height="80">
+                    <img src="images/user1.jpg" class="img-rounded" width="80" height="80">
                 </td>
                 <td><label>{{user.username}}</label></td>
                 <td><label>{{user.genres}}</label></td>
                 <td>
                     <div ng-show="user.favoriteArtists[0]">
-                        <img src="{{user.favoriteArtists[0].imageUrl}}" class="img-rounded" alt="{{artist.name}} image" width="80" height="80">
+                        <img src="{{user.favoriteArtists[0].imageUrl}}" class="img-rounded" width="80" height="80">
                     </div>
                 </td>
                 <td>
                     <div ng-show="user.favoriteAlbums[0]">
-                        <img src="{{user.favoriteAlbums[0].imageUrl}}" class="img-rounded" alt="{{album.name}} image" width="80" height="80">
+                        <img src="{{user.favoriteAlbums[0].imageUrl}}" class="img-rounded" width="80" height="80">
                     </div>
                 </td>
                 <td>
                     <iframe ng-src="{{user.favoriteSongs[0].uri | trustUrl}}" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
                 </td>
                 <td class="col-sm-3 text-center">
-                    <a ng-click="model.follow(user)" class="button green">FOLLOW</a>
+                    <a ng-show="model.followingIds.indexOf(user._id)<0" ng-click="model.follow(user)" class="button green">FOLLOW</a>
+                    <a ng-show="model.followingIds.indexOf(user._id)>=0" ng-click="model.deleteFollowing(user)" class="button button-add">UNFOLLOW</a>
                 </td>
             </tr>
             </tbody>
@@ -64,7 +65,7 @@
                 <h4>FOLLOWING</h4>
                 <li class="searchresult" ng-repeat="foi in model.followings">
                     <a>
-                        <img src="images/user3.jpg" class="img-rounded" alt="{{foi.username}} image" width="160" height="160">
+                        <img src="images/user1.jpg" class="img-rounded" alt="{{foi.username}} image" width="160" height="160">
                     </a>
                     <p>
                         <a>{{foi.username}}</a><br>
@@ -78,7 +79,7 @@
                 <h4>FOLLOWER</h4>
                 <li class="searchresult" ng-repeat="foe in model.followers">
                     <a>
-                        <img src="images/user3.jpg" class="img-rounded" alt="{{foe.username}} image" width="160" height="160">
+                        <img src="images/user1.jpg" class="img-rounded" alt="{{foe.username}} image" width="160" height="160">
                     </a>
                     <p>
                         <a>{{foe.username}}</a><br>
