@@ -372,6 +372,18 @@ div.centered div.inner {
 	width: 400px;
 }
 
+a.button-xs {
+	display: inline-block;
+	text-align: center;
+	padding: 1px 6px;
+	border-radius: 5px;
+}
+
+a.button-xs.button-add {
+	color: #fff;
+	border: 1px solid #070;
+}
+
 a.button {
 	display: inline-block;
 	text-align: center;
