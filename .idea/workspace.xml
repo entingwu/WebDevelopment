@@ -2,68 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7086548c-b6a5-4298-ae51-ea38bc8c3e7b" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/.gitignore" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/.project" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/app.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/assets/buttons.psd" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/bower_components/angular-route/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/bower_components/angular-route/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/bower_components/angular-route/angular-route.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/bower_components/angular-route/angular-route.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/bower_components/angular-route/angular-route.min.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/bower_components/angular-route/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/bower_components/angular/.bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/bower_components/angular/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/bower_components/angular/angular-csp.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/bower_components/angular/angular.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/bower_components/angular/angular.min.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/bower_components/angular/angular.min.js.gzip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/bower_components/angular/angular.min.js.map" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/bower_components/angular/bower.json" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/callback.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/controllers/album.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/controllers/artist.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/controllers/browse.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/controllers/browsecategory.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/controllers/home.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/controllers/login.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/controllers/player.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/controllers/playlist.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/controllers/playqueue.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/controllers/searchresults.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/controllers/user.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/controllers/usertracks.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/directives/contextmenu.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/directives/focusme.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/directives/playlistcover.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/directives/responsivecover.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/filters/displaytime.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/filters/timeago.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/images/btn-next.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/images/btn-pause.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/images/btn-play.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/images/btn-prev.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/images/placeholder-playlist.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/partials/album.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/partials/artist.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/partials/browse.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/partials/browsecategory.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/partials/home.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/partials/playlist.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/partials/playqueue.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/partials/searchresults.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/partials/user.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/partials/usertracks.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/readme-img/webapi-player-example.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/services/api.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/services/auth.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/services/playback.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/services/playqueue.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/public/WebAPI/style.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/index.html" afterPath="$PROJECT_DIR$/public/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/css/style.css" afterPath="$PROJECT_DIR$/public/project/client/views/css/style.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/project/client/views/css/user.css" afterPath="$PROJECT_DIR$/public/project/client/views/css/user.css" />
     </list>
     <ignored path="cs5610spring2016.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -115,10 +56,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/index.html">
+        <entry file="file://$PROJECT_DIR$/public/project/client/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.37623763">
-              <caret line="47" column="113" selection-start-line="47" selection-start-column="113" selection-end-line="47" selection-end-column="113" />
+            <state vertical-scroll-proportion="2.4731183">
+              <caret line="92" column="29" selection-start-line="92" selection-start-column="29" selection-end-line="92" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -183,15 +124,15 @@
         <option value="$PROJECT_DIR$/public/project/client/views/home/home.controller.js" />
         <option value="$PROJECT_DIR$/public/project/client/views/home/home.view.html" />
         <option value="$PROJECT_DIR$/public/project/server/models/user.model.server.js" />
-        <option value="$PROJECT_DIR$/public/project/client/views/css/user.css" />
         <option value="$PROJECT_DIR$/public/project/server/services/user.service.server.js" />
         <option value="$PROJECT_DIR$/public/assignment/Assignment5/server/services/user.service.server.js" />
         <option value="$PROJECT_DIR$/public/project/client/config.js" />
         <option value="$PROJECT_DIR$/public/project/client/services/search.service.client.js" />
         <option value="$PROJECT_DIR$/public/project/server/services/search.service.server.js" />
         <option value="$PROJECT_DIR$/public/project/client/index.html" />
-        <option value="$PROJECT_DIR$/public/project/client/views/css/style.css" />
         <option value="$PROJECT_DIR$/public/index.html" />
+        <option value="$PROJECT_DIR$/public/project/client/views/css/user.css" />
+        <option value="$PROJECT_DIR$/public/project/client/views/css/style.css" />
       </list>
     </option>
   </component>
@@ -201,8 +142,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="17" />
-    <option name="y" value="23" />
+    <option name="x" value="2" />
+    <option name="y" value="24" />
     <option name="width" value="1263" />
     <option name="height" value="705" />
   </component>
@@ -343,7 +284,59 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="project" />
+              <option name="myItemId" value="assignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assignment5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cs5610spring2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cs5610spring2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assignment5" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cs5610spring2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cs5610spring2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assignment" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Assignment5" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -351,11 +344,25 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cs5610spring2016" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cs5610spring2016" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assignment" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -386,10 +393,10 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/project/client" />
+      <recent name="$PROJECT_DIR$/public/project/client/views" />
       <recent name="$PROJECT_DIR$/public/project/client/js" />
       <recent name="$PROJECT_DIR$/public/project/client/views/user" />
       <recent name="$PROJECT_DIR$/public/project/client/views/profile" />
-      <recent name="$PROJECT_DIR$/public/assignment/Assignment5/client/views/users" />
     </key>
   </component>
   <component name="RunManager" selected="Node.js.server.js">
@@ -474,16 +481,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="17" y="23" width="1263" height="705" extended-state="0" />
+    <frame x="2" y="24" width="1263" height="705" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31803542" sideWeight="0.86520946" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24557166" sideWeight="0.86520946" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32843137" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31967214" sideWeight="0.5254237" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29836065" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18954249" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24927536" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.08688524" sideWeight="0.47457626" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43606558" sideWeight="0.47457626" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23303168" sideWeight="0.13479052" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -600,6 +607,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.35114503">
           <caret line="26" column="70" selection-start-line="26" selection-start-column="65" selection-end-line="26" selection-end-column="70" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -615,6 +623,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.32258064">
           <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -646,6 +655,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.38530466">
           <caret line="16" column="64" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -676,6 +686,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="241" column="52" selection-start-line="241" selection-start-column="52" selection-end-line="241" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -683,6 +694,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-58.75">
           <caret line="94" column="13" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="13" />
+          <folding>
+            <element signature="n#style#0;n#div#1;n#div#0;n#td#5;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -705,21 +719,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="14" selection-start-line="22" selection-start-column="14" selection-end-line="22" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/assignment/Assignment5/client/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/client/views/css/user.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.375">
-          <caret line="355" column="13" selection-start-line="355" selection-start-column="13" selection-end-line="355" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -824,9 +823,91 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.875">
+          <caret line="47" column="113" selection-start-line="47" selection-start-column="113" selection-end-line="47" selection-end-column="113" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/assignment/Assignment5/client/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-8.75">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/views/css/user.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.4576273">
+          <caret line="218" column="32" selection-start-line="218" selection-start-column="32" selection-end-line="218" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/views/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.333333">
+          <caret line="584" column="21" selection-start-line="584" selection-start-column="21" selection-end-line="584" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/images/placeholder-playlist.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/images/user2.jpeg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/images/slide3.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/images/slide2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/images/slide1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/images/user6.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/images/user4.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/images/user3.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/images/user1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/project/client/images/user.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/project/client/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7643443">
+        <state vertical-scroll-proportion="2.4731183">
           <caret line="92" column="29" selection-start-line="92" selection-start-column="29" selection-end-line="92" selection-end-column="29" />
           <folding />
         </state>
@@ -836,22 +917,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19121814">
           <caret line="35" column="31" selection-start-line="35" selection-start-column="31" selection-end-line="35" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/project/client/views/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.5283018">
-          <caret line="535" column="0" selection-start-line="535" selection-start-column="0" selection-end-line="535" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37623763">
-          <caret line="47" column="113" selection-start-line="47" selection-start-column="113" selection-end-line="47" selection-end-column="113" />
           <folding />
         </state>
       </provider>

@@ -206,10 +206,19 @@
 }
 
 
-@media (max-width:400px){
+@media (max-width:500px){
     .login .modal-dialog{
         width: 100%;
         vertical-align: middle;
+    }
+
+    div.form-style-5 label {
+        display: block;
+        margin-bottom: 8px;
+        color: #626f78;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        font-size: 8pt;
     }
 }
 

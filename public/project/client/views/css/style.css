@@ -228,15 +228,28 @@ hr {
 	padding: 20px;
 }
 
-@media (min-width: 320px) {
+@media (max-width: 500px) {
 	.menuview {
 		overflow: hidden;
 		position: absolute;
 		left: 0px;
 		top: 0px;
-		width: 13%;
+		width: 0px;
+		height: 0px;
 		background-color: #222326;
 		bottom: 0px;
+		visibility: hidden;
+	}
+
+	div.mainview {
+		position: absolute;
+		left: 5%;
+		top: 0px;
+		right: 0px;
+		bottom: 0px;
+		padding: 0px;
+		overflow: auto;
+		color: #88898c;
 	}
 }
 
@@ -249,6 +262,20 @@ hr {
 	bottom: 260px;
 	padding: 0px;
 	overflow: auto;
+}
+
+@media (max-width: 500px) {
+	.menuview .list {
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		width: 100%;
+		height: auto;
+		bottom: 260px;
+		padding: 0px;
+		overflow: auto;
+		visibility: hidden;
+	}
 }
 
 .menuview .preview {
