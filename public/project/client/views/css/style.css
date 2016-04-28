@@ -228,6 +228,16 @@ hr {
 	padding: 20px;
 }
 
+.menuview {
+	overflow: hidden;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 220px;
+	background-color: #222326;
+	bottom: 0px;
+}
+
 @media (max-width: 500px) {
 	.menuview {
 		overflow: hidden;
