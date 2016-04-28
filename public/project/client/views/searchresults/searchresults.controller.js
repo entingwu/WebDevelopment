@@ -10,24 +10,25 @@
         .controller('SearchResultsController', SearchResultsController);
 
     function SearchResultsController($scope, $rootScope, $location, UserService, SearchService) {
-        $scope.$location = $location;
-        $scope.query = $location.search().q || '';
-        $scope.tracks = [];
-        $scope.saveArtist = saveArtist;
-        $scope.saveAlbum = saveAlbum;
-        $scope.saveTrack = saveTrack;
+        var model = this;
+        model.$location = $location;
+        model.query = $location.search().q || '';
+        model.tracks = [];
+        model.saveArtist = saveArtist;
+        model.saveAlbum = saveAlbum;
+        model.saveTrack = saveTrack;
 
         SearchService
-            .getSearchResults($scope.query)
+            .getSearchResults(model.query)
             .then(function(results) {
-                $scope.tracks = results.tracks.items;
-                $scope.playlists = results.playlists.items;
-                console.log('search playlists: ', $scope.playlists);
-                console.log('tracks: ', $scope.tracks);
+                model.tracks = results.tracks.items;
+                model.playlists = results.playlists.items;
+                console.log('search playlists: ', model.playlists);
+                console.log('tracks: ', model.tracks);
         });
 
-        $scope.toggleFromYourMusic = function(index) {
-            var likeTrack = $scope.tracks[index];
+        model.toggleFromYourMusic = function(index) {
+            var likeTrack = model.tracks[index];
             var user = $rootScope.user;
             likeTrack.albumName = likeTrack.album.name;
             likeTrack.albumId = likeTrack.album.id;
@@ -40,22 +41,22 @@
                     var tr = tracks[i];
                     if (tr.id === likeTrack.id) {
                         console.log("found match track");
-                        $scope.tracks[index].like = true;
+                        model.tracks[index].like = true;
                     }
                 }
-                if($scope.tracks[index].like) {//true
+                if(model.tracks[index].like) {//true
                     UserService
                         .deleteTrackFromUser(user._id, likeTrack.id)
                         .then(function(user) {
                             console.log("Deleted song from user : ", user);
-                            $scope.tracks[index].like = false;
+                            model.tracks[index].like = false;
                         });
                 }else {//false
                     UserService
                         .addTrackToUser(user._id, likeTrack)
                         .then(function(user) {
                             console.log("Added track to user : ", user);
-                            $scope.tracks[index].like = true;
+                            model.tracks[index].like = true;
                         });
                 }
             }

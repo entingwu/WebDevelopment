@@ -10,27 +10,28 @@
         .controller("AlbumController", AlbumController);
 
     function AlbumController($scope, $rootScope, $routeParams, $location, UserService, SearchService) {
-        $scope.$location = $location;
-        $scope.albumId = $routeParams.album;
-        $scope.data = null;
-        $scope.likeAlbumStatus = false;
-        $scope.release_year = '';
-        $scope.total_duration = 0;
-        $scope.num_discs = 0;
-        $scope.tracks = [];
+        var model = this;
+        model.$location = $location;
+        model.albumId = $routeParams.album;
+        model.data = null;
+        model.likeAlbumStatus = false;
+        model.release_year = '';
+        model.total_duration = 0;
+        model.num_discs = 0;
+        model.tracks = [];
 
         if ($rootScope.album != null) {
             console.log($rootScope.album);
-            $scope.album = $rootScope.album
+            model.album = $rootScope.album
         }
 
         SearchService
-            .findAlbumById($scope.albumId)
+            .findAlbumById(model.albumId)
             .then(function(album) {
                 console.log("#/album: found album : ", album);
-                $scope.data = album;
+                model.data = album;
                 if (album.release_date) {
-                    $scope.release_year = album.release_date.substring(0, 4); //
+                    model.release_year = album.release_date.substring(0, 4); //
                 }
                 /* user like album in #/album */
                 if($rootScope.user != null) {
@@ -44,7 +45,7 @@
             });
 
         SearchService
-            .findTracksByAlbum($scope.albumId)
+            .findTracksByAlbum(model.albumId)
             .then(function (tracks) {
                 console.log('got album tracks', tracks);
                 /* split into discs */
@@ -62,14 +63,14 @@
                 });
                 discs.push(disc);
                 console.log('save discs', discs);
-                $scope.discs = discs;
-                $scope.tracks = tracks.items;
-                console.log($scope.tracks[0]);
-                $scope.num_discs = discs.length;
-                $scope.total_duration = totalTime;
+                model.discs = discs;
+                model.tracks = tracks.items;
+                console.log(model.tracks[0]);
+                model.num_discs = discs.length;
+                model.total_duration = totalTime;
 
                 /* track id array */
-                var ids = $scope.tracks.map(function(track) {
+                var ids = model.tracks.map(function(track) {
                     return track.id;
                 });
 
@@ -77,13 +78,13 @@
                     .getTracks(ids)
                     .then(function(results) {
                         results.tracks.forEach(function(result, index) {
-                            $scope.tracks[index].popularity = result.popularity;
+                            model.tracks[index].popularity = result.popularity;
                     });
                 });
             });
 
-        $scope.toggleFromYourMusic = function(index) {
-            var likeTrack = $scope.tracks[index];
+        model.toggleFromYourMusic = function(index) {
+            var likeTrack = model.tracks[index];
             var user = $rootScope.user;
             likeTrack.albumName = likeTrack.album.name;
             likeTrack.albumId = likeTrack.album.id;
@@ -97,16 +98,16 @@
                     var tr = tracks[i];
                     if (tr.id === likeTrack.id) {
                         console.log("found match track");
-                        $scope.tracks[index].like = true;
+                        model.tracks[index].like = true;
                     }
                 }
-                if($scope.tracks[index].like) {//true
+                if(model.tracks[index].like) {//true
                     UserService
                         .deleteTrackFromUser(user._id, likeTrack.id)
                         .then(function(user) {
                             console.log("Deleted song from user : ");
                             console.log(user);
-                            $scope.tracks[index].like = false;
+                            model.tracks[index].like = false;
                         });
                 }else {//false
                     UserService
@@ -114,7 +115,7 @@
                         .then(function(user) {
                             console.log("Added track to user : ");
                             console.log(user);
-                            $scope.tracks[index].like = true;
+                            model.tracks[index].like = true;
                         });
                 }
             }
@@ -133,43 +134,43 @@
                         console.log("user like : ", $rootScope.user.favoriteAlbums);
                         for (var i in albums) {
                             var album = albums[i];
-                            if(album.id === $scope.data.id) {
+                            if(album.id === model.data.id) {
                                 console.log("found match album", album);
-                                $scope.likeAlbumStatus = true;
+                                model.likeAlbumStatus = true;
                             }
                         }
-                        console.log("like album status: " + $scope.likeAlbumStatus);
+                        console.log("like album status: " + model.likeAlbumStatus);
                 });
             }
         }
 
-        $scope.addAlbumToUser = function () {
-            UserService.addAlbumToUser($rootScope.user._id, $scope.data)
+        model.addAlbumToUser = function () {
+            UserService.addAlbumToUser($rootScope.user._id, model.data)
                 .then(function(user) {
                     console.log("Added album to user", user);
                     setLikeAlbumStatus();
                 })
         };
 
-        $scope.deleteAlbumFromUser = function() {
-            UserService.deleteAlbumFromUser($rootScope.user._id, $scope.data.id)
+        model.deleteAlbumFromUser = function() {
+            UserService.deleteAlbumFromUser($rootScope.user._id, model.data.id)
                 .then(function(result) {
                     console.log("Deleted album from user");
                     console.log(result);
                     UserService
                         .findUserById($rootScope.user._id)
                         .then(function(user) {
-                            $scope.user = user;
+                            model.user = user;
                             setLikeAlbumStatus();
                     });
                 });
         };
 
-        $scope.saveTrack = function(track) {
+        model.saveTrack = function(track) {
             $rootScope.track = track;
         };
 
-        $scope.saveArtist = function(artist) {
+        model.saveArtist = function(artist) {
             $rootScope.artist = artist;
             console.log("#/artist : saved album", $rootScope.artist);
         };

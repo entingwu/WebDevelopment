@@ -10,27 +10,27 @@
         .controller('ArtistController', ArtistController);
 
     function ArtistController($scope, $rootScope, $routeParams, $location, UserService, SearchService, Auth) {
-        $scope.$locaiton = $location;
-        $scope.artistId = $routeParams.artist;
-        $scope.data = null;//artist
-        $scope.genres = [];
-        $scope.likeArtistStatus = false;//follow artist
-
-        $scope.albums = [];
-        $scope.singles = [];
-        $scope.appearson = [];
+        var model = this;
+        model.$locaiton = $location;
+        model.artistId = $routeParams.artist;
+        model.data = null;//artist
+        model.genres = [];
+        model.likeArtistStatus = false;//follow artist
+        model.albums = [];
+        model.singles = [];
+        model.appearson = [];
 
         if($rootScope.artist != null) {
             console.log($rootScope.artist);
-            $scope.artist = $rootScope.artist;
+            model.artist = $rootScope.artist;
         }
 
         SearchService
-            .findArtistById($scope.artistId)
+            .findArtistById(model.artistId)
             .then(function(artist) {
-                $scope.data = artist;
-                console.log($scope.data.popularity);
-                $scope.genres = $scope.data.genres;
+                model.data = artist;
+                console.log(model.data.popularity);
+                model.genres = model.data.genres;
                 /* follow artist in artist page */
                 if($rootScope.user != null) {
                     UserService
@@ -43,32 +43,32 @@
             });
 
         SearchService
-            .findArtistTopTracks($scope.artistId, Auth.getUserCountry())
+            .findArtistTopTracks(model.artistId, Auth.getUserCountry())
             .then(function(toptracks) {
                 console.log('got artist', toptracks);
-                $scope.toptracks = toptracks.tracks;
-                console.log($scope.toptracks);
+                model.toptracks = toptracks.tracks;
+                console.log(model.toptracks);
             });
 
         SearchService
-            .findAlbumByArtist($scope.artistId, Auth.getUserCountry())
+            .findAlbumByArtist(model.artistId, Auth.getUserCountry())
             .then(function(albums) {
                 console.log('got artist albums', albums);
                 albums.items.forEach(function(album) {
                     if (album.album_type == 'album') {
-                        $scope.albums.push(album);
+                        model.albums.push(album);
                     }
                     if (album.album_type == 'single') {
-                        $scope.singles.push(album);
+                        model.singles.push(album);
                     }
                     if (album.album_type == 'appears-on') {
-                        $scope.appearson.push(album);
+                        model.appearson.push(album);
                     }
                 })
             });
 
-        $scope.toggleFromYourMusic = function(index) {
-            var likeTrack = $scope.toptracks[index];
+        model.toggleFromYourMusic = function(index) {
+            var likeTrack = model.toptracks[index];
             var user = $rootScope.user;
             likeTrack.albumName = likeTrack.album.name;
             likeTrack.albumId = likeTrack.album.id;
@@ -82,24 +82,22 @@
                     var tr = tracks[i];
                     if (tr.id === likeTrack.id) {
                         console.log("found match track");
-                        $scope.toptracks[index].like = true;
+                        model.toptracks[index].like = true;
                     }
                 }
-                if($scope.toptracks[index].like) {//true
+                if(model.toptracks[index].like) {//true
                     UserService
                         .deleteTrackFromUser(user._id, likeTrack.id)
                         .then(function(user) {
-                            console.log("Deleted song from user : ");
-                            console.log(user);
-                            $scope.toptracks[index].like = false;
+                            console.log("Deleted song from user : ", user);
+                            model.toptracks[index].like = false;
                         });
                 }else {//false
                     UserService
                         .addTrackToUser(user._id, likeTrack)
                         .then(function(user) {
-                            console.log("Added track to user : ");
-                            console.log(user);
-                            $scope.toptracks[index].like = true;
+                            console.log("Added track to user : ", user);
+                            model.toptracks[index].like = true;
                         });
                 }
             }
@@ -118,47 +116,47 @@
                         console.log($rootScope.artist);
                         for (var i in artists) {
                             var artist = artists[i];
-                            if (artist.id === $scope.data.id) {
+                            if (artist.id === model.data.id) {
                                 console.log("found match artist", artist);
-                                $scope.likeArtistStatus = true;
+                                model.likeArtistStatus = true;
                             }
                         }
-                        console.log("like artist status: " + $scope.likeArtistStatus);
+                        console.log("like artist status: " , model.likeArtistStatus);
                     });
             }
         }
 
-        $scope.addArtistToUser = function() {
+        model.addArtistToUser = function() {
             UserService
-                .addArtistToUser($rootScope.user._id, $scope.data)
+                .addArtistToUser($rootScope.user._id, model.data)
                 .then(function(user) {
                     console.log("Added artist to user", user);
                     setLikeArtistStatus();
                 });
         };
 
-        $scope.deleteArtistFromUser = function() {
+        model.deleteArtistFromUser = function() {
             UserService
-                .deleteArtistFromUser($rootScope.user._id, $scope.data.id)
+                .deleteArtistFromUser($rootScope.user._id, model.data.id)
                 .then(function(result) {
                     console.log("delete artist from user");
                     console.log(result);
                     UserService
                         .findUserById($rootScope.user._id)
                         .then(function(user) {
-                            $scope.user = user;
+                            model.user = user;
                             setLikeArtistStatus();
                     });
                 });
         };
 
-        $scope.saveAlbum = function(album) {
+        model.saveAlbum = function(album) {
             $rootScope.album = album;
             console.log("#/artist : saved album");
             console.log($rootScope.album);
         };
 
-        $scope.saveTrack = function(track) {
+        model.saveTrack = function(track) {
             console.log(track);
             $rootScope.track= track;
         };

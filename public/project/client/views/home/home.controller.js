@@ -5,30 +5,14 @@
         .controller("HomeController", HomeController);
 
     function HomeController($scope, SearchService) {
-
-        function isoTime(date) {
-            var iso = date.getUTCFullYear() +
-                '-' + standard( date.getUTCMonth() + 1 ) +
-                '-' + standard( date.getUTCDate() ) +
-                'T' + standard( date.getHours() ) +
-                ':' + standard( 0 ) +
-                ':' + standard( 0 );
-            return iso;
-        }
-
-        function standard(num) {
-            return num < 10? '0' + num : num;
-        }
-
-        var currentDate = isoTime(new Date());
+        var model = this;
         /* Genres & Mood
          GET :  https://api.spotify.com/v1/browse/categories */
-
         SearchService.getBrowseCategories()
             .then(function(data) {
                 console.log("browseCategory: ");
                 console.log(data);
-                $scope.genresMoods = data.categories.items;
+                model.genresMoods = data.categories.items;
             });
 
     }

@@ -9,7 +9,7 @@
 			setAccessToken : setAccessToken,
 			getUsername : getUsername,
 			setUsername : setUsername,
-			getUserCountry : getUserCountry,
+			getUserCountry : getUserCountry
 		};
 		return service;
 

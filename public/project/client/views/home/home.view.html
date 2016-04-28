@@ -14,7 +14,7 @@
             <div class="item active">
                 <img src="images/slide1.jpg" alt="cover1" width="1400" height="300">
                 <div class="carousel-caption">
-                    <div ng-show="user"><h2>Welcome {{user.username}}!</h2></div>
+                    <div ng-show="user"><h2>Welcome Music Mood, {{user.username}}!</h2></div>
                     <div ng-show="!user"><h2>Welcome to Music Mood!</h2></div>
                 </div>
             </div>
@@ -33,10 +33,10 @@
         </div>
     </div>
     <br>
-    <div ng-show="genresMoods.length > 0">
+    <div ng-show="model.genresMoods.length > 0">
         <h3>Genres && Scenario</h3>
         <ul class="genres">
-            <li ng-repeat="gm in genresMoods">
+            <li ng-repeat="gm in model.genresMoods">
                 <a href="#/browsecategory/{{gm.id}}">
                     <img ng-src="{{gm.icons[0].url}}">
                 </a>

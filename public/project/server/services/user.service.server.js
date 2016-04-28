@@ -13,10 +13,10 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
     app.get('/api/project/user/:userId',     findUserById);
 
     /* ADMIN */
-    app.get('/api/project/admin/user',            /*auth,*/     getAllUsers);
-    app.post('/api/project/admin/user',           /*auth,*/     createUser);
-    app.put('/api/project/admin/user/:userId',    /*auth,*/     updateUserByAdmin);
-    app.delete('/api/project/admin/user/:userId', /*auth,*/     deleteUserById);
+    app.get('/api/project/admin/user',            /*admin,*/     getAllUsers);
+    app.post('/api/project/admin/user',           /*admin,*/     createUser);
+    app.put('/api/project/admin/user/:userId',    /*admin,*/     updateUserByAdmin);
+    app.delete('/api/project/admin/user/:userId', /*admin,*/     deleteUserById);
 
     /* Follower */
     app.post('/api/project/user/:userId/following', addFollowToUser);
@@ -79,11 +79,12 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
         }
     }
 
-    function isAdmin(user) {
-        if(user.roles.indexOf("admin") > 0) {
-            return true;
+    function isAdmin(req, res, next) {
+        if (req.isAuthenticated()  && req.user.roles.indexOf("admin") >= 0) {
+            next();
+        } else {
+            res.status(403);
         }
-        return false;
     }
 
     /* login, loggedin, logout, register */
@@ -94,7 +95,7 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
 
     function loggedin(req, res) {
         console.log("loggedin: ",req.user);
-        req.send(req.isAuthenticated()? req.user : '0');
+        res.send(req.isAuthenticated()? req.user : '0');
     }
 
     function logout(req, res) {

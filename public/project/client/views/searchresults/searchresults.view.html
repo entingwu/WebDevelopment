@@ -1,9 +1,9 @@
 <div ng-controller="SearchResultsController">
-    <h1>Showing results for {{query}}</h1>
+    <h1>Showing results for {{model.query}}</h1>
     <hr/><br/>
-    <ul class="playlists" ng-show="playlists.length > 0">
+    <ul class="playlists" ng-show="model.playlists.length > 0">
         <h4>PLAYLISTS</h4>
-        <li class="searchresult" ng-repeat="p in playlists | limitTo:8">
+        <li class="searchresult" ng-repeat="p in model.playlists | limitTo:8">
             <a href="#/users/{{p.owner.id}}/playlists/{{p.id}}">
                 <responsive-cover ng-model="p.images" class="responsive-cover-playlist"></responsive-cover>
             </a>
@@ -28,20 +28,20 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="t in tracks">
+            <tr ng-repeat="t in model.tracks">
                 <td>
-                    <a class="button-xs button-add" ng-show="user" ng-click="toggleFromYourMusic($index)">
+                    <a class="button-xs button-add" ng-show="user" ng-click="model.toggleFromYourMusic($index)">
                         {{ t.like ? '-' : '+' }}
                     </a>
                 </td>
                 <td>
-                    <a ng-click="saveTrack(t)">{{t.name}}</a>
+                    <a ng-click="model.saveTrack(t)">{{t.name}}</a>
                 </td>
                 <td>
-                    <a href="#/artists/{{t.artists[0].id}}" ng-click="saveArtist(t.artists[0])">{{t.artists[0].name}}</a>
+                    <a href="#/artists/{{t.artists[0].id}}" ng-click="model.saveArtist(t.artists[0])">{{t.artists[0].name}}</a>
                 </td>
                 <td>
-                    <a href="#/albums/{{t.album.id}}" ng-click="saveAlbum(t.album)">{{t.album.name}}</a>
+                    <a href="#/albums/{{t.album.id}}" ng-click="model.saveAlbum(t.album)">{{t.album.name}}</a>
                 </td>
                 <td class="nowrap">{{ t.duration_ms | displaytime }}</td>
                 <td></td>

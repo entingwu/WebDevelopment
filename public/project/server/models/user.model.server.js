@@ -176,10 +176,9 @@ module.exports = function(db, mongoose) {
                 console.log(err);
                 deferred.reject(err);
             } else {
-                deferred.resolve(user.favoriteSongs);
                 console.log("favorite songs are: ");
-                console.log(user);
                 console.log(user.favoriteSongs);
+                deferred.resolve(user.favoriteSongs);
             }
         });
         return deferred.promise;
@@ -201,8 +200,7 @@ module.exports = function(db, mongoose) {
         return deferred.promise;
     }
 
-    function addArtistToUser(userId, artist)
-    {
+    function addArtistToUser(userId, artist) {
         var deferred = q.defer();
         var newArtist = {
             id: artist.id,
@@ -241,8 +239,7 @@ module.exports = function(db, mongoose) {
         return deferred.promise;
     }
 
-    function deleteArtistFromUser(userId, artistId)
-    {
+    function deleteArtistFromUser(userId, artistId) {
         var deferred = q.defer();
 
         UserModel.findById(userId, function(err, user){

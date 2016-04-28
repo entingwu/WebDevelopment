@@ -1,18 +1,18 @@
 <div ng-controller="ArtistController">
     <header>
         <div class="cover">
-            <responsive-cover ng-model="data.images"></responsive-cover>
+            <responsive-cover ng-model="model.data.images"></responsive-cover>
         </div>
         <h4>ARTIST</h4>
-        <h1>{{data.name}}</h1>
-        <div class="follower-count">{{data.followers.total | number}} followers</div>
+        <h1>{{model.data.name}}</h1>
+        <div class="follower-count">{{model.data.followers.total | number}} followers</div>
         <div class="buttons">
-            <div ng-show="user" ng-switch="likeArtistStatus">
+            <div ng-show="user" ng-switch="model.likeArtistStatus">
                 <div ng-switch-when="false">
-                    <a class="button green" ng-click="addArtistToUser()" href="#/user">LIKE</a>
+                    <a class="button green" ng-click="model.addArtistToUser()" href="#/user">LIKE</a>
                 </div>
                 <div ng-switch-when="true">
-                    <a class="button green" ng-click="deleteArtistFromUser()" href="#/user">UNLIKE</a>
+                    <a class="button green" ng-click="model.deleteArtistFromUser()" href="#/user">UNLIKE</a>
                 </div>
             </div>
             <div ng-show="!user">
@@ -37,20 +37,20 @@
             </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="t in toptracks">
+                <tr ng-repeat="t in model.toptracks">
                     <td>
-                        <a class="button-xs button-add" ng-show="user" ng-click="toggleFromYourMusic($index)">
+                        <a class="button-xs button-add" ng-show="user" ng-click="model.toggleFromYourMusic($index)">
                             {{ t.like ? '-' : '+' }}
                         </a>
                     </td>
-                    <td><a ng-click="saveTrack(t)">{{t.name}}</a></td>
-                    <td><a ng-click="saveAlbum(t.album)" href="#/albums/{{t.album.id}}">{{t.album.name}}</a></td>
+                    <td><a ng-click="model.saveTrack(t)">{{t.name}}</a></td>
+                    <td><a ng-click="model.saveAlbum(t.album)" href="#/albums/{{t.album.id}}">{{t.album.name}}</a></td>
                     <td>{{t.duration_ms | displaytime}}</td>
                     <td></td>
                     <td>
                         <div class="pop-meter">
                             <div class="pop-meter-background"></div>
-                            <div class="pop-meter-overlay" style="width: {{t.popularity }}%;"></div>
+                            <div class="pop-meter-overlay" style="width:{{t.popularity }}%;"></div>
                         </div>
                     </td>
                     <td>
@@ -63,10 +63,10 @@
 
     <hr/><br/>
 
-    <div ng-show="albums.length > 0">
+    <div ng-show="model.albums.length > 0">
         <h3>Albums</h3>
         <ul class="albums">
-            <li ng-repeat="t in albums">
+            <li ng-repeat="t in model.albums">
                 <a href="#/albums/{{t.id}}">
                     <responsive-cover ng-model="t.images"></responsive-cover>
                 </a>
@@ -79,10 +79,10 @@
         <br/>
     </div>
 
-    <div ng-show="singles.length > 0">
+    <div ng-show="model.singles.length > 0">
         <h3>Singles</h3>
         <ul class="albums">
-            <li ng-repeat="t in singles">
+            <li ng-repeat="t in model.singles">
                 <a href="#/albums/{{t.id}}">
                     <responsive-cover ng-model="t.images"></responsive-cover>
                 </a>
@@ -95,10 +95,10 @@
         <br/>
     </div>
 
-    <div ng-show="appearson.length > 0">
+    <div ng-show="model.appearson.length > 0">
         <h3>Appears on</h3>
         <ul class="albums">
-            <li ng-repeat="t in appearson">
+            <li ng-repeat="t in model.appearson">
                 <a href="#/albums/{{t.id}}">
                     <responsive-cover ng-model="t.images"></responsive-cover>
                 </a>

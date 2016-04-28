@@ -17,17 +17,26 @@
                .when("/user", {
                    templateUrl: "views/user/user.view.html",
                    controller: "UserController",
-                   controllerAs: "model"
+                   controllerAs: "model",
+                   /*resolve: {
+                       loggedin : checkCurrentUser
+                   }*/
                })
                .when("/profile", {
                    templateUrl: "views/user/profile.view.html",
                    controller: "ProfileController",
-                   controllerAs: "model"
+                   controllerAs: "model",
+                   /*resolve: {
+                       loggedin : checkLoggedin
+                   }*/
                })
                .when("/userfollow", {
                    templateUrl: "views/user/userfollow.view.html",
                    controller: "UserFollowController",
-                   controllerAs: "model"
+                   controllerAs: "model",
+                   /*resolve: {
+                       loggedin : checkCurrentUser
+                   }*/
                })
                .when('/users/:username/playlists/:playlist', {
                    templateUrl: 'views/playlist/playlist.view.html',
@@ -52,12 +61,59 @@
                .when("/admin", {
                    templateUrl: "views/admin/admin.view.html",
                    controller: "AdminController",
-                   controllerAs: "model"
+                   controllerAs: "model",
+                   /*resolve: {
+                       loggedin : checkAdmin
+                   }*/
                })
                .otherwise({
                    redirectTo: "/"
                })
         });
+
+    var checkLoggedin = function($rootScope, $http, $q, $location) {
+        var deferred = $q.defer();
+        $http.get('/api/project/loggedin')
+            .success(function(user) {
+                if(user!=='0') {
+                    $rootScope.user = user;
+                    console.log("checkLoggedin", user);
+                    deferred.resolve(user);
+                }else {
+                    $location.url('/');
+                    deferred.reject();
+                }
+            });
+        return deferred.promise;
+    };
+
+    var checkAdmin = function($rootScope, $http, $q) {
+        var deferred = $q.defer();
+        $http.get('/api/project/loggedin')
+            .success(function(user) {
+                if(user !=='0' && user.roles.indexOf('admin') >= 0) {
+                    $rootScope.user = user;
+                    console.log("checkAdmin", user);
+                    deferred.resolve(user);
+                }else {
+                    deferred.reject();
+                }
+            });
+        return deferred.promise;
+    };
+
+    var checkCurrentUser = function($rootScope, $http, $q) {
+        var deferred = $q.defer();
+        $http.get('/api/project/loggedin')
+            .success(function(user) {
+                if(user !== '0') {
+                    $rootScope.user = user;
+                    console.log("checkCurrentUser", user);
+                    deferred.resolve(user);
+                }
+            });
+        return deferred.promise;
+    };
 
     app.controller('AppController', function($rootScope, $scope, $location, UserService, Auth) {
         $scope.$location = $location;

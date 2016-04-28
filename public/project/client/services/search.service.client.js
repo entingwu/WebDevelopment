@@ -31,7 +31,7 @@
                 .then(function(response) {
                     $rootScope.token = response;
                     $http.get('https://api.spotify.com/v1' + '/browse/categories', {
-                        headers: { 'Authorization': 'Bearer ' + $rootScope.token }
+                        headers: { 'Authorization': 'Bearer ' + response }
                     }).success(function(r) {
                         console.log('got browse categories', r);
                         deferred.resolve(r);
@@ -49,7 +49,7 @@
                 .then(function(response) {
                     $rootScope.token = response;
                     $http.get('https://api.spotify.com/v1' + '/browse/categories/' + categoryId, {
-                        headers: { 'Authorization': 'Bearer ' + $rootScope.token }
+                        headers: { 'Authorization': 'Bearer ' + response }
                     }).success(function(r) {
                         console.log('got browse category', r);
                         deferred.resolve(r);
@@ -67,7 +67,7 @@
                 .then(function(response) {
                     $rootScope.token = response;
                     $http.get('https://api.spotify.com/v1' + '/browse/categories/' + categoryId + '/playlists', {
-                        headers: { 'Authorization': 'Bearer ' + $rootScope.token }
+                        headers: { 'Authorization': 'Bearer ' + response }
                     }).success(function(r) {
                         console.log('got browse category playlists', r);
                         deferred.resolve(r);

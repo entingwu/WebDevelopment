@@ -228,14 +228,16 @@ hr {
 	padding: 20px;
 }
 
-.menuview {
-	overflow: hidden;
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	width: 220px;
-	background-color: #222326;
-	bottom: 0px;
+@media (min-width: 320px) {
+	.menuview {
+		overflow: hidden;
+		position: absolute;
+		left: 0px;
+		top: 0px;
+		width: 13%;
+		background-color: #222326;
+		bottom: 0px;
+	}
 }
 
 .menuview .list {
@@ -282,7 +284,7 @@ hr {
 
 .mainview {
 	position: absolute;
-	left: 220px;
+	left: 13%;
 	top: 0px;
 	right: 0px;
 	bottom: 0px;
@@ -340,13 +342,6 @@ a.button {
 	border-radius: 50px;
 }
 
-a.button-xs {
-	display: inline-block;
-	text-align: center;
-	padding: 1px 6px;
-	border-radius: 5px;
-}
-
 a.button.green {
 	background-color: #070;
 	color: #fff;
@@ -363,10 +358,6 @@ a.button.big.green {
 }
 
 a.button.button-add {
-	color: #fff;
-	border: 1px solid #070;
-}
-a.button-xs.button-add {
 	color: #fff;
 	border: 1px solid #070;
 }
@@ -544,8 +535,8 @@ ul.albums li, ul.playlists li, ul.genres li {
 }
 
 ul.albums li responsive-cover,  ul.playlists li responsive-cover, ul.genres li img {
-	width: 160px;
-	height: 160px;
+	width: 100%;
+	height: 73%;
 }
 
 ul.albums li p, ul.playlists li p, ul.genres li p {
@@ -560,7 +551,7 @@ responsive-cover {
 }
 
 responsive-cover.responsive-cover-playlist {
-  background-image: url('../../images/placeholder-playlist.png');
+	background-image: url('images/placeholder-playlist.png');
 }
 
 .searchresult {
@@ -608,72 +599,22 @@ responsive-cover.responsive-cover-playlist {
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #1c1c1f;
+	background-color: #1c1c1f;
 }
 ::-webkit-scrollbar {
-  width: 10px;
-  background-color: #1c1c1f;
+	width: 10px;
+	background-color: #1c1c1f;
 }
 ::-webkit-scrollbar:horizontal {
-  height: 10px;
+	height: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  border: 1px solid #1c1c1f;
-  border-radius: 10px;
-  background-color: #323438;
+	border: 1px solid #1c1c1f;
+	border-radius: 10px;
+	background-color: #323438;
 }
 ::-webkit-scrollbar-corner {
-  background-color: #1c1c1f;
+	background-color: #1c1c1f;
 }
 
-
-.nav ul {
-	list-style: none;
-	background-color: #121314;
-	text-align: left;
-	padding: 0;
-	margin: 0;
-}
-.nav li {
-	font-family: 'Oswald', sans-serif;
-	font-size: 1.2em;
-	color: #ddd;
-	line-height: 40px;
-	height: 40px;
-	border-bottom: 1px solid #888;
-}
-
-.nav a {
-	text-decoration: none;
-	color: #fff;
-	display: block;
-	transition: .3s background-color;
-}
-
-.nav a:hover {
-	background-color: #1e2024;
-}
-
-.nav a.active {
-	background-color: #fff;
-	color: #444;
-	cursor: default;
-}
-
-@media screen and (min-width: 600px) {
-	.nav li {
-		width: 120px;
-		border-bottom: none;
-		height: 50px;
-		line-height: 50px;
-		font-size: 1.4em;
-	}
-
-	/* Option 1 - Display Inline */
-	.nav li {
-		display: inline-block;
-		margin-right: -4px;
-	}
-
-}
 

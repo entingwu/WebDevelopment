@@ -10,39 +10,40 @@
         .controller('PlaylistController', PlaylistController);
 
     function PlaylistController($scope, $rootScope, $routeParams, $sce, UserService, SearchService) {
-        $scope.playlist = $routeParams.playlist;
-        $scope.username = $routeParams.username;
-        console.log("playlist:", $scope.playlist);
+        var model = this;
+        model.playlist = $routeParams.playlist;
+        model.username = $routeParams.username;
+        console.log("playlist:", model.playlist);
 
-        $scope.name = '';
-        $scope.tracks = [];
-        $scope.data = null;
-        $scope.total_duration = 0;
+        model.name = '';
+        model.tracks = [];
+        model.data = null;
+        model.total_duration = 0;
 
         SearchService
-            .getPlaylist($scope.username, $scope.playlist)
+            .getPlaylist(model.username, model.playlist)
             .then(function(list) {
                 console.log('got playlist', list);
-                $scope.name = list.name;
-                $scope.data = list;
-                $scope.playlistDescription = $sce.trustAsHtml(list.description);
+                model.name = list.name;
+                model.data = list;
+                model.playlistDescription = $sce.trustAsHtml(list.description);
             });
 
         SearchService
-            .getPlaylistTracks($scope.username, $scope.playlist)
+            .getPlaylistTracks(model.username, model.playlist)
             .then(function(list) {
                 console.log('got playlist tracks', list);
                 var totalTime = 0;
                 list.items.forEach(function(track) {
                     totalTime += track.track.duration_ms;
                 });
-                $scope.tracks = list.items;
-                console.log('tracks : ', $scope.tracks);
-                $scope.total_duration = totalTime;
+                model.tracks = list.items;
+                console.log('tracks : ', model.tracks);
+                model.total_duration = totalTime;
             });
 
-        $scope.toggleFromYourMusic = function(index) {
-            var likeTrack = $scope.tracks[index].track;
+        model.toggleFromYourMusic = function(index) {
+            var likeTrack = model.tracks[index].track;
             var user = $rootScope.user;
             likeTrack.albumName = likeTrack.album.name;
             likeTrack.albumId = likeTrack.album.id;
@@ -55,16 +56,16 @@
                     var tr = trks[i];
                     if (tr.id === likeTrack.id) {
                         console.log("found match track");
-                        $scope.tracks[index].track.like = true;
+                        model.tracks[index].track.like = true;
                     }
                 }
-                if($scope.tracks[index].track.like) {//true
+                if(model.tracks[index].track.like) {//true
                     UserService
                         .deleteTrackFromUser(user._id, likeTrack.id)
                         .then(function(user) {
                             console.log("Deleted song from user : ");
                             console.log(user);
-                            $scope.tracks[index].track.like = false;
+                            model.tracks[index].track.like = false;
                         });
                 }else {//false
                     UserService
@@ -72,22 +73,22 @@
                         .then(function(user) {
                             console.log("Added track to user : ");
                             console.log(user);
-                            $scope.tracks[index].track.like = true;
+                            model.tracks[index].track.like = true;
                         });
                 }
             }
         };
 
-        $scope.saveArtist = function(artist) {
+        model.saveArtist = function(artist) {
             $rootScope.artist = artist;
             console.log($rootScope.artist);
         };
 
-        $scope.saveAlbum = function(album) {
+        model.saveAlbum = function(album) {
             $rootScope.album = album;
         };
 
-        $scope.saveTrack = function(track) {
+        model.saveTrack = function(track) {
             console.log(track);
             $rootScope.track= track;
         };

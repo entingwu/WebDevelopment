@@ -24,7 +24,7 @@ module.exports = function(app, userModel) {
         var request = require('request');
         var CLIENT_ID = '03ffe0cac0a0401aa6673c3cf6d02ced';
         var CLIENT_SECRET = 'a57c43efb9644574a96d6623fb8bfbc2';
-        var REDIRECT_URI = 'http://localhost:3000/callback';
+        var REDIRECT_URI = 'http://localhost:8080/callback';
         var authOptions = {
             url: 'https://accounts.spotify.com/api/token',
             headers: {
@@ -44,7 +44,7 @@ module.exports = function(app, userModel) {
         });
     }
 
-
+    /* TRACK */
     function addTrackToUser(req, res) {
         console.log(req.body);
         userModel
@@ -70,6 +70,7 @@ module.exports = function(app, userModel) {
             });
     }
 
+    /* ARTIST */
     function addArtistToUser(req, res) {
         userModel
             .addArtistToUser(req.params.userId, req.body)
@@ -96,6 +97,7 @@ module.exports = function(app, userModel) {
             });
     }
 
+    /* ALBUM */
     function addAlbumToUser(req, res) {
         userModel
             .addAlbumToUser(req.params.userId, req.body)

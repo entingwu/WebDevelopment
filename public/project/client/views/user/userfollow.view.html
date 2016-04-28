@@ -49,7 +49,9 @@
                     </div>
                 </td>
                 <td>
-                    <iframe ng-src="{{user.favoriteSongs[0].uri | trustUrl}}" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+                    <div ng-show="user.favoriteSongs[0]">
+                        <iframe ng-src="{{user.favoriteSongs[0].uri | trustUrl}}" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+                    </div>
                 </td>
                 <td class="col-sm-3 text-center">
                     <a ng-show="model.followingIds.indexOf(user._id)<0" ng-click="model.follow(user)" class="button green">FOLLOW</a>

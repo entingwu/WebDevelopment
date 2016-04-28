@@ -1,7 +1,7 @@
-<h1>{{categoryname}}</h1>
-<div ng-show="playlists.length > 0">
+<h1>{{model.categoryname}}</h1>
+<div ng-show="model.playlists.length > 0">
     <ul class="playlists">
-        <li ng-repeat="t in playlists">
+        <li ng-repeat="t in model.playlists">
             <a href="#/users/{{t.owner.id}}/playlists/{{t.id}}">
                 <responsive-cover ng-model="t.images"></responsive-cover>
             </a>
