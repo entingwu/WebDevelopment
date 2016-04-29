@@ -13,10 +13,10 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
     app.get('/api/project/user/:userId',     findUserById);
 
     /* ADMIN */
-    app.get('/api/project/admin/user',            admin,     getAllUsers);
-    app.post('/api/project/admin/user',           admin,     createUser);
-    app.put('/api/project/admin/user/:userId',    admin,     updateUserByAdmin);
-    app.delete('/api/project/admin/user/:userId', admin,     deleteUserById);
+    app.get('/api/project/admin/user',            /*admin,*/     getAllUsers);
+    app.post('/api/project/admin/user',           /*admin,*/     createUser);
+    app.put('/api/project/admin/user/:userId',    /*admin,*/     updateUserByAdmin);
+    app.delete('/api/project/admin/user/:userId', /*admin,*/     deleteUserById);
 
     /* Follower */
     app.post('/api/project/user/:userId/following', addFollowToUser);
