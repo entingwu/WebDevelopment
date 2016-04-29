@@ -21,9 +21,9 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
     app.put('/api/assignment5/admin/user/:userId',   admin,    updateUserByAdmin);//9
 
     /* new LocalStrategy(function) */
-    passport.use(new LocalStrategy(localStrategy));
+    /*passport.use(new LocalStrategy(localStrategy));
     passport.serializeUser(serializeUser);//to client
-    passport.deserializeUser(deserializeUser);//back from client
+    passport.deserializeUser(deserializeUser);//back from client*/
 
     /* localStrategy : If is username && password, done */
     function localStrategy(username, password, done) {//call done from passport
@@ -48,12 +48,12 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
     }
 
     /*serializeUser : serialize the user object into the session */
-    function serializeUser(user, done) {
+    /*function serializeUser(user, done) {
         done(null, user);//user id in cookie
-    }
+    }*/
 
     /*deserializeUser : retrieve the user object from the session*/
-    function deserializeUser(user, done) {
+    /*function deserializeUser(user, done) {
         userModel
             .findUserById(user._id)//find user
             .then(
@@ -64,7 +64,7 @@ module.exports = function(app, userModel, passport, LocalStrategy) {
                     done(err, null);
                 }
             );
-    }
+    }*/
 
     /* auth : first check */
     function authenticated (req, res, next) {

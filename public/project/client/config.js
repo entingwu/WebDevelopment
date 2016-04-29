@@ -18,25 +18,25 @@
                    templateUrl: "views/user/user.view.html",
                    controller: "UserController",
                    controllerAs: "model",
-                   /*resolve: {
+                   resolve: {
                        loggedin : checkCurrentUser
-                   }*/
+                   }
                })
                .when("/profile", {
                    templateUrl: "views/user/profile.view.html",
                    controller: "ProfileController",
                    controllerAs: "model",
-                   /*resolve: {
+                   resolve: {
                        loggedin : checkLoggedin
-                   }*/
+                   }
                })
                .when("/userfollow", {
                    templateUrl: "views/user/userfollow.view.html",
                    controller: "UserFollowController",
                    controllerAs: "model",
-                   /*resolve: {
+                   resolve: {
                        loggedin : checkCurrentUser
-                   }*/
+                   }
                })
                .when('/users/:username/playlists/:playlist', {
                    templateUrl: 'views/playlist/playlist.view.html',
@@ -62,9 +62,9 @@
                    templateUrl: "views/admin/admin.view.html",
                    controller: "AdminController",
                    controllerAs: "model",
-                   /*resolve: {
+                   resolve: {
                        loggedin : checkAdmin
-                   }*/
+                   }
                })
                .otherwise({
                    redirectTo: "/"
